@@ -10,13 +10,15 @@
 
   ul {
     list-style-type: none;
-    margin: 0 auto;
     padding: 0;
     text-align: left;
 
     li {
       display: inline-block;
       margin-right: $padding--h;
+      &:first-of-type {
+        margin-left: -$padding--h;
+      }
       &:last-of-type {
         margin-right: 0;
       }

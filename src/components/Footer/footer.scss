@@ -9,6 +9,9 @@
     li {
       display: inline-block;
       margin-right: $padding--h;
+      &:first-of-type {
+        margin-left: -$padding--h;
+      }
       &:last-of-type {
         margin-right: 0;
       }

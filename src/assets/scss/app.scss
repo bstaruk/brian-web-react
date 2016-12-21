@@ -6,8 +6,11 @@ body {
   color: $color--body-font;
   background: $color--body-bg;
   font-family: $font-sans;
-  font-size: 100%;
-  line-height: 1.3em;
+  font-size: .9em;
+  line-height: 1.4em;
+  @include breakpoint(sm) {
+    font-size: .95em;
+  }
 }
 
 a {
