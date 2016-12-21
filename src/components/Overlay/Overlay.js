@@ -7,7 +7,10 @@ class SkillComponent extends React.Component {
   render() {
     return (
       <div className={this.props.active ? 'overlay overlay--active' : 'overlay'}>
-        <h3>{this.props.title}</h3>
+        <div className="overlay--content">
+          <h3>{this.props.title}</h3>
+          {this.props.children}
+        </div>
       </div>
     );
   }
