@@ -8,24 +8,34 @@
     font-size: 1.5em;
   }
 
-  ul {
+  .nav-toggle {
+    display: block;
+    padding: $padding--v $padding--h;
+    background: darken($color--body-bg, 8%);
+    cursor: pointer;
+  }
+
+  #nav {
+    display: none;
     list-style-type: none;
+    margin: 0;
     padding: 0;
     text-align: left;
+    &.nav-active {
+      display: block;
+    }
 
-    li {
-      display: inline-block;
-      margin-right: $padding--h;
-      &:first-of-type {
-        margin-left: -$padding--h;
-      }
+    >li {
+      display: block;
+      border-bottom: 1px solid darken($color--body-bg, 10%);
       &:last-of-type {
-        margin-right: 0;
+        border-bottom: 0;
       }
 
-      a {
+      >a {
         display: block;
         padding: $padding--v $padding--h;
+        background: darken($color--body-bg, 3%);
         &.active {
           font-weight: 600;
         }
