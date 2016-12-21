@@ -4,12 +4,29 @@ import React from 'react';
 
 class FooterComponent extends React.Component {
   render() {
+    const socialLinks = [
+      {
+        'title': 'GitHub',
+        'url': 'https://github.com/bstaruk/',
+        'icon': 'github'
+      },
+      {
+        'title': 'LinkedIn',
+        'url': 'https://www.linkedin.com/in/brian-staruk',
+        'icon': 'linkedin'
+      },
+      {
+        'title': 'Email',
+        'url': 'mailto:bstaruk@gmail.com',
+        'icon': 'envelope'
+      }
+    ];
     return (
       <div id="footer">
         <ul className="social">
-          <li><a href="https://github.com/bstaruk/" title="GitHub" target="_blank"><i className="fa fa-github" aria-hidden="true"></i></a></li>
-          <li><a href="https://www.linkedin.com/in/brian-staruk" title="LinkedIn" target="_blank"><i className="fa fa-linkedin" aria-hidden="true"></i></a></li>
-          <li><a href="mailto:bstaruk@gmail.com" title="Email" target="_blank"><i className="fa fa-envelope" aria-hidden="true"></i></a></li>
+          {socialLinks.map(function (link, index) {
+            return <li key={ index }><a href={link.url} title={link.title} target="_blank"><i className={'fa fa-' + link.icon} aria-hidden="true"/></a></li>;
+          })}
         </ul>
       </div>
     );
