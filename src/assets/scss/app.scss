@@ -1,7 +1,16 @@
-/* Base Application Styles */
+@import "_mixins";
+
 body {
   color: #fff;
   background: #111;
+}
+
+a {
+  color: #fff;
+  @include transition(color 0.3s ease);
+  &:hover {
+    color: #ffcc00;
+  }
 }
 
 .index {
