@@ -1,7 +1,19 @@
+require('./assets/scss/app.scss');
+
 import 'core-js/fn/object/assign';
-import React from 'react';
-import ReactDOM from 'react-dom';
-import App from './components/Main';
+import React from 'react'
+import { render } from 'react-dom'
+import { Router, Route, hashHistory } from 'react-router'
+
+import Home from './views/Home/Home';
+import About from './views/About/About';
 
 // Render the main component into the dom
-ReactDOM.render(<App />, document.getElementById('app'));
+// ReactDOM.render(<App />, document.getElementById('app'));
+
+render((
+  <Router history={hashHistory}>
+    <Route path="/" component={Home}/>
+    <Route path="/about" component={About}/>
+  </Router>
+), document.getElementById('app'));

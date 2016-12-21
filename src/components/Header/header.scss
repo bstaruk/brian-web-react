@@ -1,0 +1,21 @@
+#header {
+  ul {
+    list-style-type: none;
+    margin: inherit auto;
+    padding: 0;
+    text-align: center;
+    li {
+      display: inline-block;
+      margin-right: 10px;
+      &:last-of-type {
+        margin-right: 0;
+      }
+
+      a {
+        &.active {
+          font-weight: 600;
+        }
+      }
+    }
+  }
+}
