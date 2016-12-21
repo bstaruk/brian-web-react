@@ -10,7 +10,9 @@ class HomeComponent extends React.Component {
       <div className="wrapper">
         <Header />
         <Content>
-          <Overlay title="Test Overlay" active={false}><p>test 123</p></Overlay>
+          <Overlay title="Test Overlay" active={true}>
+            <p>test 123</p>
+          </Overlay>
           <h2 className="content-title">Home</h2>
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In hendrerit massa non porta ultricies. Ut tristique commodo dolor vel ullamcorper. Vestibulum eu facilisis tellus, vel tincidunt nunc. Nullam facilisis justo sem, at imperdiet velit imperdiet pulvinar.</p>
           <p>Donec ut scelerisque quam. Donec lectus lorem, porta sit amet odio ac, convallis tincidunt dolor. Nunc vel vulputate odio. In diam neque, vulputate eget faucibus hendrerit, finibus sed est. Nulla efficitur ex eu sem hendrerit, nec feugiat arcu ornare. Proin iaculis ut magna quis elementum.</p>
