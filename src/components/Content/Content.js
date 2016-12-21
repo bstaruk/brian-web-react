@@ -1,3 +1,5 @@
+require('./content.scss');
+
 import React from 'react';
 
 class ContentComponent extends React.Component {
