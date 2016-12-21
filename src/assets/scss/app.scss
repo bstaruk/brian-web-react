@@ -1,37 +1,19 @@
-@import "_mixins";
-@import "_typography";
+@import "_fonts";
+@import "_vars";
 
 body {
-  color: #fff;
-  background: #111;
+  padding: 1em;
+  color: $color--body-font;
+  background: $color--body-bg;
   font-family: $font-sans;
+  font-size: 100%;
 }
 
 a {
-  color: #fff;
+  color: $color--body-anchor;
   text-decoration: none;
   @include transition(color 0.3s ease);
   &:hover {
-    color: #ffcc00;
-  }
-}
-
-.index {
-  img {
-    margin: 40px auto;
-    border-radius: 4px;
-    background: #fff;
-    display: block;
-  }
-}
-
-.index {
-  .notice {
-    margin: 10px auto;
-    padding: 15px 0;
-    text-align: center;
-    border: 1px solid #000;
-    border-width: 1px 0;
-    background: #666;
+    color: darken($color--body-anchor, 10%);
   }
 }

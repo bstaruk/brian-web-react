@@ -1,9 +1,11 @@
+require('normalize.css/normalize.css');
+require('font-awesome/css/font-awesome.css');
 require('./assets/scss/app.scss');
 
 import 'core-js/fn/object/assign';
 import React from 'react'
-import { render } from 'react-dom'
-import { Router, Route, hashHistory } from 'react-router'
+import {render} from 'react-dom'
+import {Router, Route, hashHistory} from 'react-router'
 
 import Home from './views/Home/Home';
 import About from './views/About/About';
