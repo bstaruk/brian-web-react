@@ -5,8 +5,8 @@ import { Router, Route, hashHistory } from 'react-router'
 
 require('./assets/scss/app.scss');
 
-import Home from './components/Home/Home';
-import About from './components/About/About';
+import Home from './views/Home/Home';
+import About from './views/About/About';
 
 // Render the main component into the dom
 // ReactDOM.render(<App />, document.getElementById('app'));
