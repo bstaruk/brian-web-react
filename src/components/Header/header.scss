@@ -1,9 +1,10 @@
 #header {
+  margin-bottom: 20px;
   ul {
     list-style-type: none;
-    margin: inherit auto;
+    margin: 0 auto;
     padding: 0;
-    text-align: center;
+    text-align: left;
     li {
       display: inline-block;
       margin-right: 10px;
@@ -12,6 +13,8 @@
       }
 
       a {
+        display: block;
+        padding: 5px;
         &.active {
           font-weight: 600;
         }

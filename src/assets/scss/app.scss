@@ -3,9 +3,11 @@
 @import "_typography";
 
 body {
+  padding: 20px;
   color: $color--body-font;
   background: $color--body-bg;
   font-family: $font-sans;
+  font-size: 100%;
 }
 
 a {
@@ -14,25 +16,5 @@ a {
   @include transition(color 0.3s ease);
   &:hover {
     color: darken($color--body-anchor, 10%);
-  }
-}
-
-.index {
-  img {
-    margin: 40px auto;
-    border-radius: 4px;
-    background: #fff;
-    display: block;
-  }
-}
-
-.index {
-  .notice {
-    margin: 10px auto;
-    padding: 15px 0;
-    text-align: center;
-    border: 1px solid #000;
-    border-width: 1px 0;
-    background: #666;
   }
 }
