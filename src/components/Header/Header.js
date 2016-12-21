@@ -22,7 +22,7 @@ class HeaderComponent extends React.Component {
       <div id="header">
         <h1>brian.staruk.me</h1>
         {this.state.date}
-        <div className="nav-toggle" onClick={this.toggleNav.bind(this)}>Toggle Nav</div>
+        <div className="nav-toggle" onClick={this.toggleNav.bind(this)}>{this.state.navActive ? 'Close' : 'Open'} Menu</div>
         <div className="nav-wrapper">
           <ul role="nav" className={this.state.navActive ? 'nav nav-active' : 'nav'}>
             <li><IndexLink to="/" activeClassName="active">Home</IndexLink></li>
