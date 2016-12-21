@@ -11,7 +11,7 @@ class HeaderComponent extends React.Component {
     };
   }
 
-  handleToggleNav() {
+  toggleNav() {
     this.setState({
       navActive: !this.state.navActive
     });
@@ -22,11 +22,13 @@ class HeaderComponent extends React.Component {
       <div id="header">
         <h1>brian.staruk.me</h1>
         {this.state.date}
-        <div className="nav-toggle" onClick={this.handleToggleNav.bind(this)}>Toggle Nav</div>
-        <ul id="nav" role="nav" className={this.state.navActive ? 'nav-active' : ''}>
-          <li><IndexLink to="/" activeClassName="active">Home</IndexLink></li>
-          <li><Link to="/about" activeClassName="active">About</Link></li>
-        </ul>
+        <div className="nav-toggle" onClick={this.toggleNav.bind(this)}>Toggle Nav</div>
+        <div className="nav-wrapper">
+          <ul role="nav" className={this.state.navActive ? 'nav nav-active' : 'nav'}>
+            <li><IndexLink to="/" activeClassName="active">Home</IndexLink></li>
+            <li><Link to="/about" activeClassName="active">About</Link></li>
+          </ul>
+        </div>
       </div>
     );
   }

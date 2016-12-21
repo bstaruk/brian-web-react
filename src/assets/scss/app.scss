@@ -13,6 +13,10 @@ body {
   }
 }
 
+* {
+  box-sizing: border-box;
+}
+
 a {
   color: $color--body-anchor;
   text-decoration: none;
