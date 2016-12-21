@@ -1,18 +1,19 @@
 @import "_mixins";
+@import "_colors";
 @import "_typography";
 
 body {
-  color: #fff;
-  background: #111;
+  color: $color--body-font;
+  background: $color--body-bg;
   font-family: $font-sans;
 }
 
 a {
-  color: #fff;
+  color: $color--body-anchor;
   text-decoration: none;
   @include transition(color 0.3s ease);
   &:hover {
-    color: #ffcc00;
+    color: darken($color--body-anchor, 10%);
   }
 }
 
