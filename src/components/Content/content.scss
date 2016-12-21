@@ -1,9 +1,12 @@
 @import "../../assets/scss/_vars";
 
 .content {
-  padding: 0 $padding--hx;
+  max-width: 860px;
+  padding: 0 $padding--h;
   margin: 0 0 $margin--vx;
+
   .content-title {
+    font-size: 1.3em;
     margin-top: 0;
   }
 }
