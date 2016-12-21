@@ -1,6 +1,6 @@
-#footer {
-  margin: 40px 0 0;
+@import "../../assets/scss/_vars";
 
+#footer {
   .social {
     list-style-type: none;
     margin: 0;
@@ -8,14 +8,14 @@
 
     li {
       display: inline-block;
-      margin-right: 10px;
+      margin-right: $padding--h;
       &:last-of-type {
         margin-right: 0;
       }
 
       a {
         display: block;
-        padding: 4px 8px;
+        padding: $padding--v $padding--h;
         font-size: 1.3rem;
       }
     }

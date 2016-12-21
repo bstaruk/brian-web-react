@@ -1,5 +1,7 @@
+@import "../../assets/scss/_vars";
+
 #header {
-  margin-bottom: 20px;
+  margin-bottom: $margin--v;
 
   ul {
     list-style-type: none;
@@ -9,14 +11,14 @@
 
     li {
       display: inline-block;
-      margin-right: 10px;
+      margin-right: $padding--h;
       &:last-of-type {
         margin-right: 0;
       }
 
       a {
         display: block;
-        padding: 4px 8px;
+        padding: $padding--v $padding--h;
         &.active {
           font-weight: 600;
         }

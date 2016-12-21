@@ -9,8 +9,8 @@ class AboutComponent extends React.Component {
       <div className="wrapper">
         <Header />
         <Content>
-          <h2>About</h2>
-          <ul className="list">
+          <h2 className="content-title">About</h2>
+          <ul>
             <li>test</li>
             <li>test</li>
           </ul>

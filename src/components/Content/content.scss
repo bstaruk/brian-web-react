@@ -2,4 +2,8 @@
 
 .content {
   padding: 0 $padding--hx;
+  margin: 0 0 $margin--vx;
+  .content-title {
+    margin-top: 0;
+  }
 }

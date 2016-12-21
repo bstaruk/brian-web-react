@@ -9,8 +9,8 @@ class HomeComponent extends React.Component {
       <div className="wrapper">
         <Header />
         <Content>
-          <h2>Home</h2>
-          <ul className="list">
+          <h2 className="content-title">Home</h2>
+          <ul>
             <li>test</li>
             <li>test</li>
           </ul>
