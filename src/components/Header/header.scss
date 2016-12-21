@@ -10,6 +10,12 @@
       &:last-of-type {
         margin-right: 0;
       }
+
+      a {
+        &.active {
+          font-weight: 600;
+        }
+      }
     }
   }
 }
