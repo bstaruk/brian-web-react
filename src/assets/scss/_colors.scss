@@ -1,3 +1,7 @@
+$color--red1: #d53d35;
+$color--blue1: #41a2fe;
+
 $color--body-bg: #f9f9f9;
 $color--body-font: #333;
-$color--body-anchor: #cc0000;
+$color--body-anchor: $color--red1;
+$color--body-anchor-hover: darken($color--body-anchor, 10%);
