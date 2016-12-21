@@ -13,7 +13,20 @@
   }
 
   .overlay--content {
+    position: relative;
     padding: $padding--vx $padding--hx;
+
+    .overlay--toggle {
+      position: absolute;
+      right: $padding--hx;
+      top: $padding--vx;
+      width: 32px;
+      height: 32px;
+      background: black;
+      cursor: pointer;
+      text-indent: -999em;
+      overflow: hidden;
+    }
 
     h3 {
       margin-top: 0;
