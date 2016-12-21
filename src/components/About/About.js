@@ -1,10 +1,9 @@
 require('normalize.css/normalize.css');
-require('../scss/App.scss');
 
 import React from 'react';
-import Header from '../components/Header/Header';
+import Header from '../Header/Header';
 
-let yeomanImage = require('../images/yeoman.png');
+let yeomanImage = require('../../assets/images/yeoman.png');
 
 class AboutComponent extends React.Component {
   render() {
