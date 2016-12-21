@@ -3,24 +3,83 @@
 #header {
   margin-bottom: $margin--v;
 
-  ul {
-    list-style-type: none;
-    margin: 0 auto;
-    padding: 0;
-    text-align: left;
+  h1 {
+    margin-top: 0;
+    font-size: 1.5em;
+  }
 
-    li {
-      display: inline-block;
-      margin-right: $padding--h;
-      &:last-of-type {
-        margin-right: 0;
+  .nav-toggle {
+    display: block;
+    padding: $padding--v $padding--h;
+    background: darken($color--body-bg, 8%);
+    border: 1px solid darken($color--body-bg, 15%);
+    cursor: pointer;
+    @include transition(all 0.3s ease);
+    @include breakpoint(sm) {
+      display: none;
+    }
+    &:hover {
+      background: darken($color--body-bg, 7%);
+    }
+  }
+
+  .nav-wrapper {
+    position: relative;
+    @include clearfix;
+    >ul.nav {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      max-height: 0;
+      opacity: 0;
+      overflow: hidden;
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      text-align: left;
+      border: 1px solid #ccc;
+      border-top: 0;
+      @include transition(all 0.3s ease);
+      @include breakpoint(sm) {
+        position: relative;
+        width: auto;
+        opacity: 1;
+        max-height: none;
+        border: 0;
+      }
+      &.nav-active {
+        opacity: 1;
+        max-height: 400px;
       }
 
-      a {
+      >li {
         display: block;
-        padding: $padding--v $padding--h;
-        &.active {
-          font-weight: 600;
+        border-bottom: 1px solid darken($color--body-bg, 10%);
+        @include breakpoint(sm) {
+          display: inline-block;
+          vertical-align: top;
+          border-bottom: 0;
+          margin-right: $margin--h;
+        }
+        &:last-of-type {
+          border-bottom: 0;
+          @include breakpoint(sm) {
+            margin-right: 0;
+          }
+        }
+
+        >a {
+          display: block;
+          padding: $padding--v $padding--h;
+          background: darken($color--body-bg, 3%);
+          @include transition(all 0.3s ease);
+          &:hover {
+            background: darken($color--body-bg, 4%);
+          }
+          &.active {
+            font-weight: 600;
+          }
         }
       }
     }
