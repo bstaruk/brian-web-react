@@ -5,8 +5,8 @@
   width: 0;
   height: 0;
   overflow: hidden;
-  background: $color--primary-gray1;
-  border: 1px solid darken($color--primary-gray1, 6%);
+  background: $color--bg-gray1;
+  border: 1px solid darken($color--bg-gray1, 6%);
   @include transition(all 0.3s ease);
   &.overlay--active {
     width: 100%;
