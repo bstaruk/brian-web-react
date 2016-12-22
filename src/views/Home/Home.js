@@ -24,10 +24,10 @@ class HomeComponent extends React.Component {
       <div className="wrapper">
         <Header />
         <Content>
-          <Overlay slug="testOverlay1" title="Test Overlay 1" active={this.state.activeOverlay === 'testOverlay1'} onToggle={this.handleOverlayToggle.bind(this)}>
+          <Overlay id="testOverlay1" title="Test Overlay 1" active={this.state.activeOverlay === 'testOverlay1'} onToggle={this.handleOverlayToggle.bind(this)}>
             <p>test one</p>
           </Overlay>
-          <Overlay slug="testOverlay2" title="Test Overlay 2" active={this.state.activeOverlay === 'testOverlay2'} onToggle={this.handleOverlayToggle.bind(this)}>
+          <Overlay id="testOverlay2" title="Test Overlay 2" active={this.state.activeOverlay === 'testOverlay2'} onToggle={this.handleOverlayToggle.bind(this)}>
             <p>test two</p>
           </Overlay>
           <h2 className="content-title">Home</h2>

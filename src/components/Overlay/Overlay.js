@@ -4,7 +4,7 @@ import React from 'react';
 
 class SkillComponent extends React.Component {
   toggleOverlay() {
-    this.props.onToggle(this.props.slug, false);
+    this.props.onToggle(this.props.id, false);
   }
 
   render() {
@@ -21,13 +21,13 @@ class SkillComponent extends React.Component {
 }
 
 SkillComponent.propTypes = {
-  slug: React.PropTypes.string.isRequired,
+  id: React.PropTypes.string.isRequired,
   title: React.PropTypes.string.isRequired,
   active: React.PropTypes.bool.isRequired
 };
 
 SkillComponent.defaultProps = {
-  slug: 'default-overlay',
+  id: 'default-overlay',
   title: 'Default Title',
   active: true
 };
