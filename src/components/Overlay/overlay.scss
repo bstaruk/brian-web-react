@@ -5,7 +5,8 @@
   width: 0;
   height: 0;
   overflow: hidden;
-  background: $color--blue1;
+  background: $color--primary-gray1;
+  border: 1px solid darken($color--primary-gray1, 6%);
   @include transition(all 0.3s ease);
   &.overlay--active {
     width: 100%;
@@ -20,12 +21,15 @@
       position: absolute;
       right: $padding--hx;
       top: $padding--vx;
-      width: 32px;
-      height: 32px;
-      background: black;
-      cursor: pointer;
-      text-indent: -999em;
-      overflow: hidden;
+      >i {
+        display: block;
+        width: 32px;
+        height: 32px;
+        line-height: 32px;
+        text-align: center;
+        font-size: 1.7em;
+        cursor: pointer;
+      }
     }
 
     h3 {

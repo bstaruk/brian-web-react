@@ -29,12 +29,12 @@ class HomeComponent extends React.Component {
       {
         'id': 'testSkillTwo',
         'title': 'Test Skill Two',
-        'desc': 'A little excerpt about my experience with this thang.'
+        'desc': 'A little excerpt about my experience with that thang.'
       },
       {
         'id': 'testSkillThree',
         'title': 'Test Skill Three',
-        'desc': 'A little excerpt about my experience with this thang.'
+        'desc': 'A little excerpt about my experience with the other thang.'
       }
     ];
     return (
@@ -42,11 +42,16 @@ class HomeComponent extends React.Component {
         <Header />
         <Content>
           {skillsOverlays.map(function (skill, index) {
-            return <Overlay key={index} id={skill.id} title={skill.title} active={this.state.activeOverlay === skill.id} onToggle={this.handleOverlayToggle.bind(this)}><p>{skill.desc}</p></Overlay>;
+            return (
+              <Overlay key={index} id={skill.id} active={this.state.activeOverlay === skill.id} onToggle={this.handleOverlayToggle.bind(this)}>
+                <h3>{skill.title}</h3>
+                <p>{skill.desc}</p>
+              </Overlay>
+            );
           }, this)}
           <h2 className="content-title">Home</h2>
           <p><a onClick={this.handleOverlayToggle.bind(this, 'testSkillOne', true)} href="#">Lorem ipsum dolor</a> sit amet, consectetur adipiscing elit. In hendrerit massa non porta ultricies. Ut tristique commodo dolor vel ullamcorper. Vestibulum eu facilisis tellus, vel tincidunt nunc. Nullam facilisis justo sem, at imperdiet velit imperdiet pulvinar.</p>
-          <p>Donec ut scelerisque quam. <a onClick={this.handleOverlayToggle.bind(this, 'testSkillTwo', true)} href="#">Donec lectus lorem, porta sit amet odio ac</a>, convallis tincidunt dolor. Nunc vel vulputate odio. In diam neque, vulputate eget faucibus hendrerit, finibus sed est. Nulla efficitur ex eu sem hendrerit, nec feugiat arcu ornare. Proin iaculis ut magna quis elementum.</p>
+          <p>Donec ut scelerisque quam. <a onClick={this.handleOverlayToggle.bind(this, 'testSkillTwo', true)} href="#">Donec lectus lorem, porta sit amet odio ac</a>, convallis tincidunt dolor. Nunc vel vulputate odio. In diam neque, vulputate eget faucibus hendrerit, finibus sed est. <a onClick={this.handleOverlayToggle.bind(this, 'testSkillThree', true)} href="#">Nulla efficitur ex eu sem hendrerit</a>, nec feugiat arcu ornare. Proin iaculis ut magna quis elementum.</p>
         </Content>
         <Footer />
       </div>
