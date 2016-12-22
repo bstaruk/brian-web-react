@@ -20,6 +20,10 @@
         display: block;
         padding: $padding--v $padding--h;
         font-size: 1.3rem;
+        color: $color--body-font;
+        &:hover {
+          color: $color--body-anchor-hover;
+        }
       }
     }
   }
