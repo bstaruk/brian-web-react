@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactMarkdown from 'react-markdown';
 import Header from '../../Components/Header/Header';
 import Content from '../../Components/Content/Content';
 import Overlay from '../../Components/Overlay/Overlay';
@@ -24,7 +25,7 @@ class HomeComponent extends React.Component {
       {
         'id': 'testSkillOne',
         'title': 'Test Skill One',
-        'desc': 'A little excerpt about my experience with this thang.'
+        'desc': 'A little excerpt about my [experience](http://google.com) with this thang.'
       },
       {
         'id': 'testSkillTwo',
@@ -45,7 +46,7 @@ class HomeComponent extends React.Component {
             return (
               <Overlay key={index} id={skill.id} active={this.state.activeOverlay === skill.id} onToggle={this.handleOverlayToggle.bind(this)}>
                 <h3>{skill.title}</h3>
-                <p>{skill.desc}</p>
+                <ReactMarkdown source={skill.desc} />
               </Overlay>
             );
           }, this)}
