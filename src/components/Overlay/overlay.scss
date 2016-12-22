@@ -5,8 +5,8 @@
   width: 0;
   height: 0;
   overflow: hidden;
-  background: $color--primary-gray1;
-  border: 1px solid darken($color--primary-gray1, 6%);
+  background: $color--bg-gray1;
+  border: 1px solid darken($color--bg-gray1, 6%);
   @include transition(all 0.3s ease);
   &.overlay--active {
     width: 100%;
@@ -19,16 +19,13 @@
 
     .overlay--toggle {
       position: absolute;
-      right: $padding--hx;
-      top: $padding--vx;
-      >i {
+      right: 0;
+      top: 0;
+      >a {
         display: block;
-        width: 32px;
-        height: 32px;
-        line-height: 32px;
         text-align: center;
         font-size: 1.7em;
-        cursor: pointer;
+        padding: .5em;
       }
     }
 

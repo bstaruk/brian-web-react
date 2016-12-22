@@ -2,14 +2,15 @@
 @import "_vars";
 
 body {
-  padding: 1em;
+  padding: .9em .6em;
   color: $color--body-font;
   background: $color--body-bg;
   font-family: $font-sans;
-  font-size: .9em;
+  font-size: .95em;
   line-height: 1.4em;
   @include breakpoint(sm) {
-    font-size: .95em;
+    font-size: .98em;
+    padding: 1em;
   }
 }
 
@@ -28,5 +29,11 @@ a {
   @include transition(color 0.3s ease);
   &:hover {
     color: $color--body-anchor-hover;
+  }
+  &.icon {
+    color: $color--body-font;
+    &:hover {
+      color: $color--body-anchor-hover;
+    }
   }
 }

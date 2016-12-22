@@ -26,15 +26,25 @@ class HeaderComponent extends React.Component {
         'route': '/'
       },
       {
-        'anchor': 'About',
-        'title': 'About',
-        'route': '/about'
+        'anchor': 'Contact',
+        'title': 'Contact',
+        'route': '/contact'
       }
     ];
     return (
       <div id="header">
         <h1>{siteTitle}</h1>
-        <div className="nav-toggle" onClick={this.handleNavToggle.bind(this)}>{this.state.navActive ? 'Close' : 'Open'} Menu</div>
+        <div onClick={this.handleNavToggle.bind(this)} className="nav-toggle">
+          {this.state.navActive ? 'Close' : 'Open'} Menu
+          <div className="nav-toggle-icon">
+            <div className={this.state.navActive ? 'icon-wrapper icon-open' : 'icon-wrapper'}>
+              <span />
+              <span />
+              <span />
+              <span />
+            </div>
+          </div>
+        </div>
         <div className="nav-wrapper">
           <ul role="nav" className={this.state.navActive ? 'nav nav-active' : 'nav'}>
             {navLinks.map(function (link, index) {
