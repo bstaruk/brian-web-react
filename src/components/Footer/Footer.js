@@ -7,7 +7,7 @@ class FooterComponent extends React.Component {
     const socialLinks = [
       {
         'title': 'GitHub',
-        'url': 'https://github.com/bstaruk/',
+        'url': 'https://github.com/bstaruk/brian-web-react',
         'icon': 'github'
       },
       {

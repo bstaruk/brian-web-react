@@ -1,7 +1,8 @@
-$color--red1: #d53d35;
-$color--blue1: #41a2fe;
+$color--primary-red1: #d53d35; // anchors, maybe some headers
+$color--primary-blue1: #41a2fe; // nothing at all... yet?
+$color--primary-gray1: #f1f1f1; // nav buttons, modal background
 
 $color--body-bg: #f9f9f9;
 $color--body-font: #333;
-$color--body-anchor: $color--red1;
+$color--body-anchor: $color--primary-red1;
 $color--body-anchor-hover: darken($color--body-anchor, 10%);
