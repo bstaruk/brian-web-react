@@ -2,7 +2,7 @@
 @import "_vars";
 
 body {
-  padding: 1em;
+  padding: .9em .6em;
   color: $color--body-font;
   background: $color--body-bg;
   font-family: $font-sans;
@@ -10,6 +10,7 @@ body {
   line-height: 1.4em;
   @include breakpoint(sm) {
     font-size: .98em;
+    padding: 1em;
   }
 }
 
