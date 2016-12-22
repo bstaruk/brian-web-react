@@ -11,13 +11,14 @@ class HeaderComponent extends React.Component {
     };
   }
 
-  toggleNav() {
+  handleNavToggle() {
     this.setState({
       navActive: !this.state.navActive
     });
   }
 
   render() {
+    const siteTitle = 'brian.staruk.me';
     const navLinks = [
       {
         'anchor': 'Home',
@@ -32,12 +33,16 @@ class HeaderComponent extends React.Component {
     ];
     return (
       <div id="header">
-        <h1>brian.staruk.me</h1>
-        <div className="nav-toggle" onClick={this.toggleNav.bind(this)}>{this.state.navActive ? 'Close' : 'Open'} Menu</div>
+        <h1>{siteTitle}</h1>
+        <div className="nav-toggle" onClick={this.handleNavToggle.bind(this)}>{this.state.navActive ? 'Close' : 'Open'} Menu</div>
         <div className="nav-wrapper">
           <ul role="nav" className={this.state.navActive ? 'nav nav-active' : 'nav'}>
             {navLinks.map(function (link, index) {
-              return <li key={ index }><Link to={link.route} title={link.title} activeClassName="active">{link.anchor}</Link></li>;
+              return (
+                <li key={index}>
+                  <Link to={link.route} title={link.title} activeClassName="active">{link.anchor}</Link>
+                </li>
+              );
             })}
           </ul>
         </div>

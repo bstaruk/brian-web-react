@@ -25,7 +25,13 @@ class FooterComponent extends React.Component {
       <div id="footer">
         <ul className="social">
           {socialLinks.map(function (link, index) {
-            return <li key={ index }><a href={link.url} title={link.title} target="_blank"><i className={'fa fa-' + link.icon} aria-hidden="true"/></a></li>;
+            return (
+              <li key={index}>
+                <a href={link.url} title={link.title} target="_blank">
+                  <i className={'fa fa-' + link.icon} />
+                </a>
+              </li>
+            );
           })}
         </ul>
       </div>
