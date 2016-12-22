@@ -40,7 +40,7 @@ class HomeComponent extends React.Component {
       {
         'id': 'skillOverlayLAMP',
         'title': 'LAMP & WordPress',
-        'desc': 'I have made dozens of sites with WordPress and it is still my go-to when I want to make a basic website for a friend. I have expert-level knowledge of crafting plugins and themes, as well as system buildouts and maintenance. [I even maintain my own starter theme!](https://github.com/bstaruk/wordpress-starbase)'
+        'desc': 'I have made dozens of sites with WordPress and it is still my go-to when I want to make a basic website for a friend or small business. I have expert-level knowledge of crafting plugins and themes, as well as system buildouts and maintenance. [I even maintain my own starter theme!](https://github.com/bstaruk/wordpress-starbase)'
       }
     ];
     return (
