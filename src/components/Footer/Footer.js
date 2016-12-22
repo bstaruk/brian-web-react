@@ -17,7 +17,7 @@ class FooterComponent extends React.Component {
       },
       {
         'title': 'Email',
-        'url': 'mailto:bstaruk@gmail.com',
+        'url': 'mailto:brian@staruk.me',
         'icon': 'envelope'
       }
     ];

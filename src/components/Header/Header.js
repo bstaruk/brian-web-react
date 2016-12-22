@@ -29,6 +29,11 @@ class HeaderComponent extends React.Component {
         'anchor': 'About',
         'title': 'About',
         'route': '/about'
+      },
+      {
+        'anchor': 'Contact',
+        'title': 'Contact',
+        'route': '/contact'
       }
     ];
     return (
