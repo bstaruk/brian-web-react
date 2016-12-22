@@ -1,6 +1,8 @@
 @import "../../assets/scss/_vars";
 
 #header {
+  position: relative;
+  z-index: 5;
   margin-bottom: $margin--v;
 
   h1 {
