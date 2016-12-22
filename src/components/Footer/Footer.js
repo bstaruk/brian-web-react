@@ -27,7 +27,7 @@ class FooterComponent extends React.Component {
           {socialLinks.map(function (link, index) {
             return (
               <li key={index}>
-                <a href={link.url} title={link.title} target="_blank">
+                <a href={link.url} title={link.title} className="icon" target="_blank">
                   <i className={'fa fa-' + link.icon} />
                 </a>
               </li>

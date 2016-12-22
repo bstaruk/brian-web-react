@@ -19,16 +19,13 @@
 
     .overlay--toggle {
       position: absolute;
-      right: $padding--hx;
-      top: $padding--vx;
-      >i {
+      right: 0;
+      top: 0;
+      >a {
         display: block;
-        width: 32px;
-        height: 32px;
-        line-height: 32px;
         text-align: center;
         font-size: 1.7em;
-        cursor: pointer;
+        padding: .5em;
       }
     }
 

@@ -30,4 +30,10 @@ a {
   &:hover {
     color: $color--body-anchor-hover;
   }
+  &.icon {
+    color: $color--body-font;
+    &:hover {
+      color: $color--body-anchor-hover;
+    }
+  }
 }
