@@ -21,38 +21,47 @@ class HomeComponent extends React.Component {
   }
 
   render() {
-    const skillsOverlays = [
+    const skillsOfAnArtist = [
       {
-        'id': 'testSkillOne',
-        'title': 'Test Skill One',
-        'desc': 'A little excerpt about my [experience](http://google.com) with this thang.'
+        'id': 'skillOverlayReact',
+        'title': 'React',
+        'desc': '*:breathing intensifies:*\n\nReact is my bae. We don\'t go way back, but we\'re solid and it doesn\'t matter what they say about us anyways. In all seriousness, though: React is my new go-to for just about everything front-end and it\'s been a long time since I was so happy to throw myself onto a new code bandwagon.'
       },
       {
-        'id': 'testSkillTwo',
-        'title': 'Test Skill Two',
-        'desc': 'A little excerpt about my experience with that thang.'
+        'id': 'skillOverlayAngular',
+        'title': 'AngularJS',
+        'desc': 'Though I prefer working with React, I still think AngularJS is just swell and I\'ve enjoyed my time with it. A side project of mine, [PriceBTC.com](http://pricebtc.com) was built with AngularJS when I was just getting started with modern JS frameworks.'
       },
       {
-        'id': 'testSkillThree',
-        'title': 'Test Skill Three',
-        'desc': 'A little excerpt about my experience with the other thang.'
+        'id': 'skillOverlayHTML',
+        'title': 'HTML, (S)CSS & JS',
+        'desc': 'I\'ve been building websites since I was about 10 years old and have always had a passion for writing clean, logical code. Having been around since the days of marquee tags, tables and wrestling with IE6, I have observed and adapted to the growth of these technologies since their humble beginnings.'
+      },
+      {
+        'id': 'skillOverlayLAMP',
+        'title': 'LAMP & WordPress',
+        'desc': 'I have made dozens of sites with WordPress and it is still my go-to when I want to make a basic website for a friend. I have expert-level knowledge of crafting plugins and themes, as well as system buildouts and maintenance. [I even maintain my own starter theme!](https://github.com/bstaruk/wordpress-starbase)'
       }
     ];
     return (
       <div className="wrapper">
         <Header />
         <Content>
-          {skillsOverlays.map(function (skill, index) {
+          {skillsOfAnArtist.map(function (skill, index) {
             return (
               <Overlay key={index} id={skill.id} active={this.state.activeOverlay === skill.id} onToggle={this.handleOverlayToggle.bind(this)}>
                 <h3>{skill.title}</h3>
-                <ReactMarkdown source={skill.desc} />
+                <ReactMarkdown
+                  source={skill.desc}
+                  renderers={{Link: props => <a href={props.href} target="_blank">{props.children}</a>}}
+                />
               </Overlay>
             );
           }, this)}
-          <h2 className="content-title">Home</h2>
-          <p><a onClick={this.handleOverlayToggle.bind(this, 'testSkillOne', true)} href="#">Lorem ipsum dolor</a> sit amet, consectetur adipiscing elit. In hendrerit massa non porta ultricies. Ut tristique commodo dolor vel ullamcorper. Vestibulum eu facilisis tellus, vel tincidunt nunc. Nullam facilisis justo sem, at imperdiet velit imperdiet pulvinar.</p>
-          <p>Donec ut scelerisque quam. <a onClick={this.handleOverlayToggle.bind(this, 'testSkillTwo', true)} href="#">Donec lectus lorem, porta sit amet odio ac</a>, convallis tincidunt dolor. Nunc vel vulputate odio. In diam neque, vulputate eget faucibus hendrerit, finibus sed est. <a onClick={this.handleOverlayToggle.bind(this, 'testSkillThree', true)} href="#">Nulla efficitur ex eu sem hendrerit</a>, nec feugiat arcu ornare. Proin iaculis ut magna quis elementum.</p>
+          <h2 className="content-title">Welcome!</h2>
+          <p>My name is Brian Staruk and I am a 29 year-old web developer who lives in Boston, MA and current specializes in front-end and app development. I think that everyone should have their own little corner of the internet, and this one is mine!</p>
+          <p>...and it was built with <a onClick={this.handleOverlayToggle.bind(this, 'skillOverlayReact', true)} href="#">React</a>!</p>
+          <p>I am course versed with the basics-- <a onClick={this.handleOverlayToggle.bind(this, 'skillOverlayHTML', true)} href="#">HTML, (S)CSS & JS</a>, and in a past life I was a <a onClick={this.handleOverlayToggle.bind(this, 'skillOverlayLAMP', true)} href="#">LAMP (WordPress)</a> developer... but these days I am basking in the warm, rejuvenating sun that are modern MVC Javascript frameworks such as <a onClick={this.handleOverlayToggle.bind(this, 'skillOverlayAngular', true)} href="#">AngularJS</a> and <a onClick={this.handleOverlayToggle.bind(this, 'skillOverlayReact', true)} href="#">React</a>.</p>
         </Content>
         <Footer />
       </div>
