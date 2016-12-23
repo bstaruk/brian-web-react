@@ -8,6 +8,7 @@ let defaultSettings = require('./defaults');
 
 // Add needed plugins here
 let BowerWebpackPlugin = require('bower-webpack-plugin');
+let ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 let config = Object.assign({}, baseConfig, {
   entry: path.join(__dirname, '../src/index'),
@@ -24,7 +25,10 @@ let config = Object.assign({}, baseConfig, {
     new webpack.optimize.UglifyJsPlugin(),
     new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.optimize.AggressiveMergingPlugin(),
-    new webpack.NoErrorsPlugin()
+    new webpack.NoErrorsPlugin(),
+    new ExtractTextPlugin('app.css', {
+      allChunks: true
+    })
   ],
   module: defaultSettings.getDefaultModules()
 });
@@ -37,6 +41,10 @@ config.module.loaders.push({
     config.additionalPaths,
     [ path.join(__dirname, '/../src') ]
   )
+});
+config.module.loaders.push({
+  test: /\.scss/,
+  loader: ExtractTextPlugin.extract('style-loader', 'css-loader!sass-loader')
 });
 
 module.exports = config;
