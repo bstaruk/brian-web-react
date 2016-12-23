@@ -26,6 +26,7 @@ const App = ({ children, location }) => (
       transitionName="app"
       transitionAppear={false}
       transitionEnter={true}
+      transitionEnterTimeout={500}
       transitionLeave={false}
     >
       {React.cloneElement(children, {

@@ -25,10 +25,10 @@ body {
 
 .app-wrapper {
   position: relative;
-  width: 100%;
+  max-width: 860px;
   .app-enter {
-    opacity: 0.01;
-    transition: opacity .5s ease-in;
+    opacity: 0;
+    @include transition(opacity .3s ease-in);
     &.app-enter-active {
       opacity: 1;
     }
