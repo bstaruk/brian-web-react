@@ -17,6 +17,12 @@ class HeaderComponent extends React.Component {
     });
   }
 
+  handleNavClose() {
+    this.setState({
+      navActive: false
+    });
+  }
+
   render() {
     const siteTitle = 'brian.staruk.me';
     const navLinks = [
@@ -50,10 +56,10 @@ class HeaderComponent extends React.Component {
             {navLinks.map(function (link, index) {
               return (
                 <li key={index}>
-                  <Link to={link.route} title={link.title} activeClassName="active">{link.anchor}</Link>
+                  <Link to={link.route} title={link.title} activeClassName="active" onClick={this.handleNavClose.bind(this)}>{link.anchor}</Link>
                 </li>
               );
-            })}
+            }, this)}
           </ul>
         </div>
       </div>
