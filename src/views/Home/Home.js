@@ -1,9 +1,7 @@
 import React from 'react';
 import ReactMarkdown from 'react-markdown';
-import Header from '../../Components/Header/Header';
 import Content from '../../Components/Content/Content';
 import Overlay from '../../Components/Overlay/Overlay';
-import Footer from '../../Components/Footer/Footer';
 
 class HomeComponent extends React.Component {
   constructor(props) {
@@ -45,7 +43,6 @@ class HomeComponent extends React.Component {
     ];
     return (
       <div className="wrapper">
-        <Header />
         <Content>
           {skillsOfAnArtist.map(function (skill, index) {
             return (
@@ -63,7 +60,6 @@ class HomeComponent extends React.Component {
           <p>...and it was built with <a onClick={this.handleOverlayToggle.bind(this, 'skillOverlayReact', true)} href="#">React</a>!</p>
           <p>I am of course versed with the basics-- <a onClick={this.handleOverlayToggle.bind(this, 'skillOverlayHTML', true)} href="#">HTML, (S)CSS & JS</a>, and in a past life I was a <a onClick={this.handleOverlayToggle.bind(this, 'skillOverlayLAMP', true)} href="#">LAMP (WordPress)</a> developer... but these days I am basking in the warm, rejuvenating sun that are modern MVC Javascript frameworks such as <a onClick={this.handleOverlayToggle.bind(this, 'skillOverlayAngular', true)} href="#">AngularJS</a> and <a onClick={this.handleOverlayToggle.bind(this, 'skillOverlayReact', true)} href="#">React</a>.</p>
         </Content>
-        <Footer />
       </div>
     );
   }
