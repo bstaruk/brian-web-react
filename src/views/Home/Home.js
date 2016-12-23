@@ -42,25 +42,23 @@ class HomeComponent extends React.Component {
       }
     ];
     return (
-      <div className="wrapper">
-        <Content>
-          {skillsOfAnArtist.map(function (skill, index) {
-            return (
-              <Overlay key={index} id={skill.id} active={this.state.activeOverlay === skill.id} onToggle={this.handleOverlayToggle.bind(this)}>
-                <h3>{skill.title}</h3>
-                <ReactMarkdown
-                  source={skill.desc}
-                  renderers={{Link: props => <a href={props.href} target="_blank">{props.children}</a>}}
-                />
-              </Overlay>
-            );
-          }, this)}
-          <h2 className="content-title">Welcome!</h2>
-          <p>My name is Brian Staruk and I am a 29 year-old web developer who lives in Boston, MA and current specializes in front-end and app development. I think that everyone should have their own little corner of the internet, and this one is mine!</p>
-          <p>...and it was built with <a onClick={this.handleOverlayToggle.bind(this, 'skillOverlayReact', true)} href="#">React</a>!</p>
-          <p>I am of course versed with the basics-- <a onClick={this.handleOverlayToggle.bind(this, 'skillOverlayHTML', true)} href="#">HTML, (S)CSS & JS</a>, and in a past life I was a <a onClick={this.handleOverlayToggle.bind(this, 'skillOverlayLAMP', true)} href="#">LAMP (WordPress)</a> developer... but these days I am basking in the warm, rejuvenating sun that are modern MVC Javascript frameworks such as <a onClick={this.handleOverlayToggle.bind(this, 'skillOverlayAngular', true)} href="#">AngularJS</a> and <a onClick={this.handleOverlayToggle.bind(this, 'skillOverlayReact', true)} href="#">React</a>.</p>
-        </Content>
-      </div>
+      <Content>
+        {skillsOfAnArtist.map(function (skill, index) {
+          return (
+            <Overlay key={index} id={skill.id} active={this.state.activeOverlay === skill.id} onToggle={this.handleOverlayToggle.bind(this)}>
+              <h3>{skill.title}</h3>
+              <ReactMarkdown
+                source={skill.desc}
+                renderers={{Link: props => <a href={props.href} target="_blank">{props.children}</a>}}
+              />
+            </Overlay>
+          );
+        }, this)}
+        <h2 className="content-title">Welcome!</h2>
+        <p>My name is Brian Staruk and I am a 29 year-old web developer who lives in Boston, MA and current specializes in front-end and app development. I think that everyone should have their own little corner of the internet, and this one is mine!</p>
+        <p>...and it was built with <a onClick={this.handleOverlayToggle.bind(this, 'skillOverlayReact', true)} href="#">React</a>!</p>
+        <p>I am of course versed with the basics-- <a onClick={this.handleOverlayToggle.bind(this, 'skillOverlayHTML', true)} href="#">HTML, (S)CSS & JS</a>, and in a past life I was a <a onClick={this.handleOverlayToggle.bind(this, 'skillOverlayLAMP', true)} href="#">LAMP (WordPress)</a> developer... but these days I am basking in the warm, rejuvenating sun that are modern MVC Javascript frameworks such as <a onClick={this.handleOverlayToggle.bind(this, 'skillOverlayAngular', true)} href="#">AngularJS</a> and <a onClick={this.handleOverlayToggle.bind(this, 'skillOverlayReact', true)} href="#">React</a>.</p>
+      </Content>
     );
   }
 }

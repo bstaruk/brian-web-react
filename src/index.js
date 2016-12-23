@@ -17,14 +17,16 @@ import Contact from './views/Contact/Contact';
 // ReactDOM.render(<App />, document.getElementById('app'));
 
 const App = ({ children, location }) => (
-  <div className="wrapper">
+  <div>
     <Header />
 
     <ReactCSSTransitionGroup
       component="div"
-      transitionName="example"
-      transitionEnterTimeout={500}
-      transitionLeaveTimeout={500}
+      className="app-wrapper"
+      transitionName="app"
+      transitionAppear={false}
+      transitionEnter={true}
+      transitionLeave={false}
     >
       {React.cloneElement(children, {
         key: location.pathname

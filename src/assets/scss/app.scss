@@ -23,6 +23,18 @@ body {
   color: white;
 }
 
+.app-wrapper {
+  position: relative;
+  width: 100%;
+  .app-enter {
+    opacity: 0.01;
+    transition: opacity .5s ease-in;
+    &.app-enter-active {
+      opacity: 1;
+    }
+  }
+}
+
 a {
   color: $color--body-anchor;
   text-decoration: none;
