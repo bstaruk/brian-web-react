@@ -50,10 +50,10 @@ class HeaderComponent extends React.Component {
             {navLinks.map(function (link, index) {
               return (
                 <li key={index}>
-                  <Link to={link.route} title={link.title} activeClassName="active">{link.anchor}</Link>
+                  <Link to={link.route} title={link.title} activeClassName="active" onClick={this.handleNavToggle.bind(this)}>{link.anchor}</Link>
                 </li>
               );
-            })}
+            }, this)}
           </ul>
         </div>
       </div>
