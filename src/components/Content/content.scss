@@ -8,4 +8,19 @@
     font-size: 1.3em;
     margin-top: 0;
   }
+
+  a {
+    &.icon-after {
+      &:after {
+        font-family: FontAwesome;
+        font-size: .8em;
+        margin: auto .3em;
+      }
+      &.external {
+        &:after {
+          content: "\f14c";
+        }
+      }
+    }
+  }
 }

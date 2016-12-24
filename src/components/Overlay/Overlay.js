@@ -12,7 +12,7 @@ class SkillComponent extends React.Component {
       <div className={this.props.active ? 'overlay overlay--active' : 'overlay'}>
         <div className="overlay--content">
           <div className="overlay--toggle">
-            <a href="#" className="icon" onClick={this.toggleOverlay.bind(this)} title="Close Overlay">
+            <a href="#" onClick={this.toggleOverlay.bind(this)} title="Close Overlay">
               <i className="fa fa-times-circle" aria-hidden="true" />
             </a>
           </div>

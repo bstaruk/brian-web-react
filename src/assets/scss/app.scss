@@ -42,17 +42,4 @@ a {
   &:hover {
     color: $color--body-anchor-hover;
   }
-  &.icon {
-    color: $color--body-font;
-    &:hover {
-      color: $color--body-anchor-hover;
-    }
-  }
-  &.external {
-    &:after {
-      content: " \f14c";
-      font-family: FontAwesome;
-      font-size: .9em;
-    }
-  }
 }
