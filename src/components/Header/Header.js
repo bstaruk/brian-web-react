@@ -1,7 +1,7 @@
 require('./header.scss');
 
 import React from 'react';
-import {Link} from 'react-router'
+import {Link, IndexLink} from 'react-router'
 
 class HeaderComponent extends React.Component {
   constructor(props) {
@@ -29,7 +29,8 @@ class HeaderComponent extends React.Component {
       {
         'anchor': 'Home',
         'title': 'Home',
-        'route': '/'
+        'route': '/',
+        'index': true
       },
       {
         'anchor': 'Contact',
@@ -56,7 +57,14 @@ class HeaderComponent extends React.Component {
             {navLinks.map(function (link, index) {
               return (
                 <li key={index}>
-                  <Link to={link.route} title={link.title} activeClassName="active" onClick={this.handleNavClose.bind(this)}>{link.anchor}</Link>
+                  {
+                    link.index ?
+                      <IndexLink to={link.route} title={link.title} activeClassName="active"
+                                 onClick={this.handleNavClose.bind(this)}>{link.anchor}</IndexLink>
+                      :
+                      <Link to={link.route} title={link.title} activeClassName="active"
+                            onClick={this.handleNavClose.bind(this)}>{link.anchor}</Link>
+                  }
                 </li>
               );
             }, this)}

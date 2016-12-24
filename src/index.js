@@ -16,7 +16,7 @@ import Contact from './views/Contact/Contact';
 // Render the main component into the dom
 // ReactDOM.render(<App />, document.getElementById('app'));
 
-const App = ({ children, location }) => (
+const App = ({children, location}) => (
   <div>
     <Header />
 
@@ -42,7 +42,7 @@ render((
   <Router history={hashHistory}>
     <Route path="/" component={App}>
       <IndexRoute component={Home}/>
-      <Route path="contact" component={Contact} />
+      <Route path="contact" component={Contact}/>
     </Route>
   </Router>
 ), document.getElementById('app'));
