@@ -133,15 +133,39 @@
         }
 
         >a {
+          position: relative;
           display: block;
           padding: $padding--v $padding--h;
           background: $color--bg-gray1;
+          color: lighten($color--body-font, 20%);
           @include transition(all 0.3s ease);
+          @include breakpoint(sm) {
+            &:before {
+              content: "";
+              position: absolute;
+              bottom: 0;
+              left: 0;
+              width: 100%;
+              height: 2px;
+              background: $color--border-gray1;
+              @include transition(background 0.3s ease);
+            }
+          }
           &:hover {
-            background: darken($color--bg-gray1, 2%);
+            color: $color--body-font;
+            @include breakpoint(sm) {
+              &:before {
+                background: darken($color--border-gray1, 20%);
+              }
+            }
           }
           &.active {
-            font-weight: 600;
+            color: $color--body-anchor;
+            @include breakpoint(sm) {
+              &:before {
+                background: $color--body-anchor;
+              }
+            }
           }
         }
       }
