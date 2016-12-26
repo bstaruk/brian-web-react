@@ -8,10 +8,10 @@ import ReactCSSTransitionGroup from 'react/lib/ReactCSSTransitionGroup'
 import {render} from 'react-dom'
 import {Router, Route, IndexRoute, hashHistory} from 'react-router'
 
-import Header from './Components/Header/Header';
-import Footer from './Components/Footer/Footer';
-import Home from './views/Home/Home';
-import Contact from './views/Contact/Contact';
+import Header from './components/Header/Header';
+import Footer from './components/Footer/Footer';
+import Home from './components/Pages/Home';
+import Contact from './components/Pages/Contact/Contact';
 
 // Render the main component into the dom
 // ReactDOM.render(<App />, document.getElementById('app'));
