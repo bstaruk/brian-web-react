@@ -6,10 +6,10 @@ body {
   color: $color--body-font;
   background: $color--body-bg;
   font-family: $font-sans;
-  font-size: .95em;
+  font-size: .94em;
   line-height: 1.4em;
+  letter-spacing: .01em;
   @include breakpoint(sm) {
-    font-size: .98em;
     padding: 1em;
   }
 }
@@ -42,4 +42,9 @@ a {
   &:hover {
     color: $color--body-anchor-hover;
   }
+}
+
+h1, h2, h3, h4 {
+  font-family: $font-serif;
+  font-weight: normal;
 }
