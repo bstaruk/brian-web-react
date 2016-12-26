@@ -6,11 +6,10 @@ body {
   color: $color--body-font;
   background: $color--body-bg;
   font-family: $font-sans;
-  font-size: .95em;
+  font-size: .94em;
   line-height: 1.4em;
   letter-spacing: .01em;
   @include breakpoint(sm) {
-    font-size: .98em;
     padding: 1em;
   }
 }
