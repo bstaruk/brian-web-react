@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactMarkdown from 'react-markdown';
-import Content from '../../Components/Content/Content';
-import Overlay from '../../Components/Overlay/Overlay';
+import Content from '../Content/Content';
+import Overlay from '../Overlay/Overlay';
 
 class HomeComponent extends React.Component {
   constructor(props) {
