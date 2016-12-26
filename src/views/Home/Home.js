@@ -56,9 +56,9 @@ class HomeComponent extends React.Component {
         }, this)}
         <h2 className="content-title">Welcome!</h2>
         <p>My name is Brian Staruk and I am a web developer who lives in Boston, MA and currently specializes in front-end & app development. I think that everyone should have their own little corner of the internet, and this one is mine!</p>
-        <p>...and it was built with <a onClick={this.handleOverlayToggle.bind(this, 'skillOverlayReact', true)} href="#">React</a>!</p>
+        <p>...and it was built with <a onClick={this.handleOverlayToggle.bind(this, 'skillOverlayReact', true)} href="#">React</a>! Check out <a href="https://github.com/bstaruk/brian-web-react" target="_blank" className="alt icon-after external">the GitHub repo</a>.</p>
         <p><em>A little about me...</em> I've been building websites with <a onClick={this.handleOverlayToggle.bind(this, 'skillOverlayHTML', true)} href="#">HTML, (S)CSS & JS</a> for almost 2 decades, and in a past life I was a <a onClick={this.handleOverlayToggle.bind(this, 'skillOverlayLAMP', true)} href="#">LAMP (WordPress)</a> developer... but these days I am basking in the warm, rejuvenating sun that are modern MVC Javascript frameworks such as <a onClick={this.handleOverlayToggle.bind(this, 'skillOverlayAngular', true)} href="#">AngularJS</a> and <a onClick={this.handleOverlayToggle.bind(this, 'skillOverlayReact', true)} href="#">React</a>.</p>
-        <p>Check out my resume at <a href="http://resume.brian.staruk.me" target="_blank" className="icon-after external">resume.brian.staruk.me</a> if you'd like to learn more about what I've been up to.</p>
+        <p>Check out my resume at <a href="http://resume.brian.staruk.me" target="_blank" className="alt icon-after external">resume.brian.staruk.me</a> if you'd like to learn more about what I've been up to.</p>
       </Content>
     );
   }

@@ -40,7 +40,8 @@ class HeaderComponent extends React.Component {
     ];
     return (
       <div id="header">
-        <h1>{siteTitle}</h1>
+        <h1><IndexLink to="/" title={siteTitle}
+                       onClick={this.handleNavClose.bind(this)}>{siteTitle}</IndexLink></h1>
         <div onClick={this.handleNavToggle.bind(this)} className="nav-toggle">
           {this.state.navActive ? 'Close' : 'Open'} Menu
           <div className="nav-toggle-icon">
