@@ -7,7 +7,7 @@ class HeaderComponent extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      navActive: false
+      navActive: this.props.navActive
     };
     this._handleNavToggle = this._handleNavToggle.bind(this);
     this._handleNavClose = this._handleNavClose.bind(this);
@@ -77,6 +77,12 @@ class HeaderComponent extends React.Component {
   }
 }
 
-HeaderComponent.defaultProps = {};
+HeaderComponent.propTypes = {
+  navActive: React.PropTypes.bool
+};
+
+HeaderComponent.defaultProps = {
+  navActive: false
+};
 
 export default HeaderComponent;
