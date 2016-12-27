@@ -41,8 +41,8 @@ const App = ({children, location}) => (
 render((
   <Router history={hashHistory}>
     <Route path="/" component={App}>
-      <IndexRoute component={Home}/>
-      <Route path="contact" component={Contact}/>
+      <IndexRoute component={Home} />
+      <Route path="contact" component={Contact} />
     </Route>
   </Router>
 ), document.getElementById('app'));
