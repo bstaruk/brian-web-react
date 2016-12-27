@@ -9,15 +9,17 @@ class HeaderComponent extends React.Component {
     this.state = {
       navActive: false
     };
+    this._handleNavToggle = this._handleNavToggle.bind(this);
+    this._handleNavClose = this._handleNavClose.bind(this);
   }
 
-  handleNavToggle() {
+  _handleNavToggle() {
     this.setState({
       navActive: !this.state.navActive
     });
   }
 
-  handleNavClose() {
+  _handleNavClose() {
     this.setState({
       navActive: false
     });
@@ -40,9 +42,8 @@ class HeaderComponent extends React.Component {
     ];
     return (
       <div id="header">
-        <h1><IndexLink to="/" title={siteTitle}
-                       onClick={this.handleNavClose.bind(this)}>{siteTitle}</IndexLink></h1>
-        <div onClick={this.handleNavToggle.bind(this)} className="nav-toggle">
+        <h1><IndexLink to="/" title={siteTitle} onClick={this._handleNavClose}>{siteTitle}</IndexLink></h1>
+        <div onClick={this._handleNavToggle} className="nav-toggle">
           {this.state.navActive ? 'Close' : 'Open'} Menu
           <div className="nav-toggle-icon">
             <div className={this.state.navActive ? 'icon-wrapper icon-open' : 'icon-wrapper'}>
@@ -61,10 +62,10 @@ class HeaderComponent extends React.Component {
                   {
                     link.index ?
                       <IndexLink to={link.route} title={link.title} activeClassName="active"
-                                 onClick={this.handleNavClose.bind(this)}>{link.anchor}</IndexLink>
+                                 onClick={this._handleNavClose}>{link.anchor}</IndexLink>
                       :
                       <Link to={link.route} title={link.title} activeClassName="active"
-                            onClick={this.handleNavClose.bind(this)}>{link.anchor}</Link>
+                            onClick={this._handleNavClose}>{link.anchor}</Link>
                   }
                 </li>
               );

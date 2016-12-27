@@ -3,7 +3,14 @@ require('./overlay.scss');
 import React from 'react';
 
 class SkillComponent extends React.Component {
-  toggleOverlay() {
+  constructor(props) {
+    super(props);
+    this.state = {
+      navActive: false
+    };
+    this._handleToggleOverlay = this._handleToggleOverlay.bind(this);
+  }
+  _handleToggleOverlay() {
     this.props.onToggle(this.props.id, false);
   }
 
@@ -12,8 +19,8 @@ class SkillComponent extends React.Component {
       <div className={this.props.active ? 'overlay overlay--active' : 'overlay'}>
         <div className="overlay--content">
           <div className="overlay--toggle">
-            <a href="#" onClick={this.toggleOverlay.bind(this)} title="Close Overlay">
-              <i className="fa fa-times-circle" aria-hidden="true" />
+            <a href="#" onClick={this._handleToggleOverlay} title="Close Overlay">
+              <i className="fa fa-times-circle" aria-hidden={true} />
             </a>
           </div>
           {this.props.children}
