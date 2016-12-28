@@ -4,21 +4,30 @@ import Content from '../Content/Content';
 import Overlay from '../Overlay/Overlay';
 
 class HomeComponent extends React.Component {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
     this.state = {
       activeOverlay: null
     };
+    this._handleOverlayOpen = this._handleOverlayOpen.bind(this);
+    this._handleOverlayClose = this._handleOverlayClose.bind(this);
   }
 
-  handleOverlayToggle(overlayId) {
-    const newActiveOverlay = this.state.activeOverlay === overlayId ? null : overlayId;
+  _handleOverlayOpen(event) {
+    const overlayId = event.target.attributes.getNamedItem('data-overlayId').value;
     this.setState({
-      activeOverlay: newActiveOverlay
+      activeOverlay: overlayId ? overlayId : null
+    });
+  }
+
+  _handleOverlayClose() {
+    this.setState({
+      activeOverlay: null
     });
   }
 
   render() {
+    const {activeOverlay} = this.state;
     const skillsOfAnArtist = [
       {
         id: 'skillOverlayReact',
@@ -38,14 +47,14 @@ class HomeComponent extends React.Component {
       {
         id: 'skillOverlayLAMP',
         title: 'LAMP & WordPress',
-        desc: 'I have made dozens of sites with WordPress and it is still my go-to when I want to make a basic website for a friend or small business. I have expert-level knowledge of crafting plugins and themes, as well as system buildouts and maintenance. I even maintain [my own development theme (Starbase)](https://github.com/bstaruk/wordpress-starbase) that features NPM, Bower & SCSS integration with a modified [_s](https://underscores.me) core.'
+        desc: 'I have made dozens of sites with WordPress and it is still my go-to when I need to make a website with a CMS for a friend or small business. I have expert-level knowledge of crafting plugins and themes, as well as system buildouts and maintenance. I even maintain [my own development theme (Starbase)](https://github.com/bstaruk/wordpress-starbase) that features NPM, Bower & SCSS integration with a modified [_s](https://underscores.me) base.'
       }
     ];
     return (
       <Content>
         {skillsOfAnArtist.map(function (skill, index) {
           return (
-            <Overlay key={index} id={skill.id} active={this.state.activeOverlay === skill.id} onToggle={this.handleOverlayToggle.bind(this)}>
+            <Overlay key={index} active={activeOverlay === skill.id} closeOverlay={this._handleOverlayClose}>
               <h3>{skill.title}</h3>
               <ReactMarkdown
                 source={skill.desc}
@@ -56,8 +65,8 @@ class HomeComponent extends React.Component {
         }, this)}
         <h2 className="content-title">Welcome!</h2>
         <p>My name is Brian Staruk and I am a web developer who lives in Boston, MA and currently specializes in front-end & app development. I think that everyone should have their own little corner of the internet, and this one is mine!</p>
-        <p>...and it was built with <a onClick={this.handleOverlayToggle.bind(this, 'skillOverlayReact', true)} href="#">React</a>! Check out <a href="https://github.com/bstaruk/brian-web-react" target="_blank" className="alt icon-after external">the GitHub repo</a>.</p>
-        <p><em>A little about me...</em> I've been building websites with <a onClick={this.handleOverlayToggle.bind(this, 'skillOverlayHTML', true)} href="#">HTML, (S)CSS & JS</a> for almost 2 decades, and in a past life I was a <a onClick={this.handleOverlayToggle.bind(this, 'skillOverlayLAMP', true)} href="#">LAMP (WordPress)</a> developer... but these days I am basking in the warm, rejuvenating sun that are modern MVC Javascript frameworks such as <a onClick={this.handleOverlayToggle.bind(this, 'skillOverlayAngular', true)} href="#">AngularJS</a> and <a onClick={this.handleOverlayToggle.bind(this, 'skillOverlayReact', true)} href="#">React</a>.</p>
+        <p>...and it was built with <a href="#" onClick={this._handleOverlayOpen} data-overlayId="skillOverlayReact">React</a>! Check out <a href="https://github.com/bstaruk/brian-web-react" target="_blank" className="alt icon-after external">the GitHub repo</a>.</p>
+        <p><em>A little about me...</em> I've been building websites with <a href="#" onClick={this._handleOverlayOpen} data-overlayId="skillOverlayHTML">HTML, (S)CSS & JS</a> for almost 2 decades, and in a past life I was a <a href="#" onClick={this._handleOverlayOpen} data-overlayId="skillOverlayLAMP">LAMP (WordPress)</a> developer... but these days I am basking in the warm, rejuvenating sun that are modern MVC Javascript frameworks such as <a href="#" onClick={this._handleOverlayOpen} data-overlayId="skillOverlayAngular">AngularJS</a> and <a href="#" onClick={this._handleOverlayOpen} data-overlayId="skillOverlayReact">React</a>.</p>
         <p>Check out my resume at <a href="http://resume.brian.staruk.me" target="_blank" className="alt icon-after external">resume.brian.staruk.me</a> if you'd like to learn more about what I've been up to.</p>
       </Content>
     );
