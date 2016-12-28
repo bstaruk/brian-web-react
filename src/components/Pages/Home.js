@@ -1,8 +1,7 @@
 import React from 'react';
 import ReactMarkdown from 'react-markdown';
 import Content from '../Content/Content';
-import Overlay from '../Overlay/Overlay';
-import OverlayLink from '../OverlayLink/OverlayLink';
+import {Overlay, OverlayLink} from '../Overlay';
 
 class HomeComponent extends React.Component {
   constructor() {

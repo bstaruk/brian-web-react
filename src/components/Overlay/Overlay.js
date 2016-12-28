@@ -2,7 +2,7 @@ require('./overlay.scss');
 
 import React from 'react';
 
-class SkillComponent extends React.Component {
+class OverlayComponent extends React.Component {
   shouldComponentUpdate(nextProps) {
     return this.props.active !== nextProps.active;
   }
@@ -23,11 +23,11 @@ class SkillComponent extends React.Component {
   }
 }
 
-SkillComponent.propTypes = {
+OverlayComponent.propTypes = {
   active: React.PropTypes.bool.isRequired,
   closeOverlay: React.PropTypes.func.isRequired
 };
 
-SkillComponent.defaultProps = {};
+OverlayComponent.defaultProps = {};
 
-export default SkillComponent;
+export default OverlayComponent;
