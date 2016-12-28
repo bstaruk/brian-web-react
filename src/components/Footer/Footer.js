@@ -1,4 +1,4 @@
-require('./footer.scss');
+require('./scss/footer.scss');
 
 import React from 'react';
 
@@ -6,17 +6,17 @@ class FooterComponent extends React.Component {
   render() {
     const socialLinks = [
       {
-        'title': 'GitHub',
+        'title': 'View my GitHub profile',
         'url': 'https://github.com/bstaruk/brian-web-react',
         'icon': 'github'
       },
       {
-        'title': 'LinkedIn',
+        'title': 'Find me on LinkedIn',
         'url': 'https://www.linkedin.com/in/brian-staruk',
         'icon': 'linkedin'
       },
       {
-        'title': 'Email',
+        'title': 'Email me',
         'url': 'mailto:brian@staruk.me',
         'icon': 'envelope'
       }

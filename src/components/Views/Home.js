@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactMarkdown from 'react-markdown';
 import Content from '../Content/Content';
-import Overlay from '../Overlay/Overlay';
+import {Overlay, OverlayLink} from '../Overlay';
 
 class HomeComponent extends React.Component {
   constructor() {
@@ -13,8 +13,7 @@ class HomeComponent extends React.Component {
     this._handleOverlayClose = this._handleOverlayClose.bind(this);
   }
 
-  _handleOverlayOpen(event) {
-    const overlayId = event.target.attributes.getNamedItem('data-overlayId').value;
+  _handleOverlayOpen(overlayId) {
     this.setState({
       activeOverlay: overlayId ? overlayId : null
     });
@@ -65,8 +64,8 @@ class HomeComponent extends React.Component {
         }, this)}
         <h2 className="content-title">Welcome!</h2>
         <p>My name is Brian Staruk and I am a web developer who lives in Boston, MA and currently specializes in front-end & app development. I think that everyone should have their own little corner of the internet, and this one is mine!</p>
-        <p>...and it was built with <a href="#" onClick={this._handleOverlayOpen} data-overlayId="skillOverlayReact">React</a>! Check out <a href="https://github.com/bstaruk/brian-web-react" target="_blank" className="alt icon-after external">the GitHub repo</a>.</p>
-        <p><em>A little about me...</em> I've been building websites with <a href="#" onClick={this._handleOverlayOpen} data-overlayId="skillOverlayHTML">HTML, (S)CSS & JS</a> for almost 2 decades, and in a past life I was a <a href="#" onClick={this._handleOverlayOpen} data-overlayId="skillOverlayLAMP">LAMP (WordPress)</a> developer... but these days I am basking in the warm, rejuvenating sun that are modern MVC Javascript frameworks such as <a href="#" onClick={this._handleOverlayOpen} data-overlayId="skillOverlayAngular">AngularJS</a> and <a href="#" onClick={this._handleOverlayOpen} data-overlayId="skillOverlayReact">React</a>.</p>
+        <p>...and it was built with <OverlayLink openOverlay={this._handleOverlayOpen} overlayId="skillOverlayReact">React</OverlayLink>! Check out <a href="https://github.com/bstaruk/brian-web-react" target="_blank" className="alt icon-after external">the GitHub repo</a>.</p>
+        <p><em>A little about me:</em> I've been building websites with <OverlayLink openOverlay={this._handleOverlayOpen} overlayId="skillOverlayHTML">HTML, (S)CSS & JS</OverlayLink> for almost 2 decades, and in a past life I was a <OverlayLink openOverlay={this._handleOverlayOpen} overlayId="skillOverlayLAMP">LAMP/WordPress</OverlayLink> developer... but these days I am focusing on (and having an absolute blast with) modern Javascript frameworks & libraries such as <OverlayLink openOverlay={this._handleOverlayOpen} overlayId="skillOverlayAngular">AngularJS</OverlayLink> and <OverlayLink openOverlay={this._handleOverlayOpen} overlayId="skillOverlayReact">React</OverlayLink>.</p>
         <p>Check out my resume at <a href="http://resume.brian.staruk.me" target="_blank" className="alt icon-after external">resume.brian.staruk.me</a> if you'd like to learn more about what I've been up to.</p>
       </Content>
     );

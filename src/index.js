@@ -10,8 +10,7 @@ import {Router, Route, IndexRoute, hashHistory} from 'react-router'
 
 import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
-import Home from './components/Pages/Home';
-import Contact from './components/Pages/Contact/Contact';
+import {Home, Contact} from './components/Views';
 
 // Render the main component into the dom
 // ReactDOM.render(<App />, document.getElementById('app'));

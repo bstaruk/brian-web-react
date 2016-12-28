@@ -1,4 +1,4 @@
-require('./content.scss');
+require('./scss/content.scss');
 
 import React from 'react';
 
