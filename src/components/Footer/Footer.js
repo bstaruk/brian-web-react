@@ -1,4 +1,4 @@
-require('./footer.scss');
+require('./scss/footer.scss');
 
 import React from 'react';
 

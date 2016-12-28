@@ -1,4 +1,4 @@
-require('./overlay.scss');
+require('./scss/overlay.scss');
 
 import React from 'react';
 
