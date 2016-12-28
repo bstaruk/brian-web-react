@@ -15,7 +15,6 @@ class HomeComponent extends React.Component {
   }
 
   _handleOverlayOpen(overlayId) {
-    console.log('_handleOverlayOpen', overlayId);
     this.setState({
       activeOverlay: overlayId ? overlayId : null
     });
