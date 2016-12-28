@@ -3,6 +3,10 @@ require('./overlay.scss');
 import React from 'react';
 
 class SkillComponent extends React.Component {
+  shouldComponentUpdate(nextProps) {
+    return this.props.active !== nextProps.active;
+  }
+
   render() {
     return (
       <div className={this.props.active ? 'overlay overlay--active' : 'overlay'}>
