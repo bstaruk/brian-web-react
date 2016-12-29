@@ -31,11 +31,5 @@ npm run clean
 npm run copy
 ```
 
-### Modules
-Each component is a module and can be required using the [Webpack](http://webpack.github.io/) module system. [Webpack](http://webpack.github.io/) uses [Loaders](http://webpack.github.io/docs/loaders.html) which means you can also require CSS and a host of other file types. Read the [Webpack documentation](http://webpack.github.io/docs/home.html) to find out more.
-
-### Running Tests
-`npm test` or `node node_modules/.bin/mocha`
-
 ## License
 [MIT license](http://opensource.org/licenses/mit-license.php)
