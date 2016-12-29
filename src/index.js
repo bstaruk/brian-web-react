@@ -10,7 +10,7 @@ import {Router, Route, IndexRoute, hashHistory} from 'react-router'
 
 import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
-import {Home, Contact} from './components/Views';
+import {Home, Contact, Experiments, ExperimentsTable} from './components/Views';
 
 // Render the main component into the dom
 // ReactDOM.render(<App />, document.getElementById('app'));
@@ -42,6 +42,8 @@ render((
     <Route path="/" component={App}>
       <IndexRoute component={Home} />
       <Route path="contact" component={Contact} />
+      <Route path="experiments" component={Experiments} />
+      <Route path="experiments/table" component={ExperimentsTable} />
     </Route>
   </Router>
 ), document.getElementById('app'));

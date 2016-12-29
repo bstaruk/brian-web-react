@@ -1,7 +1,7 @@
 require('./scss/header.scss');
 
 import React from 'react';
-import {Link, IndexLink} from 'react-router'
+import {Link, IndexLink} from 'react-router';
 
 class HeaderComponent extends React.Component {
   constructor(props) {
