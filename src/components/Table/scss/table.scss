@@ -19,6 +19,13 @@ table {
       th {
         background: $color--border-gray1;
         font-weight: 600;
+        > span {
+          &.sortBy {
+            &:after {
+              content: "+";
+            }
+          }
+        }
       }
     }
   }
