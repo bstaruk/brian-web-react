@@ -11,7 +11,7 @@ class TableComponent extends React.Component {
     this.state = {
       tableData: defaultTableData,
       sortBy: defaultSortBy,
-      sortDir: 'ASC'
+      sortDir: 'asc'
     };
     this._handleSort = this._handleSort.bind(this);
   }
@@ -19,12 +19,12 @@ class TableComponent extends React.Component {
   _handleSort(id) {
     let newTableData = [];
     let newSortDir = null;
-    if (this.state.sortBy === id && this.state.sortDir === 'ASC') {
+    if (this.state.sortBy === id && this.state.sortDir === 'asc') {
       newTableData = _.sortBy(this.state.tableData, id).reverse();
-      newSortDir = 'DESC';
+      newSortDir = 'desc';
     } else {
       newTableData = _.sortBy(this.state.tableData, id);
-      newSortDir = 'ASC';
+      newSortDir = 'asc';
     }
     this.setState({
       sortBy: id,
@@ -40,7 +40,7 @@ class TableComponent extends React.Component {
         <tr>
           {this.props.tableHeaders.map((cell, index) =>
             <th key={index}>
-              <span onClick={() => this._handleSort(cell.id)} className={this.state.sortBy === cell.id ? 'sortBy' : ''}>
+              <span onClick={() => this._handleSort(cell.id)} className={this.state.sortBy === cell.id ? this.state.sortDir + ' sortBy ' : ''}>
                 {cell.label}
               </span>
             </th>
