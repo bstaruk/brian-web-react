@@ -1,0 +1,25 @@
+@import "../../../assets/scss/_vars";
+
+table {
+  border-spacing: 0;
+  border: 1px solid $color--border-gray1;
+  border-radius: 3px;
+  tbody {
+    tr {
+      &:nth-child(even) {
+        background-color: $color--bg-gray1;
+      }
+      td, th {
+        padding: .5em .75em;
+        border-right: 1px solid darken($color--border-gray1, 5%);
+        &:last-of-type {
+          border-right: 0;
+        }
+      }
+      th {
+        background: $color--border-gray1;
+        font-weight: 600;
+      }
+    }
+  }
+}
