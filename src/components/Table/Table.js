@@ -36,16 +36,18 @@ class TableComponent extends React.Component {
   render() {
     return (
       <table>
+        <thead>
+          <tr>
+            {this.props.tableHeaders.map((cell, index) =>
+              <th key={index} onClick={() => this._handleSort(cell.id)}>
+                <span className={this.state.sortBy === cell.id ? this.state.sortDir + ' sortBy ' : ''}>
+                  {cell.label}
+                </span>
+              </th>
+            )}
+          </tr>
+        </thead>
         <tbody>
-        <tr>
-          {this.props.tableHeaders.map((cell, index) =>
-            <th key={index} onClick={() => this._handleSort(cell.id)}>
-              <span className={this.state.sortBy === cell.id ? this.state.sortDir + ' sortBy ' : ''}>
-                {cell.label}
-              </span>
-            </th>
-          )}
-        </tr>
         {this.state.tableData.map((row, index) =>
           <tr key={index}>
             {Object.values(row).map((cell, index) =>
