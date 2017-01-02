@@ -39,7 +39,7 @@ table {
               opacity: 1;
             }
             &.desc:after {
-              @include transform(rotate(180deg));
+              @include transform(scaleY(-1));
             }
           }
         }
