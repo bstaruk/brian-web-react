@@ -8,6 +8,8 @@
         border: 0;
         padding: 0;
         input[type='text'], select, button {
+          display: inline-block;
+          vertical-align: top;
           outline: none;
           padding: 0 .5em;
           height: 2em;
