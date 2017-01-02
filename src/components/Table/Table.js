@@ -2,6 +2,8 @@ require('./scss/table.scss');
 
 import React from 'react';
 import _ from 'lodash';
+import TableHead from './TableHead';
+import TableBody from './TableBody';
 
 class TableComponent extends React.Component {
   constructor(props) {
@@ -18,7 +20,7 @@ class TableComponent extends React.Component {
 
   _handleSort(id) {
     let newTableData = [],
-        newSortDir = null;
+      newSortDir = null;
     if (this.state.sortBy === id && this.state.sortDir === 'asc') {
       newTableData = _.sortBy(this.state.tableData, id).reverse();
       newSortDir = 'desc';
@@ -36,28 +38,15 @@ class TableComponent extends React.Component {
   render() {
     return (
       <table>
-        <thead>
-          <tr>
-            {this.props.tableHeaders.map((cell, index) =>
-              <th key={index} onClick={() => this._handleSort(cell.id)}>
-                <span className={this.state.sortBy === cell.id ? this.state.sortDir + ' sortBy ' : ''}>
-                  {cell.label}
-                </span>
-              </th>
-            )}
-          </tr>
-        </thead>
-        <tbody>
-        {this.state.tableData.map((row, index) =>
-          <tr key={index}>
-            {Object.values(row).map((cell, index) =>
-              <td key={index}>
-                {cell}
-              </td>
-            )}
-          </tr>
-        )}
-        </tbody>
+        <TableHead
+          sortAction={this._handleSort}
+          sortBy={this.state.sortBy}
+          sortDir={this.state.sortDir}
+          tableHeaders={this.props.tableHeaders}
+        />
+        <TableBody
+          tableData={this.state.tableData}
+        />
       </table>
     );
   }
