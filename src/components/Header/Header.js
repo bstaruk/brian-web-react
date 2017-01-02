@@ -62,18 +62,16 @@ class HeaderComponent extends React.Component {
         </div>
         <div className="nav-wrapper">
           <ul role="nav" className={this.state.navActive ? 'nav nav-active' : 'nav'}>
-            {navLinks.map(function (link, index) {
-              return (
-                <li key={index}>
-                  {
-                    link.index ?
-                      <IndexLink onClick={this._handleNavClose} {...link.attr}>{link.anchor}</IndexLink>
-                      :
-                      <Link onClick={this._handleNavClose} {...link.attr}>{link.anchor}</Link>
-                  }
-                </li>
-              );
-            }, this)}
+            {navLinks.map((link, index) =>
+              <li key={index}>
+                {
+                  link.index ?
+                    <IndexLink onClick={this._handleNavClose} {...link.attr}>{link.anchor}</IndexLink>
+                    :
+                    <Link onClick={this._handleNavClose} {...link.attr}>{link.anchor}</Link>
+                }
+              </li>
+            )}
           </ul>
         </div>
       </div>
