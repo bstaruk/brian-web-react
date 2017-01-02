@@ -32,7 +32,7 @@ npm run copy
 ```
 ## browserHistory
 
-Because this app uses [browserHistory](https://github.com/ReactTraining/react-router/blob/master/docs/guides/Histories.md#browserhistory) (instead of hashHistory) an .htaccess file may be required to serve the built product via Apache without returning 404.
+This app uses [browserHistory](https://github.com/ReactTraining/react-router/blob/master/docs/guides/Histories.md#browserhistory) instead of hashHistory, so an .htaccess file may be required to serve the built product via Apache without returning 404 for non-index routes.
 
 ```apache
 RewriteEngine On
