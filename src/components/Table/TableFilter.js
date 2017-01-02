@@ -7,7 +7,23 @@ class TableFilterComponent extends React.Component {
         <form>
           <fieldset>
             <div>
-              <input type="text" name="query" placeholder="Filter..." onChange={(e) => this.props.handleFilter(e.target.value)} />
+              <input
+                type="text"
+                name="query"
+                placeholder="Enter a filter..."
+                onChange={(e) => this.props.handleFilter(e.target.value)}
+                value={this.props.filter}
+              />
+              <select
+                onChange={(e) => this.props.handleFilterBy(e.target.value)}
+                value={this.props.filterBy}
+              >
+                <option value="" disabled>Select a Field</option>
+                {this.props.tableHeaders.map((item, index) =>
+                  <option key={index} value={item.id}>{item.label}</option>
+                )}
+              </select>
+              <button type="button" onClick={() => this.props.handleFilterClear()}>Clear</button>
             </div>
           </fieldset>
         </form>
@@ -17,7 +33,12 @@ class TableFilterComponent extends React.Component {
 }
 
 TableFilterComponent.propTypes = {
-  handleFilter: React.PropTypes.func.isRequired
+  filter: React.PropTypes.string.isRequired,
+  filterBy: React.PropTypes.string.isRequired,
+  handleFilter: React.PropTypes.func.isRequired,
+  handleFilterBy: React.PropTypes.func.isRequired,
+  handleFilterClear: React.PropTypes.func.isRequired,
+  tableHeaders: React.PropTypes.array.isRequired
 };
 
 TableFilterComponent.defaultProps = {};

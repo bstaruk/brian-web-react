@@ -7,15 +7,30 @@
       fieldset {
         border: 0;
         padding: 0;
-        input {
-          &[type='text'] {
-            outline: none;
-            padding: .4em .5em;
-            border: 1px solid $color--border-gray1;
-            @include placeholder {
-              font-style: italic;
-            }
+        input[type='text'], select, button {
+          outline: none;
+          padding: 0 .5em;
+          height: 2em;
+          border: 1px solid $color--border-gray1;
+          background: #fff;
+          font-size: 1em;
+          font-family: $font-sans;
+          margin-left: .2em;
+          @include placeholder {
+            font-style: italic;
           }
+          &:first-child {
+            margin-left: 0;
+          }
+        }
+        select {
+          option {
+            border: 0;
+          }
+        }
+        button {
+          background: $color--bg-gray1;
+          cursor: pointer;
         }
       }
     }
