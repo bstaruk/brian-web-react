@@ -7,7 +7,7 @@ class TableFilterComponent extends React.Component {
         <form>
           <fieldset>
             <div>
-              <input type="text" name="query" placeholder="Filter..." />
+              <input type="text" name="query" placeholder="Filter..." onChange={(e) => this.props.handleFilter(e.target.value)} />
             </div>
           </fieldset>
         </form>
@@ -16,7 +16,9 @@ class TableFilterComponent extends React.Component {
   }
 }
 
-TableFilterComponent.propTypes = {};
+TableFilterComponent.propTypes = {
+  handleFilter: React.PropTypes.func.isRequired
+};
 
 TableFilterComponent.defaultProps = {};
 

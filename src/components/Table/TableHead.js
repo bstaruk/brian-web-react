@@ -10,7 +10,7 @@ class TableHeadComponent extends React.Component {
       <thead>
         <tr>
           {this.props.tableHeaders.map((cell, index) =>
-            <th key={index} onClick={() => this.props.sortAction(cell.id)}>
+            <th key={index} onClick={() => this.props.handleSort(cell.id)}>
                 <span className={this.props.sortBy === cell.id ? this.props.sortDir + ' sortBy ' : ''}>
                   {cell.label}
                 </span>
@@ -23,7 +23,7 @@ class TableHeadComponent extends React.Component {
 }
 
 TableHeadComponent.propTypes = {
-  sortAction: React.PropTypes.func.isRequired,
+  handleSort: React.PropTypes.func.isRequired,
   sortBy: React.PropTypes.string.isRequired,
   sortDir: React.PropTypes.string.isRequired,
   tableHeaders: React.PropTypes.array.isRequired

@@ -12,11 +12,13 @@ class TableComponent extends React.Component {
     const defaultSortBy = this.props.tableHeaders[0].id;
     const defaultTableData = _.sortBy(this.props.tableData, defaultSortBy);
     this.state = {
-      tableData: defaultTableData,
+      filter: null,
       sortBy: defaultSortBy,
-      sortDir: 'asc'
+      sortDir: 'asc',
+      tableData: defaultTableData
     };
     this._handleSort = this._handleSort.bind(this);
+    this._handleFilter = this._handleFilter.bind(this);
   }
 
   _handleSort(id) {
@@ -36,13 +38,20 @@ class TableComponent extends React.Component {
     });
   }
 
+  _handleFilter(filter) {
+    this.setState({filter: filter});
+  }
+
   render() {
     return (
       <div className="table">
-        <TableFilter />
+        <TableFilter handleFilter={this._handleFilter} />
+        {this.state.filter &&
+        <pre>{this.state.filter}</pre>
+        }
         <table>
           <TableHead
-            sortAction={this._handleSort}
+            handleSort={this._handleSort}
             sortBy={this.state.sortBy}
             sortDir={this.state.sortDir}
             tableHeaders={this.props.tableHeaders}
