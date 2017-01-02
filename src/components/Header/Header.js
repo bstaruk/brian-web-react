@@ -1,7 +1,7 @@
 require('./scss/header.scss');
 
 import React from 'react';
-import {Link, IndexLink} from 'react-router'
+import {Link, IndexLink} from 'react-router';
 
 class HeaderComponent extends React.Component {
   constructor(props) {
@@ -30,14 +30,20 @@ class HeaderComponent extends React.Component {
     const navLinks = [
       {
         'anchor': 'Home',
-        'title': 'Home',
-        'route': '/',
-        'index': true
+        'index': true,
+        'attr': {
+          'title': 'Home',
+          'to': '/',
+          'activeClassName': 'active'
+        }
       },
       {
         'anchor': 'Contact',
-        'title': 'Contact',
-        'route': '/contact'
+        'attr': {
+          'title': 'Contact',
+          'to': '/contact',
+          'activeClassName': 'active'
+        }
       }
     ];
     return (
@@ -56,20 +62,16 @@ class HeaderComponent extends React.Component {
         </div>
         <div className="nav-wrapper">
           <ul role="nav" className={this.state.navActive ? 'nav nav-active' : 'nav'}>
-            {navLinks.map(function (link, index) {
-              return (
-                <li key={index}>
-                  {
-                    link.index ?
-                      <IndexLink to={link.route} title={link.title} activeClassName="active"
-                                 onClick={this._handleNavClose}>{link.anchor}</IndexLink>
-                      :
-                      <Link to={link.route} title={link.title} activeClassName="active"
-                            onClick={this._handleNavClose}>{link.anchor}</Link>
-                  }
-                </li>
-              );
-            }, this)}
+            {navLinks.map((link, index) =>
+              <li key={index}>
+                {
+                  link.index ?
+                    <IndexLink onClick={this._handleNavClose} {...link.attr}>{link.anchor}</IndexLink>
+                    :
+                    <Link onClick={this._handleNavClose} {...link.attr}>{link.anchor}</Link>
+                }
+              </li>
+            )}
           </ul>
         </div>
       </div>

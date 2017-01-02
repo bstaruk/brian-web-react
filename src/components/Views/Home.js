@@ -51,17 +51,15 @@ class HomeComponent extends React.Component {
     ];
     return (
       <Content>
-        {skillsOfAnArtist.map(function (skill, index) {
-          return (
-            <Overlay key={index} active={activeOverlay === skill.id} closeOverlay={this._handleOverlayClose}>
-              <h3>{skill.title}</h3>
-              <ReactMarkdown
-                source={skill.desc}
-                renderers={{Link: props => <a href={props.href} target="_blank">{props.children}</a>}}
-              />
-            </Overlay>
-          );
-        }, this)}
+        {skillsOfAnArtist.map((skill, index) =>
+          <Overlay key={index} active={activeOverlay === skill.id} closeOverlay={this._handleOverlayClose}>
+            <h3>{skill.title}</h3>
+            <ReactMarkdown
+              source={skill.desc}
+              renderers={{Link: props => <a href={props.href} target="_blank">{props.children}</a>}}
+            />
+          </Overlay>
+        )}
         <h2 className="content-title">Welcome!</h2>
         <p>My name is Brian Staruk and I am a web developer who lives in Boston, MA and currently specializes in front-end & app development. I think that everyone should have their own little corner of the internet, and this one is mine!</p>
         <p>...and it was built with <OverlayLink openOverlay={this._handleOverlayOpen} overlayId="skillOverlayReact">React</OverlayLink>! Check out <a href="https://github.com/bstaruk/brian-web-react" target="_blank" className="alt icon-after external">the GitHub repo</a>.</p>
