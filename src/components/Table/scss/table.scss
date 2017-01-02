@@ -1,55 +1,76 @@
 @import "../../../assets/scss/_vars";
 
-table {
-  border-spacing: 0;
-  border: 1px solid $color--border-gray1;
-  border-radius: 3px;
-  tr {
-    td, th {
-      padding: .5em .75em;
-      border-right: 1px solid darken($color--border-gray1, 5%);
-      &:last-of-type {
-        border-right: 0;
-      }
-    }
-  }
-  thead {
-    tr {
-      th {
-        background: $color--bg-gray2;
-        font-weight: normal;
-        cursor: pointer;
-        > span {
-          position: relative;
-          display: block;
-          padding-right: 1.5em;
-          &:after {
-            position: absolute;
-            right: 0;
-            top: 0;
-            display: block;
-            content: "\f077";
-            font-family: FontAwesome;
-            font-size: .8em;
-            opacity: 0;
-            @include transition(all 0.3s ease);
-          }
-          &.sortBy {
-            &:after {
-              opacity: 1;
-            }
-            &.desc:after {
-              @include transform(scaleY(-1));
+.table {
+  .table--filter {
+    margin-bottom: $margin--v;
+    form {
+      fieldset {
+        border: 0;
+        padding: 0;
+        input {
+          &[type='text'] {
+            outline: none;
+            padding: .4em .5em;
+            border: 1px solid $color--border-gray1;
+            @include placeholder {
+              font-style: italic;
             }
           }
         }
       }
     }
   }
-  tbody {
+  table {
+    border-spacing: 0;
+    border: 1px solid $color--border-gray1;
+    border-radius: 3px;
     tr {
-      &:nth-child(even) {
-        background-color: $color--bg-gray1;
+      td, th {
+        padding: .5em .75em;
+        border-right: 1px solid darken($color--border-gray1, 5%);
+        &:last-of-type {
+          border-right: 0;
+        }
+      }
+    }
+    thead {
+      tr {
+        th {
+          background: $color--bg-gray2;
+          font-weight: normal;
+          cursor: pointer;
+          > span {
+            position: relative;
+            display: block;
+            padding-right: 1.5em;
+            &:after {
+              position: absolute;
+              right: 0;
+              top: 0;
+              display: block;
+              content: "\f077";
+              font-family: FontAwesome;
+              font-size: .8em;
+              opacity: 0;
+              @include transition(all 0.3s ease);
+            }
+            &.sortBy {
+              &:after {
+                opacity: 1;
+              }
+              &.desc:after {
+                @include transform(scaleY(-1));
+              }
+            }
+          }
+        }
+      }
+    }
+    tbody {
+      tr {
+        &:nth-child(even) {
+          background-color: $color--bg-gray1;
+        }
       }
     }
   }

@@ -2,6 +2,7 @@ require('./scss/table.scss');
 
 import React from 'react';
 import _ from 'lodash';
+import TableFilter from './TableFilter';
 import TableHead from './TableHead';
 import TableBody from './TableBody';
 
@@ -37,17 +38,20 @@ class TableComponent extends React.Component {
 
   render() {
     return (
-      <table>
-        <TableHead
-          sortAction={this._handleSort}
-          sortBy={this.state.sortBy}
-          sortDir={this.state.sortDir}
-          tableHeaders={this.props.tableHeaders}
-        />
-        <TableBody
-          tableData={this.state.tableData}
-        />
-      </table>
+      <div className="table">
+        <TableFilter />
+        <table>
+          <TableHead
+            sortAction={this._handleSort}
+            sortBy={this.state.sortBy}
+            sortDir={this.state.sortDir}
+            tableHeaders={this.props.tableHeaders}
+          />
+          <TableBody
+            tableData={this.state.tableData}
+          />
+        </table>
+      </div>
     );
   }
 }
