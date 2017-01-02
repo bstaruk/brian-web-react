@@ -1,6 +1,7 @@
 import React from 'react';
 import Content from '../../Content/Content';
 import Table from '../../Table/Table';
+import {Link} from 'react-router';
 
 class ExperimentsTableComponent extends React.Component {
   render() {
@@ -18,7 +19,7 @@ class ExperimentsTableComponent extends React.Component {
 
     return (
       <Content>
-        <h2 className='content-title'>Experiments > Table</h2>
+        <h2 className='content-title'><Link to="/experiments">Experiments</Link> > Table</h2>
         <Table tableData={tableData} tableHeaders={tableHeaders}/>
       </Content>
     );
