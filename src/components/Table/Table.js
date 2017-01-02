@@ -49,7 +49,7 @@ class TableComponent extends React.Component {
     const filterBy = this.state.filterBy;
     if (filterBy) {
       newTableDataFiltered = _.filter(this.state.tableData, function(e) {
-        return e[filterBy].includes(filter);
+        return e[filterBy].toString().includes(filter);
       });
       newFiltered = true;
     }
@@ -61,14 +61,20 @@ class TableComponent extends React.Component {
   }
 
   _handleFilterBy(filterBy) {
-    this.setState({filterBy: filterBy});
+    this.setState({
+      filter: '',
+      filterBy: filterBy,
+      filtered: false,
+      tableDataFiltered: []
+    });
   }
 
   _handleFilterClear() {
     this.setState({
       filtered: false,
       filter: '',
-      filterBy: ''
+      filterBy: '',
+      tableDataFiltered: []
     });
   }
 
