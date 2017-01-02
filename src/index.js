@@ -6,7 +6,7 @@ import 'core-js/fn/object/assign';
 import React from 'react';
 import ReactCSSTransitionGroup from 'react/lib/ReactCSSTransitionGroup';
 import {render} from 'react-dom';
-import {Router, Route, IndexRoute, hashHistory} from 'react-router';
+import {Router, Route, IndexRoute, browserHistory} from 'react-router';
 import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
 import {Home, Contact, Experiments, ExperimentsTable} from './components/Views';
@@ -37,7 +37,7 @@ const App = ({children, location}) => (
 );
 
 render((
-  <Router history={hashHistory}>
+  <Router history={browserHistory}>
     <Route path="/" component={App}>
       <IndexRoute component={Home} />
       <Route path="contact" component={Contact} />
