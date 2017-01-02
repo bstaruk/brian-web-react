@@ -3,6 +3,7 @@ require('./scss/table.scss');
 import React from 'react';
 import _ from 'lodash';
 import TableHead from './TableHead';
+import TableBody from './TableBody';
 
 class TableComponent extends React.Component {
   constructor(props) {
@@ -43,17 +44,9 @@ class TableComponent extends React.Component {
           sortDir={this.state.sortDir}
           tableHeaders={this.props.tableHeaders}
         />
-        <tbody>
-        {this.state.tableData.map((row, index) =>
-          <tr key={index}>
-            {Object.values(row).map((cell, index) =>
-              <td key={index}>
-                {cell}
-              </td>
-            )}
-          </tr>
-        )}
-        </tbody>
+        <TableBody
+          tableData={this.state.tableData}
+        />
       </table>
     );
   }
