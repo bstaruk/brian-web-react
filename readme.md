@@ -30,6 +30,18 @@ npm run clean
 # Just copy the static assets
 npm run copy
 ```
+## browserHistory
+
+Because this app uses [browserHistory](https://github.com/ReactTraining/react-router/blob/master/docs/guides/Histories.md#browserhistory) (instead of hashHistory) an .htaccess file may be required to serve the built product via Apache without returning 404.
+
+```apache
+RewriteEngine On
+RewriteBase /
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-l
+RewriteRule ^.*$ / [L,QSA]
+```
 
 ## License
 [MIT license](http://opensource.org/licenses/mit-license.php)
