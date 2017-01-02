@@ -4,7 +4,7 @@ class TableFilterComponent extends React.Component {
   render() {
     return (
       <div className="table--filter">
-        <form>
+        <form autoComplete={false}>
           <fieldset>
             <div>
               <input
