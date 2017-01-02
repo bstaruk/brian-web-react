@@ -30,14 +30,20 @@ class HeaderComponent extends React.Component {
     const navLinks = [
       {
         'anchor': 'Home',
-        'title': 'Home',
-        'route': '/',
-        'index': true
+        'index': true,
+        'attr': {
+          'title': 'Home',
+          'to': '/',
+          'activeClassName': 'active'
+        }
       },
       {
         'anchor': 'Contact',
-        'title': 'Contact',
-        'route': '/contact'
+        'attr': {
+          'title': 'Contact',
+          'to': '/contact',
+          'activeClassName': 'active'
+        }
       }
     ];
     return (
@@ -61,11 +67,9 @@ class HeaderComponent extends React.Component {
                 <li key={index}>
                   {
                     link.index ?
-                      <IndexLink to={link.route} title={link.title} activeClassName="active"
-                                 onClick={this._handleNavClose}>{link.anchor}</IndexLink>
+                      <IndexLink onClick={this._handleNavClose} {...link.attr}>{link.anchor}</IndexLink>
                       :
-                      <Link to={link.route} title={link.title} activeClassName="active"
-                            onClick={this._handleNavClose}>{link.anchor}</Link>
+                      <Link onClick={this._handleNavClose} {...link.attr}>{link.anchor}</Link>
                   }
                 </li>
               );
