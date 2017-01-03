@@ -52,7 +52,7 @@ class TableComponent extends React.Component {
     const filterBy = this.state.filterBy;
     if (filterBy) {
       newTableData = _.filter(newTableData, function(e) {
-        return e[filterBy].toString().includes(filter);
+        return e[filterBy].toString().toLowerCase().includes(filter.toLowerCase());
       });
     }
     this.setState({
