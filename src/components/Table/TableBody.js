@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router';
 
 class TableBodyComponent extends React.Component {
   shouldComponentUpdate(nextProps) {
@@ -10,9 +11,14 @@ class TableBodyComponent extends React.Component {
       <tbody>
       {this.props.tableData.map((row, index) =>
         <tr key={index}>
-          {Object.values(row).map((cell, index) =>
+          {Object.values(row).slice(1).map((cell, index) =>
             <td key={index}>
-              {cell}
+              {index === 0 ? (
+                  <Link to={'/experiments/table/' + row.id}>{cell}</Link>
+                ) : (
+                  <span>{cell}</span>
+                )
+              }
             </td>
           )}
         </tr>
