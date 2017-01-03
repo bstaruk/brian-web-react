@@ -9,7 +9,6 @@ class ExperimentsTableItemComponent extends React.Component {
     const itemData = tableData.find(function (data) {
       return data.id == itemId;
     });
-    console.log(itemData);
     return (
       <Content>
         <h2 className='content-title'><Link to="/experiments">Experiments</Link> > <Link
