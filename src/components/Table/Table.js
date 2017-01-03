@@ -63,7 +63,10 @@ class TableComponent extends React.Component {
   }
 
   _handleFilterClear() {
-    const newTableData = _.sortBy(this.props.tableData, this.state.sortBy);
+    let newTableData = _.sortBy(this.props.tableData, this.state.sortBy);
+    if (this.state.sortDir === 'desc') {
+      newTableData = newTableData.reverse();
+    }
     this.setState({
       filter: '',
       filterBy: '',

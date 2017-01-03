@@ -7,13 +7,6 @@ class TableFilterComponent extends React.Component {
         <form autoComplete={false}>
           <fieldset>
             <div>
-              <input
-                type="text"
-                name="query"
-                placeholder="Enter a filter..."
-                onChange={(e) => this.props.handleFilter(e.target.value)}
-                value={this.props.filter}
-              />
               <select
                 onChange={(e) => this.props.handleFilterBy(e.target.value)}
                 value={this.props.filterBy}
@@ -23,6 +16,14 @@ class TableFilterComponent extends React.Component {
                   <option key={index} value={item.id}>{item.label}</option>
                 )}
               </select>
+              <input
+                type="text"
+                name="query"
+                placeholder="Enter a filter..."
+                onChange={(e) => this.props.handleFilter(e.target.value)}
+                value={this.props.filter}
+                disabled={!this.props.filterBy}
+              />
               <button type="button" onClick={() => this.props.handleFilterClear()}>Clear</button>
             </div>
           </fieldset>
