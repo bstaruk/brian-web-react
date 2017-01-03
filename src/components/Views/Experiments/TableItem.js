@@ -11,8 +11,11 @@ class ExperimentsTableItemComponent extends React.Component {
     });
     return (
       <Content>
-        <h2 className='content-title'><Link to="/experiments">Experiments</Link> > <Link
-          to="/experiments/table">Table</Link> > Table Item</h2>
+        <h2 className='content-title'>
+          <Link to="/experiments">Experiments</Link> >
+          <Link to="/experiments/table">Table</Link> >
+          Table Item
+        </h2>
         {
           itemData &&
           <ul>
