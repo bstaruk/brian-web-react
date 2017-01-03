@@ -10,13 +10,13 @@ class TableComponent extends React.Component {
   constructor(props) {
     super(props);
     const defaultSortBy = this.props.tableHeaders[0].id;
-    const defaultTableData = _.sortBy(this.props.tableData, defaultSortBy);
+    const defaultSortDir = 'asc';
     this.state = {
       filter: '',
       filterBy: '',
       sortBy: defaultSortBy,
-      sortDir: 'asc',
-      tableData: defaultTableData
+      sortDir: defaultSortDir,
+      tableData: this._getTableData(defaultSortBy, defaultSortDir)
     };
     this._handleSort = this._handleSort.bind(this);
     this._handleFilter = this._handleFilter.bind(this);
@@ -24,14 +24,22 @@ class TableComponent extends React.Component {
     this._handleFilterClear = this._handleFilterClear.bind(this);
   }
 
+  _getTableData(sortBy, sortDir) {
+    let tableData = _.sortBy(this.props.tableData, sortBy);
+    if (sortDir === 'desc') {
+      tableData = tableData.reverse();
+    }
+    return tableData;
+  }
+
   _handleSort(id) {
     let newTableData = [],
       newSortDir = null;
     if (this.state.sortBy === id && this.state.sortDir === 'asc') {
-      newTableData = _.sortBy(this.state.tableData, id).reverse();
+      newTableData = this._getTableData(id, 'desc');
       newSortDir = 'desc';
     } else {
-      newTableData = _.sortBy(this.state.tableData, id);
+      newTableData = this._getTableData(id, 'asc');
       newSortDir = 'asc';
     }
     this.setState({
@@ -42,10 +50,10 @@ class TableComponent extends React.Component {
   }
 
   _handleFilter(filter) {
-    let newTableData = [];
+    let newTableData = this._getTableData(this.state.sortBy, this.state.sortDir);
     const filterBy = this.state.filterBy;
     if (filterBy) {
-      newTableData = _.filter(this.state.tableData, function(e) {
+      newTableData = _.filter(newTableData, function(e) {
         return e[filterBy].toString().includes(filter);
       });
     }
@@ -63,10 +71,7 @@ class TableComponent extends React.Component {
   }
 
   _handleFilterClear() {
-    let newTableData = _.sortBy(this.props.tableData, this.state.sortBy);
-    if (this.state.sortDir === 'desc') {
-      newTableData = newTableData.reverse();
-    }
+    let newTableData = this._getTableData(this.state.sortBy, this.state.sortDir);
     this.setState({
       filter: '',
       filterBy: '',
