@@ -4,7 +4,7 @@ class OverlayLinkComponent extends React.Component {
   render() {
     return (
       <span>
-        <a href="#" onClick={() => this.props.openOverlay(this.props.overlayId)} title={this.props.linkTitle}>
+        <a onClick={() => this.props.openOverlay(this.props.overlayId)} title={this.props.linkTitle}>
           {this.props.children}
         </a>
       </span>

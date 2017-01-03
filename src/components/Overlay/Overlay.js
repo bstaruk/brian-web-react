@@ -12,7 +12,7 @@ class OverlayComponent extends React.Component {
       <div className={this.props.active ? 'overlay overlay--active' : 'overlay'}>
         <div className="overlay--content">
           <div className="overlay--toggle">
-            <a href="#" onClick={this.props.closeOverlay} title="Close Overlay">
+            <a onClick={this.props.closeOverlay} title="Close Overlay">
               <i className="fa fa-times-circle" aria-hidden={true} />
             </a>
           </div>

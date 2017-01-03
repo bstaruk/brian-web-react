@@ -38,6 +38,7 @@ body {
 a {
   color: $color--body-anchor;
   text-decoration: none;
+  cursor: pointer;
   @include transition(color 0.3s ease);
   &:hover {
     color: $color--body-anchor-hover;
