@@ -17,12 +17,18 @@ class TableBodyComponent extends React.Component {
           )}
         </tr>
       )}
+      {this.props.tableData.length === 0 &&
+      <tr>
+        <td colSpan={this.props.tableCols}>No data available</td>
+      </tr>
+      }
       </tbody>
     );
   }
 }
 
 TableBodyComponent.propTypes = {
+  tableCols: React.PropTypes.number.isRequired,
   tableData: React.PropTypes.array.isRequired
 };
 

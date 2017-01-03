@@ -96,6 +96,7 @@ class TableComponent extends React.Component {
             tableHeaders={this.props.tableHeaders}
           />
           <TableBody
+            tableCols={this.props.tableHeaders.length}
             tableData={this.state.tableData}
           />
         </table>
