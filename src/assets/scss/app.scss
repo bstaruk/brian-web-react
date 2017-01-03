@@ -49,6 +49,12 @@ a {
       color: $color--body-anchor-alt-hover;
     }
   }
+  &.purp {
+    color: $color--body-anchor-purp;
+    &:hover {
+      color: $color--body-anchor-purp-hover;
+    }
+  }
 }
 
 h1, h2, h3, h4 {
