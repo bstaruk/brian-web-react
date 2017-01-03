@@ -92,7 +92,7 @@ class TableComponent extends React.Component {
           <TableHead
             handleSort={this._handleSort}
             sortBy={this.state.sortBy}
-            sortDir={this.state.sortReverse ? 'desc' : 'asc'}
+            sortReverse={this.state.sortReverse}
             tableHeaders={this.props.tableHeaders}
           />
           <TableBody
