@@ -10,13 +10,12 @@ class TableComponent extends React.Component {
   constructor(props) {
     super(props);
     const defaultSortBy = this.props.tableHeaders[0].id;
-    const defaultSortDir = 'asc';
     this.state = {
       filter: '',
       filterBy: '',
       sortBy: defaultSortBy,
-      sortDir: defaultSortDir,
-      tableData: this._getTableData(defaultSortBy, defaultSortDir)
+      sortReverse: false,
+      tableData: this._getTableData(defaultSortBy, false)
     };
     this._handleSort = this._handleSort.bind(this);
     this._handleFilter = this._handleFilter.bind(this);
@@ -24,33 +23,29 @@ class TableComponent extends React.Component {
     this._handleFilterClear = this._handleFilterClear.bind(this);
   }
 
-  _getTableData(sortBy, sortDir) {
+  _getTableData(sortBy, sortReverse = false) {
     let tableData = _.sortBy(this.props.tableData, sortBy);
-    if (sortDir === 'desc') {
-      tableData = tableData.reverse();
-    }
-    return tableData;
+    return sortReverse ? tableData.reverse() : tableData;
   }
 
   _handleSort(id) {
     let newTableData = [],
-      newSortDir = null;
-    if (this.state.sortBy === id && this.state.sortDir === 'asc') {
-      newTableData = this._getTableData(id, 'desc');
-      newSortDir = 'desc';
+      newSortReverse = false;
+    if (this.state.sortBy === id && !this.state.sortReverse) {
+      newTableData = this._getTableData(id, true);
+      newSortReverse = true;
     } else {
-      newTableData = this._getTableData(id, 'asc');
-      newSortDir = 'asc';
+      newTableData = this._getTableData(id, false);
     }
     this.setState({
       sortBy: id,
-      sortDir: newSortDir,
+      sortReverse: newSortReverse,
       tableData: newTableData
     });
   }
 
   _handleFilter(filter) {
-    let newTableData = this._getTableData(this.state.sortBy, this.state.sortDir);
+    let newTableData = this._getTableData(this.state.sortBy, this.state.sortReverse);
     const filterBy = this.state.filterBy;
     if (filterBy) {
       newTableData = _.filter(newTableData, function(e) {
@@ -71,7 +66,7 @@ class TableComponent extends React.Component {
   }
 
   _handleFilterClear() {
-    let newTableData = this._getTableData(this.state.sortBy, this.state.sortDir);
+    let newTableData = this._getTableData(this.state.sortBy, this.state.sortReverse);
     this.setState({
       filter: '',
       filterBy: '',
@@ -94,7 +89,7 @@ class TableComponent extends React.Component {
           <TableHead
             handleSort={this._handleSort}
             sortBy={this.state.sortBy}
-            sortDir={this.state.sortDir}
+            sortDir={this.state.sortReverse ? 'desc' : 'asc'}
             tableHeaders={this.props.tableHeaders}
           />
           <TableBody
