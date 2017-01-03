@@ -1,6 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router';
-import Content from '../Content/Content';
+import Content from '../../Content/Content';
 
 class ExperimentsComponent extends React.Component {
   render() {

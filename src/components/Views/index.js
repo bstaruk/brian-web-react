@@ -1,8 +1,6 @@
 import Home from './Home.js';
 import Contact from './Contact.js';
-import Experiments from './Experiments.js';
-import ExperimentsTable from './Experiments/Table.js';
-import ExperimentsTableItem from './Experiments/TableItem.js';
+import {Experiments, ExperimentsTable, ExperimentsTableItem} from './Experiments';
 import NoMatch from './NoMatch.js';
 
 export {
