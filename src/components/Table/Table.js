@@ -14,11 +14,9 @@ class TableComponent extends React.Component {
     this.state = {
       filter: '',
       filterBy: '',
-      filtered: false,
       sortBy: defaultSortBy,
       sortDir: 'asc',
-      tableData: defaultTableData,
-      tableDataFiltered: []
+      tableData: defaultTableData
     };
     this._handleSort = this._handleSort.bind(this);
     this._handleFilter = this._handleFilter.bind(this);
@@ -44,37 +42,32 @@ class TableComponent extends React.Component {
   }
 
   _handleFilter(filter) {
-    let newFiltered = false;
-    let newTableDataFiltered = [];
+    let newTableData = [];
     const filterBy = this.state.filterBy;
     if (filterBy) {
-      newTableDataFiltered = _.filter(this.state.tableData, function(e) {
+      newTableData = _.filter(this.state.tableData, function(e) {
         return e[filterBy].toString().includes(filter);
       });
-      newFiltered = true;
     }
     this.setState({
       filter: filter,
-      filtered: newFiltered,
-      tableDataFiltered: newTableDataFiltered
+      tableData: newTableData
     });
   }
 
   _handleFilterBy(filterBy) {
     this.setState({
       filter: '',
-      filterBy: filterBy,
-      filtered: false,
-      tableDataFiltered: []
+      filterBy: filterBy
     });
   }
 
   _handleFilterClear() {
+    const newTableData = _.sortBy(this.props.tableData, this.state.sortBy);
     this.setState({
-      filtered: false,
       filter: '',
       filterBy: '',
-      tableDataFiltered: []
+      tableData: newTableData
     });
   }
 
@@ -97,7 +90,7 @@ class TableComponent extends React.Component {
             tableHeaders={this.props.tableHeaders}
           />
           <TableBody
-            tableData={this.state.filtered ? this.state.tableDataFiltered : this.state.tableData}
+            tableData={this.state.tableData}
           />
         </table>
       </div>
