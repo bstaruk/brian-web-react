@@ -15,7 +15,7 @@ class ExperimentsTableComponent extends React.Component {
     return (
       <Content>
         <h2 className='content-title'><Link to="/experiments">Experiments</Link> > Table</h2>
-        <Table tableData={tableData} tableHeaders={tableHeaders}/>
+        <Table tableData={tableData} tableHeaders={tableHeaders} filterOptions={tableHeaders}/>
       </Content>
     );
   }

@@ -12,7 +12,7 @@ class TableFilterComponent extends React.Component {
                 value={this.props.filterBy}
               >
                 <option value="" disabled>Select a Field</option>
-                {this.props.tableHeaders.map((item, index) =>
+                {this.props.filterOptions.map((item, index) =>
                   <option key={index} value={item.id}>{item.label}</option>
                 )}
               </select>
@@ -36,10 +36,10 @@ class TableFilterComponent extends React.Component {
 TableFilterComponent.propTypes = {
   filter: React.PropTypes.string.isRequired,
   filterBy: React.PropTypes.string.isRequired,
+  filterOptions: React.PropTypes.array.isRequired,
   handleFilter: React.PropTypes.func.isRequired,
   handleFilterBy: React.PropTypes.func.isRequired,
-  handleFilterReset: React.PropTypes.func.isRequired,
-  tableHeaders: React.PropTypes.array.isRequired
+  handleFilterReset: React.PropTypes.func.isRequired
 };
 
 TableFilterComponent.defaultProps = {};

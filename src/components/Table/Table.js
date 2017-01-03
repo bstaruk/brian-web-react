@@ -83,10 +83,10 @@ class TableComponent extends React.Component {
         <TableFilter
           filter={this.state.filter}
           filterBy={this.state.filterBy}
+          filterOptions={this.props.filterOptions}
           handleFilter={this._handleFilter}
           handleFilterBy={this._handleFilterBy}
           handleFilterReset={this._handleFilterReset}
-          tableHeaders={this.props.tableHeaders}
         />
         <table>
           <TableHead
@@ -106,6 +106,7 @@ class TableComponent extends React.Component {
 }
 
 TableComponent.propTypes = {
+  filterOptions: React.PropTypes.array.isRequired,
   tableHeaders: React.PropTypes.array.isRequired,
   tableData: React.PropTypes.array.isRequired
 };
