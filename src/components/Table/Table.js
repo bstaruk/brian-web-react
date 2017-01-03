@@ -51,7 +51,7 @@ class TableComponent extends React.Component {
     let newTableData = this._getTableData(this.state.sortBy, this.state.sortReverse);
     const filterBy = this.state.filterBy;
     if (filterBy) {
-      newTableData = _.filter(newTableData, function(e) {
+      newTableData = _.filter(newTableData, function (e) {
         return e[filterBy].toString().toLowerCase().includes(filter.toLowerCase());
       });
     }
