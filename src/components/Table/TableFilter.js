@@ -24,7 +24,7 @@ class TableFilterComponent extends React.Component {
                 value={this.props.filter}
                 disabled={!this.props.filterBy}
               />
-              <button type="button" onClick={() => this.props.handleFilterClear()}>Clear</button>
+              <button type="button" onClick={() => this.props.handleFilterReset()}>Reset</button>
             </div>
           </fieldset>
         </form>
@@ -38,7 +38,7 @@ TableFilterComponent.propTypes = {
   filterBy: React.PropTypes.string.isRequired,
   handleFilter: React.PropTypes.func.isRequired,
   handleFilterBy: React.PropTypes.func.isRequired,
-  handleFilterClear: React.PropTypes.func.isRequired,
+  handleFilterReset: React.PropTypes.func.isRequired,
   tableHeaders: React.PropTypes.array.isRequired
 };
 

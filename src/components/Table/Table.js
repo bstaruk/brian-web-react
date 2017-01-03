@@ -20,7 +20,7 @@ class TableComponent extends React.Component {
     this._handleSort = this._handleSort.bind(this);
     this._handleFilter = this._handleFilter.bind(this);
     this._handleFilterBy = this._handleFilterBy.bind(this);
-    this._handleFilterClear = this._handleFilterClear.bind(this);
+    this._handleFilterReset = this._handleFilterReset.bind(this);
   }
 
   _getTableData(sortBy, sortReverse = false, stateData = false) {
@@ -68,7 +68,7 @@ class TableComponent extends React.Component {
     });
   }
 
-  _handleFilterClear() {
+  _handleFilterReset() {
     let newTableData = this._getTableData(this.state.sortBy, this.state.sortReverse);
     this.setState({
       filter: '',
@@ -85,7 +85,7 @@ class TableComponent extends React.Component {
           filterBy={this.state.filterBy}
           handleFilter={this._handleFilter}
           handleFilterBy={this._handleFilterBy}
-          handleFilterClear={this._handleFilterClear}
+          handleFilterReset={this._handleFilterReset}
           tableHeaders={this.props.tableHeaders}
         />
         <table>
