@@ -2,25 +2,20 @@ import React from 'react';
 import Content from '../../Content/Content';
 import Table from '../../Table/Table';
 import {Link} from 'react-router';
+import tableData from '../../../assets/json/tableData.json';
 
 class ExperimentsTableComponent extends React.Component {
   render() {
     const tableHeaders = [
       {id: 'firstName', label: 'First Name'},
       {id: 'lastName', label: 'Last Name'},
-      {id: 'age', label: 'Age'}
-    ];
-    const tableData = [
-      {firstName: 'Malcom', lastName: 'Reynolds', age: 25},
-      {firstName: 'Kaylee', lastName: 'Frye', age: 29},
-      {firstName: 'Jayne', lastName: 'Cobb', age: 33},
-      {firstName: 'John', lastName: 'Jimmerson', age: 89}
+      {id: 'company', label: 'Company'}
     ];
 
     return (
       <Content>
         <h2 className='content-title'><Link to="/experiments">Experiments</Link> > Table</h2>
-        <Table tableData={tableData} tableHeaders={tableHeaders}/>
+        <Table tableData={tableData} tableHeaders={tableHeaders} filterOptions={tableHeaders} />
       </Content>
     );
   }
