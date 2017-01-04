@@ -4,6 +4,10 @@ import {Link} from 'react-router';
 import tableData from '../../../assets/json/tableData.json';
 
 class ExperimentsTableItemComponent extends React.Component {
+  shouldComponentUpdate(nextProps) {
+    return this.props.routeParams.item !== nextProps.routeParams.item;
+  }
+
   render() {
     const itemId = this.props.routeParams.item;
     const itemData = tableData.find(function (data) {
