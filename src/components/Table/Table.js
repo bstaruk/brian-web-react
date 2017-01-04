@@ -1,7 +1,6 @@
 require('./scss/table.scss');
 
 import React from 'react';
-import _ from 'lodash';
 import TableFilter from './TableFilter';
 import TableHead from './TableHead';
 import TableBody from './TableBody';
@@ -59,8 +58,8 @@ class TableComponent extends React.Component {
     let newTableData = this._getTableData(this.state.sortBy, this.state.sortReverse);
     const filterBy = this.state.filterBy;
     if (filterBy) {
-      newTableData = _.filter(newTableData, function (e) {
-        return e[filterBy].toString().toLowerCase().includes(filter.toLowerCase());
+      newTableData = newTableData.filter(function (item) {
+        return item[filterBy] ? item[filterBy].toString().toUpperCase().includes(filter.toUpperCase()) : false;
       });
     }
     this.setState({
