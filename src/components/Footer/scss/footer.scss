@@ -1,30 +1,16 @@
 @import "../../../assets/scss/_vars";
 
 #footer {
-  .social {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-
-    li {
-      display: inline-block;
-      margin-right: $margin--h;
-      &:last-of-type {
-        margin-right: 0;
-      }
-
-      >a {
-        display: block;
-        padding: .4em .5em;
-        font-size: 1.2rem;
-        background: $color--bg-gray1;
-        border: 1px solid $color--border-gray1;
-        color: $color--body-font;
-        border-radius: 3px;
-        @include transition(border .3s ease);
-        &:hover {
-          border: 1px solid darken($color--border-gray1, 15%);
-        }
+  max-width: $breakpoint--max-width;
+  border-top: 1px solid $color--border-gray2;
+  > p {
+    font-size: .9em;
+    color: lighten($color--body-font, 25%);
+    a {
+      color: lighten($color--body-font, 25%);
+      font-weight: 600;
+      &:hover {
+        color: lighten($color--body-font, 10%);
       }
     }
   }

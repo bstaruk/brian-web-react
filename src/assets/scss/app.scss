@@ -25,7 +25,7 @@ body {
 
 .app-wrapper {
   position: relative;
-  max-width: 860px;
+  max-width: $breakpoint--max-width;
   .app-enter {
     opacity: 0;
     @include transition(opacity .3s ease-in);
@@ -53,6 +53,21 @@ a {
     color: $color--body-anchor-purp;
     &:hover {
       color: $color--body-anchor-purp-hover;
+    }
+  }
+  &.icon-after {
+    &:after {
+      font-family: FontAwesome;
+      font-size: .9em;
+      font-weight: normal;
+      text-transform: none;
+      margin: auto .3em;
+    }
+    &.external:after {
+      content: "\f08e";
+    }
+    &.email:after {
+      content: "\f003";
     }
   }
 }
