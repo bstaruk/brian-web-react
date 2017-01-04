@@ -4,6 +4,7 @@ class TableFilterComponent extends React.Component {
   shouldComponentUpdate(nextProps) {
     return this.props.filter !== nextProps.filter || this.props.filterBy !== nextProps.filterBy;
   }
+
   render() {
     return (
       <div className="table--filter">
