@@ -24,10 +24,18 @@ class TableComponent extends React.Component {
   }
 
   _getTableData(sortBy, sortReverse = false, stateData = false) {
-    let newTableData = _.sortBy(
-      stateData ? this.state.tableData : this.props.tableData,
-      sortBy
-    );
+    const toSort = stateData ? this.state.tableData : this.props.tableData;
+    const newTableData = toSort.sort(function(a, b) {
+      const fieldA = a[sortBy] ? a[sortBy].toString().toUpperCase() : '';
+      const fieldB = b[sortBy] ? b[sortBy].toString().toUpperCase() : '';
+      if (fieldA < fieldB) {
+        return -1;
+      }
+      if (fieldA > fieldB) {
+        return 1;
+      }
+      return 0;
+    });
     return sortReverse ? newTableData.reverse() : newTableData;
   }
 
