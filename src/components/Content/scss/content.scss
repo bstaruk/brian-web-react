@@ -2,28 +2,10 @@
 
 .content {
   position: relative;
-  margin: 0 0 $margin--vx;
+  margin: 0 0 1em;
 
   .content-title {
     font-size: 1.35em;
     margin-top: 0;
-  }
-
-  a {
-    &.icon-after {
-      &:after {
-        font-family: FontAwesome;
-        font-size: .9em;
-        font-weight: normal;
-        text-transform: none;
-        margin: auto .3em;
-      }
-      &.external:after {
-        content: "\f08e";
-      }
-      &.email:after {
-        content: "\f003";
-      }
-    }
   }
 }

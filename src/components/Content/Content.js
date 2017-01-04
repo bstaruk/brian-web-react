@@ -5,8 +5,10 @@ import React from 'react';
 class ContentComponent extends React.Component {
   render() {
     return (
-      <div className="content">
-        {this.props.children}
+      <div {...this.props}>
+        <div className="content">
+          {this.props.children}
+        </div>
       </div>
     );
   }
