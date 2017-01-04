@@ -5,6 +5,10 @@ import {Link} from 'react-router';
 import tableData from '../../../assets/json/tableData.json';
 
 class ExperimentsTableComponent extends React.Component {
+  shouldComponentUpdate() {
+    return false;
+  }
+
   render() {
     const tableHeaders = [
       {id: 'firstName', label: 'First Name'},

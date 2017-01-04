@@ -1,6 +1,7 @@
 $color--primary-red1: #d53d35; // anchors, maybe some headers
 $color--primary-blue1: #41a2fe; // selection bg color
 $color--primary-blue2: #2475c1; // alt anchors
+$color--primary-purple1: #9c4cc1; // that good good ;)
 
 $color--bg-gray1: #f6f6f6; // nav, footer icons, table alt rows
 $color--bg-gray2: #f0f0f0; // table headers
@@ -12,3 +13,5 @@ $color--body-anchor: $color--primary-red1;
 $color--body-anchor-hover: darken($color--body-anchor, 10%);
 $color--body-anchor-alt: $color--primary-blue2;
 $color--body-anchor-alt-hover: darken($color--body-anchor-alt, 20%);
+$color--body-anchor-purp: $color--primary-purple1;
+$color--body-anchor-purp-hover: darken($color--primary-purple1, 10%);
