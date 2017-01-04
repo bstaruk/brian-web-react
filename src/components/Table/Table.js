@@ -1,7 +1,6 @@
 require('./scss/table.scss');
 
 import React from 'react';
-import _ from 'lodash';
 import TableFilter from './TableFilter';
 import TableHead from './TableHead';
 import TableBody from './TableBody';
@@ -24,10 +23,18 @@ class TableComponent extends React.Component {
   }
 
   _getTableData(sortBy, sortReverse = false, stateData = false) {
-    let newTableData = _.sortBy(
-      stateData ? this.state.tableData : this.props.tableData,
-      sortBy
-    );
+    const toSort = stateData ? this.state.tableData : this.props.tableData;
+    const newTableData = toSort.sort(function(a, b) {
+      const fieldA = a[sortBy] ? a[sortBy].toString().toUpperCase() : '';
+      const fieldB = b[sortBy] ? b[sortBy].toString().toUpperCase() : '';
+      if (fieldA < fieldB) {
+        return -1;
+      }
+      if (fieldA > fieldB) {
+        return 1;
+      }
+      return 0;
+    });
     return sortReverse ? newTableData.reverse() : newTableData;
   }
 
@@ -51,8 +58,8 @@ class TableComponent extends React.Component {
     let newTableData = this._getTableData(this.state.sortBy, this.state.sortReverse);
     const filterBy = this.state.filterBy;
     if (filterBy) {
-      newTableData = _.filter(newTableData, function (e) {
-        return e[filterBy].toString().toLowerCase().includes(filter.toLowerCase());
+      newTableData = newTableData.filter(function (item) {
+        return item[filterBy] ? item[filterBy].toString().toUpperCase().includes(filter.toUpperCase()) : false;
       });
     }
     this.setState({

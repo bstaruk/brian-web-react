@@ -2,10 +2,6 @@ import React from 'react';
 import {Link} from 'react-router';
 
 class TableBodyComponent extends React.Component {
-  shouldComponentUpdate(nextProps) {
-    return this.props.tableData !== nextProps.tableData;
-  }
-
   render() {
     return (
       <tbody>
