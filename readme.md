@@ -1,7 +1,6 @@
 # Brian's Website... in React!
 
-The only real reason I even have a website is so that I always have a place that is ready to play and explore with.
-This one is in React, because I think React just might be the next big thing. It all started with a `yo react-webpack`.
+My primary reason for having a website is always having a place that is ready to explore and experiment with. This one was built with React. It all started with a `yo react-webpack`.
 
 ## Usage
 The following commands are available in your project:
