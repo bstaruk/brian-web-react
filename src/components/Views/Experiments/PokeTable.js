@@ -19,7 +19,7 @@ class ExpPokeTableComponent extends React.Component {
 
     return (
       <Content>
-        <h2 className='content-title'><Link to="/experiments">Experiments</Link> > Table</h2>
+        <h2 className='content-title'><Link to="/experiments">Experiments</Link> > Poké Table</h2>
         <PokeTable tableHeaders={tableSchema} filterOptions={tableSchema} />
       </Content>
     );
