@@ -34,16 +34,10 @@ class TableComponent extends React.Component {
   }
 
   _handleFilter(filter) {
-    let newTableData = PokeTableStore.getData();
     const filterBy = this.state.filterBy;
-    if (filterBy) {
-      newTableData = newTableData.filter(function (item) {
-        return item[filterBy] ? item[filterBy].toString().toUpperCase().includes(filter.toUpperCase()) : false;
-      });
-    }
     this.setState({
       filter: filter,
-      tableData: newTableData
+      tableData: filterBy ? PokeTableActions.filter(PokeTableStore.getData(), filter, filterBy) : PokeTableStore.getData()
     });
   }
 

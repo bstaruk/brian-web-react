@@ -14,6 +14,16 @@ const PokeTableActions = {
     return data.sort(
       (a, b) => this._sortCallback(a[key], b[key], descending)
     );
+  },
+
+  _filterCallback(item, filter, filterBy) {
+    return item[filterBy] ? item[filterBy].toString().toUpperCase().includes(filter.toUpperCase()) : false;
+  },
+
+  filter(data, filter, filterBy) {
+    return data.filter(
+      (item) => this._filterCallback(item, filter, filterBy)
+    );
   }
 
 };
