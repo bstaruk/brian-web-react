@@ -23,7 +23,7 @@ class PokeTableBodyComponent extends React.Component {
                     {row.typeb &&
                     <a className={'poketable--type-badge typeb ' + row.typeb.toLowerCase()}
                        onClick={() => this.props.handleFilterFull('typeb', row.typeb)}
-                       title={'View more ' + row.typea + ' types'}>
+                       title={'View more ' + row.typeb + ' secondary types'}>
                       {row.typeb.toUpperCase()}
                     </a>
                     }
