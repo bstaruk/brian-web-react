@@ -14,14 +14,14 @@ class PokeTableBodyComponent extends React.Component {
                     <Link to={'/experiments/poketable/' + row.nat}
                           className={'type ' + row.typea.toLowerCase()}>{cell}</Link>
                     {row.typea &&
-                    <a className={'poketable--type-badge ' + row.typea.toLowerCase()}
+                    <a className={'poketable--type-badge typea ' + row.typea.toLowerCase()}
                        onClick={() => this.props.handleFilterFull('typea', row.typea)}
                        title={'View more ' + row.typea + ' types'}>
                       {row.typea.toUpperCase()}
                     </a>
                     }
                     {row.typeb &&
-                    <a className={'poketable--type-badge ' + row.typeb.toLowerCase()}
+                    <a className={'poketable--type-badge typeb ' + row.typeb.toLowerCase()}
                        onClick={() => this.props.handleFilterFull('typeb', row.typeb)}
                        title={'View more ' + row.typea + ' types'}>
                       {row.typeb.toUpperCase()}
