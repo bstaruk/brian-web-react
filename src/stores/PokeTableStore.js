@@ -27,6 +27,12 @@ const PokeTableStore = {
     return pokeTableSchema;
   },
 
+  getSchemaProp(id, prop) {
+    return pokeTableSchema.filter(
+      (item) => item.id == id
+    )[0][prop];
+  },
+
   setData(newData, commit = true) {
     data = newData;
     if (commit && 'localStorage' in window) {

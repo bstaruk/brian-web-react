@@ -12,6 +12,7 @@ class ExperimentsTableItemComponent extends React.Component {
     PokeTableStore.init();
     const itemData = PokeTableStore.getRecord('nat', this.props.routeParams.item);
     const itemTitle = itemData[this.props.route.title];
+
     return (
       <Content>
         <h2 className='content-title'>
@@ -26,7 +27,7 @@ class ExperimentsTableItemComponent extends React.Component {
           <ul>
             {Object.keys(itemData).map((k, index) =>
               <li key={index}>
-                {k}: {itemData[k] ? itemData[k] : 'N/A'}
+                <strong>{PokeTableStore.getSchemaProp(k, 'label')}:</strong> {itemData[k] ? itemData[k] : 'N/A'}
               </li>
             )}
           </ul>
