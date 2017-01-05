@@ -43,7 +43,7 @@ render((
       <Route path="contact" component={Contact} />
       <Route path="experiments">
         <IndexRoute component={Experiments} />
-        <Route path="table">
+        <Route path="poketable">
           <IndexRoute component={ExpPokeTable} />
           <Route title="name" path=":item" component={ExpPokeTableItem} />
         </Route>

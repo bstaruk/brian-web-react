@@ -9,7 +9,7 @@ class ExperimentsComponent extends React.Component {
         'prefix': 'Experiment One',
         'anchor': 'Poké Table',
         'attr': {
-          'to': '/experiments/pokeTable'
+          'to': '/experiments/poketable'
         }
       }
     ];

@@ -18,7 +18,7 @@ class ExpPokeTableItemComponent extends React.Component {
         <h2 className='content-title'>
           <Link to="/experiments">Experiments</Link>
           <span> > </span>
-          <Link to="/experiments/table">Table</Link>
+          <Link to="/experiments/poketable">Table</Link>
           <span> > </span>
           {itemTitle}
         </h2>
