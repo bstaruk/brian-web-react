@@ -96,6 +96,57 @@
         &:nth-child(even) {
           background-color: $color--bg-gray1;
         }
+
+        td {
+          a {
+            color: darken($color--type-normal, 15%);
+            &.grass {
+              color: darken($color--type-grass, 15%);
+            }
+            &.bug {
+              color: darken($color--type-bug, 10%);
+            }
+            &.dragon {
+              color: $color--type-dragon;
+            }
+            &.ice {
+              color: darken($color--type-ice, 30%);
+            }
+            &.fighting {
+              color: $color--type-fighting;
+            }
+            &.fire {
+              color: $color--type-fire;
+            }
+            &.flying {
+              color: $color--type-flying;
+            }
+            &.ghost {
+              color: $color--type-ghost;
+            }
+            &.ground {
+              color: darken($color--type-ground, 20%);
+            }
+            &.electric {
+              color: darken($color--type-electric, 20%);
+            }
+            &.normal {
+              color: darken($color--type-normal, 15%);
+            }
+            &.poison {
+              color: $color--type-poison;
+            }
+            &.psychic {
+              color: $color--type-psychic;
+            }
+            &.rock {
+              color: darken($color--type-rock, 20%);
+            }
+            &.water {
+              color: $color--type-water;
+            }
+          }
+        }
       }
     }
   }
@@ -131,9 +182,6 @@
     }
     &.flying {
       background-color: $color--type-flying;
-    }
-    &.grass {
-      background-color: $color--type-grass;
     }
     &.ghost {
       background-color: $color--type-ghost;

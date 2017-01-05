@@ -11,7 +11,7 @@ class PokeTableBodyComponent extends React.Component {
             <td key={index}>
               {index === 1 ? (
                   <span>
-                    <Link to={'/experiments/table/' + row.nat}>{cell}</Link>
+                    <Link to={'/experiments/table/' + row.nat} className={row.typea.toLowerCase()}>{cell}</Link>
                     {row.typea &&
                     <span className={'poketable--type-badge ' + row.typea.toLowerCase()}>{row.typea.toUpperCase()}</span>
                     }
