@@ -1,19 +1,19 @@
 import {EventEmitter} from 'fbemitter';
-import tableData from '../assets/json/tableData.json';
-import tableSchema from '../assets/json/tableSchema.json';
+import pokeTableData from '../assets/json/pokeTableData.json';
+import pokeTableSchema from '../assets/json/pokeTableSchema.json';
 
 let data;
 const emitter = new EventEmitter();
 
-const TableStore = {
+const PokeTableStore = {
 
   init() {
     const storage = 'localStorage' in window
-      ? localStorage.getItem('tableData')
+      ? localStorage.getItem('pokeTableData')
       : null;
 
     if (!storage) {
-      data = tableData;
+      data = pokeTableData;
     } else {
       data = JSON.parse(storage);
     }
@@ -24,13 +24,19 @@ const TableStore = {
   },
 
   getSchema() {
-    return tableSchema;
+    return pokeTableSchema;
+  },
+
+  getSchemaProp(id, prop) {
+    return pokeTableSchema.filter(
+      (item) => item.id == id
+    )[0][prop];
   },
 
   setData(newData, commit = true) {
     data = newData;
     if (commit && 'localStorage' in window) {
-      localStorage.setItem('tableData', JSON.stringify(newData));
+      localStorage.setItem('pokeTableData', JSON.stringify(newData));
     }
     emitter.emit('change');
   },
@@ -51,4 +57,4 @@ const TableStore = {
 
 };
 
-export default TableStore
+export default PokeTableStore

@@ -1,51 +1,44 @@
-require('./scss/table.scss');
+require('./scss/poketable.scss');
 
 import React from 'react';
-import TableActions from '../../actions/TableActions';
-import TableStore from '../../stores/TableStore';
-import TableFilter from './TableFilter';
-import TableHead from './TableHead';
-import TableBody from './TableBody';
+import PokeTableActions from '../../actions/PokeTableActions';
+import PokeTableStore from '../../stores/PokeTableStore';
+import PokeTableFilter from './PokeTableFilter';
+import PokeTableHead from './PokeTableHead';
+import PokeTableBody from './PokeTableBody';
 
 class TableComponent extends React.Component {
   constructor(props) {
     super(props);
     const defaultSortBy = this.props.tableHeaders[0].id;
-    TableActions.sort(defaultSortBy, false);
     this.state = {
       filter: '',
       filterBy: '',
       sortBy: defaultSortBy,
       sortDescending: false,
-      tableData: TableStore.getData()
+      tableData: PokeTableActions.sort(PokeTableStore.getData(), defaultSortBy, false)
     };
     this._handleSort = this._handleSort.bind(this);
     this._handleFilter = this._handleFilter.bind(this);
     this._handleFilterBy = this._handleFilterBy.bind(this);
+    this._handleFilterFull = this._handleFilterFull.bind(this);
     this._handleFilterReset = this._handleFilterReset.bind(this);
   }
 
   _handleSort(id) {
     const newSortDescending = this.state.sortBy === id && !this.state.sortDescending;
-    TableActions.sort(id, newSortDescending);
     this.setState({
       sortBy: id,
       sortDescending: newSortDescending,
-      tableData: TableStore.getData()
+      tableData: PokeTableActions.sort(this.state.tableData, id, newSortDescending)
     });
   }
 
   _handleFilter(filter) {
-    let newTableData = TableStore.getData();
     const filterBy = this.state.filterBy;
-    if (filterBy) {
-      newTableData = newTableData.filter(function (item) {
-        return item[filterBy] ? item[filterBy].toString().toUpperCase().includes(filter.toUpperCase()) : false;
-      });
-    }
     this.setState({
       filter: filter,
-      tableData: newTableData
+      tableData: filterBy ? PokeTableActions.filter(PokeTableStore.getData(), filter, filterBy) : PokeTableStore.getData()
     });
   }
 
@@ -56,20 +49,28 @@ class TableComponent extends React.Component {
     });
   }
 
+  _handleFilterFull(filterBy, id) {
+    this.setState({
+      filterBy: filterBy,
+      filter: id,
+      tableData: filterBy ? PokeTableActions.filter(PokeTableStore.getData(), id, filterBy) : PokeTableStore.getData()
+    });
+  }
+
   _handleFilterReset() {
     this.setState({
       filter: '',
       filterBy: '',
-      tableData: TableStore.getData()
+      tableData: PokeTableStore.getData()
     });
   }
 
   render() {
     const tableCount = this.state.tableData.length;
-    const dataCount = TableStore.getCount();
+    const dataCount = PokeTableStore.getCount();
     return (
-      <div className="table">
-        <TableFilter
+      <div className="poketable">
+        <PokeTableFilter
           filter={this.state.filter}
           filterBy={this.state.filterBy}
           filterOptions={this.props.filterOptions}
@@ -78,19 +79,20 @@ class TableComponent extends React.Component {
           handleFilterReset={this._handleFilterReset}
         />
         <table>
-          <TableHead
+          <PokeTableHead
             handleSort={this._handleSort}
             sortBy={this.state.sortBy}
             sortDescending={this.state.sortDescending}
             tableHeaders={this.props.tableHeaders}
           />
-          <TableBody
+          <PokeTableBody
+            handleFilterFull={this._handleFilterFull}
             tableCols={this.props.tableHeaders.length}
             tableData={this.state.tableData}
           />
         </table>
         {tableCount > 0 &&
-        <p className="table--count">{tableCount} of {dataCount} records shown</p>
+        <p className="poketable--count">{tableCount} of {dataCount} records shown</p>
         }
       </div>
     );

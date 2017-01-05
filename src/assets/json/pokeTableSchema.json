@@ -1,0 +1,46 @@
+[
+  {
+    "id": "nat",
+    "label": "Num"
+  },
+  {
+    "id": "name",
+    "label": "Name"
+  },
+  {
+    "id": "hp",
+    "label": "HP"
+  },
+  {
+    "id": "atk",
+    "label": "Atk"
+  },
+  {
+    "id": "def",
+    "label": "Def"
+  },
+  {
+    "id": "spa",
+    "label": "SpA"
+  },
+  {
+    "id": "spd",
+    "label": "SpD"
+  },
+  {
+    "id": "spe",
+    "label": "Spe"
+  },
+  {
+    "id": "total",
+    "label": "Total"
+  },
+  {
+    "id": "typea",
+    "label": "Type 1"
+  },
+  {
+    "id": "typeb",
+    "label": "Type 2"
+  }
+]

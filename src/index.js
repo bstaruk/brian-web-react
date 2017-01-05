@@ -9,7 +9,7 @@ import {render} from 'react-dom';
 import {Router, Route, IndexRoute, browserHistory} from 'react-router';
 import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
-import {Home, Contact, Experiments, ExperimentsTable, ExperimentsTableItem, NoMatch} from './components/Views';
+import {Home, Contact, Experiments, ExpPokeTable, ExpPokeTableItem, NoMatch} from './components/Views';
 
 // Render the main component into the dom
 // ReactDOM.render(<App />, document.getElementById('app'));
@@ -43,9 +43,9 @@ render((
       <Route path="contact" component={Contact} />
       <Route path="experiments">
         <IndexRoute component={Experiments} />
-        <Route path="table">
-          <IndexRoute component={ExperimentsTable} />
-          <Route title="firstName" path=":item" component={ExperimentsTableItem} />
+        <Route path="poketable">
+          <IndexRoute component={ExpPokeTable} />
+          <Route title="name" path=":item" component={ExpPokeTableItem} />
         </Route>
       </Route>
       <Route path="*" component={NoMatch} />

@@ -1,13 +1,13 @@
 import React from 'react';
 
-class TableFilterComponent extends React.Component {
+class PokeTableFilterComponent extends React.Component {
   shouldComponentUpdate(nextProps) {
     return this.props.filter !== nextProps.filter || this.props.filterBy !== nextProps.filterBy;
   }
 
   render() {
     return (
-      <div className="table--filter">
+      <div className="poketable--filter">
         <form autoComplete="off">
           <fieldset>
             <div>
@@ -37,7 +37,7 @@ class TableFilterComponent extends React.Component {
   }
 }
 
-TableFilterComponent.propTypes = {
+PokeTableFilterComponent.propTypes = {
   filter: React.PropTypes.string.isRequired,
   filterBy: React.PropTypes.string.isRequired,
   filterOptions: React.PropTypes.array.isRequired,
@@ -46,6 +46,6 @@ TableFilterComponent.propTypes = {
   handleFilterReset: React.PropTypes.func.isRequired
 };
 
-TableFilterComponent.defaultProps = {};
+PokeTableFilterComponent.defaultProps = {};
 
-export default TableFilterComponent;
+export default PokeTableFilterComponent;

@@ -1,6 +1,6 @@
 import React from 'react';
 
-class TableHeadComponent extends React.Component {
+class PokeTableHeadComponent extends React.Component {
   shouldComponentUpdate(nextProps) {
     return this.props.sortBy !== nextProps.sortBy || this.props.sortDescending !== nextProps.sortDescending;
   }
@@ -9,7 +9,7 @@ class TableHeadComponent extends React.Component {
     return (
       <thead>
       <tr>
-        {this.props.tableHeaders.map((cell, index) =>
+        {this.props.tableHeaders.slice(0, 9).map((cell, index) =>
           <th key={index} onClick={() => this.props.handleSort(cell.id)}>
             <span className={this.props.sortBy === cell.id ? this.props.sortDescending ? 'sortBy desc' : 'sortBy asc' : ''}>
               {cell.label}
@@ -22,13 +22,13 @@ class TableHeadComponent extends React.Component {
   }
 }
 
-TableHeadComponent.propTypes = {
+PokeTableHeadComponent.propTypes = {
   handleSort: React.PropTypes.func.isRequired,
   sortBy: React.PropTypes.string.isRequired,
   sortDescending: React.PropTypes.bool.isRequired,
   tableHeaders: React.PropTypes.array.isRequired
 };
 
-TableHeadComponent.defaultProps = {};
+PokeTableHeadComponent.defaultProps = {};
 
-export default TableHeadComponent;
+export default PokeTableHeadComponent;
