@@ -1,13 +1,13 @@
 import React from 'react';
 import {Link} from 'react-router';
 import Content from '../../Content/Content';
-import Table from '../../Table/Table';
-import TableStore from '../../../stores/TableStore';
+import PokeTable from '../../PokeTable/PokeTable';
+import PokeTableStore from '../../../stores/PokeTableStore';
 
 class ExperimentsTableComponent extends React.Component {
   constructor() {
     super();
-    TableStore.init();
+    PokeTableStore.init();
   }
 
   shouldComponentUpdate() {
@@ -15,12 +15,12 @@ class ExperimentsTableComponent extends React.Component {
   }
 
   render() {
-    const tableSchema = TableStore.getSchema();
+    const tableSchema = PokeTableStore.getSchema();
 
     return (
       <Content>
         <h2 className='content-title'><Link to="/experiments">Experiments</Link> > Table</h2>
-        <Table tableHeaders={tableSchema} filterOptions={tableSchema} />
+        <PokeTable tableHeaders={tableSchema} filterOptions={tableSchema} />
       </Content>
     );
   }

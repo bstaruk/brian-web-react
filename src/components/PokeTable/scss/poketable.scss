@@ -1,0 +1,104 @@
+@import "../../../assets/scss/_vars";
+
+.poketable {
+  .poketable--filter {
+    margin-bottom: $margin--v;
+    form {
+      fieldset {
+        border: 0;
+        padding: 0;
+        input[type='text'], select, button {
+          display: block;
+          width: 100%;
+          outline: none;
+          margin-bottom: .5em;
+          padding: 0 .4em;
+          height: 2.4em;
+          border: 1px solid $color--border-gray1;
+          background: #fff;
+          font-size: 1em;
+          font-family: $font-sans;
+          @include placeholder {
+            font-style: italic;
+          }
+          @include breakpoint(sm) {
+            display: inline-block;
+            vertical-align: top;
+            width: auto;
+            margin-bottom: 0;
+            margin-left: .2em;
+            &:first-child {
+              margin-left: 0;
+            }
+          }
+        }
+        select {
+          option {
+            border: 0;
+          }
+        }
+        button {
+          background: $color--bg-gray1;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+  table {
+    border-spacing: 0;
+    border: 1px solid $color--border-gray1;
+    border-radius: 3px;
+    tr {
+      td, th {
+        padding: .5em .75em;
+        border-right: 1px solid darken($color--border-gray1, 5%);
+        &:last-of-type {
+          border-right: 0;
+        }
+      }
+    }
+    thead {
+      tr {
+        th {
+          background: $color--bg-gray2;
+          font-weight: normal;
+          cursor: pointer;
+          > span {
+            position: relative;
+            display: block;
+            padding-right: 1.5em;
+            &:after {
+              position: absolute;
+              right: 0;
+              top: 0;
+              display: block;
+              content: "\f077";
+              font-family: FontAwesome;
+              font-size: .8em;
+              opacity: 0;
+              @include transition(all 0.3s ease);
+            }
+            &.sortBy {
+              &:after {
+                opacity: 1;
+              }
+              &.desc:after {
+                @include transform(scaleY(-1));
+              }
+            }
+          }
+        }
+      }
+    }
+    tbody {
+      tr {
+        &:nth-child(even) {
+          background-color: $color--bg-gray1;
+        }
+      }
+    }
+  }
+  .poketable--count {
+    font-size: .9em;
+  }
+}
