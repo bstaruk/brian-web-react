@@ -3,7 +3,7 @@ import Content from '../../Content/Content';
 import {Link} from 'react-router';
 import PokeTableStore from '../../../stores/PokeTableStore';
 
-class ExperimentsTableItemComponent extends React.Component {
+class ExpPokeTableItemComponent extends React.Component {
   shouldComponentUpdate(nextProps) {
     return this.props.routeParams.item !== nextProps.routeParams.item;
   }
@@ -37,6 +37,6 @@ class ExperimentsTableItemComponent extends React.Component {
   }
 }
 
-ExperimentsTableItemComponent.defaultProps = {};
+ExpPokeTableItemComponent.defaultProps = {};
 
-export default ExperimentsTableItemComponent;
+export default ExpPokeTableItemComponent;

@@ -4,7 +4,7 @@ import Content from '../../Content/Content';
 import PokeTable from '../../PokeTable/PokeTable';
 import PokeTableStore from '../../../stores/PokeTableStore';
 
-class ExperimentsTableComponent extends React.Component {
+class ExpPokeTableComponent extends React.Component {
   constructor() {
     super();
     PokeTableStore.init();
@@ -26,6 +26,6 @@ class ExperimentsTableComponent extends React.Component {
   }
 }
 
-ExperimentsTableComponent.defaultProps = {};
+ExpPokeTableComponent.defaultProps = {};
 
-export default ExperimentsTableComponent;
+export default ExpPokeTableComponent;

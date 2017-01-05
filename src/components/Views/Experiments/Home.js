@@ -7,9 +7,9 @@ class ExperimentsComponent extends React.Component {
     const experimentLinks = [
       {
         'prefix': 'Experiment One',
-        'anchor': 'A Sortable Table',
+        'anchor': 'Poké Table',
         'attr': {
-          'to': '/experiments/table'
+          'to': '/experiments/pokeTable'
         }
       }
     ];

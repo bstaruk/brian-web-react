@@ -1,9 +1,9 @@
 import Experiments from './Home.js';
-import ExperimentsTable from './Table.js';
-import ExperimentsTableItem from './TableItem.js';
+import ExpPokeTable from './PokeTable.js';
+import ExpPokeTableItem from './PokeTableItem.js';
 
 export {
   Experiments,
-  ExperimentsTable,
-  ExperimentsTableItem
+  ExpPokeTable,
+  ExpPokeTableItem
 };
