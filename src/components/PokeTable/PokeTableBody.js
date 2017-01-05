@@ -11,12 +11,21 @@ class PokeTableBodyComponent extends React.Component {
             <td key={index}>
               {index === 1 ? (
                   <span>
-                    <Link to={'/experiments/poketable/' + row.nat} className={row.typea.toLowerCase()}>{cell}</Link>
+                    <Link to={'/experiments/poketable/' + row.nat}
+                          className={'type ' + row.typea.toLowerCase()}>{cell}</Link>
                     {row.typea &&
-                    <span className={'poketable--type-badge ' + row.typea.toLowerCase()}>{row.typea.toUpperCase()}</span>
+                    <a className={'poketable--type-badge ' + row.typea.toLowerCase()}
+                       onClick={() => this.props.handleFilterFull('typea', row.typea)}
+                       title={'View more ' + row.typea + ' types'}>
+                      {row.typea.toUpperCase()}
+                    </a>
                     }
                     {row.typeb &&
-                    <span className={'poketable--type-badge ' + row.typeb.toLowerCase()}>{row.typeb.toUpperCase()}</span>
+                    <a className={'poketable--type-badge ' + row.typeb.toLowerCase()}
+                       onClick={() => this.props.handleFilterFull('typeb', row.typeb)}
+                       title={'View more ' + row.typea + ' types'}>
+                      {row.typeb.toUpperCase()}
+                    </a>
                     }
                   </span>
                 ) : (
@@ -38,6 +47,7 @@ class PokeTableBodyComponent extends React.Component {
 }
 
 PokeTableBodyComponent.propTypes = {
+  handleFilterFull: React.PropTypes.func.isRequired,
   tableCols: React.PropTypes.number.isRequired,
   tableData: React.PropTypes.array.isRequired
 };

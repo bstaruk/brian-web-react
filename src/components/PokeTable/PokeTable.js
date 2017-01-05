@@ -21,6 +21,7 @@ class TableComponent extends React.Component {
     this._handleSort = this._handleSort.bind(this);
     this._handleFilter = this._handleFilter.bind(this);
     this._handleFilterBy = this._handleFilterBy.bind(this);
+    this._handleFilterFull = this._handleFilterFull.bind(this);
     this._handleFilterReset = this._handleFilterReset.bind(this);
   }
 
@@ -45,6 +46,14 @@ class TableComponent extends React.Component {
     this.setState({
       filter: '',
       filterBy: filterBy
+    });
+  }
+
+  _handleFilterFull(filterBy, id) {
+    this.setState({
+      filterBy: filterBy,
+      filter: id,
+      tableData: filterBy ? PokeTableActions.filter(PokeTableStore.getData(), id, filterBy) : PokeTableStore.getData()
     });
   }
 
@@ -77,6 +86,7 @@ class TableComponent extends React.Component {
             tableHeaders={this.props.tableHeaders}
           />
           <PokeTableBody
+            handleFilterFull={this._handleFilterFull}
             tableCols={this.props.tableHeaders.length}
             tableData={this.state.tableData}
           />
