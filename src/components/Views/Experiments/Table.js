@@ -15,16 +15,12 @@ class ExperimentsTableComponent extends React.Component {
   }
 
   render() {
-    const tableHeaders = [
-      {id: 'firstName', label: 'First Name'},
-      {id: 'lastName', label: 'Last Name'},
-      {id: 'company', label: 'Company'}
-    ];
+    const tableSchema = TableStore.getSchema();
 
     return (
       <Content>
         <h2 className='content-title'><Link to="/experiments">Experiments</Link> > Table</h2>
-        <Table tableHeaders={tableHeaders} filterOptions={tableHeaders} />
+        <Table tableHeaders={tableSchema} filterOptions={tableSchema} />
       </Content>
     );
   }

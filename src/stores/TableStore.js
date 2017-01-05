@@ -1,5 +1,6 @@
 import {EventEmitter} from 'fbemitter';
 import tableData from '../assets/json/tableData.json';
+import tableSchema from '../assets/json/tableSchema.json';
 
 let data;
 const emitter = new EventEmitter();
@@ -20,6 +21,10 @@ const TableStore = {
 
   getData() {
     return data;
+  },
+
+  getSchema() {
+    return tableSchema;
   },
 
   setData(newData, commit = true) {
