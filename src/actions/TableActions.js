@@ -3,13 +3,15 @@ import TableStore from '../stores/TableStore';
 const TableActions = {
 
   _sortCallback(a, b, descending) {
-    let res = 0;
-    if (typeof a === 'number' && typeof b === 'number') {
-      res = a - b;
+    const fieldA = a ? a.toString().toUpperCase() : '';
+    const fieldB = b ? b.toString().toUpperCase() : '';
+    if (fieldA < fieldB) {
+      return descending ? 1 : -1;
+    } else if (fieldA > fieldB) {
+      return descending ? -1 : 1;
     } else {
-      res = String(a).localeCompare(String(b));
+      return 0;
     }
-    return descending ? -1 * res : res;
   },
 
   sort(key, descending) {
