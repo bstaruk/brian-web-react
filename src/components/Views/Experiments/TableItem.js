@@ -1,7 +1,7 @@
 import React from 'react';
 import Content from '../../Content/Content';
 import {Link} from 'react-router';
-import tableData from '../../../assets/json/tableData.json';
+import TableStore from '../../../stores/TableStore';
 
 class ExperimentsTableItemComponent extends React.Component {
   shouldComponentUpdate(nextProps) {
@@ -9,10 +9,8 @@ class ExperimentsTableItemComponent extends React.Component {
   }
 
   render() {
-    const itemId = this.props.routeParams.item;
-    const itemData = tableData.find(function (data) {
-      return data.id == itemId;
-    });
+    TableStore.init();
+    const itemData = TableStore.getRecord('id', this.props.routeParams.item);
     const itemTitle = itemData[this.props.route.title];
     return (
       <Content>

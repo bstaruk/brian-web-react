@@ -38,8 +38,10 @@ const TableStore = {
     return data.length;
   },
 
-  getRecord(recordId) {
-    return recordId in data ? data[recordId] : null;
+  getRecord(recordId, itemId) {
+    return data.find(function (data) {
+      return data[recordId] == itemId;
+    });
   }
 
 };
