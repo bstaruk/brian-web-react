@@ -66,6 +66,7 @@ class TableComponent extends React.Component {
 
   render() {
     const tableCount = this.state.tableData.length;
+    const dataCount = TableStore.getCount();
     return (
       <div className="table">
         <TableFilter
@@ -89,7 +90,7 @@ class TableComponent extends React.Component {
           />
         </table>
         {tableCount > 0 &&
-        <p className="table--count">{tableCount} of  records shown</p>
+        <p className="table--count">{tableCount} of {dataCount} records shown</p>
         }
       </div>
     );
