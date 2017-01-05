@@ -25,27 +25,8 @@ class TableComponent extends React.Component {
     this._handleFilterReset = this._handleFilterReset.bind(this);
   }
 
-  _getTableData(sortBy, sortReverse = false, stateData = false) {
-    function sortCompare(a, b) {
-      const fieldA = a[sortBy] ? a[sortBy].toString().toUpperCase() : '';
-      const fieldB = b[sortBy] ? b[sortBy].toString().toUpperCase() : '';
-      if (fieldA < fieldB) {
-        return -1;
-      } else if (fieldA > fieldB) {
-        return 1;
-      } else {
-        return 0;
-      }
-    }
-    const newTableData = stateData ? this.state.tableData.sort(sortCompare) : this.props.tableData.sort(sortCompare);
-    return sortReverse ? newTableData.reverse() : newTableData;
-  }
-
   _handleSort(id) {
-    let newSortReverse = false;
-    if (this.state.sortBy === id && !this.state.sortReverse) {
-      newSortReverse = true;
-    }
+    const newSortReverse = this.state.sortBy === id && !this.state.sortReverse;
     TableActions.sort(id, newSortReverse);
     this.setState({
       sortBy: id,
@@ -55,7 +36,7 @@ class TableComponent extends React.Component {
   }
 
   _handleFilter(filter) {
-    let newTableData = this._getTableData(this.state.sortBy, this.state.sortReverse);
+    let newTableData = TableStore.getData();
     const filterBy = this.state.filterBy;
     if (filterBy) {
       newTableData = newTableData.filter(function (item) {
@@ -76,11 +57,10 @@ class TableComponent extends React.Component {
   }
 
   _handleFilterReset() {
-    let newTableData = this._getTableData(this.state.sortBy, this.state.sortReverse);
     this.setState({
       filter: '',
       filterBy: '',
-      tableData: newTableData
+      tableData: TableStore.getData()
     });
   }
 
