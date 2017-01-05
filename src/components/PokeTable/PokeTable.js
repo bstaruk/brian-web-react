@@ -11,13 +11,12 @@ class TableComponent extends React.Component {
   constructor(props) {
     super(props);
     const defaultSortBy = this.props.tableHeaders[0].id;
-    PokeTableActions.sort(defaultSortBy, false);
     this.state = {
       filter: '',
       filterBy: '',
       sortBy: defaultSortBy,
       sortDescending: false,
-      tableData: PokeTableStore.getData()
+      tableData: PokeTableActions.sort(PokeTableStore.getData(), defaultSortBy, false)
     };
     this._handleSort = this._handleSort.bind(this);
     this._handleFilter = this._handleFilter.bind(this);
@@ -27,11 +26,10 @@ class TableComponent extends React.Component {
 
   _handleSort(id) {
     const newSortDescending = this.state.sortBy === id && !this.state.sortDescending;
-    PokeTableActions.sort(id, newSortDescending);
     this.setState({
       sortBy: id,
       sortDescending: newSortDescending,
-      tableData: PokeTableStore.getData()
+      tableData: PokeTableActions.sort(this.state.tableData, id, newSortDescending)
     });
   }
 

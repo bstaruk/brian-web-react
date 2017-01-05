@@ -1,5 +1,3 @@
-import PokeTableStore from '../stores/PokeTableStore';
-
 const PokeTableActions = {
 
   _sortCallback(a, b, descending) {
@@ -12,10 +10,10 @@ const PokeTableActions = {
     return descending ? -1 * res : res;
   },
 
-  sort(key, descending) {
-    PokeTableStore.setData(PokeTableStore.getData().sort(
+  sort(data, key, descending) {
+    return data.sort(
       (a, b) => this._sortCallback(a[key], b[key], descending)
-    ));
+    );
   }
 
 };
