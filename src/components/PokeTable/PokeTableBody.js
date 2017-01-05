@@ -10,7 +10,7 @@ class PokeTableBodyComponent extends React.Component {
           {Object.values(row).map((cell, index) =>
             <td key={index}>
               {index === 0 ? (
-                  <Link to={'/experiments/table/' + row.id}>{cell}</Link>
+                  <Link to={'/experiments/table/' + row.nat}>{cell}</Link>
                 ) : (
                   <span>{cell}</span>
                 )

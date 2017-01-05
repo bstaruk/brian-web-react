@@ -45,7 +45,7 @@ render((
         <IndexRoute component={Experiments} />
         <Route path="table">
           <IndexRoute component={ExperimentsTable} />
-          <Route title="firstName" path=":item" component={ExperimentsTableItem} />
+          <Route title="name" path=":item" component={ExperimentsTableItem} />
         </Route>
       </Route>
       <Route path="*" component={NoMatch} />

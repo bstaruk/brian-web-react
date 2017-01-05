@@ -3,24 +3,13 @@ import PokeTableStore from '../stores/PokeTableStore';
 const PokeTableActions = {
 
   _sortCallback(a, b, descending) {
-    let fieldA;
-    let fieldB;
-
+    let res = 0;
     if (typeof a === 'number' && typeof b === 'number') {
-      fieldA = a ? a : '';
-      fieldB = b ? b : '';
+      res = a - b;
     } else {
-      fieldA = a ? a.toString().toUpperCase() : '';
-      fieldB = b ? b.toString().toUpperCase() : '';
+      res = String(a).localeCompare(String(b));
     }
-
-    if (fieldA < fieldB) {
-      return descending ? 1 : -1;
-    } else if (fieldA > fieldB) {
-      return descending ? -1 : 1;
-    } else {
-      return 0;
-    }
+    return descending ? -1 * res : res;
   },
 
   sort(key, descending) {

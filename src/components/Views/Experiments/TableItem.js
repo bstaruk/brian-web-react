@@ -1,7 +1,7 @@
 import React from 'react';
 import Content from '../../Content/Content';
 import {Link} from 'react-router';
-import TableStore from '../../../stores/TableStore';
+import PokeTableStore from '../../../stores/PokeTableStore';
 
 class ExperimentsTableItemComponent extends React.Component {
   shouldComponentUpdate(nextProps) {
@@ -9,8 +9,8 @@ class ExperimentsTableItemComponent extends React.Component {
   }
 
   render() {
-    TableStore.init();
-    const itemData = TableStore.getRecord('id', this.props.routeParams.item);
+    PokeTableStore.init();
+    const itemData = PokeTableStore.getRecord('nat', this.props.routeParams.item);
     const itemTitle = itemData[this.props.route.title];
     return (
       <Content>
@@ -26,7 +26,7 @@ class ExperimentsTableItemComponent extends React.Component {
           <ul>
             {Object.keys(itemData).map((k, index) =>
               <li key={index}>
-                {k}: {itemData[k]}
+                {k}: {itemData[k] ? itemData[k] : 'N/A'}
               </li>
             )}
           </ul>
