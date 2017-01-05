@@ -9,10 +9,10 @@ class PokeTableBodyComponent extends React.Component {
         <tr key={index}>
           {Object.values(row).map((cell, index) =>
             <td key={index}>
-              {index === 0 ? (
+              {index === 1 ? (
                   <Link to={'/experiments/table/' + row.nat}>{cell}</Link>
                 ) : (
-                  <span>{cell}</span>
+                  <span>{cell ? cell : 'N/A'}</span>
                 )
               }
             </td>
