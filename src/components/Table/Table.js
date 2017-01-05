@@ -11,23 +11,18 @@ class TableComponent extends React.Component {
   constructor(props) {
     super(props);
     const defaultSortBy = this.props.tableHeaders[0].id;
+    TableActions.sort(defaultSortBy, false);
     this.state = {
       filter: '',
       filterBy: '',
       sortBy: defaultSortBy,
       sortReverse: false,
-      tableData: this._getTableData(defaultSortBy)
+      tableData: TableStore.getData()
     };
     this._handleSort = this._handleSort.bind(this);
     this._handleFilter = this._handleFilter.bind(this);
     this._handleFilterBy = this._handleFilterBy.bind(this);
     this._handleFilterReset = this._handleFilterReset.bind(this);
-
-
-
-
-    TableActions.sort(defaultSortBy, false);
-    console.log(TableStore.getData());
   }
 
   _getTableData(sortBy, sortReverse = false, stateData = false) {
@@ -47,18 +42,15 @@ class TableComponent extends React.Component {
   }
 
   _handleSort(id) {
-    let newTableData = [],
-      newSortReverse = false;
+    let newSortReverse = false;
     if (this.state.sortBy === id && !this.state.sortReverse) {
-      newTableData = this._getTableData(id, true, true);
       newSortReverse = true;
-    } else {
-      newTableData = this._getTableData(id, false, true);
     }
+    TableActions.sort(id, newSortReverse);
     this.setState({
       sortBy: id,
       sortReverse: newSortReverse,
-      tableData: newTableData
+      tableData: TableStore.getData()
     });
   }
 
