@@ -98,8 +98,7 @@ class TableComponent extends React.Component {
 
 TableComponent.propTypes = {
   filterOptions: React.PropTypes.array.isRequired,
-  tableHeaders: React.PropTypes.array.isRequired,
-  tableData: React.PropTypes.array.isRequired
+  tableHeaders: React.PropTypes.array.isRequired
 };
 
 TableComponent.defaultProps = {};
