@@ -1,25 +1,26 @@
 import React from 'react';
+import {Link} from 'react-router';
 import Content from '../../Content/Content';
 import Table from '../../Table/Table';
-import {Link} from 'react-router';
-import tableData from '../../../assets/json/tableData.json';
+import TableStore from '../../../stores/TableStore';
 
 class ExperimentsTableComponent extends React.Component {
+  constructor() {
+    super();
+    TableStore.init();
+  }
+
   shouldComponentUpdate() {
     return false;
   }
 
   render() {
-    const tableHeaders = [
-      {id: 'firstName', label: 'First Name'},
-      {id: 'lastName', label: 'Last Name'},
-      {id: 'company', label: 'Company'}
-    ];
+    const tableSchema = TableStore.getSchema();
 
     return (
       <Content>
         <h2 className='content-title'><Link to="/experiments">Experiments</Link> > Table</h2>
-        <Table tableData={tableData} tableHeaders={tableHeaders} filterOptions={tableHeaders} />
+        <Table tableHeaders={tableSchema} filterOptions={tableSchema} />
       </Content>
     );
   }
