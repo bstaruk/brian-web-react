@@ -1,6 +1,8 @@
 require('./scss/table.scss');
 
 import React from 'react';
+import TableActions from '../../actions/TableActions';
+import TableStore from '../../stores/TableStore';
 import TableFilter from './TableFilter';
 import TableHead from './TableHead';
 import TableBody from './TableBody';
@@ -20,6 +22,12 @@ class TableComponent extends React.Component {
     this._handleFilter = this._handleFilter.bind(this);
     this._handleFilterBy = this._handleFilterBy.bind(this);
     this._handleFilterReset = this._handleFilterReset.bind(this);
+
+
+
+
+
+    console.log(TableStore.getData());
   }
 
   _getTableData(sortBy, sortReverse = false, stateData = false) {

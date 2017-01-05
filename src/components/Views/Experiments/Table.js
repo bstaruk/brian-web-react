@@ -2,9 +2,15 @@ import React from 'react';
 import Content from '../../Content/Content';
 import Table from '../../Table/Table';
 import {Link} from 'react-router';
+import TableStore from '../../../stores/TableStore';
 import tableData from '../../../assets/json/tableData.json';
 
 class ExperimentsTableComponent extends React.Component {
+  constructor() {
+    super();
+    TableStore.init(tableData);
+  }
+
   shouldComponentUpdate() {
     return false;
   }
