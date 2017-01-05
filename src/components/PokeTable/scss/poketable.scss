@@ -99,6 +99,67 @@
       }
     }
   }
+  .poketable--type-badge {
+    display: inline-block;
+    padding: 0 .4em;
+    margin-left: .3em;
+    font-size: .8em;
+    color: white;
+    background-color: $color--type-normal;
+    text-shadow: 0 1px 1px rgba(#000, .75);
+    border-radius: 3px;
+    &:first-of-type {
+      margin-left: .6em;
+    }
+    &.grass {
+      background-color: $color--type-grass;
+    }
+    &.bug {
+      background-color: $color--type-bug;
+    }
+    &.dragon {
+      background-color: $color--type-dragon;
+    }
+    &.ice {
+      background-color: $color--type-ice;
+    }
+    &.fighting {
+      background-color: $color--type-fighting;
+    }
+    &.fire {
+      background-color: $color--type-fire;
+    }
+    &.flying {
+      background-color: $color--type-flying;
+    }
+    &.grass {
+      background-color: $color--type-grass;
+    }
+    &.ghost {
+      background-color: $color--type-ghost;
+    }
+    &.ground {
+      background-color: $color--type-ground;
+    }
+    &.electric {
+      background-color: $color--type-electric;
+    }
+    &.normal {
+      background-color: $color--type-normal;
+    }
+    &.poison {
+      background-color: $color--type-poison;
+    }
+    &.psychic {
+      background-color: $color--type-psychic;
+    }
+    &.rock {
+      background-color: $color--type-rock;
+    }
+    &.water {
+      background-color: $color--type-water;
+    }
+  }
   .poketable--count {
     font-size: .9em;
   }

@@ -7,10 +7,18 @@ class PokeTableBodyComponent extends React.Component {
       <tbody>
       {this.props.tableData.map((row, index) =>
         <tr key={index}>
-          {Object.values(row).map((cell, index) =>
+          {Object.values(row).slice(0, 9).map((cell, index) =>
             <td key={index}>
               {index === 1 ? (
-                  <Link to={'/experiments/table/' + row.nat}>{cell}</Link>
+                  <span>
+                    <Link to={'/experiments/table/' + row.nat}>{cell}</Link>
+                    {row.typea &&
+                    <span className={'poketable--type-badge ' + row.typea.toLowerCase()}>{row.typea.toUpperCase()}</span>
+                    }
+                    {row.typeb &&
+                    <span className={'poketable--type-badge ' + row.typeb.toLowerCase()}>{row.typeb.toUpperCase()}</span>
+                    }
+                  </span>
                 ) : (
                   <span>{cell ? cell : 'N/A'}</span>
                 )
