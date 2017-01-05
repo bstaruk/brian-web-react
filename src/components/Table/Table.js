@@ -26,7 +26,7 @@ class TableComponent extends React.Component {
 
 
 
-
+    TableActions.sort(defaultSortBy, false);
     console.log(TableStore.getData());
   }
 
