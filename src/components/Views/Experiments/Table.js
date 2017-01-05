@@ -1,7 +1,7 @@
 import React from 'react';
+import {Link} from 'react-router';
 import Content from '../../Content/Content';
 import Table from '../../Table/Table';
-import {Link} from 'react-router';
 import TableStore from '../../../stores/TableStore';
 
 class ExperimentsTableComponent extends React.Component {
