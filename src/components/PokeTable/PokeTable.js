@@ -89,6 +89,12 @@ class TableComponent extends React.Component {
           handleFilterBy={this._handleFilterBy}
           handleFilterReset={this._handleFilterReset}
         />
+        <PokeTablePagination
+          handlePagination={this._handlePagination}
+          pageNum={this.state.pageNum}
+          perPage={this.state.perPage}
+          tableCount={dataCount}
+        />
         <table>
           <PokeTableHead
             handleSort={this._handleSort}

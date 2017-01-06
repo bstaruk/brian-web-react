@@ -15,6 +15,7 @@
           padding: 0 .4em;
           height: 2.4em;
           border: 1px solid $color--border-gray1;
+          color: $color--body-font;
           background: #fff;
           font-size: 1em;
           font-family: $font-sans;
@@ -210,5 +211,30 @@
   }
   .poketable--count {
     font-size: .9em;
+  }
+  .poketable--pagination {
+    ul {
+      list-style-type: none;
+      padding-left: 0;
+      li {
+        display: inline-block;
+        margin-right: $margin--h;
+        &:last-of-type {
+          margin-right: 0;
+        }
+
+        button {
+          padding: .4em .6em;
+          background: $color--bg-gray1;
+          color: $color--body-font;
+          border: 0;
+          cursor: pointer;
+          outline: none;
+          &:disabled {
+            color: lighten($color--body-font, 60%);
+          }
+        }
+      }
+    }
   }
 }
