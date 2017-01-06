@@ -6,6 +6,7 @@ import PokeTableStore from '../../stores/PokeTableStore';
 import PokeTableFilter from './PokeTableFilter';
 import PokeTableHead from './PokeTableHead';
 import PokeTableBody from './PokeTableBody';
+import PokeTablePagination from './PokeTablePagination';
 
 class TableComponent extends React.Component {
   constructor(props) {
@@ -14,6 +15,8 @@ class TableComponent extends React.Component {
     this.state = {
       filter: '',
       filterBy: '',
+      pageNum: 1,
+      perPage: 25,
       sortBy: defaultSortBy,
       sortDescending: false,
       tableData: PokeTableActions.sort(PokeTableStore.getData(), defaultSortBy, false)
@@ -23,6 +26,7 @@ class TableComponent extends React.Component {
     this._handleFilterBy = this._handleFilterBy.bind(this);
     this._handleFilterFull = this._handleFilterFull.bind(this);
     this._handleFilterReset = this._handleFilterReset.bind(this);
+    this._handlePagination = this._handlePagination.bind(this);
   }
 
   _handleSort(id) {
@@ -53,6 +57,7 @@ class TableComponent extends React.Component {
     this.setState({
       filter: id,
       filterBy: filterBy,
+      pageNum: 1,
       tableData: filterBy ? PokeTableActions.filter(PokeTableStore.getData(), id, filterBy) : PokeTableStore.getData()
     });
   }
@@ -61,13 +66,19 @@ class TableComponent extends React.Component {
     this.setState({
       filter: '',
       filterBy: '',
+      pageNum: 1,
       tableData: PokeTableActions.sort(PokeTableStore.getData(), this.state.sortBy, this.state.sortDescending)
     });
   }
 
+  _handlePagination(pageNum) {
+    this.setState({
+      pageNum: pageNum
+    });
+  }
+
   render() {
-    const tableCount = this.state.tableData.length;
-    const dataCount = PokeTableStore.getCount();
+    const dataCount = this.state.tableData.length;
     return (
       <div className="poketable">
         <PokeTableFilter
@@ -77,6 +88,12 @@ class TableComponent extends React.Component {
           handleFilter={this._handleFilter}
           handleFilterBy={this._handleFilterBy}
           handleFilterReset={this._handleFilterReset}
+        />
+        <PokeTablePagination
+          handlePagination={this._handlePagination}
+          pageNum={this.state.pageNum}
+          perPage={this.state.perPage}
+          tableCount={dataCount}
         />
         <table>
           <PokeTableHead
@@ -88,12 +105,22 @@ class TableComponent extends React.Component {
           <PokeTableBody
             handleFilterFull={this._handleFilterFull}
             tableCols={this.props.tableHeaders.length}
-            tableData={this.state.tableData}
+            tableData={this.state.tableData.slice(this.state.perPage * (this.state.pageNum - 1), this.state.perPage * this.state.pageNum)}
           />
         </table>
-        {tableCount > 0 &&
-        <p className="poketable--count">{tableCount} of {dataCount} records shown</p>
+        {dataCount > 0 &&
+        <p className="poketable--count">
+          {this.state.pageNum === 1 ? 1 : ((this.state.pageNum - 1) * this.state.perPage) + 1}
+          -{this.state.pageNum * this.state.perPage > dataCount ? dataCount : this.state.pageNum * this.state.perPage}
+          {' of ' + dataCount + ' records shown'}
+        </p>
         }
+        <PokeTablePagination
+          handlePagination={this._handlePagination}
+          pageNum={this.state.pageNum}
+          perPage={this.state.perPage}
+          tableCount={dataCount}
+        />
       </div>
     );
   }
