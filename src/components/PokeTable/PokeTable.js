@@ -45,8 +45,7 @@ class TableComponent extends React.Component {
   _handleFilterBy(filterBy) {
     this.setState({
       filter: '',
-      filterBy: filterBy,
-      tableData: PokeTableActions.sort(PokeTableStore.getData(), this.state.sortBy, this.state.sortDescending)
+      filterBy: filterBy
     });
   }
 
