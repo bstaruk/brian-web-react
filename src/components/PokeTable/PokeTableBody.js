@@ -1,40 +1,12 @@
 import React from 'react';
-import {Link} from 'react-router';
+import PokeTableBodyRow from './PokeTableBodyRow';
 
 class PokeTableBodyComponent extends React.Component {
   render() {
     return (
       <tbody>
       {this.props.tableData.map((row, index) =>
-        <tr key={index}>
-          {Object.values(row).slice(0, 9).map((cell, index) =>
-            <td key={index}>
-              {index === 1 ? (
-                  <span>
-                    <Link to={'/experiments/poketable/' + row.nat}
-                          className={'type ' + row.typea.toLowerCase()}>{cell}</Link>
-                    {row.typea &&
-                    <a className={'poketable--type-badge typea ' + row.typea.toLowerCase()}
-                       onClick={() => this.props.handleFilterFull('typea', row.typea)}
-                       title={'View more ' + row.typea + ' types'}>
-                      {row.typea.toUpperCase()}
-                    </a>
-                    }
-                    {row.typeb &&
-                    <a className={'poketable--type-badge typeb ' + row.typeb.toLowerCase()}
-                       onClick={() => this.props.handleFilterFull('typeb', row.typeb)}
-                       title={'View more ' + row.typeb + ' secondary types'}>
-                      {row.typeb.toUpperCase()}
-                    </a>
-                    }
-                  </span>
-                ) : (
-                  <span>{cell ? cell : 'N/A'}</span>
-                )
-              }
-            </td>
-          )}
-        </tr>
+        <PokeTableBodyRow rowData={row} handleFilterFull={this.props.handleFilterFull} key={index} />
       )}
       {this.props.tableData.length === 0 &&
       <tr>
