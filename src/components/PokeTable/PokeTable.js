@@ -45,14 +45,15 @@ class TableComponent extends React.Component {
   _handleFilterBy(filterBy) {
     this.setState({
       filter: '',
-      filterBy: filterBy
+      filterBy: filterBy,
+      tableData: PokeTableActions.sort(PokeTableStore.getData(), this.state.sortBy, this.state.sortDescending)
     });
   }
 
   _handleFilterFull(filterBy, id) {
     this.setState({
-      filterBy: filterBy,
       filter: id,
+      filterBy: filterBy,
       tableData: filterBy ? PokeTableActions.filter(PokeTableStore.getData(), id, filterBy) : PokeTableStore.getData()
     });
   }
@@ -61,7 +62,7 @@ class TableComponent extends React.Component {
     this.setState({
       filter: '',
       filterBy: '',
-      tableData: PokeTableStore.getData()
+      tableData: PokeTableActions.sort(PokeTableStore.getData(), this.state.sortBy, this.state.sortDescending)
     });
   }
 
