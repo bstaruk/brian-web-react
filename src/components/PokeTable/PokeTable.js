@@ -100,7 +100,7 @@ class TableComponent extends React.Component {
           <PokeTableBody
             handleFilterFull={this._handleFilterFull}
             tableCols={this.props.tableHeaders.length}
-            tableData={this.state.tableData.slice(0, this.state.perPage)}
+            tableData={this.state.tableData.slice(this.state.perPage * (this.state.pageNum - 1), this.state.perPage * this.state.pageNum)}
           />
         </table>
         {tableCount > 0 &&
