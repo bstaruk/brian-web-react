@@ -78,8 +78,7 @@ class TableComponent extends React.Component {
   }
 
   render() {
-    const tableCount = this.state.tableData.length;
-    const dataCount = PokeTableStore.getCount();
+    const dataCount = this.state.tableData.length;
     return (
       <div className="poketable">
         <PokeTableFilter
@@ -103,14 +102,18 @@ class TableComponent extends React.Component {
             tableData={this.state.tableData.slice(this.state.perPage * (this.state.pageNum - 1), this.state.perPage * this.state.pageNum)}
           />
         </table>
-        {tableCount > 0 &&
-        <p className="poketable--count">{tableCount} of {dataCount} records shown</p>
+        {dataCount > 0 &&
+        <p className="poketable--count">
+          {this.state.pageNum === 1 ? 1 : ((this.state.pageNum - 1) * this.state.perPage) + 1}
+          -{this.state.pageNum * this.state.perPage > dataCount ? dataCount : this.state.pageNum * this.state.perPage}
+          {' of ' + dataCount + ' records shown'}
+        </p>
         }
         <PokeTablePagination
           handlePagination={this._handlePagination}
           pageNum={this.state.pageNum}
           perPage={this.state.perPage}
-          tableCount={tableCount}
+          tableCount={dataCount}
         />
       </div>
     );
