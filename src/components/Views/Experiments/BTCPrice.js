@@ -7,7 +7,7 @@ class ExpBTCPriceComponent extends React.Component {
   render() {
     return (
       <Content>
-        <h2 className='content-title'><Link to="/experiments">Experiments</Link> > BTC Price</h2>
+        <h2 className='content-title'><Link to="/experiments">Experiments</Link> > BTC Price Checker</h2>
         <BTCPrice />
       </Content>
     );
