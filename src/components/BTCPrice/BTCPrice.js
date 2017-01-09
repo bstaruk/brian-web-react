@@ -42,7 +42,16 @@ class BTCPriceComponent extends React.Component {
   }
 
   _handleSourceChange(source) {
-    this._getPrice(source);
+    //this._getPrice(source);
+    BTCPriceStore.getPriceNew(source)
+      .then(
+        (data) => {
+          this.setState({
+            price: data,
+            priceSource: source
+          });
+        }
+      );
   }
 
   render() {
@@ -58,7 +67,7 @@ class BTCPriceComponent extends React.Component {
         <ul>
           {BTCPriceStore.getSourceData().map((source, index) =>
             <li key={index}>
-              <button onClick={() => this._handleSourceChange(source.id)}>{source.label}</button>
+              <button onClick={() => this._handleSourceChange(source)}>{source.label}</button>
             </li>
           )}
         </ul>

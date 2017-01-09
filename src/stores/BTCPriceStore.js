@@ -27,6 +27,27 @@ const BTCPriceStore = {
       default:
         return 0;
     }
+  },
+
+  getPriceNew(source) {
+    return fetch(source.api).then(r => r.json())
+      .then(
+        data => {
+          switch (source.id) {
+            case 'blockchain':
+              return data['USD']['buy'];
+            case 'coinbase':
+              return data['data']['amount'];
+            default:
+              return 0;
+          }
+        }
+      )
+      .catch(
+        () => {
+          return 0;
+        }
+      );
   }
 
 };
