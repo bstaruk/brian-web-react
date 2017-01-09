@@ -47,7 +47,10 @@ class BTCPriceComponent extends React.Component {
     return (
       <div className="btc-price">
         <p>
-          ${this.state.price} {this.state.priceSource ? 'via ' + this.state.priceSource.label : ''}
+          ${this.state.price}
+          {this.state.priceSource &&
+          <span> via <a href={this.state.priceSource.url} target="_blank" className="alt icon-after external">{this.state.priceSource.label}</a></span>
+          }
           {this.state.priceError === true &&
           <span><br />There was an error fetching the price!</span>
           }

@@ -2,16 +2,19 @@
   {
     "id": "bitpay",
     "label": "bitpay.com",
-    "api": "https://bitpay.com/api/rates/usd"
+    "api": "https://bitpay.com/api/rates/usd",
+    "url": "https://bitpay.com"
   },
   {
     "id": "blockchain",
     "label": "blockchain.info",
-    "api": "https://blockchain.info/ticker?cors=true"
+    "api": "https://blockchain.info/ticker?cors=true",
+    "url": "https://blockchain.info"
   },
   {
     "id": "coinbase",
     "label": "coinbase.com",
-    "api": "https://api.coinbase.com/v2/prices/BTC-USD/buy"
+    "api": "https://api.coinbase.com/v2/prices/BTC-USD/buy",
+    "url": "https://www.coinbase.com"
   }
 ]
