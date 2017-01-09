@@ -9,7 +9,7 @@ class BTCPriceComponent extends React.Component {
     super(props);
     this.state = {
       currency: 'EUR',
-      price: 0.00,
+      price: 0,
       priceError: false,
       priceSource: ''
     };
@@ -30,7 +30,7 @@ class BTCPriceComponent extends React.Component {
         if (data === 0) {
           this.setState({
             currency: currency,
-            price: 0.00,
+            price: 0,
             priceError: true,
             priceSource: ''
           });
