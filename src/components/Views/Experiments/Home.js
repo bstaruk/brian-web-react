@@ -11,6 +11,13 @@ class ExperimentsComponent extends React.Component {
         'attr': {
           'to': '/experiments/poketable'
         }
+      },
+      {
+        'prefix': 'Experiment Two',
+        'anchor': 'BTC Price Checker',
+        'attr': {
+          'to': '/experiments/btcprice'
+        }
       }
     ];
     return (
