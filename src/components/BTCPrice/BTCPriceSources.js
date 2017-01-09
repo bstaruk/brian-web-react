@@ -7,7 +7,11 @@ class BTCPriceSourcesComponent extends React.Component {
         <ul>
           {this.props.sourceData.map((source, index) =>
             <li key={index}>
-              <button onClick={() => this.props.handleSourceChange(source)}>{source.label}</button>
+              <button
+                onClick={() => this.props.handleSourceChange(source)}
+                className={this.props.activeSource == source.id ? 'active' : null}>
+                {source.label}
+              </button>
             </li>
           )}
         </ul>
@@ -17,6 +21,7 @@ class BTCPriceSourcesComponent extends React.Component {
 }
 
 BTCPriceSourcesComponent.propTypes = {
+  activeSource: React.PropTypes.string,
   handleSourceChange: React.PropTypes.func.isRequired,
   sourceData: React.PropTypes.array.isRequired
 };

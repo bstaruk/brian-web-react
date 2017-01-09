@@ -13,7 +13,7 @@ class BTCPriceComponent extends React.Component {
       currency: 'USD',
       price: 0,
       priceError: false,
-      priceSource: ''
+      priceSource: []
     };
     this._getPrice = this._getPrice.bind(this);
     this._handleSourceChange = this._handleSourceChange.bind(this);
@@ -69,10 +69,10 @@ class BTCPriceComponent extends React.Component {
           <span><br />There was an error fetching the price!</span>
           }
         </p>
-        <h3>Price Data Sources:</h3>
-        <BTCPriceSources sourceData={BTCPriceStore.getSourceData()} handleSourceChange={this._handleSourceChange} />
         <h3>Currencies:</h3>
-        <BTCPriceCurrencies currencyData={BTCPriceStore.getCurrencies()} handleCurrencyChange={this._handleCurrencyChange} />
+        <BTCPriceCurrencies activeCurrency={this.state.currency} currencyData={BTCPriceStore.getCurrencies()} handleCurrencyChange={this._handleCurrencyChange} />
+        <h3>Data Sources:</h3>
+        <BTCPriceSources activeSource={this.state.priceSource.id} sourceData={BTCPriceStore.getSourceData()} handleSourceChange={this._handleSourceChange} />
       </div>
     );
   }
