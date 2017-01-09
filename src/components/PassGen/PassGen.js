@@ -6,15 +6,19 @@ class PassGenComponent extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      password: '111111111111111'
+      password: '111111111111111',
+      symbols: false,
+      similar: true
     };
     this._makeNewPassword = this._makeNewPassword.bind(this);
+    this._handleSymbolsChange = this._handleSymbolsChange.bind(this);
+    this._handleSimilarChange = this._handleSimilarChange.bind(this);
   }
 
   _makeNewPassword() {
     const length = 15,
-      symbols = true,
-      similar = true,
+      symbols = this.state.symbols,
+      similar = this.state.similar,
       charset1 = 'abcdefghijklnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789',
       charset2 = 'abcdefghjknpqrstuvwxyzABCDEFGHJKMNPQRSTUVWXYZ23456789',
       charset3 = '!@#$%^&*()-=_+\'';
@@ -22,10 +26,10 @@ class PassGenComponent extends React.Component {
     let retVal = '';
 
     // start with similar characters?
-    let charset = !similar ? charset1 : charset2;
+    let charset = similar ? charset1 : charset2;
 
     // add symbols?
-    if (symbols === true) {
+    if (symbols) {
       charset = charset.concat(charset3);
     }
 
@@ -39,6 +43,18 @@ class PassGenComponent extends React.Component {
     });
   }
 
+  _handleSymbolsChange(symbols) {
+    this.setState({
+      symbols: symbols == 'true'
+    });
+  }
+
+  _handleSimilarChange(similar) {
+    this.setState({
+      similar: similar == 'true'
+    });
+  }
+
   render() {
     return (
       <div className="passgen">
@@ -49,7 +65,25 @@ class PassGenComponent extends React.Component {
               <input type="text" name="password" value={this.state.password} readOnly={true} />
             </p>
             <p className="row">
-              <button onClick={this._makeNewPassword} type="button">Click</button>
+              <select
+                onChange={(e) => this._handleSymbolsChange(e.target.value)}
+                defaultValue={this.state.symbols}
+              >
+                <option value={true}>Yes Symbols</option>
+                <option value={false}>No Symbols</option>
+              </select>
+            </p>
+            <p className="row">
+              <select
+                onChange={(e) => this._handleSimilarChange(e.target.value)}
+                defaultValue={this.state.similar}
+              >
+                <option value={true}>Yes Similar</option>
+                <option value={false}>No Similar</option>
+              </select>
+            </p>
+            <p className="row">
+              <button onClick={this._makeNewPassword} type="button">Generate Fresh Password</button>
             </p>
           </fieldset>
         </form>
