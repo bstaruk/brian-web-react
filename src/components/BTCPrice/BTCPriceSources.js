@@ -1,6 +1,10 @@
 import React from 'react';
 
 class BTCPriceSourcesComponent extends React.Component {
+  shouldComponentUpdate(nextProps) {
+    return this.props.activeSource !== nextProps.activeSource;
+  }
+
   render() {
     return (
       <div className="btc-price--sources">

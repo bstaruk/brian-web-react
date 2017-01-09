@@ -1,6 +1,10 @@
 import React from 'react';
 
 class BTCPriceCurrenciesComponent extends React.Component {
+  shouldComponentUpdate(nextProps) {
+    return this.props.activeCurrency !== nextProps.activeCurrency;
+  }
+
   render() {
     return (
       <div className="btc-price--currencies">
