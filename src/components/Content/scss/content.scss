@@ -19,10 +19,16 @@
   .btn {
     font-family: $font-sans;
     padding: $padding--v $padding--h;
+    color: $color--body-font;
     background: $color--bg-gray1;
     border: 1px solid $color--border-gray1;
+    border-radius: 2px;
     cursor: pointer;
     outline: none;
+    @include transition(all 0.3s ease);
+    &:hover {
+      border-color: darken($color--border-gray1, 20%);
+    }
     &.btn--active {
       border-color: $color--primary-red1;
     }
