@@ -2,6 +2,7 @@ require('./scss/btcprice.scss');
 
 import React from 'react';
 import BTCPriceStore from '../../stores/BTCPriceStore';
+import BTCPriceActions from '../../actions/BTCPriceActions';
 
 class BTCPriceComponent extends React.Component {
   constructor(props) {
@@ -20,7 +21,7 @@ class BTCPriceComponent extends React.Component {
   }
 
   _getPrice(source) {
-    BTCPriceStore.getPrice(source.api, source.id)
+    BTCPriceActions.getPrice(source.api, source.id)
       .then(
         (data) => {
           if (data === 0) {
