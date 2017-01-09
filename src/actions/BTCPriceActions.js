@@ -6,11 +6,11 @@ const BTCPriceActions = {
         data => {
           switch (sourceId) {
             case 'bitpay':
-              return data['rate'];
+              return parseFloat(data['rate']);
             case 'blockchain':
-              return data['USD']['buy'];
+              return parseFloat(data['USD']['buy']);
             case 'coinbase':
-              return data['data']['amount'];
+              return parseFloat(data['data']['amount']);
             default:
               return 0;
           }
