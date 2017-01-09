@@ -18,11 +18,11 @@ const BTCPriceStore = {
     });
   },
 
-  getPrice(source) {
-    return fetch(source.api).then(r => r.json())
+  getPrice(sourceApi, sourceId) {
+    return fetch(sourceApi).then(r => r.json())
       .then(
         data => {
-          switch (source.id) {
+          switch (sourceId) {
             case 'bitpay':
               return data['rate'];
             case 'blockchain':

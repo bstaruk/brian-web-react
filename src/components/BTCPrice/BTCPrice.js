@@ -20,7 +20,7 @@ class BTCPriceComponent extends React.Component {
   }
 
   _getPrice(source) {
-    BTCPriceStore.getPrice(source)
+    BTCPriceStore.getPrice(source.api, source.id)
       .then(
         (data) => {
           if (data === 0) {
