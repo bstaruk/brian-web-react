@@ -32,6 +32,7 @@ class TableComponent extends React.Component {
   _handleSort(id) {
     const newSortDescending = this.state.sortBy === id && !this.state.sortDescending;
     this.setState({
+      pageNum: 1,
       sortBy: id,
       sortDescending: newSortDescending,
       tableData: PokeTableActions.sort(this.state.tableData, id, newSortDescending)
@@ -42,6 +43,7 @@ class TableComponent extends React.Component {
     const filterBy = this.state.filterBy;
     this.setState({
       filter: filter,
+      pageNum: 1,
       tableData: filterBy ? PokeTableActions.filter(PokeTableStore.getData(), filter, filterBy) : PokeTableStore.getData()
     });
   }
