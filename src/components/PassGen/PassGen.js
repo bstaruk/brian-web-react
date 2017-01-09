@@ -6,13 +6,17 @@ class PassGenComponent extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      password: '111111111111111',
+      password: '',
       symbols: false,
       similar: true
     };
     this._makeNewPassword = this._makeNewPassword.bind(this);
     this._handleSymbolsChange = this._handleSymbolsChange.bind(this);
     this._handleSimilarChange = this._handleSimilarChange.bind(this);
+  }
+
+  componentDidMount() {
+    this._makeNewPassword();
   }
 
   _makeNewPassword() {
