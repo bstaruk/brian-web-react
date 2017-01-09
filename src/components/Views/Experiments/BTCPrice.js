@@ -2,8 +2,18 @@ import React from 'react';
 import {Link} from 'react-router';
 import Content from '../../Content/Content';
 import BTCPrice from '../../BTCPrice/BTCPrice';
+import BTCPriceStore from '../../../stores/BTCPriceStore';
 
 class ExpBTCPriceComponent extends React.Component {
+  constructor() {
+    super();
+    BTCPriceStore.init();
+  }
+
+  shouldComponentUpdate() {
+    return false;
+  }
+
   render() {
     return (
       <Content>

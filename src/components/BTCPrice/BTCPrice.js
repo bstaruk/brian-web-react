@@ -1,13 +1,15 @@
 require('./scss/btcprice.scss');
 
 import React from 'react';
+import BTCPriceStore from '../../stores/BTCPriceStore';
 
 class BTCPriceComponent extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       price: 0.00,
-      priceError: false
+      priceError: false,
+      priceSource: ''
     };
     this._getPrice = this._getPrice.bind(this);
   }
@@ -21,7 +23,8 @@ class BTCPriceComponent extends React.Component {
       .then(
         data => {
           this.setState({
-            price: data.data.amount
+            price: data.data.amount,
+            priceSource: BTCPriceStore.getSourceRecord('id', 'coinbase')
           });
         }
       )
@@ -29,7 +32,8 @@ class BTCPriceComponent extends React.Component {
         () => {
           this.setState({
             price: 0.00,
-            priceError: true
+            priceError: true,
+            priceSource: ''
           });
         }
       );
@@ -39,7 +43,7 @@ class BTCPriceComponent extends React.Component {
     return (
       <div className="btc-price">
         <p>
-          Current Price: ${this.state.price}
+          Current Price: ${this.state.price} via {this.state.priceSource.label}
           {this.state.priceError === true &&
           <span><br />There was an error fetching the price!</span>
           }
