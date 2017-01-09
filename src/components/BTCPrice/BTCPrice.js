@@ -15,16 +15,18 @@ class BTCPriceComponent extends React.Component {
   }
 
   componentDidMount() {
-    this._getPrice();
+    this._getPrice('coinbase');
   }
 
-  _getPrice() {
-    fetch('https://api.coinbase.com/v2/prices/BTC-USD/buy').then(r => r.json())
+  _getPrice(source) {
+    const priceSource = this.state.priceSource.id === source ? this.state.priceSource : BTCPriceStore.getSourceRecord('id', source);
+    fetch(priceSource.api).then(r => r.json())
       .then(
         data => {
+          console.log(BTCPriceStore.getPrice(data, source));
           this.setState({
-            price: data.data.amount,
-            priceSource: BTCPriceStore.getSourceRecord('id', 'coinbase')
+            price: BTCPriceStore.getPrice(data, source),
+            priceSource: priceSource
           });
         }
       )
@@ -43,7 +45,7 @@ class BTCPriceComponent extends React.Component {
     return (
       <div className="btc-price">
         <p>
-          Current Price: ${this.state.price} via {this.state.priceSource.label}
+          Current Price: ${this.state.price} {this.state.priceSource ? 'via ' + this.state.priceSource.label : ''}
           {this.state.priceError === true &&
           <span><br />There was an error fetching the price!</span>
           }

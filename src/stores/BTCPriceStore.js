@@ -16,6 +16,14 @@ const BTCPriceStore = {
     return sourceData.find(function (data) {
       return data[recordId] == itemId;
     });
+  },
+
+  getPrice(data, source) {
+    if (source === 'blockchain') {
+      return data['USD']['buy'];
+    } else if (source === 'coinbase') {
+      return data['data']['amount'];
+    }
   }
 
 };
