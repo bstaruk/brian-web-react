@@ -65,7 +65,7 @@ class PassGenComponent extends React.Component {
               <input type="text" name="password" value={this.state.password} readOnly={true} />
             </p>
             <p className="row">
-              <select onChange={(e) => this._handleSymbolsChange(e.target.value)}>
+              <select onChange={(e) => this._handleSymbolsChange(e.target.value)} defaultValue={this.state.symbols}>
                 <option disabled>Include Symbols?</option>
                 <option value={true}>Include Symbols</option>
                 <option value={false}>Exclude Symbols</option>
