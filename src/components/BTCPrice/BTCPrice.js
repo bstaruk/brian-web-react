@@ -8,6 +8,7 @@ class BTCPriceComponent extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      currency: 'EUR',
       price: 0.00,
       priceError: false,
       priceSource: ''
@@ -17,38 +18,48 @@ class BTCPriceComponent extends React.Component {
   }
 
   componentDidMount() {
-    this._getPrice(BTCPriceStore.getSourceRecord('id', 'coinbase'));
+    this._getPrice(BTCPriceStore.getSourceRecord('id', 'coinbase'), this.state.currency);
   }
 
-  _getPrice(source) {
-    BTCPriceActions.getPrice(source.api, source.id)
-      .then(
-        (data) => {
-          if (data === 0) {
-            this.setState({
-              price: 0.00,
-              priceError: true,
-              priceSource: ''
-            });
-          } else {
-            this.setState({
-              price: data,
-              priceSource: source
-            });
-          }
+  _getPrice(source, currency) {
+    BTCPriceActions.getPrice(
+      source.api['ALL'] ? source.api['ALL'] : source.api[currency], source.id, currency
+    )
+    .then(
+      (data) => {
+        if (data === 0) {
+          this.setState({
+            currency: currency,
+            price: 0.00,
+            priceError: true,
+            priceSource: ''
+          });
+        } else {
+          this.setState({
+            currency: currency,
+            price: data,
+            priceSource: source
+          });
         }
-      );
+      }
+    );
   }
 
   _handleSourceChange(source) {
-    this._getPrice(source);
+    this._getPrice(source, this.state.currency);
+  }
+
+  _handleCurrencyChange(currency) {
+    this._getPrice(this.state.priceSource, currency);
   }
 
   render() {
+    const currency = BTCPriceStore.getCurrencyRecord('id', this.state.currency);
     return (
       <div className="btc-price">
         <p>
-          ${this.state.price.toFixed(2)}
+          {currency ? currency.symbol : null}
+          {this.state.price.toFixed(2)}
           {this.state.priceSource &&
           <span> via <a href={this.state.priceSource.url} target="_blank" className="alt icon-after external">{this.state.priceSource.label}</a></span>
           }
@@ -61,6 +72,14 @@ class BTCPriceComponent extends React.Component {
           {BTCPriceStore.getSourceData().map((source, index) =>
             <li key={index}>
               <button onClick={() => this._handleSourceChange(source)}>{source.label}</button>
+            </li>
+          )}
+        </ul>
+        <h3>Currencies:</h3>
+        <ul>
+          {BTCPriceStore.getCurrencies().map((currency, index) =>
+            <li key={index}>
+              <button onClick={() => this._handleCurrencyChange(currency.id)}>{currency.id} ({currency.symbol})</button>
             </li>
           )}
         </ul>

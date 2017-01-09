@@ -1,6 +1,6 @@
 const BTCPriceActions = {
 
-  getPrice(sourceApi, sourceId) {
+  getPrice(sourceApi, sourceId, currency) {
     return fetch(sourceApi).then(r => r.json())
       .then(
         data => {
@@ -8,7 +8,7 @@ const BTCPriceActions = {
             case 'bitpay':
               return parseFloat(data['rate']);
             case 'blockchain':
-              return parseFloat(data['USD']['buy']);
+              return parseFloat(data[currency]['buy']);
             case 'coinbase':
               return parseFloat(data['data']['amount']);
             default:

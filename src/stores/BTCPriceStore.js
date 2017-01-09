@@ -1,6 +1,16 @@
 import btcPriceSources from '../assets/json/btcPriceSources.json';
 
 let sourceData;
+const currencies = [
+  {
+    'id': 'USD',
+    'symbol': '$'
+  },
+  {
+    'id': 'EUR',
+    'symbol': '€'
+  }
+];
 
 const BTCPriceStore = {
 
@@ -14,6 +24,16 @@ const BTCPriceStore = {
 
   getSourceRecord(recordId, itemId) {
     return sourceData.find(function (data) {
+      return data[recordId] == itemId;
+    });
+  },
+
+  getCurrencies() {
+    return currencies;
+  },
+
+  getCurrencyRecord(recordId, itemId) {
+    return currencies.find(function (data) {
       return data[recordId] == itemId;
     });
   }
