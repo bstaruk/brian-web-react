@@ -3,13 +3,14 @@ require('./scss/btcprice.scss');
 import React from 'react';
 import BTCPriceStore from '../../stores/BTCPriceStore';
 import BTCPriceActions from '../../actions/BTCPriceActions';
+import BTCPriceSources from './BTCPriceSources';
 import BTCPriceCurrencies from './BTCPriceCurrencies';
 
 class BTCPriceComponent extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      currency: 'EUR',
+      currency: 'USD',
       price: 0,
       priceError: false,
       priceSource: ''
@@ -69,13 +70,7 @@ class BTCPriceComponent extends React.Component {
           }
         </p>
         <h3>Price Data Sources:</h3>
-        <ul>
-          {BTCPriceStore.getSourceData().map((source, index) =>
-            <li key={index}>
-              <button onClick={() => this._handleSourceChange(source)}>{source.label}</button>
-            </li>
-          )}
-        </ul>
+        <BTCPriceSources sourceData={BTCPriceStore.getSourceData()} handleSourceChange={this._handleSourceChange} />
         <h3>Currencies:</h3>
         <BTCPriceCurrencies currencyData={BTCPriceStore.getCurrencies()} handleCurrencyChange={this._handleCurrencyChange} />
       </div>
