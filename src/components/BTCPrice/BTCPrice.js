@@ -16,42 +16,31 @@ class BTCPriceComponent extends React.Component {
   }
 
   componentDidMount() {
-    this._getPrice('coinbase');
+    this._getPrice(BTCPriceStore.getSourceRecord('id', 'coinbase'));
   }
 
   _getPrice(source) {
-    const priceSource = this.state.priceSource.id === source ? this.state.priceSource : BTCPriceStore.getSourceRecord('id', source);
-    fetch(priceSource.api).then(r => r.json())
+    BTCPriceStore.getPrice(source)
       .then(
-        data => {
-          this.setState({
-            price: BTCPriceStore.getPrice(data, source),
-            priceSource: priceSource
-          });
-        }
-      )
-      .catch(
-        () => {
-          this.setState({
-            price: 0.00,
-            priceError: true,
-            priceSource: ''
-          });
+        (data) => {
+          if (data === 0) {
+            this.setState({
+              price: 0.00,
+              priceError: true,
+              priceSource: ''
+            });
+          } else {
+            this.setState({
+              price: data,
+              priceSource: source
+            });
+          }
         }
       );
   }
 
   _handleSourceChange(source) {
-    //this._getPrice(source);
-    BTCPriceStore.getPriceNew(source)
-      .then(
-        (data) => {
-          this.setState({
-            price: data,
-            priceSource: source
-          });
-        }
-      );
+    this._getPrice(source);
   }
 
   render() {
