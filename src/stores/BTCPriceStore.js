@@ -1,6 +1,6 @@
 import btcPriceSources from '../assets/json/btcPriceSources.json';
 
-let sourceData;
+const sourceData = btcPriceSources;
 const currencies = [
   {
     'id': 'USD',
@@ -13,10 +13,6 @@ const currencies = [
 ];
 
 const BTCPriceStore = {
-
-  init() {
-    sourceData = btcPriceSources;
-  },
 
   getSourceData() {
     return sourceData;
