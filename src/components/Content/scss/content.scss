@@ -18,7 +18,7 @@
 
   .btn {
     font-family: $font-sans;
-    padding: $padding--v $padding--h;
+    padding: .5em .75em;
     color: $color--body-font;
     background: $color--bg-gray1;
     border: 1px solid $color--border-gray1;
@@ -27,10 +27,10 @@
     outline: none;
     @include transition(all 0.3s ease);
     &:hover {
-      border-color: darken($color--border-gray1, 20%);
+      border-color: darken($color--border-gray1, 15%);
     }
     &.btn--active {
-      border-color: $color--primary-red1;
+      border-color: darken($color--border-gray1, 45%);
     }
   }
 }
