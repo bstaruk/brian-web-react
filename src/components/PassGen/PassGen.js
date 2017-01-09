@@ -12,8 +12,30 @@ class PassGenComponent extends React.Component {
   }
 
   _makeNewPassword() {
+    const length = 15,
+      symbols = true,
+      similar = true,
+      charset1 = 'abcdefghijklnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789',
+      charset2 = 'abcdefghjknpqrstuvwxyzABCDEFGHJKMNPQRSTUVWXYZ23456789',
+      charset3 = '!@#$%^&*()-=_+\'';
+
+    let retVal = '';
+
+    // start with similar characters?
+    let charset = !similar ? charset1 : charset2;
+
+    // add symbols?
+    if (symbols === true) {
+      charset = charset.concat(charset3);
+    }
+
+    // use the character set and length defined above to generate a random string
+    for (let i = 0, n = charset.length; i < length; ++i) {
+      retVal += charset.charAt(Math.floor(Math.random() * n));
+    }
+
     this.setState({
-      password: '222222222222222'
+      password: retVal
     });
   }
 
