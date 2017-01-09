@@ -1,5 +1,10 @@
 [
   {
+    "id": "bitpay",
+    "label": "bitpay.com",
+    "api": "https://bitpay.com/api/rates/usd"
+  },
+  {
     "id": "blockchain",
     "label": "Blockchain.info",
     "api": "https://blockchain.info/ticker?cors=true"

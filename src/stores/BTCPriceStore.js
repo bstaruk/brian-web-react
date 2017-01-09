@@ -23,6 +23,8 @@ const BTCPriceStore = {
       .then(
         data => {
           switch (source.id) {
+            case 'bitpay':
+              return data['rate'];
             case 'blockchain':
               return data['USD']['buy'];
             case 'coinbase':
