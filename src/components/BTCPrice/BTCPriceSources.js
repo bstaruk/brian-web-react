@@ -13,7 +13,7 @@ class BTCPriceSourcesComponent extends React.Component {
             <li key={index}>
               <button
                 onClick={() => this.props.handleSourceChange(source)}
-                className={this.props.activeSource == source.id ? 'active' : null}>
+                className={this.props.activeSource == source.id ? 'btn btn--active' : 'btn'}>
                 {source.label}
               </button>
             </li>

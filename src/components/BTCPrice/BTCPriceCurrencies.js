@@ -13,7 +13,7 @@ class BTCPriceCurrenciesComponent extends React.Component {
             <li key={index}>
               <button
                 onClick={() => this.props.handleCurrencyChange(currency.id)}
-                className={this.props.activeCurrency == currency.id ? 'active' : null}>
+                className={this.props.activeCurrency == currency.id ? 'btn btn--active' : 'btn'}>
                 {currency.id} ({currency.symbol})
               </button>
             </li>
