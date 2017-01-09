@@ -12,6 +12,7 @@ class BTCPriceComponent extends React.Component {
       priceSource: ''
     };
     this._getPrice = this._getPrice.bind(this);
+    this._handleSourceChange = this._handleSourceChange.bind(this);
   }
 
   componentDidMount() {
@@ -23,7 +24,6 @@ class BTCPriceComponent extends React.Component {
     fetch(priceSource.api).then(r => r.json())
       .then(
         data => {
-          console.log(BTCPriceStore.getPrice(data, source));
           this.setState({
             price: BTCPriceStore.getPrice(data, source),
             priceSource: priceSource
@@ -41,15 +41,27 @@ class BTCPriceComponent extends React.Component {
       );
   }
 
+  _handleSourceChange(source) {
+    this._getPrice(source);
+  }
+
   render() {
     return (
       <div className="btc-price">
         <p>
-          Current Price: ${this.state.price} {this.state.priceSource ? 'via ' + this.state.priceSource.label : ''}
+          ${this.state.price} {this.state.priceSource ? 'via ' + this.state.priceSource.label : ''}
           {this.state.priceError === true &&
           <span><br />There was an error fetching the price!</span>
           }
         </p>
+        <ul>
+          <li>
+            <button onClick={() => this._handleSourceChange('coinbase')}>Coinbase</button>
+          </li>
+          <li>
+            <button onClick={() => this._handleSourceChange('blockchain')}>Blockchain</button>
+          </li>
+        </ul>
       </div>
     );
   }
