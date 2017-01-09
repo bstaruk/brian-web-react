@@ -6,11 +6,13 @@ class PassGenComponent extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      length: 15,
       password: '',
-      symbols: false,
-      similar: true
+      similar: true,
+      symbols: false
     };
     this._makeNewPassword = this._makeNewPassword.bind(this);
+    this._handleLengthChange = this._handleLengthChange.bind(this);
     this._handleSymbolsChange = this._handleSymbolsChange.bind(this);
     this._handleSimilarChange = this._handleSimilarChange.bind(this);
   }
@@ -20,7 +22,7 @@ class PassGenComponent extends React.Component {
   }
 
   _makeNewPassword() {
-    const length = 15,
+    const length = this.state.length,
       symbols = this.state.symbols,
       similar = this.state.similar,
       charset1 = 'abcdefghijklnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789',
@@ -44,6 +46,12 @@ class PassGenComponent extends React.Component {
 
     this.setState({
       password: retVal
+    });
+  }
+
+  _handleLengthChange(length) {
+    this.setState({
+      length: length
     });
   }
 
@@ -84,6 +92,16 @@ class PassGenComponent extends React.Component {
               >
                 <option value={true}>Yes Similar</option>
                 <option value={false}>No Similar</option>
+              </select>
+            </p>
+            <p className="row">
+              <select
+                onChange={(e) => this._handleLengthChange(parseInt(e.target.value))}
+                defaultValue={this.state.length}
+              >
+                <option value={10}>10</option>
+                <option value={15}>15</option>
+                <option value={20}>20</option>
               </select>
             </p>
             <p className="row">
