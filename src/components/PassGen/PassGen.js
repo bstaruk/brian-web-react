@@ -8,13 +8,11 @@ class PassGenComponent extends React.Component {
     this.state = {
       length: 15,
       password: '',
-      similar: true,
       symbols: false
     };
     this._makeNewPassword = this._makeNewPassword.bind(this);
     this._handleLengthChange = this._handleLengthChange.bind(this);
     this._handleSymbolsChange = this._handleSymbolsChange.bind(this);
-    this._handleSimilarChange = this._handleSimilarChange.bind(this);
   }
 
   componentDidMount() {
@@ -24,28 +22,24 @@ class PassGenComponent extends React.Component {
   _makeNewPassword() {
     const length = this.state.length,
       symbols = this.state.symbols,
-      similar = this.state.similar,
-      charset1 = 'abcdefghijklnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789',
-      charset2 = 'abcdefghjknpqrstuvwxyzABCDEFGHJKMNPQRSTUVWXYZ23456789',
-      charset3 = '!@#$%^&*()-=_+\'';
+      symbolsCharset = '!@#$%^&*()-=_+\'';
 
-    let retVal = '';
-
-    // start with similar characters?
-    let charset = similar ? charset1 : charset2;
+    // base charset
+    let charset = 'abcdefghijklnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
 
     // add symbols?
     if (symbols) {
-      charset = charset.concat(charset3);
+      charset = charset.concat(symbolsCharset);
     }
 
     // use the character set and length defined above to generate a random string
+    let newPassword = '';
     for (let i = 0, n = charset.length; i < length; ++i) {
-      retVal += charset.charAt(Math.floor(Math.random() * n));
+      newPassword += charset.charAt(Math.floor(Math.random() * n));
     }
 
     this.setState({
-      password: retVal
+      password: newPassword
     });
   }
 
@@ -61,12 +55,6 @@ class PassGenComponent extends React.Component {
     });
   }
 
-  _handleSimilarChange(similar) {
-    this.setState({
-      similar: similar == 'true'
-    });
-  }
-
   render() {
     return (
       <div className="passgen">
@@ -77,21 +65,10 @@ class PassGenComponent extends React.Component {
               <input type="text" name="password" value={this.state.password} readOnly={true} />
             </p>
             <p className="row">
-              <select
-                onChange={(e) => this._handleSymbolsChange(e.target.value)}
-                defaultValue={this.state.symbols}
-              >
-                <option value={true}>Yes Symbols</option>
-                <option value={false}>No Symbols</option>
-              </select>
-            </p>
-            <p className="row">
-              <select
-                onChange={(e) => this._handleSimilarChange(e.target.value)}
-                defaultValue={this.state.similar}
-              >
-                <option value={true}>Yes Similar</option>
-                <option value={false}>No Similar</option>
+              <select onChange={(e) => this._handleSymbolsChange(e.target.value)}>
+                <option disabled>Include Symbols?</option>
+                <option value={true}>Include Symbols</option>
+                <option value={false}>Exclude Symbols</option>
               </select>
             </p>
             <p className="row">
