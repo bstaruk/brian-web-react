@@ -1,12 +1,12 @@
 [
   {
-    "id": "coinbase",
-    "label": "Coinbase.com",
-    "api": "https://api.coinbase.com/v2/prices/BTC-USD/buy"
-  },
-  {
     "id": "blockchain",
     "label": "Blockchain.info",
     "api": "https://blockchain.info/ticker?cors=true"
+  },
+  {
+    "id": "coinbase",
+    "label": "Coinbase.com",
+    "api": "https://api.coinbase.com/v2/prices/BTC-USD/buy"
   }
 ]

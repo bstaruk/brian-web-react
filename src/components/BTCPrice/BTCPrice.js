@@ -54,13 +54,13 @@ class BTCPriceComponent extends React.Component {
           <span><br />There was an error fetching the price!</span>
           }
         </p>
+        <h3>Price Data Sources:</h3>
         <ul>
-          <li>
-            <button onClick={() => this._handleSourceChange('coinbase')}>Coinbase</button>
-          </li>
-          <li>
-            <button onClick={() => this._handleSourceChange('blockchain')}>Blockchain</button>
-          </li>
+          {BTCPriceStore.getSourceData().map((source, index) =>
+            <li key={index}>
+              <button onClick={() => this._handleSourceChange(source.id)}>{source.label}</button>
+            </li>
+          )}
         </ul>
       </div>
     );

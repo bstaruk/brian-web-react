@@ -19,10 +19,13 @@ const BTCPriceStore = {
   },
 
   getPrice(data, source) {
-    if (source === 'blockchain') {
-      return data['USD']['buy'];
-    } else if (source === 'coinbase') {
-      return data['data']['amount'];
+    switch (source) {
+      case 'blockchain':
+        return data['USD']['buy'];
+      case 'coinbase':
+        return data['data']['amount'];
+      default:
+        return 0;
     }
   }
 
