@@ -9,7 +9,7 @@ import {render} from 'react-dom';
 import {Router, Route, IndexRoute, browserHistory} from 'react-router';
 import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
-import {Home, Contact, Experiments, ExpPokeTable, ExpPokeTableItem, ExpBTCPrice, NoMatch} from './components/Views';
+import {Home, Contact, Experiments, ExpPokeTable, ExpPokeTableItem, ExpBTCPrice, ExpPassGen, NoMatch} from './components/Views';
 
 // Render the main component into the dom
 // ReactDOM.render(<App />, document.getElementById('app'));
@@ -48,6 +48,7 @@ render((
           <Route path=":item" component={ExpPokeTableItem} />
         </Route>
         <Route path="btcprice" component={ExpBTCPrice} />
+        <Route path="passgen" component={ExpPassGen} />
       </Route>
       <Route path="*" component={NoMatch} />
     </Route>

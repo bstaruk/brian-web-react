@@ -18,6 +18,13 @@ class ExperimentsComponent extends React.Component {
         'attr': {
           'to': '/experiments/btcprice'
         }
+      },
+      {
+        'prefix': 'Experiment Three',
+        'anchor': 'Password Generator',
+        'attr': {
+          'to': '/experiments/passgen'
+        }
       }
     ];
     return (
