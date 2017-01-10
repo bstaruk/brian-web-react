@@ -61,7 +61,7 @@ class BTCPriceComponent extends React.Component {
     return (
       <div className="btc-price">
         <p>
-          The current price of Bitcoin is <strong>{currency ? currency.symbol : null}{this.state.price.toFixed(2)}</strong>
+          The current price of Bitcoin is {currency ? currency.symbol : null}{this.state.price.toFixed(2)}
           {this.state.priceSource &&
           <span> via <a href={this.state.priceSource.url} target="_blank" className="alt icon-after external">{this.state.priceSource.label}</a></span>
           }.
