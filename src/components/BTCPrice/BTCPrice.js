@@ -26,7 +26,7 @@ class BTCPriceComponent extends React.Component {
 
   _getPrice(source, currency) {
     BTCPriceActions.getPrice(
-      source.api['ALL'] ? source.api['ALL'] : source.api[currency], source.id, currency
+      source.api[currency], source.id, currency
     )
     .then(
       (data) => {
@@ -61,7 +61,7 @@ class BTCPriceComponent extends React.Component {
     return (
       <div className="btc-price">
         <p>
-          The current price of Bitcoin is {currency ? currency.symbol : null}{this.state.price.toFixed(2)}
+          The current price of Bitcoin is <strong>{currency ? currency.symbol : null}{this.state.price.toFixed(2)}</strong>
           {this.state.priceSource &&
           <span> via <a href={this.state.priceSource.url} target="_blank" className="alt icon-after external">{this.state.priceSource.label}</a></span>
           }.
@@ -69,10 +69,10 @@ class BTCPriceComponent extends React.Component {
           <span><br />There was an error fetching the price!</span>
           }
         </p>
-        <h3>Currencies:</h3>
-        <BTCPriceCurrencies activeCurrency={this.state.currency} currencyData={BTCPriceStore.getCurrencies()} handleCurrencyChange={this._handleCurrencyChange} />
         <h3>Data Sources:</h3>
         <BTCPriceSources activeSource={this.state.priceSource.id} sourceData={BTCPriceStore.getSourceData()} handleSourceChange={this._handleSourceChange} />
+        <h3>Currencies:</h3>
+        <BTCPriceCurrencies activeCurrency={this.state.currency} currencyData={BTCPriceStore.getCurrencies()} handleCurrencyChange={this._handleCurrencyChange} />
       </div>
     );
   }

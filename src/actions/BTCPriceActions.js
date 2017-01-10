@@ -11,6 +11,8 @@ const BTCPriceActions = {
               return parseFloat(data[currency]['buy']);
             case 'coinbase':
               return parseFloat(data['data']['amount']);
+            case 'coindesk':
+              return parseFloat(data['bpi'][currency]['rate']);
             default:
               return 0;
           }

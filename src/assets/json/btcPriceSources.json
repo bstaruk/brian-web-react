@@ -12,7 +12,8 @@
     "id": "blockchain",
     "label": "blockchain.info",
     "api": {
-      "ALL": "https://blockchain.info/ticker?cors=true"
+      "EUR": "https://blockchain.info/ticker?cors=true",
+      "USD": "https://blockchain.info/ticker?cors=true"
     },
     "url": "https://blockchain.info"
   },
@@ -24,5 +25,14 @@
       "USD": "https://api.coinbase.com/v2/prices/BTC-USD/buy"
     },
     "url": "https://www.coinbase.com"
+  },
+  {
+    "id": "coindesk",
+    "label": "coindesk.com",
+    "api": {
+      "EUR": "http://api.coindesk.com/v1/bpi/currentprice/EUR.json",
+      "USD": "http://api.coindesk.com/v1/bpi/currentprice/EUR.json"
+    },
+    "url": "https://www.coindesk.com"
   }
 ]
