@@ -8,7 +8,7 @@ class PassGenComponent extends React.Component {
     this.state = {
       length: 15,
       password: '',
-      symbols: false
+      symbols: true
     };
     this._makeNewPassword = this._makeNewPassword.bind(this);
     this._handleLengthChange = this._handleLengthChange.bind(this);
@@ -58,24 +58,30 @@ class PassGenComponent extends React.Component {
   render() {
     return (
       <div className="passgen">
-        <p>Hi mom!</p>
         <form className="passgen--form">
           <fieldset>
             <p className="row">
-              <input type="text" name="password" value={this.state.password} readOnly={true} />
+              <label>Your New Password:</label>
+              <input type="text" value={this.state.password} readOnly={true} />
             </p>
             <p className="row">
-              <select onChange={(e) => this._handleSymbolsChange(e.target.value)} defaultValue={this.state.symbols}>
+              <label>Include symbols?</label>
+              <select
+                onChange={(e) => this._handleSymbolsChange(e.target.value)}
+                defaultValue={this.state.symbols}
+              >
                 <option disabled>Include Symbols?</option>
                 <option value={true}>Include Symbols</option>
                 <option value={false}>Exclude Symbols</option>
               </select>
             </p>
             <p className="row">
+              <label>Password Length:</label>
               <select
                 onChange={(e) => this._handleLengthChange(parseInt(e.target.value))}
                 defaultValue={this.state.length}
               >
+                <option disabled>Password Length</option>
                 <option value={10}>10</option>
                 <option value={15}>15</option>
                 <option value={20}>20</option>

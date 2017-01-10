@@ -1,3 +1,41 @@
+@import "../../../assets/scss/_vars";
+
 .passgen {
-  // ayyyyyyy
+  .passgen--form {
+    fieldset {
+      border: 0;
+      padding: 0;
+      margin: 0;
+      max-width: 420px;
+      label {
+        display: block;
+        margin-bottom: .4em;
+      }
+      input[type='text'], select, button {
+        display: block;
+        width: 100%;
+        outline: none;
+        margin-bottom: .5em;
+        padding: 0 .4em;
+        height: 2.4em;
+        border: 1px solid $color--border-gray1;
+        color: $color--body-font;
+        background: #fff;
+        font-size: 1em;
+        font-family: $font-sans;
+        @include placeholder {
+          font-style: italic;
+        }
+      }
+      select {
+        option {
+          border: 0;
+        }
+      }
+      button {
+        background: $color--bg-gray1;
+        cursor: pointer;
+      }
+    }
+  }
 }
