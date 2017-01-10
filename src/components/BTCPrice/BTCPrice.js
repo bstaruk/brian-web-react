@@ -26,7 +26,7 @@ class BTCPriceComponent extends React.Component {
 
   _getPrice(source, currency) {
     BTCPriceActions.getPrice(
-      source.api['ALL'] ? source.api['ALL'] : source.api[currency], source.id, currency
+      source.api[currency], source.id, currency
     )
     .then(
       (data) => {
@@ -69,10 +69,10 @@ class BTCPriceComponent extends React.Component {
           <span><br />There was an error fetching the price!</span>
           }
         </p>
-        <h3>Currencies:</h3>
-        <BTCPriceCurrencies activeCurrency={this.state.currency} currencyData={BTCPriceStore.getCurrencies()} handleCurrencyChange={this._handleCurrencyChange} />
         <h3>Data Sources:</h3>
         <BTCPriceSources activeSource={this.state.priceSource.id} sourceData={BTCPriceStore.getSourceData()} handleSourceChange={this._handleSourceChange} />
+        <h3>Currencies:</h3>
+        <BTCPriceCurrencies activeCurrency={this.state.currency} currencyData={BTCPriceStore.getCurrencies()} handleCurrencyChange={this._handleCurrencyChange} />
       </div>
     );
   }
