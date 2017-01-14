@@ -41,6 +41,7 @@ class BTCPriceComponent extends React.Component {
           this.setState({
             currency: currency,
             price: data,
+            priceError: false,
             priceSource: source
           });
         }
