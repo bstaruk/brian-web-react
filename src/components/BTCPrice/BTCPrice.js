@@ -11,6 +11,7 @@ class BTCPriceComponent extends React.Component {
     super(props);
     this.state = {
       currency: 'USD',
+      loading: false,
       price: 0,
       priceError: false,
       priceSource: []
@@ -25,6 +26,7 @@ class BTCPriceComponent extends React.Component {
   }
 
   _getPrice(source, currency) {
+    this.setState({loading: true});
     BTCPriceActions.getPrice(
       source.api[currency], source.id, currency
     )
@@ -40,6 +42,7 @@ class BTCPriceComponent extends React.Component {
         } else {
           this.setState({
             currency: currency,
+            loading: false,
             price: data,
             priceError: false,
             priceSource: source
@@ -62,7 +65,8 @@ class BTCPriceComponent extends React.Component {
     return (
       <div className="btc-price">
         <p>
-          The current price of Bitcoin is {currency ? currency.symbol : null}{this.state.price.toFixed(2)}
+          The current price of Bitcoin is
+          <span className={this.state.loading ? 'price loading' : 'price'}> {currency.symbol + this.state.price.toFixed(2)}</span>
           {this.state.priceSource &&
           <span> via <a href={this.state.priceSource.url} target="_blank" className="alt icon-after external">{this.state.priceSource.label}</a></span>
           }.
