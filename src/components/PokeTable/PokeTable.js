@@ -29,7 +29,7 @@ class TableComponent extends React.Component {
     this._handlePagination = this._handlePagination.bind(this);
   }
 
-  _handleSort(id) {
+  _handleSort = (id) => {
     const newSortDescending = this.state.sortBy === id && !this.state.sortDescending;
     this.setState({
       pageNum: 1,
@@ -37,47 +37,47 @@ class TableComponent extends React.Component {
       sortDescending: newSortDescending,
       tableData: PokeTableActions.sort(this.state.tableData, id, newSortDescending)
     });
-  }
+  };
 
-  _handleFilter(filter) {
+  _handleFilter = (filter) => {
     const filterBy = this.state.filterBy;
     this.setState({
       filter: filter,
       pageNum: 1,
       tableData: filterBy ? PokeTableActions.filter(PokeTableStore.getData(), filter, filterBy) : PokeTableStore.getData()
     });
-  }
+  };
 
-  _handleFilterBy(filterBy) {
+  _handleFilterBy = (filterBy) => {
     this.setState({
       filter: '',
       filterBy: filterBy
     });
-  }
+  };
 
-  _handleFilterFull(filterBy, id) {
+  _handleFilterFull = (filterBy, id) => {
     this.setState({
       filter: id,
       filterBy: filterBy,
       pageNum: 1,
       tableData: filterBy ? PokeTableActions.filter(PokeTableStore.getData(), id, filterBy) : PokeTableStore.getData()
     });
-  }
+  };
 
-  _handleFilterReset() {
+  _handleFilterReset = () => {
     this.setState({
       filter: '',
       filterBy: '',
       pageNum: 1,
       tableData: PokeTableActions.sort(PokeTableStore.getData(), this.state.sortBy, this.state.sortDescending)
     });
-  }
+  };
 
-  _handlePagination(pageNum) {
+  _handlePagination = (pageNum) => {
     this.setState({
       pageNum: pageNum
     });
-  }
+  };
 
   render() {
     const dataCount = this.state.tableData.length;

@@ -25,7 +25,7 @@ class BTCPriceComponent extends React.Component {
     this._getPrice(BTCPriceStore.getSourceRecord('id', 'coinbase'), this.state.currency);
   }
 
-  _getPrice(source, currency) {
+  _getPrice = (source, currency) => {
     this.setState({loading: true});
     BTCPriceActions.getPrice(
       source.api[currency], source.id, currency
@@ -50,15 +50,15 @@ class BTCPriceComponent extends React.Component {
         }
       }
     );
-  }
+  };
 
-  _handleSourceChange(source) {
+  _handleSourceChange = (source) => {
     this._getPrice(source, this.state.currency);
-  }
+  };
 
-  _handleCurrencyChange(currency) {
+  _handleCurrencyChange = (currency) => {
     this._getPrice(this.state.priceSource, currency);
-  }
+  };
 
   render() {
     const currency = BTCPriceStore.getCurrencyRecord('id', this.state.currency);
