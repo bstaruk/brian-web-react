@@ -2,6 +2,9 @@
 
 My primary reason for having a website is always having a place that is ready to explore and experiment with. This one was built with React. It all started with a `yo react-webpack`.
 
+## Yarn
+I've been using [Yarn](https://yarnpkg.com/en/) (`yarn`) instead of `npm install` lately, but you do you!
+
 ## Usage
 The following commands are available in your project:
 ```bash
