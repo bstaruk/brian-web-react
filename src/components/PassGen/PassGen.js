@@ -19,7 +19,7 @@ class PassGenComponent extends React.Component {
     this._makeNewPassword();
   }
 
-  _makeNewPassword() {
+  _makeNewPassword = () => {
     const length = this.state.length,
       symbols = this.state.symbols,
       symbolsCharset = '!@#$%^&*()-=_+\'';
@@ -41,19 +41,19 @@ class PassGenComponent extends React.Component {
     this.setState({
       password: newPassword
     });
-  }
+  };
 
-  _handleLengthChange(length) {
+  _handleLengthChange = (length) => {
     this.setState({
       length: length
     });
-  }
+  };
 
-  _handleSymbolsChange(symbols) {
+  _handleSymbolsChange = (symbols) => {
     this.setState({
       symbols: symbols == 'true'
     });
-  }
+  };
 
   render() {
     return (
