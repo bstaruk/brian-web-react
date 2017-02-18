@@ -32,17 +32,17 @@ class HomeComponent extends React.Component {
       {
         id: 'skillOverlayReact',
         title: 'React',
-        desc: '*:breathing intensifies:*\n\nI\'m falling for React. We don\'t go way back, but we\'re solid and it doesn\'t matter what they say about us anyways. React is my new go-to for just about everything front-end and it\'s been a long time since I was so happy to throw myself onto a new code bandwagon.'
+        desc: '*:breathing intensifies:*\n\nI love working with React and it\'s been a long time since I was so happy to throw myself onto a new code bandwagon. With Babel, Webpack, React and a vision, the web is your oyster!'
       },
       {
         id: 'skillOverlayAngular',
         title: 'AngularJS',
-        desc: 'Though I prefer working with React, I still think AngularJS is just swell and I\'ve enjoyed my time with it. A side project of mine, [PriceBTC.com](http://pricebtc.com) was built with AngularJS when I was just getting started with modern JS frameworks.'
+        desc: 'Though I prefer working with React, I still think AngularJS is just swell and I\'ve enjoyed my time with it.'
       },
       {
         id: 'skillOverlayHTML',
         title: 'HTML, (S)CSS & JS',
-        desc: 'I\'ve been building websites since I was in middle school and have always had an appreciation for clean, logical code. Having been around since the days of marquee tags, tables and wrestling with IE6, I have observed and adapted to the growth of these technologies since their humble beginnings.'
+        desc: 'I\'ve been building websites since middle school and have always had an appreciation for clean, logical code. Having been around since the days of marquee tags, tables and wrestling with IE6, I have observed and adapted to the growth of these technologies since their humble beginnings.'
       },
       {
         id: 'skillOverlayLAMP',
