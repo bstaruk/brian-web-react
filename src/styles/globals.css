@@ -1,5 +1,5 @@
 body {
-  @apply bg-stone-200 dark:bg-stone-950 text-stone-800 dark:text-stone-200 selection:bg-stone-600 selection:text-stone-50;
+  @apply bg-monster-500 text-stone-100 selection:bg-monster-300 selection:text-stone-50;
 }
 
 .text-sm {

@@ -3,17 +3,26 @@
 @custom-variant dark (&:where(.dark, .dark *));
 @custom-variant read-only (&:read-only);
 
+@font-face {
+  font-family: 'Bosox';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/fonts/Bosox Full.ttf') format('truetype');
+}
+
 @theme {
   /* Fonts */
   --font-sans: 'Arial', sans-serif;
   --font-mono: 'Courier New', monospace;
+  --font-display: 'Bosox', sans-serif;
 
   /* Text Globals */
   --text-*: initial;
 
   /* Text Variant: h1 */
-  --text-h1: clamp(1.625rem, 1.574rem + 0.196vw, 1.75rem);
-  --text-h1--font-weight: 700;
+  --text-h1: 5rem;
+  --text-h1--font-weight: 400;
   --text-h1--line-height: 1.2;
   --text-h1--letter-spacing: 0.0125em;
 
@@ -83,4 +92,17 @@
   --color-stone-150: #eeedec;
   --color-stone-250: #dedcdc;
   --color-stone-925: #141210;
+
+  /* Color: monster */
+  --color-monster-50: #f5f8f6;
+  --color-monster-100: #dee9e4;
+  --color-monster-200: #bdd2c9;
+  --color-monster-300: #94b4a8;
+  --color-monster-400: #6e9386;
+  --color-monster-500: #53776b;
+  --color-monster-600: #425f57;
+  --color-monster-700: #374e47;
+  --color-monster-800: #2f403b;
+  --color-monster-900: #2a3733;
+  --color-monster-950: #151e1c;
 }
