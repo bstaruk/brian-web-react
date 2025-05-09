@@ -1,0 +1,86 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+@custom-variant read-only (&:read-only);
+
+@theme {
+  /* Fonts */
+  --font-sans: "Arial", sans-serif;
+  --font-mono: "Courier New", monospace;
+
+  /* Text Globals */
+  --text-*: initial;
+
+  /* Text Variant: h1 */
+  --text-h1: clamp(1.625rem, 1.574rem + 0.196vw, 1.75rem);
+  --text-h1--font-weight: 700;
+  --text-h1--line-height: 1.2;
+  --text-h1--letter-spacing: 0.0125em;
+
+  /* Text Variant: h2 */
+  --text-h2: clamp(1.5rem, 1.449rem + 0.196vw, 1.625rem);
+  --text-h2--font-weight: 700;
+  --text-h2--line-height: 1.2;
+  --text-h2--letter-spacing: 0.0125em;
+
+  /* Text Variant: h3 */
+  --text-h3: clamp(1.375rem, 1.324rem + 0.196vw, 1.5rem);
+  --text-h3--font-weight: 700;
+  --text-h3--line-height: 1.2;
+  --text-h3--letter-spacing: 0.0125em;
+
+  /* Text Variant: h4 */
+  --text-h4: clamp(1.25rem, 1.199rem + 0.196vw, 1.375rem);
+  --text-h4--font-weight: 600;
+  --text-h4--line-height: 1.2;
+  --text-h4--letter-spacing: 0.0125em;
+
+  /* Text Variant: h5 */
+  --text-h5: clamp(1.125rem, 1.074rem + 0.196vw, 1.25rem);
+  --text-h5--font-weight: 600;
+  --text-h5--line-height: 1.2;
+  --text-h5--letter-spacing: 0.0125em;
+
+  /* Text Variant: h6 */
+  --text-h6: clamp(1rem, 0.949rem + 0.196vw, 1.125rem);
+  --text-h6--font-weight: 400;
+  --text-h6--line-height: 1.3;
+  --text-h6--letter-spacing: 0.0125em;
+
+  /* Text Variant: base */
+  --text-base: clamp(1rem, 0.949rem + 0.196vw, 1.125rem);
+  --text-base--font-weight: 300;
+  --text-base--line-height: 1.5;
+  --text-base--letter-spacing: 0.0125em;
+
+  /* Text Variant: sm */
+  --text-sm: 1rem;
+  --text-sm--font-weight: 300;
+  --text-sm--line-height: 1.4;
+  --text-sm--letter-spacing: 0.0125em;
+
+  /* Text Variant: mono */
+  --text-mono: 1rem;
+  --text-mono--font-weight: 300;
+  --text-mono--line-height: 1.6;
+  --text-mono--letter-spacing: 0.0125em;
+
+  /* List Style Types */
+  --list-style-type-circle: circle;
+  --list-style-type-roman: lower-roman;
+
+  /* Breakpoints */
+  --breakpoint-3xs: 23.75rem; /* 380px */
+  --breakpoint-2xs: 26.25rem; /* 420px */
+  --breakpoint-xs: 33.75rem; /* 540px */
+  --breakpoint-page-max: 60rem; /* 960px */
+
+  /* Spacing (height, width, padding, margin) */
+  --spacing-header-height: 3.5rem;
+  --spacing-wrapper-page-inner: clamp(1rem, 0.794rem + 0.784vw, 1.5rem);
+
+  /* Color: stone (extending tailwind colors */
+  --color-stone-150: #eeedec;
+  --color-stone-250: #dedcdc;
+  --color-stone-925: #141210;
+}
