@@ -4,6 +4,6 @@
     "bradlc.vscode-tailwindcss",
     "dbaeumer.vscode-eslint",
     "esbenp.prettier-vscode",
-    "dotenv.dotenv-vscode"
+    "mikestead.dotenv"
   ]
 }
