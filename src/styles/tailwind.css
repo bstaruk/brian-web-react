@@ -1,12 +1,12 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
 @custom-variant dark (&:where(.dark, .dark *));
 @custom-variant read-only (&:read-only);
 
 @theme {
   /* Fonts */
-  --font-sans: "Arial", sans-serif;
-  --font-mono: "Courier New", monospace;
+  --font-sans: 'Arial', sans-serif;
+  --font-mono: 'Courier New', monospace;
 
   /* Text Globals */
   --text-*: initial;
