@@ -8,14 +8,38 @@
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src: url('/fonts/Bosox Full.ttf') format('truetype');
+  src: url('/fonts/Bosox-Full.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/fonts/Poppins-Regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('/fonts/Poppins-Medium.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('/fonts/Poppins-Bold.ttf') format('truetype');
 }
 
 @theme {
   /* Fonts */
-  --font-sans: 'Arial', sans-serif;
+  --font-sans: 'Poppins', sans-serif;
   --font-mono: 'Courier New', monospace;
-  --font-display: 'Bosox', sans-serif;
+  --font-bosox: 'Bosox', sans-serif;
 
   /* Text Globals */
   --text-*: initial;
@@ -23,7 +47,7 @@
   /* Text Variant: h1 */
   --text-h1: 5rem;
   --text-h1--font-weight: 400;
-  --text-h1--line-height: 1.2;
+  --text-h1--line-height: 1;
   --text-h1--letter-spacing: 0.0125em;
 
   /* Text Variant: h2 */
