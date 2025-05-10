@@ -36,12 +36,12 @@ export const Route = createRootRoute({
                 <Link
                   key={item.name}
                   to={item.path}
-                  className="group grid grid-cols-5 gap-1 leading-none font-medium text-h5"
+                  className="group grid grid-cols-5 gap-1 leading-none font-bold text-h5"
                 >
                   {item.name.split('').map((char, i) => (
                     <span
                       key={i}
-                      className="aspect-square size-full bg-monster-400 inset-shadow-sm shadow-monster-900 flex items-center justify-center group-[&.active]:bg-monster-300"
+                      className="relative aspect-square size-full bg-monster-300/50 inset-shadow-sm shadow-monster-900 flex items-center justify-center group-[&.active]:bg-monster-300/75"
                     >
                       {char}
                     </span>
