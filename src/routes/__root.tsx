@@ -30,15 +30,22 @@ export const Route = createRootRoute({
         </header>
 
         <main className="grow flex gap-8">
-          <aside className="min-w-40 shrink-0 flex flex-col items-stretch py-4">
+          <aside className="w-50 shrink-0 flex flex-col items-stretch py-4">
             <nav className="grow flex flex-col gap-2 border-r border-monster-300 pr-8 uppercase">
               {menuItems.map((item) => (
                 <Link
                   key={item.name}
                   to={item.path}
-                  className="[&.active]:font-bold"
+                  className="group grid grid-cols-5 gap-1 leading-none font-medium text-h5"
                 >
-                  {item.name}
+                  {item.name.split('').map((char, i) => (
+                    <span
+                      key={i}
+                      className="aspect-square size-full bg-monster-400 inset-shadow-sm shadow-monster-900 flex items-center justify-center group-[&.active]:bg-monster-300"
+                    >
+                      {char}
+                    </span>
+                  ))}
                 </Link>
               ))}
             </nav>

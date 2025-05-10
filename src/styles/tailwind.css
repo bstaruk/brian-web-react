@@ -118,6 +118,10 @@
   --spacing-header-height: 3.5rem;
   --spacing-wrapper-page-inner: clamp(1rem, 0.794rem + 0.784vw, 1.5rem);
 
+  --inset-shadow-sm:
+    inset 1px 1px 0 rgba(0, 0, 0, 0.5),
+    inset -1px -1px 0 rgba(255, 255, 255, 0.3);
+
   /* Color: stone (extending tailwind colors */
   --color-stone-150: #eeedec;
   --color-stone-250: #dedcdc;
