@@ -12,9 +12,6 @@ dist
 dist-ssr
 *.local
 
-# Tanstack Query
-src/**/routeTree.gen.ts
-
 # Editor directories and files
 .idea
 .DS_Store

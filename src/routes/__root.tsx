@@ -1,24 +1,35 @@
-import { Link, Outlet, HeadContent } from '@tanstack/react-router';
+import {
+  createRootRoute,
+  HeadContent,
+  Link,
+  Outlet,
+} from '@tanstack/react-router';
 import { TanStackRouterDevtools } from '@tanstack/react-router-devtools';
 
-export default function Route() {
-  return (
+// It's the layout component
+export const Route = createRootRoute({
+  component: () => (
     <>
       <HeadContent />
 
-      <div className="p-2 flex gap-2">
-        <Link to="/" className="[&.active]:font-bold">
-          Home
-        </Link>{' '}
-        <Link to="/about" className="[&.active]:font-bold">
-          About
-        </Link>
-      </div>
+      <main className="flex h-screen py-10 gap-8 wrapper-page">
+        <aside className="min-w-40 shrink-0 flex flex-col items-stretch py-4">
+          <nav className="grow flex flex-col gap-2 border-r border-stone-300 pr-8 uppercase">
+            <Link to="/" className="[&.active]:font-bold">
+              Home
+            </Link>{' '}
+            <Link to="/about" className="[&.active]:font-bold">
+              About
+            </Link>
+          </nav>
+        </aside>
 
-      <hr />
+        <section className="grow shrink overflow-y-auto py-4">
+          <Outlet />
+        </section>
+      </main>
 
-      <Outlet />
       <TanStackRouterDevtools />
     </>
-  );
-}
+  ),
+});

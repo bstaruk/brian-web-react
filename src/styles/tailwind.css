@@ -45,8 +45,8 @@
   --text-*: initial;
 
   /* Text Variant: h1 */
-  --text-h1: 5rem;
-  --text-h1--font-weight: 400;
+  --text-h1: clamp(1.625rem, 1.574rem + 0.196vw, 1.75rem);
+  --text-h1--font-weight: 700;
   --text-h1--line-height: 1;
   --text-h1--letter-spacing: 0.0125em;
 

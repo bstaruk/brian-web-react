@@ -4,7 +4,7 @@
   }
 
   h1 {
-    @apply text-h1 font-bosox uppercase;
+    @apply text-h1 uppercase;
   }
 
   h2 {

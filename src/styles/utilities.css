@@ -1,5 +1,5 @@
 @utility wrapper-page {
   & {
-    @apply w-full max-w-(--breakpoint-page-max) mx-auto;
+    @apply w-full max-w-(--breakpoint-page-max) mx-auto px-6;
   }
 }
