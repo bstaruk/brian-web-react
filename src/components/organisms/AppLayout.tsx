@@ -1,8 +1,11 @@
 import { useEffect, useRef, useState } from 'react';
-import { Link, Outlet } from '@tanstack/react-router';
+import { Outlet } from '@tanstack/react-router';
 import { FaGithub, FaBars, FaX } from 'react-icons/fa6';
+import ScoreboardDot from '../atoms/ScoreboardDot';
+import ScoreboardNumber from '../atoms/ScoreboardNumber';
+import ScoreboardLink from '../molecules/ScoreboardLink';
 
-const menuItems = [
+const menuItems: { name: string; path: string }[] = [
   { name: 'Home', path: '/' },
   { name: 'About', path: '/about' },
 ];
@@ -23,8 +26,8 @@ export default function AppLayout() {
   }, [menuOpen]);
 
   return (
-    <div className="h-screen wrapper-page p-3 sm:p-5 md:p-8 lg:p-10 flex flex-col gap-5">
-      <header className="text-title uppercase flex items-center flex-wrap gap-x-3 gap-y-2">
+    <div className="h-screen wrapper-page px-3 sm:px-5 md:px-8 flex flex-col gap-5">
+      <header className="flex items-center flex-wrap gap-x-3 gap-y-2 pt-5">
         {/* Hamburger Button (mobile only) */}
         <button
           onClick={() => setMenuOpen(true)}
@@ -36,7 +39,7 @@ export default function AppLayout() {
           <FaBars className="h-4 w-auto" />
         </button>
 
-        <div>
+        <div className="text-title uppercase text-shadow-xs text-shadow-monster-700">
           brian<span className="text-monster-400">.</span>staruk
           <span className="text-monster-400">.net</span>
         </div>
@@ -69,55 +72,58 @@ export default function AppLayout() {
               <FaX className="h-4 w-auto" />
             </button>
 
-            {menuItems.map((item, i) => (
-              <Link
+            {menuItems.map((item) => (
+              <ScoreboardLink
                 key={item.name}
                 to={item.path}
                 onClick={() => setMenuOpen(false)}
-                ref={i === 0 ? firstLinkRef : undefined}
-                className="group grid grid-cols-8 gap-1 leading-none font-bold text-h5"
               >
-                {item.name.split('').map((char, j) => (
-                  <span
-                    key={j}
-                    className="relative aspect-square size-full bg-monster-300/50 inset-shadow-sm shadow-monster-900 flex items-center justify-center group-[&.active]:bg-monster-300/75"
-                  >
-                    {char}
-                  </span>
-                ))}
-              </Link>
+                {item.name}
+              </ScoreboardLink>
             ))}
           </nav>
         </aside>
 
         {/* Desktop Sidebar */}
-        <aside className="hidden lg:flex w-50 shrink-0 flex-col items-stretch py-4">
-          <nav className="grow flex flex-col gap-2 border-r border-monster-300 pr-8 uppercase">
-            {menuItems.map((item) => (
-              <Link
-                key={item.name}
-                to={item.path}
-                className="group grid grid-cols-5 gap-1 leading-none font-bold text-h5"
-              >
-                {item.name.split('').map((char, i) => (
-                  <span
-                    key={i}
-                    className="relative aspect-square size-full bg-monster-300/50 inset-shadow-sm shadow-monster-900 flex items-center justify-center group-[&.active]:bg-monster-300/75"
-                  >
-                    {char}
-                  </span>
-                ))}
-              </Link>
-            ))}
-          </nav>
+        <aside className="hidden lg:block shrink-0 py-2 border-r border-monster-300 pr-8">
+          <div className="sticky top-2 flex flex-col gap-6 items-stretch">
+            <nav className="flex flex-col items-start gap-2 uppercase">
+              {menuItems.map((item) => (
+                <ScoreboardLink
+                  key={item.name}
+                  to={item.path}
+                  onClick={() => setMenuOpen(false)}
+                >
+                  {item.name}
+                </ScoreboardLink>
+              ))}
+            </nav>
+
+            <div className="flex flex-col gap-3">
+              <div className="flex gap-2">
+                <ScoreboardDot size="lg" variant="green-on" />
+                <ScoreboardDot size="lg" variant="green-on" />
+                <ScoreboardDot size="lg" variant="green" />
+              </div>
+
+              <div className="flex gap-2">
+                <ScoreboardDot size="lg" variant="red-on" />
+                <ScoreboardDot size="lg" variant="red" />
+              </div>
+
+              <div>
+                <ScoreboardNumber value={25} />
+              </div>
+            </div>
+          </div>
         </aside>
 
-        <section className="grow shrink overflow-y-auto py-4">
+        <section className="grow shrink py-2">
           <Outlet />
         </section>
       </main>
 
-      <footer className="border-t border-monster-400 pt-4 uppercase">
+      <footer className="border-t border-monster-400 py-4 uppercase">
         <p className="text-sm tracking-wider">
           <a
             href="https://github.com/bstaruk/brian-web-react"
