@@ -23,8 +23,8 @@ export default function AppLayout() {
   }, [menuOpen]);
 
   return (
-    <div className="h-screen wrapper-page p-3 sm:p-5 md:p-8 lg:p-10 flex flex-col gap-5">
-      <header className="text-title uppercase flex items-center flex-wrap gap-x-3 gap-y-2">
+    <div className="h-screen wrapper-page px-3 sm:px-5 md:px-8 flex flex-col gap-5">
+      <header className="text-title uppercase flex items-center flex-wrap gap-x-3 gap-y-2 pt-5">
         {/* Hamburger Button (mobile only) */}
         <button
           onClick={() => setMenuOpen(true)}
@@ -91,8 +91,8 @@ export default function AppLayout() {
         </aside>
 
         {/* Desktop Sidebar */}
-        <aside className="hidden lg:flex w-50 shrink-0 flex-col items-stretch py-4">
-          <nav className="grow flex flex-col gap-2 border-r border-monster-300 pr-8 uppercase">
+        <aside className="hidden lg:flex w-50 shrink-0 flex-col items-stretch py-2 border-r border-monster-300 pr-8">
+          <nav className="sticky top-2 flex flex-col gap-2 uppercase">
             {menuItems.map((item) => (
               <Link
                 key={item.name}
@@ -112,12 +112,12 @@ export default function AppLayout() {
           </nav>
         </aside>
 
-        <section className="grow shrink overflow-y-auto py-4">
+        <section className="grow shrink py-2">
           <Outlet />
         </section>
       </main>
 
-      <footer className="border-t border-monster-400 pt-4 uppercase">
+      <footer className="border-t border-monster-400 py-4 uppercase">
         <p className="text-sm tracking-wider">
           <a
             href="https://github.com/bstaruk/brian-web-react"
