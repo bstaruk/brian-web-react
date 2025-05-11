@@ -1,0 +1,15 @@
+{
+  // Format w/ prettier on save
+  "editor.formatOnSave": true,
+
+  // Tanstack Router
+  "files.readonlyInclude": {
+    "**/routeTree.gen.ts": true
+  },
+  "files.watcherExclude": {
+    "**/routeTree.gen.ts": true
+  },
+  "search.exclude": {
+    "**/routeTree.gen.ts": true
+  }
+}

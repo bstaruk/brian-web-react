@@ -1,0 +1,7 @@
+body {
+  @apply bg-monster-500 text-stone-100 selection:bg-monster-300 selection:text-stone-50;
+}
+
+.text-sm {
+  @apply underline-offset-3;
+}
