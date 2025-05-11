@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { Outlet } from '@tanstack/react-router';
 import { FaGithub, FaBars, FaX } from 'react-icons/fa6';
 import ScoreboardDot from '../atoms/ScoreboardDot';
+import ScoreboardNumber from '../atoms/ScoreboardNumber';
 import ScoreboardLink from '../molecules/ScoreboardLink';
 
 const menuItems: { name: string; path: string }[] = [
@@ -108,6 +109,10 @@ export default function AppLayout() {
               <div className="flex gap-2">
                 <ScoreboardDot size="lg" variant="red-on" />
                 <ScoreboardDot size="lg" variant="red" />
+              </div>
+
+              <div>
+                <ScoreboardNumber value={25} />
               </div>
             </div>
           </div>
