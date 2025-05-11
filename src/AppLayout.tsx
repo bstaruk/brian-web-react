@@ -37,8 +37,8 @@ export default function AppLayout() {
         </button>
 
         <div>
-          brian<span className="text-monster-400 px-0.5">.</span>staruk
-          <span className="text-monster-400 pl-0.5">.net</span>
+          brian<span className="text-monster-400">.</span>staruk
+          <span className="text-monster-400">.net</span>
         </div>
       </header>
 
@@ -117,16 +117,16 @@ export default function AppLayout() {
         </section>
       </main>
 
-      <footer className="border-t border-monster-400 pt-4">
-        <p className="text-sm">
+      <footer className="border-t border-monster-400 pt-4 uppercase">
+        <p className="text-sm tracking-wider">
           <a
             href="https://github.com/bstaruk/brian-web-react"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2"
+            className="inline-flex items-center gap-2 font-medium"
           >
-            <FaGithub className="h-4 w-auto" />
-            <span>View Source on GitHub</span>
+            <FaGithub className="h-5 w-auto" />
+            <span>View Source</span>
           </a>
         </p>
       </footer>
