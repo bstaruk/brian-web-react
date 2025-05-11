@@ -1,8 +1,9 @@
 import { useEffect, useRef, useState } from 'react';
-import { Link, Outlet } from '@tanstack/react-router';
+import { Outlet } from '@tanstack/react-router';
 import { FaGithub, FaBars, FaX } from 'react-icons/fa6';
+import ScoreboardLink from '../molecules/ScoreboardLink';
 
-const menuItems = [
+const menuItems: { name: string; path: string }[] = [
   { name: 'Home', path: '/' },
   { name: 'About', path: '/about' },
 ];
@@ -69,45 +70,29 @@ export default function AppLayout() {
               <FaX className="h-4 w-auto" />
             </button>
 
-            {menuItems.map((item, i) => (
-              <Link
+            {menuItems.map((item) => (
+              <ScoreboardLink
                 key={item.name}
                 to={item.path}
                 onClick={() => setMenuOpen(false)}
-                ref={i === 0 ? firstLinkRef : undefined}
-                className="group grid grid-cols-8 gap-1 leading-none font-bold text-h5"
               >
-                {item.name.split('').map((char, j) => (
-                  <span
-                    key={j}
-                    className="relative aspect-square size-full bg-monster-300/50 inset-shadow-sm shadow-monster-900 flex items-center justify-center group-[&.active]:bg-monster-300/75"
-                  >
-                    {char}
-                  </span>
-                ))}
-              </Link>
+                {item.name}
+              </ScoreboardLink>
             ))}
           </nav>
         </aside>
 
         {/* Desktop Sidebar */}
-        <aside className="hidden lg:flex w-50 shrink-0 flex-col items-stretch py-2 border-r border-monster-300 pr-8">
-          <nav className="sticky top-2 flex flex-col gap-2 uppercase">
+        <aside className="hidden lg:flex shrink-0 flex-col items-stretch py-2 border-r border-monster-300 pr-8">
+          <nav className="sticky top-2 flex flex-col items-start gap-2 uppercase">
             {menuItems.map((item) => (
-              <Link
+              <ScoreboardLink
                 key={item.name}
                 to={item.path}
-                className="group grid grid-cols-5 gap-1 leading-none font-bold text-h5"
+                onClick={() => setMenuOpen(false)}
               >
-                {item.name.split('').map((char, i) => (
-                  <span
-                    key={i}
-                    className="relative aspect-square size-full bg-monster-300/50 inset-shadow-sm shadow-monster-900 flex items-center justify-center group-[&.active]:bg-monster-300/75"
-                  >
-                    {char}
-                  </span>
-                ))}
-              </Link>
+                {item.name}
+              </ScoreboardLink>
             ))}
           </nav>
         </aside>
