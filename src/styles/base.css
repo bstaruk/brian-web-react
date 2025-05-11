@@ -3,6 +3,14 @@
     @apply font-sans text-base underline-offset-4;
   }
 
+  h1,
+  h2,
+  h3,
+  h4,
+  h5 {
+    @apply text-shadow-xs text-shadow-monster-700;
+  }
+
   h1 {
     @apply text-h1 uppercase;
   }

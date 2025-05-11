@@ -24,7 +24,7 @@ export default function AppLayout() {
 
   return (
     <div className="h-screen wrapper-page px-3 sm:px-5 md:px-8 flex flex-col gap-5">
-      <header className="text-title uppercase flex items-center flex-wrap gap-x-3 gap-y-2 pt-5">
+      <header className="flex items-center flex-wrap gap-x-3 gap-y-2 pt-5">
         {/* Hamburger Button (mobile only) */}
         <button
           onClick={() => setMenuOpen(true)}
@@ -36,7 +36,7 @@ export default function AppLayout() {
           <FaBars className="h-4 w-auto" />
         </button>
 
-        <div>
+        <div className="text-title uppercase text-shadow-xs text-shadow-monster-700">
           brian<span className="text-monster-400">.</span>staruk
           <span className="text-monster-400">.net</span>
         </div>
