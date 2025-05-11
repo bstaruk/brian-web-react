@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { Outlet } from '@tanstack/react-router';
 import { FaGithub, FaBars, FaX } from 'react-icons/fa6';
+import ScoreboardDot from '../atoms/ScoreboardDot';
 import ScoreboardLink from '../molecules/ScoreboardLink';
 
 const menuItems: { name: string; path: string }[] = [
@@ -83,18 +84,33 @@ export default function AppLayout() {
         </aside>
 
         {/* Desktop Sidebar */}
-        <aside className="hidden lg:flex shrink-0 flex-col items-stretch py-2 border-r border-monster-300 pr-8">
-          <nav className="sticky top-2 flex flex-col items-start gap-2 uppercase">
-            {menuItems.map((item) => (
-              <ScoreboardLink
-                key={item.name}
-                to={item.path}
-                onClick={() => setMenuOpen(false)}
-              >
-                {item.name}
-              </ScoreboardLink>
-            ))}
-          </nav>
+        <aside className="hidden lg:block shrink-0 py-2 border-r border-monster-300 pr-8">
+          <div className="sticky top-2 flex flex-col gap-6 items-stretch">
+            <nav className="flex flex-col items-start gap-2 uppercase">
+              {menuItems.map((item) => (
+                <ScoreboardLink
+                  key={item.name}
+                  to={item.path}
+                  onClick={() => setMenuOpen(false)}
+                >
+                  {item.name}
+                </ScoreboardLink>
+              ))}
+            </nav>
+
+            <div className="flex flex-col gap-3">
+              <div className="flex gap-2">
+                <ScoreboardDot size="lg" variant="green-on" />
+                <ScoreboardDot size="lg" variant="green-on" />
+                <ScoreboardDot size="lg" variant="green" />
+              </div>
+
+              <div className="flex gap-2">
+                <ScoreboardDot size="lg" variant="red-on" />
+                <ScoreboardDot size="lg" variant="red" />
+              </div>
+            </div>
+          </div>
         </aside>
 
         <section className="grow shrink py-2">
