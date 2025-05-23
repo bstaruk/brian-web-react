@@ -28,7 +28,11 @@ export default function AppLayout() {
   return (
     <div className="h-screen wrapper-page px-3 sm:px-5 md:px-8 flex flex-col gap-5">
       <header className="w-full flex items-center justify-between gap-x-3 gap-y-2 pt-5">
-        <div className="text-title uppercase text-shadow-xs text-shadow-monster-700">
+        <div className="sm:hidden size-11 rounded-full border-4 border-monster-300 flex items-center justify-center">
+          <div className="text-h1 font-bold">B</div>
+        </div>
+
+        <div className="hidden sm:block text-title uppercase text-shadow-xs text-shadow-monster-700">
           brian<span className="text-monster-400">.</span>staruk
           <span className="text-monster-400">.net</span>
         </div>
@@ -42,7 +46,7 @@ export default function AppLayout() {
           aria-controls="mobile-sidebar"
         >
           {menuOpen ? (
-            <FaX className="h-3 w-auto" />
+            <FaX className="h-3.5 w-auto" />
           ) : (
             <FaBars className="h-4 w-auto" />
           )}
