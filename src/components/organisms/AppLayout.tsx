@@ -27,22 +27,26 @@ export default function AppLayout() {
 
   return (
     <div className="h-screen wrapper-page px-3 sm:px-5 md:px-8 flex flex-col gap-5">
-      <header className="flex items-center flex-wrap gap-x-3 gap-y-2 pt-5">
-        {/* Hamburger Button (mobile only) */}
-        <button
-          onClick={() => setMenuOpen(true)}
-          className="lg:hidden bg-monster-700 rounded-sm shrink-0 p-2 focus:outline-none focus-visible:ring cursor-pointer"
-          aria-label="Open menu"
-          aria-expanded={menuOpen}
-          aria-controls="mobile-sidebar"
-        >
-          <FaBars className="h-4 w-auto" />
-        </button>
-
+      <header className="w-full flex items-center justify-between gap-x-3 gap-y-2 pt-5">
         <div className="text-title uppercase text-shadow-xs text-shadow-monster-700">
           brian<span className="text-monster-400">.</span>staruk
           <span className="text-monster-400">.net</span>
         </div>
+
+        {/* Hamburger Button (mobile only) */}
+        <button
+          onClick={() => setMenuOpen(true)}
+          className="lg:hidden bg-monster-700 rounded-sm shrink-0 size-8 flex items-center justify-center focus:outline-none focus-visible:ring cursor-pointer"
+          aria-label="Open menu"
+          aria-expanded={menuOpen}
+          aria-controls="mobile-sidebar"
+        >
+          {menuOpen ? (
+            <FaX className="h-3 w-auto" />
+          ) : (
+            <FaBars className="h-4 w-auto" />
+          )}
+        </button>
       </header>
 
       <main className="grow flex gap-8 relative">
