@@ -82,7 +82,7 @@ export default function AppLayout() {
             role="dialog"
             aria-modal="true"
           >
-            <nav className="flex flex-col gap-2 p-4 uppercase text-h4">
+            <nav className="flex flex-col gap-1 p-4 uppercase text-h3">
               <button
                 onClick={() => setMenuOpen(false)}
                 aria-label="Close menu"
@@ -100,11 +100,40 @@ export default function AppLayout() {
                   variant={
                     pathname === item.path ? 'marathon-light' : 'marathon'
                   }
+                  className="py-2"
                 >
                   {item.name}
                 </RouterLink>
               ))}
             </nav>
+
+            <ul className="flex gap-2 px-2 h-8 mt-4">
+              <li className="flex">
+                <Link
+                  href="https://github.com/bstaruk"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  variant="monster"
+                  className="flex px-2"
+                >
+                  <FaGithub className="h-full w-auto" />
+                  <span className="sr-only">GitHub</span>
+                </Link>
+              </li>
+
+              <li className="flex">
+                <Link
+                  href="https://www.linkedin.com/in/brian-staruk/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  variant="monster"
+                  className="flex"
+                >
+                  <FaLinkedin className="h-full w-auto" />
+                  <span className="sr-only">LinkedIn</span>
+                </Link>
+              </li>
+            </ul>
           </aside>
 
           {/* Desktop Sidebar */}
