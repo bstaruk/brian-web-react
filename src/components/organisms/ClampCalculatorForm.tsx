@@ -99,87 +99,97 @@ function ClampCalculatorForm() {
   });
 
   return (
-    <form
-      onSubmit={(e) => {
-        e.preventDefault();
-        e.stopPropagation();
-        form.handleSubmit();
-      }}
-      className="flex flex-col gap-4"
-    >
+    <div className="flex flex-col gap-6 sm:gap-8">
+      <form
+        onSubmit={(e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          form.handleSubmit();
+        }}
+        className="flex flex-col gap-4"
+      >
+        <div className="flex flex-col gap-4 sm:flex-row sm:gap-6">
+          <fieldset className="grow flex flex-col gap-2">
+            <h4>Clamp (rem)</h4>
+
+            <form.Field
+              name="clampMin"
+              children={(field) => (
+                <TextField
+                  field={field}
+                  label="Min"
+                  type="number"
+                  step={0.001}
+                  valueAsNumber
+                />
+              )}
+            />
+
+            <form.Field
+              name="clampMax"
+              children={(field) => (
+                <TextField
+                  field={field}
+                  label="Max"
+                  type="number"
+                  step={0.001}
+                  valueAsNumber
+                />
+              )}
+            />
+          </fieldset>
+
+          <fieldset className="grow flex flex-col gap-2">
+            <h4>Viewport (px)</h4>
+
+            <form.Field
+              name="viewportMin"
+              children={(field) => (
+                <TextField
+                  field={field}
+                  label="Min"
+                  type="number"
+                  step={0.001}
+                  valueAsNumber
+                />
+              )}
+            />
+
+            <form.Field
+              name="viewportMax"
+              children={(field) => (
+                <TextField
+                  field={field}
+                  label="Max"
+                  type="number"
+                  step={0.001}
+                  valueAsNumber
+                />
+              )}
+            />
+          </fieldset>
+        </div>
+
+        <form.Subscribe
+          selector={(state) => [state.canSubmit, state.isSubmitting]}
+          children={([canSubmit, isSubmitting]) => (
+            <Button type="submit" disabled={!canSubmit} className="max-w-30">
+              {isSubmitting ? '...' : 'Submit'}
+            </Button>
+          )}
+        />
+      </form>
+
       <h6 className="font-medium bg-monster-600 shadow-xs p-4">{clamp}</h6>
 
-      <div className="flex flex-col gap-4 sm:flex-row sm:gap-6">
-        <fieldset className="grow flex flex-col gap-2">
-          <h4>Clamp (rem)</h4>
+      <div className="flex flex-col gap-3">
+        <h5>Clamp Preview:</h5>
 
-          <form.Field
-            name="clampMin"
-            children={(field) => (
-              <TextField
-                field={field}
-                label="Min"
-                type="number"
-                step={1}
-                valueAsNumber
-              />
-            )}
-          />
-
-          <form.Field
-            name="clampMax"
-            children={(field) => (
-              <TextField
-                field={field}
-                label="Max"
-                type="number"
-                step={1}
-                valueAsNumber
-              />
-            )}
-          />
-        </fieldset>
-
-        <fieldset className="grow flex flex-col gap-2">
-          <h4>Viewport (px)</h4>
-
-          <form.Field
-            name="viewportMin"
-            children={(field) => (
-              <TextField
-                field={field}
-                label="Min"
-                type="number"
-                step={1}
-                valueAsNumber
-              />
-            )}
-          />
-
-          <form.Field
-            name="viewportMax"
-            children={(field) => (
-              <TextField
-                field={field}
-                label="Max"
-                type="number"
-                step={1}
-                valueAsNumber
-              />
-            )}
-          />
-        </fieldset>
+        <p style={{ fontSize: clamp }}>
+          Simplicity is the ultimate sophistication.
+        </p>
       </div>
-
-      <form.Subscribe
-        selector={(state) => [state.canSubmit, state.isSubmitting]}
-        children={([canSubmit, isSubmitting]) => (
-          <Button type="submit" disabled={!canSubmit} className="max-w-30">
-            {isSubmitting ? '...' : 'Submit'}
-          </Button>
-        )}
-      />
-    </form>
+    </div>
   );
 }
 
