@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
-import { Outlet } from '@tanstack/react-router';
+import { Outlet, useRouterState } from '@tanstack/react-router';
 import { FaGithub, FaBars, FaX } from 'react-icons/fa6';
+import { AnimatePresence, motion } from 'framer-motion';
 import { RouterLink } from '../atoms/Link';
 
 const menuItems: { name: string; path: string }[] = [
@@ -108,7 +109,9 @@ export default function AppLayout() {
         </aside>
 
         <section className="grow shrink py-2">
-          <Outlet />
+          <AnimatePresence mode="wait">
+            <OutletWithTransition />
+          </AnimatePresence>
         </section>
       </main>
 
@@ -126,5 +129,21 @@ export default function AppLayout() {
         </p>
       </footer>
     </div>
+  );
+}
+
+function OutletWithTransition() {
+  const { location } = useRouterState();
+
+  return (
+    <motion.div
+      key={location.pathname}
+      initial={{ x: -10, opacity: 0 }}
+      animate={{ x: 0, opacity: 1 }}
+      exit={{ x: -10, opacity: 0 }}
+      transition={{ duration: 0.2 }}
+    >
+      <Outlet />
+    </motion.div>
   );
 }
