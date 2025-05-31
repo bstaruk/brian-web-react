@@ -3,7 +3,7 @@ import { Outlet, useLocation } from '@tanstack/react-router';
 import { FaGithub, FaBars, FaX } from 'react-icons/fa6';
 import clsx from 'clsx';
 import { AnimatePresence, motion } from 'framer-motion';
-import { RouterLink } from 'atoms/Link';
+import Link, { RouterLink } from 'atoms/Link';
 
 const menuItems: { name: string; path: string }[] = [
   { name: 'Home', path: '/' },
@@ -138,17 +138,19 @@ export default function AppLayout() {
       </div>
 
       <footer className="bg-monster-600 py-4">
-        <div className="wrapper-page px-3 sm:px-5 md:px-8">
+        <div className="wrapper-page px-3 sm:px-5 md:px-8 flex items-center justify-end gap-4">
           <p className="text-sm tracking-wider uppercase">
-            <a
+            <Link
               href="https://github.com/bstaruk/brian-web-react"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 font-medium"
+              variant="monster"
             >
-              <FaGithub className="h-5 w-auto" />
-              <span>View Source</span>
-            </a>
+              <span className="flex items-center gap-2">
+                <FaGithub className="h-5 w-auto shrink-0" />
+                <span>View Source</span>
+              </span>
+            </Link>
           </p>
         </div>
       </footer>
