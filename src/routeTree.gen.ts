@@ -11,20 +11,27 @@
 // Import Routes
 
 import { Route as rootRoute } from './routes/__root'
-import { Route as ThingsImport } from './routes/things'
 import { Route as IndexImport } from './routes/index'
+import { Route as ThingsIndexImport } from './routes/things/index'
+import { Route as ThingsAuthBookmarkMakerImport } from './routes/things/auth-bookmark-maker'
 
 // Create/Update Routes
-
-const ThingsRoute = ThingsImport.update({
-  id: '/things',
-  path: '/things',
-  getParentRoute: () => rootRoute,
-} as any)
 
 const IndexRoute = IndexImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const ThingsIndexRoute = ThingsIndexImport.update({
+  id: '/things/',
+  path: '/things/',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const ThingsAuthBookmarkMakerRoute = ThingsAuthBookmarkMakerImport.update({
+  id: '/things/auth-bookmark-maker',
+  path: '/things/auth-bookmark-maker',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -39,11 +46,18 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexImport
       parentRoute: typeof rootRoute
     }
-    '/things': {
-      id: '/things'
+    '/things/auth-bookmark-maker': {
+      id: '/things/auth-bookmark-maker'
+      path: '/things/auth-bookmark-maker'
+      fullPath: '/things/auth-bookmark-maker'
+      preLoaderRoute: typeof ThingsAuthBookmarkMakerImport
+      parentRoute: typeof rootRoute
+    }
+    '/things/': {
+      id: '/things/'
       path: '/things'
       fullPath: '/things'
-      preLoaderRoute: typeof ThingsImport
+      preLoaderRoute: typeof ThingsIndexImport
       parentRoute: typeof rootRoute
     }
   }
@@ -53,37 +67,42 @@ declare module '@tanstack/react-router' {
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/things': typeof ThingsRoute
+  '/things/auth-bookmark-maker': typeof ThingsAuthBookmarkMakerRoute
+  '/things': typeof ThingsIndexRoute
 }
 
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/things': typeof ThingsRoute
+  '/things/auth-bookmark-maker': typeof ThingsAuthBookmarkMakerRoute
+  '/things': typeof ThingsIndexRoute
 }
 
 export interface FileRoutesById {
   __root__: typeof rootRoute
   '/': typeof IndexRoute
-  '/things': typeof ThingsRoute
+  '/things/auth-bookmark-maker': typeof ThingsAuthBookmarkMakerRoute
+  '/things/': typeof ThingsIndexRoute
 }
 
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/things'
+  fullPaths: '/' | '/things/auth-bookmark-maker' | '/things'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/things'
-  id: '__root__' | '/' | '/things'
+  to: '/' | '/things/auth-bookmark-maker' | '/things'
+  id: '__root__' | '/' | '/things/auth-bookmark-maker' | '/things/'
   fileRoutesById: FileRoutesById
 }
 
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  ThingsRoute: typeof ThingsRoute
+  ThingsAuthBookmarkMakerRoute: typeof ThingsAuthBookmarkMakerRoute
+  ThingsIndexRoute: typeof ThingsIndexRoute
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  ThingsRoute: ThingsRoute,
+  ThingsAuthBookmarkMakerRoute: ThingsAuthBookmarkMakerRoute,
+  ThingsIndexRoute: ThingsIndexRoute,
 }
 
 export const routeTree = rootRoute
@@ -97,14 +116,18 @@ export const routeTree = rootRoute
       "filePath": "__root.tsx",
       "children": [
         "/",
-        "/things"
+        "/things/auth-bookmark-maker",
+        "/things/"
       ]
     },
     "/": {
       "filePath": "index.tsx"
     },
-    "/things": {
-      "filePath": "things.tsx"
+    "/things/auth-bookmark-maker": {
+      "filePath": "things/auth-bookmark-maker.tsx"
+    },
+    "/things/": {
+      "filePath": "things/index.tsx"
     }
   }
 }
