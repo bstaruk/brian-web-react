@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { Outlet, useLocation } from '@tanstack/react-router';
 import { FaGithub, FaBars, FaX } from 'react-icons/fa6';
+import clsx from 'clsx';
 import { AnimatePresence, motion } from 'framer-motion';
 import { RouterLink } from 'atoms/Link';
 
@@ -71,12 +72,17 @@ export default function AppLayout() {
           {/* Mobile Sidebar (off-canvas) */}
           <aside
             id="mobile-sidebar"
-            className={`fixed inset-y-0 right-0 z-40 bg-monster-500 dark:bg-black min-w-[300px] max-w-[80vw] border-r border-monster-300 transform transition-transform duration-300 ease-in-out
-            ${menuOpen ? 'translate-x-0' : 'translate-x-full'} lg:hidden`}
+            className={clsx(
+              'fixed inset-y-0 right-0 z-40 bg-monster-500 dark:bg-black min-w-[240px] max-w-[80vw] border-r border-monster-300 transform transition-transform duration-300 ease-in-out lg:hidden',
+              {
+                'translate-x-0 opacity-100': menuOpen,
+                'translate-x-2/3 opacity-0 pointer-events-none': !menuOpen,
+              },
+            )}
             role="dialog"
             aria-modal="true"
           >
-            <nav className="flex flex-col gap-2 p-4 uppercase">
+            <nav className="flex flex-col gap-2 p-4 uppercase text-h4">
               <button
                 onClick={() => setMenuOpen(false)}
                 aria-label="Close menu"
@@ -102,11 +108,12 @@ export default function AppLayout() {
           </aside>
 
           {/* Desktop Sidebar */}
-          <aside className="hidden lg:block w-50 shrink-0 p-6 bg-monster-400 rounded-xs shadow-xs">
+          <aside className="hidden lg:block w-50 shrink-0 px-2 py-3 bg-monster-400 rounded-xs shadow-xs">
             <div className="sticky top-2 flex flex-col gap-6 items-stretch">
-              <nav className="flex flex-col items-start gap-2 uppercase text-h5">
+              <nav className="flex flex-col uppercase text-h4">
                 {menuItems.map((item) => (
                   <RouterLink
+                    className="px-4 py-2"
                     key={item.name}
                     to={item.path}
                     onClick={() => setMenuOpen(false)}
