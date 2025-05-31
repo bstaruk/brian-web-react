@@ -79,7 +79,7 @@ function ClampCalculatorForm() {
   );
   const form = useForm({
     defaultValues,
-    onSubmit: async ({ value }) => {
+    onSubmit: ({ value }) => {
       setClamp(
         createClamp(
           value.clampMin,
@@ -104,7 +104,9 @@ function ClampCalculatorForm() {
         onSubmit={(e) => {
           e.preventDefault();
           e.stopPropagation();
-          form.handleSubmit();
+          form.handleSubmit().catch((error) => {
+            console.error('Form submission error:', error);
+          });
         }}
         className="flex flex-col gap-4"
       >

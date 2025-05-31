@@ -42,7 +42,7 @@ function AuthBookmarkForm() {
   );
   const form = useForm({
     defaultValues,
-    onSubmit: async ({ value }) => {
+    onSubmit: ({ value }) => {
       setBookmark(
         createHtpasswdBookmarkUrl(value.url, value.username, value.password),
       );
@@ -57,7 +57,9 @@ function AuthBookmarkForm() {
       onSubmit={(e) => {
         e.preventDefault();
         e.stopPropagation();
-        form.handleSubmit();
+        form.handleSubmit().catch((error) => {
+          console.error('Form submission error:', error);
+        });
       }}
       className="flex flex-col items-start gap-4"
     >
