@@ -8,7 +8,7 @@ const FieldMessage: React.FC<FieldMessageProps> = ({ field }) => {
   if (!field.state.meta.isTouched || !!field.state.meta.isValid) return null;
 
   return (
-    <p className="text-red-200">
+    <p className="text-sm text-red-50">
       {field.state.meta.errors.map((error) => error.message).join(', ')}
     </p>
   );

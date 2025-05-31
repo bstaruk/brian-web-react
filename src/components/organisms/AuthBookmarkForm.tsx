@@ -34,12 +34,12 @@ function AuthBookmarkForm() {
     >
       <form.Field
         name="firstName"
-        children={(field) => <TextField field={field} label="First Name:" />}
+        children={(field) => <TextField field={field} label="First Name" />}
       />
 
       <form.Field
         name="lastName"
-        children={(field) => <TextField field={field} label="Last Name:" />}
+        children={(field) => <TextField field={field} label="Last Name" />}
       />
 
       <form.Subscribe
@@ -48,7 +48,7 @@ function AuthBookmarkForm() {
           <button
             type="submit"
             disabled={!canSubmit}
-            className="cursor-pointer p-2 bg-monster-400 text-monster-50 text-sm font-medium uppercase text-shadow-xs shadow-xs"
+            className="cursor-pointer text-monster-50 font-medium uppercase text-shadow-xs p-2 bg-monster-400 border border-monster-400 focus:border-monster-200 rounded-xs shadow-xs text-sm outline-0"
           >
             {isSubmitting ? '...' : 'Submit'}
           </button>

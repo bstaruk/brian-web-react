@@ -9,8 +9,11 @@ interface TextFieldProps {
 
 const TextField: React.FC<TextFieldProps> = ({ field, label }) => {
   return (
-    <div className="flex flex-col items-start gap-0.5">
-      <label htmlFor={field.name}>{label}</label>
+    <div className="flex flex-col gap-0.5">
+      <label className="text-sm font-medium" htmlFor={field.name}>
+        {label}:
+      </label>
+
       <TextInput
         id={field.name}
         name={field.name}
@@ -18,6 +21,7 @@ const TextField: React.FC<TextFieldProps> = ({ field, label }) => {
         onBlur={field.handleBlur}
         onChange={(e) => field.handleChange(e.target.value)}
       />
+
       <FieldMessage {...{ field }} />
     </div>
   );
