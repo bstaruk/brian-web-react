@@ -5,9 +5,10 @@ import TextInput from '../../atoms/form/TextInput';
 interface TextFieldProps {
   field: AnyFieldApi;
   label: string;
+  placeholder?: string;
 }
 
-const TextField: React.FC<TextFieldProps> = ({ field, label }) => {
+const TextField: React.FC<TextFieldProps> = ({ field, label, ...props }) => {
   return (
     <div className="flex flex-col gap-0.5">
       <label className="text-sm font-medium" htmlFor={field.name}>
@@ -20,6 +21,7 @@ const TextField: React.FC<TextFieldProps> = ({ field, label }) => {
         value={field.state.value}
         onBlur={field.handleBlur}
         onChange={(e) => field.handleChange(e.target.value)}
+        {...props}
       />
 
       <FieldMessage {...{ field }} />
