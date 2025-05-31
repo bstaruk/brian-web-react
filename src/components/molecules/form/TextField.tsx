@@ -2,13 +2,18 @@ import type { AnyFieldApi } from '@tanstack/react-form';
 import FieldMessage from 'atoms/form/FieldMessage';
 import TextInput from 'atoms/form/TextInput';
 
-interface TextFieldProps {
+type TextFieldProps = React.InputHTMLAttributes<HTMLInputElement> & {
   field: AnyFieldApi;
   label: string;
-  placeholder?: string;
-}
+  valueAsNumber?: boolean;
+};
 
-const TextField: React.FC<TextFieldProps> = ({ field, label, ...props }) => {
+const TextField: React.FC<TextFieldProps> = ({
+  field,
+  label,
+  valueAsNumber,
+  ...props
+}) => {
   return (
     <div className="flex flex-col gap-0.5">
       <label className="text-sm font-medium" htmlFor={field.name}>
@@ -20,7 +25,11 @@ const TextField: React.FC<TextFieldProps> = ({ field, label, ...props }) => {
         name={field.name}
         value={field.state.value}
         onBlur={field.handleBlur}
-        onChange={(e) => field.handleChange(e.target.value)}
+        onChange={(e) =>
+          field.handleChange(
+            valueAsNumber ? e.target.valueAsNumber : e.target.value,
+          )
+        }
         {...props}
       />
 
