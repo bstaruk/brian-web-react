@@ -4,7 +4,7 @@ import clsx from 'clsx';
 
 interface LinkProps extends React.AnchorHTMLAttributes<HTMLAnchorElement> {
   children: React.ReactNode;
-  variant?: 'marathon' | 'marathon-light' | 'white';
+  variant?: 'marathon' | 'marathon-light' | 'white' | 'monster';
 }
 
 const Link = React.forwardRef<HTMLAnchorElement, LinkProps>(
@@ -22,6 +22,7 @@ const Link = React.forwardRef<HTMLAnchorElement, LinkProps>(
             'text-marathon-200 hover:text-marathon-100 focus:text-marathon-100':
               variant === 'marathon-light',
             'text-stone-100': variant === 'white',
+            'text-monster-100': variant === 'monster',
           },
         )}
       >
