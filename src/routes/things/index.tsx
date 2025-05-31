@@ -1,5 +1,5 @@
 import { createFileRoute } from '@tanstack/react-router';
-import { RouterLink } from 'atoms/Link';
+import ThingCard from 'molecules/ThingCard';
 
 export const Route = createFileRoute('/things/')({
   component: Things,
@@ -19,27 +19,25 @@ export const Route = createFileRoute('/things/')({
 function Things() {
   return (
     <div className="flex flex-col gap-8">
-      <section className="flex flex-col gap-4">
+      <section className="flex flex-col gap-5">
         <h1>Things</h1>
 
-        <div className="flex flex-col gap-3">
-          <article className="relative flex flex-col gap-1.5">
-            <h5>
-              <RouterLink
-                to="/things/auth-bookmark-maker"
-                className="after:absolute after:inset-0 after:size-full"
-              >
-                Authenticated Bookmark Maker
-              </RouterLink>
-            </h5>
+        <ThingCard
+          to="/things/css-clamp-calculator"
+          title="CSS Clamp Calculator"
+        >
+          A tool for calculating values for use with the CSS{' '}
+          <code>clamp()</code> function.
+        </ThingCard>
 
-            <p>
-              A simple utility which generates a bookmarkable hyperlink to an
-              authenticated page, bypassing the need for manually entering the
-              username and password.
-            </p>
-          </article>
-        </div>
+        <ThingCard
+          to="/things/auth-bookmark-maker"
+          title="Authenticated Bookmark Maker"
+        >
+          A simple utility which generates a bookmarkable hyperlink to an
+          authenticated page, bypassing the need for manually entering the
+          username and password.
+        </ThingCard>
       </section>
     </div>
   );

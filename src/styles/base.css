@@ -15,12 +15,18 @@
     @apply text-shadow-xs text-shadow-monster-700;
   }
 
+  h1,
+  h2,
+  h3 {
+    @apply uppercase;
+  }
+
   h1 {
-    @apply text-h1 uppercase;
+    @apply text-h1;
   }
 
   h2 {
-    @apply text-h2 uppercase;
+    @apply text-h2;
   }
 
   h3 {
