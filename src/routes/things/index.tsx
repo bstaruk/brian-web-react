@@ -23,9 +23,12 @@ function Things() {
         <h1>Things</h1>
 
         <div className="flex flex-col gap-3">
-          <article className="flex flex-col gap-2">
+          <article className="relative flex flex-col gap-1.5">
             <h5>
-              <RouterLink to="/things/auth-bookmark-maker">
+              <RouterLink
+                to="/things/auth-bookmark-maker"
+                className="after:absolute after:inset-0 after:size-full"
+              >
                 Authenticated Bookmark Maker
               </RouterLink>
             </h5>
