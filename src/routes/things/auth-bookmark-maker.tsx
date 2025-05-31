@@ -8,7 +8,8 @@ export const Route = createFileRoute('/things/auth-bookmark-maker')({
     meta: [
       {
         name: 'description',
-        content: 'A simple tool for creating bookmarks to authenticated pages.',
+        content:
+          'A tool for creating bookmarks to authenticated pages with pre-applied credentials.',
       },
       {
         title: 'Authenticated Bookmark Maker | brian.staruk.net',
