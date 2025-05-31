@@ -1,9 +1,8 @@
 import { useEffect, useRef, useState } from 'react';
-import { Outlet } from '@tanstack/react-router';
+import { Outlet, useRouterState } from '@tanstack/react-router';
 import { FaGithub, FaBars, FaX } from 'react-icons/fa6';
-import ScoreboardDot from '../atoms/ScoreboardDot';
-import ScoreboardNumber from '../atoms/ScoreboardNumber';
-import ScoreboardLink from '../molecules/ScoreboardLink';
+import { AnimatePresence, motion } from 'framer-motion';
+import { RouterLink } from '../atoms/Link';
 
 const menuItems: { name: string; path: string }[] = [
   { name: 'Home', path: '/' },
@@ -26,116 +25,129 @@ export default function AppLayout() {
   }, [menuOpen]);
 
   return (
-    <div className="h-screen wrapper-page px-3 sm:px-5 md:px-8 flex flex-col gap-5">
-      <header className="flex items-center flex-wrap gap-x-3 gap-y-2 pt-5">
-        {/* Hamburger Button (mobile only) */}
-        <button
-          onClick={() => setMenuOpen(true)}
-          className="lg:hidden bg-monster-700 rounded-sm shrink-0 p-2 focus:outline-none focus-visible:ring cursor-pointer"
-          aria-label="Open menu"
-          aria-expanded={menuOpen}
-          aria-controls="mobile-sidebar"
-        >
-          <FaBars className="h-4 w-auto" />
-        </button>
+    <div className="h-screen flex flex-col gap-5">
+      <div className="grow wrapper-page px-3 sm:px-5 md:px-8 flex flex-col gap-5">
+        <header className="w-full flex items-center justify-between gap-x-3 gap-y-2 pt-5">
+          <div className="sm:hidden size-11 rounded-full border-4 border-monster-300 flex items-center justify-center">
+            <div className="text-h1 font-bold">B</div>
+          </div>
 
-        <div className="text-title uppercase text-shadow-xs text-shadow-monster-700">
-          brian<span className="text-monster-400">.</span>staruk
-          <span className="text-monster-400">.net</span>
-        </div>
-      </header>
+          <div className="hidden sm:block text-title uppercase text-shadow-xs text-shadow-monster-700">
+            brian<span className="text-monster-400">.</span>staruk
+            <span className="text-monster-400">.net</span>
+          </div>
 
-      <main className="grow flex gap-8 relative">
-        {/* Overlay when menu is open */}
-        {menuOpen && (
-          <div
-            className="fixed inset-0 bg-monster-950/70 z-30 lg:hidden"
-            onClick={() => setMenuOpen(false)}
-            aria-hidden="true"
-          />
-        )}
+          {/* Hamburger Button (mobile only) */}
+          <button
+            onClick={() => setMenuOpen(true)}
+            className="lg:hidden bg-monster-700 rounded-sm shrink-0 size-8 flex items-center justify-center focus:outline-none focus-visible:ring cursor-pointer"
+            aria-label="Open menu"
+            aria-expanded={menuOpen}
+            aria-controls="mobile-sidebar"
+          >
+            {menuOpen ? (
+              <FaX className="h-3.5 w-auto" />
+            ) : (
+              <FaBars className="h-4 w-auto" />
+            )}
+          </button>
+        </header>
 
-        {/* Mobile Sidebar (off-canvas) */}
-        <aside
-          id="mobile-sidebar"
-          className={`fixed inset-y-0 left-0 z-40 bg-monster-500 dark:bg-black min-w-[300px] max-w-[80vw] border-r border-monster-300 transform transition-transform duration-300 ease-in-out
-            ${menuOpen ? 'translate-x-0' : '-translate-x-full'} lg:hidden`}
-          role="dialog"
-          aria-modal="true"
-        >
-          <nav className="flex flex-col gap-2 p-4 uppercase">
-            <button
+        <main className="grow flex gap-8 relative">
+          {/* Overlay when menu is open */}
+          {menuOpen && (
+            <div
+              className="fixed inset-0 bg-monster-950/70 z-30 lg:hidden"
               onClick={() => setMenuOpen(false)}
-              aria-label="Close menu"
-              className="self-end mb-4 inline-flex items-center justify-center p-2 focus:outline-none focus-visible:ring cursor-pointer"
-            >
-              <FaX className="h-4 w-auto" />
-            </button>
+              aria-hidden="true"
+            />
+          )}
 
-            {menuItems.map((item) => (
-              <ScoreboardLink
-                key={item.name}
-                to={item.path}
+          {/* Mobile Sidebar (off-canvas) */}
+          <aside
+            id="mobile-sidebar"
+            className={`fixed inset-y-0 left-0 z-40 bg-monster-500 dark:bg-black min-w-[300px] max-w-[80vw] border-r border-monster-300 transform transition-transform duration-300 ease-in-out
+            ${menuOpen ? 'translate-x-0' : '-translate-x-full'} lg:hidden`}
+            role="dialog"
+            aria-modal="true"
+          >
+            <nav className="flex flex-col gap-2 p-4 uppercase">
+              <button
                 onClick={() => setMenuOpen(false)}
+                aria-label="Close menu"
+                className="self-end mb-4 inline-flex items-center justify-center p-2 focus:outline-none focus-visible:ring cursor-pointer"
               >
-                {item.name}
-              </ScoreboardLink>
-            ))}
-          </nav>
-        </aside>
+                <FaX className="h-4 w-auto" />
+              </button>
 
-        {/* Desktop Sidebar */}
-        <aside className="hidden lg:block shrink-0 py-2 border-r border-monster-300 pr-8">
-          <div className="sticky top-2 flex flex-col gap-6 items-stretch">
-            <nav className="flex flex-col items-start gap-2 uppercase">
               {menuItems.map((item) => (
-                <ScoreboardLink
+                <RouterLink
                   key={item.name}
                   to={item.path}
                   onClick={() => setMenuOpen(false)}
                 >
                   {item.name}
-                </ScoreboardLink>
+                </RouterLink>
               ))}
             </nav>
+          </aside>
 
-            <div className="flex flex-col gap-3">
-              <div className="flex gap-2">
-                <ScoreboardDot size="lg" variant="green-on" />
-                <ScoreboardDot size="lg" variant="green-on" />
-                <ScoreboardDot size="lg" variant="green" />
-              </div>
-
-              <div className="flex gap-2">
-                <ScoreboardDot size="lg" variant="red-on" />
-                <ScoreboardDot size="lg" variant="red" />
-              </div>
-
-              <div>
-                <ScoreboardNumber value={25} />
-              </div>
+          {/* Desktop Sidebar */}
+          <aside className="hidden lg:block w-50 shrink-0 p-6 bg-monster-400 rounded-xs">
+            <div className="sticky top-2 flex flex-col gap-6 items-stretch">
+              <nav className="flex flex-col items-start gap-2 uppercase text-h5">
+                {menuItems.map((item) => (
+                  <RouterLink
+                    key={item.name}
+                    to={item.path}
+                    onClick={() => setMenuOpen(false)}
+                  >
+                    {item.name}
+                  </RouterLink>
+                ))}
+              </nav>
             </div>
-          </div>
-        </aside>
+          </aside>
 
-        <section className="grow shrink py-2">
-          <Outlet />
-        </section>
-      </main>
+          <section className="grow shrink py-2">
+            <AnimatePresence mode="wait">
+              <OutletWithTransition />
+            </AnimatePresence>
+          </section>
+        </main>
+      </div>
 
-      <footer className="border-t border-monster-400 py-4 uppercase">
-        <p className="text-sm tracking-wider">
-          <a
-            href="https://github.com/bstaruk/brian-web-react"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 font-medium"
-          >
-            <FaGithub className="h-5 w-auto" />
-            <span>View Source</span>
-          </a>
-        </p>
+      <footer className="bg-monster-600 py-4">
+        <div className="wrapper-page px-3 sm:px-5 md:px-8">
+          <p className="text-sm tracking-wider uppercase">
+            <a
+              href="https://github.com/bstaruk/brian-web-react"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 font-medium"
+            >
+              <FaGithub className="h-5 w-auto" />
+              <span>View Source</span>
+            </a>
+          </p>
+        </div>
       </footer>
     </div>
+  );
+}
+
+function OutletWithTransition() {
+  const { location } = useRouterState();
+
+  return (
+    <motion.div
+      key={location.pathname}
+      initial={{ x: -10, opacity: 0 }}
+      animate={{ x: 0, opacity: 1 }}
+      exit={{ x: -10, opacity: 0 }}
+      transition={{ duration: 0.2 }}
+    >
+      <Outlet />
+    </motion.div>
   );
 }

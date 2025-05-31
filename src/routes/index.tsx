@@ -17,12 +17,15 @@ export const Route = createFileRoute('/')({
 
 function Home() {
   return (
-    <div className="flex flex-col gap-5">
+    <div className="flex flex-col gap-4">
       <h1>Welcome!</h1>
-      <p>
-        I'm Brian Staruk, a software engineer from Boston, MA who specializes in
-        building web applications using React, TypeScript, and Node.js.
-      </p>
+
+      <div className="flex flex-col gap-2">
+        <p>
+          I'm Brian Staruk, a software engineer from Boston, MA who specializes
+          in building web applications using React, TypeScript, and Node.js.
+        </p>
+      </div>
     </div>
   );
 }
