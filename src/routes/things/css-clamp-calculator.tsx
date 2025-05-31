@@ -1,5 +1,6 @@
 import { createFileRoute } from '@tanstack/react-router';
-import AuthBookmarkForm from 'organisms/AuthBookmarkForm';
+import Link from 'atoms/Link';
+import ClampCalculatorForm from 'organisms/ClampCalculatorForm';
 
 export const Route = createFileRoute('/things/css-clamp-calculator')({
   component: RouteComponent,
@@ -24,12 +25,23 @@ function RouteComponent() {
         <h1>CSS Clamp Calculator</h1>
 
         <div className="flex flex-col gap-3">
-          <p>Coming soon!</p>
+          <p>
+            This calculator generates a{' '}
+            <Link
+              href="https://developer.mozilla.org/en-US/docs/Web/CSS/clamp"
+              target="_blank"
+            >
+              CSS clamp()
+            </Link>{' '}
+            value that scales linearly (in rem) between two breakpoints (in px).
+            The minimum value is used for viewports below the lower breakpoint,
+            and vice versa for the maximum.
+          </p>
         </div>
 
         <hr />
 
-        <AuthBookmarkForm />
+        <ClampCalculatorForm />
       </section>
     </div>
   );
