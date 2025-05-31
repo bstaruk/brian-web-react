@@ -1,26 +1,57 @@
+import { useState } from 'react';
 import { z } from 'zod';
 import { useForm } from '@tanstack/react-form';
 import Button from '../atoms/Button';
 import TextField from '../molecules/form/TextField';
 
-const userSchema = z.object({
-  firstName: z.string().min(5, {
-    message: 'First name cannot be less than 5 letters',
-  }),
-  lastName: z.string().min(3, 'Last name must be at least 3 characters'),
+const createHtpasswdBookmarkUrl = (
+  url: string,
+  user: string,
+  password: string,
+): string => {
+  try {
+    const parsed = new URL(url);
+    parsed.username = user;
+    parsed.password = password;
+    return parsed.toString();
+  } catch {
+    throw new Error('Invalid URL provided');
+  }
+};
+
+const formSchema = z.object({
+  url: z.string().url('Invalid URL'),
+  username: z.string().min(1, 'Username is required'),
+  password: z.string().min(1, 'Password is required'),
 });
 
+const defaultValues = {
+  url: 'https://example.com',
+  username: 'admin',
+  password: 'hunter22',
+};
+
 function AuthBookmarkForm() {
+  const [bookmark, setBookmark] = useState<string>(
+    createHtpasswdBookmarkUrl(
+      defaultValues.url,
+      defaultValues.username,
+      defaultValues.password,
+    ),
+  );
   const form = useForm({
     defaultValues: {
-      firstName: '',
-      lastName: '',
+      url: '',
+      username: '',
+      password: '',
     },
     onSubmit: async ({ value }) => {
-      console.log(value);
+      setBookmark(
+        createHtpasswdBookmarkUrl(value.url, value.username, value.password),
+      );
     },
     validators: {
-      onChange: userSchema,
+      onChange: formSchema,
     },
   });
 
@@ -34,13 +65,36 @@ function AuthBookmarkForm() {
       className="flex flex-col items-start gap-4"
     >
       <form.Field
-        name="firstName"
-        children={(field) => <TextField field={field} label="First Name" />}
+        name="url"
+        children={(field) => (
+          <TextField
+            field={field}
+            label="URL"
+            placeholder={defaultValues.url}
+          />
+        )}
       />
 
       <form.Field
-        name="lastName"
-        children={(field) => <TextField field={field} label="Last Name" />}
+        name="username"
+        children={(field) => (
+          <TextField
+            field={field}
+            label="Username"
+            placeholder={defaultValues.username}
+          />
+        )}
+      />
+
+      <form.Field
+        name="password"
+        children={(field) => (
+          <TextField
+            field={field}
+            label="Password"
+            placeholder={defaultValues.password}
+          />
+        )}
       />
 
       <form.Subscribe
@@ -51,6 +105,8 @@ function AuthBookmarkForm() {
           </Button>
         )}
       />
+
+      <p className="font-medium">{bookmark}</p>
     </form>
   );
 }
