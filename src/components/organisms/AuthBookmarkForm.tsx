@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { z } from 'zod';
 import { useForm } from '@tanstack/react-form';
 import Button from '../atoms/Button';
+import Link from '../atoms/Link';
 import TextField from '../molecules/form/TextField';
 
 const createHtpasswdBookmarkUrl = (
@@ -40,11 +41,7 @@ function AuthBookmarkForm() {
     ),
   );
   const form = useForm({
-    defaultValues: {
-      url: '',
-      username: '',
-      password: '',
-    },
+    defaultValues,
     onSubmit: async ({ value }) => {
       setBookmark(
         createHtpasswdBookmarkUrl(value.url, value.username, value.password),
@@ -64,37 +61,33 @@ function AuthBookmarkForm() {
       }}
       className="flex flex-col items-start gap-4"
     >
+      <div className="flex flex-col gap-2">
+        <h5 className="font-medium">Your bookmark is...</h5>
+        <p>
+          <Link
+            href={bookmark}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="font-mono text-mono font-bold"
+          >
+            {bookmark}
+          </Link>
+        </p>
+      </div>
+
       <form.Field
         name="url"
-        children={(field) => (
-          <TextField
-            field={field}
-            label="URL"
-            placeholder={defaultValues.url}
-          />
-        )}
+        children={(field) => <TextField field={field} label="URL" />}
       />
 
       <form.Field
         name="username"
-        children={(field) => (
-          <TextField
-            field={field}
-            label="Username"
-            placeholder={defaultValues.username}
-          />
-        )}
+        children={(field) => <TextField field={field} label="Username" />}
       />
 
       <form.Field
         name="password"
-        children={(field) => (
-          <TextField
-            field={field}
-            label="Password"
-            placeholder={defaultValues.password}
-          />
-        )}
+        children={(field) => <TextField field={field} label="Password" />}
       />
 
       <form.Subscribe
@@ -105,8 +98,6 @@ function AuthBookmarkForm() {
           </Button>
         )}
       />
-
-      <p className="font-medium">{bookmark}</p>
     </form>
   );
 }
