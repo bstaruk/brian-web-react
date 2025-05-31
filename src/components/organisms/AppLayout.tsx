@@ -6,7 +6,7 @@ import { RouterLink } from '../atoms/Link';
 
 const menuItems: { name: string; path: string }[] = [
   { name: 'Home', path: '/' },
-  { name: 'About', path: '/about' },
+  { name: 'Things', path: '/things' },
 ];
 
 export default function AppLayout() {
