@@ -1,4 +1,5 @@
 import { createFileRoute } from '@tanstack/react-router';
+import Link from 'atoms/Link';
 import ThingCard from 'molecules/ThingCard';
 
 export const Route = createFileRoute('/things/')({
@@ -20,7 +21,20 @@ function Things() {
   return (
     <div className="flex flex-col gap-8">
       <section className="flex flex-col gap-5">
-        <h1>Things</h1>
+        <div className="flex flex-col gap-3">
+          <h1>Things</h1>
+          <p>
+            These are some things I've built, which wouldn't quite fit on{' '}
+            <Link
+              href="https://leetbin.com/u/brian"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              my blog
+            </Link>
+            .
+          </p>
+        </div>
 
         <ThingCard
           to="/things/css-clamp-calculator"

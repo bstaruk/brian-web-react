@@ -1,8 +1,9 @@
 import { useEffect, useRef, useState } from 'react';
 import { Outlet, useLocation } from '@tanstack/react-router';
-import { FaGithub, FaBars, FaX } from 'react-icons/fa6';
+import { FaGithub, FaBars, FaX, FaLinkedin } from 'react-icons/fa6';
+import clsx from 'clsx';
 import { AnimatePresence, motion } from 'framer-motion';
-import { RouterLink } from 'atoms/Link';
+import Link, { RouterLink } from 'atoms/Link';
 
 const menuItems: { name: string; path: string }[] = [
   { name: 'Home', path: '/' },
@@ -71,12 +72,17 @@ export default function AppLayout() {
           {/* Mobile Sidebar (off-canvas) */}
           <aside
             id="mobile-sidebar"
-            className={`fixed inset-y-0 right-0 z-40 bg-monster-500 dark:bg-black min-w-[300px] max-w-[80vw] border-r border-monster-300 transform transition-transform duration-300 ease-in-out
-            ${menuOpen ? 'translate-x-0' : 'translate-x-full'} lg:hidden`}
+            className={clsx(
+              'fixed inset-y-0 right-0 z-40 bg-monster-500 dark:bg-black min-w-[240px] max-w-[80vw] border-r border-monster-300 transform transition-transform duration-300 ease-in-out lg:hidden',
+              {
+                'translate-x-0 opacity-100': menuOpen,
+                'translate-x-2/3 opacity-0 pointer-events-none': !menuOpen,
+              },
+            )}
             role="dialog"
             aria-modal="true"
           >
-            <nav className="flex flex-col gap-2 p-4 uppercase">
+            <nav className="flex flex-col gap-1 p-4 uppercase text-h3">
               <button
                 onClick={() => setMenuOpen(false)}
                 aria-label="Close menu"
@@ -94,19 +100,49 @@ export default function AppLayout() {
                   variant={
                     pathname === item.path ? 'marathon-light' : 'marathon'
                   }
+                  className="py-2"
                 >
                   {item.name}
                 </RouterLink>
               ))}
             </nav>
+
+            <ul className="flex gap-2 px-2 h-8 mt-4">
+              <li className="flex">
+                <Link
+                  href="https://github.com/bstaruk"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  variant="monster"
+                  className="flex px-2"
+                >
+                  <FaGithub className="h-full w-auto" />
+                  <span className="sr-only">GitHub</span>
+                </Link>
+              </li>
+
+              <li className="flex">
+                <Link
+                  href="https://www.linkedin.com/in/brian-staruk/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  variant="monster"
+                  className="flex"
+                >
+                  <FaLinkedin className="h-full w-auto" />
+                  <span className="sr-only">LinkedIn</span>
+                </Link>
+              </li>
+            </ul>
           </aside>
 
           {/* Desktop Sidebar */}
-          <aside className="hidden lg:block w-50 shrink-0 p-6 bg-monster-400 rounded-xs shadow-xs">
+          <aside className="hidden lg:block w-50 shrink-0 px-2 py-3 bg-monster-400 rounded-xs shadow-xs">
             <div className="sticky top-2 flex flex-col gap-6 items-stretch">
-              <nav className="flex flex-col items-start gap-2 uppercase text-h5">
+              <nav className="flex flex-col uppercase text-h4">
                 {menuItems.map((item) => (
                   <RouterLink
+                    className="px-4 py-2"
                     key={item.name}
                     to={item.path}
                     onClick={() => setMenuOpen(false)}
@@ -119,6 +155,34 @@ export default function AppLayout() {
                   </RouterLink>
                 ))}
               </nav>
+
+              <ul className="flex gap-2 px-2 h-8">
+                <li className="flex">
+                  <Link
+                    href="https://github.com/bstaruk"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    variant="monster"
+                    className="flex px-2"
+                  >
+                    <FaGithub className="h-full w-auto" />
+                    <span className="sr-only">GitHub</span>
+                  </Link>
+                </li>
+
+                <li className="flex">
+                  <Link
+                    href="https://www.linkedin.com/in/brian-staruk/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    variant="monster"
+                    className="flex"
+                  >
+                    <FaLinkedin className="h-full w-auto" />
+                    <span className="sr-only">LinkedIn</span>
+                  </Link>
+                </li>
+              </ul>
             </div>
           </aside>
 
@@ -131,17 +195,19 @@ export default function AppLayout() {
       </div>
 
       <footer className="bg-monster-600 py-4">
-        <div className="wrapper-page px-3 sm:px-5 md:px-8">
+        <div className="wrapper-page px-3 sm:px-5 md:px-8 flex items-center justify-end gap-4">
           <p className="text-sm tracking-wider uppercase">
-            <a
+            <Link
               href="https://github.com/bstaruk/brian-web-react"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 font-medium"
+              variant="monster"
             >
-              <FaGithub className="h-5 w-auto" />
-              <span>View Source</span>
-            </a>
+              <span className="flex items-center gap-2">
+                <FaGithub className="h-5 w-auto shrink-0" />
+                <span>View Source</span>
+              </span>
+            </Link>
           </p>
         </div>
       </footer>

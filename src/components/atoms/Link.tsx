@@ -3,8 +3,8 @@ import { createLink, type LinkComponent } from '@tanstack/react-router';
 import clsx from 'clsx';
 
 interface LinkProps extends React.AnchorHTMLAttributes<HTMLAnchorElement> {
-  children: string;
-  variant?: 'marathon' | 'marathon-light';
+  children: React.ReactNode;
+  variant?: 'marathon' | 'marathon-light' | 'white' | 'monster';
 }
 
 const Link = React.forwardRef<HTMLAnchorElement, LinkProps>(
@@ -21,6 +21,9 @@ const Link = React.forwardRef<HTMLAnchorElement, LinkProps>(
               variant === 'marathon',
             'text-marathon-200 hover:text-marathon-100 focus:text-marathon-100':
               variant === 'marathon-light',
+            'text-stone-100': variant === 'white',
+            'text-monster-100 hover:text-monster-50 focus:text-monster-50':
+              variant === 'monster',
           },
         )}
       >

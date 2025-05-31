@@ -23,7 +23,7 @@ const TextField: React.FC<TextFieldProps> = ({
       <TextInput
         id={field.name}
         name={field.name}
-        value={field.state.value}
+        value={field.state.value as string}
         onBlur={field.handleBlur}
         onChange={(e) =>
           field.handleChange(

@@ -42,7 +42,7 @@ function AuthBookmarkForm() {
   );
   const form = useForm({
     defaultValues,
-    onSubmit: async ({ value }) => {
+    onSubmit: ({ value }) => {
       setBookmark(
         createHtpasswdBookmarkUrl(value.url, value.username, value.password),
       );
@@ -57,18 +57,20 @@ function AuthBookmarkForm() {
       onSubmit={(e) => {
         e.preventDefault();
         e.stopPropagation();
-        form.handleSubmit();
+        form.handleSubmit().catch((error) => {
+          console.error('Form submission error:', error);
+        });
       }}
       className="flex flex-col items-start gap-4"
     >
       <div className="flex flex-col gap-2">
-        <h5 className="font-medium">Your bookmark is...</h5>
+        <h5>Your bookmark is...</h5>
         <p>
           <Link
             href={bookmark}
             target="_blank"
             rel="noopener noreferrer"
-            className="font-mono text-mono font-bold"
+            className="font-bold"
           >
             {bookmark}
           </Link>

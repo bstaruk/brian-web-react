@@ -9,7 +9,9 @@ const FieldMessage: React.FC<FieldMessageProps> = ({ field }) => {
 
   return (
     <p className="text-sm text-red-200">
-      {field.state.meta.errors.map((error) => error.message).join(', ')}
+      {field.state.meta.errors
+        .map((error: { message: string }) => error.message)
+        .join(', ')}
     </p>
   );
 };
