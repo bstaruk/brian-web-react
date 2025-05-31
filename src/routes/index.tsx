@@ -1,5 +1,5 @@
 import { createFileRoute } from '@tanstack/react-router';
-import Link from '../components/atoms/Link';
+import Link from 'atoms/Link';
 
 export const Route = createFileRoute('/')({
   component: Home,
