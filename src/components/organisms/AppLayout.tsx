@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { Outlet, useLocation } from '@tanstack/react-router';
-import { FaGithub, FaBars, FaX } from 'react-icons/fa6';
+import { FaGithub, FaBars, FaX, FaLinkedin } from 'react-icons/fa6';
 import clsx from 'clsx';
 import { AnimatePresence, motion } from 'framer-motion';
 import Link, { RouterLink } from 'atoms/Link';
@@ -126,6 +126,34 @@ export default function AppLayout() {
                   </RouterLink>
                 ))}
               </nav>
+
+              <ul className="flex gap-2 px-2 h-8">
+                <li className="flex">
+                  <Link
+                    href="https://github.com/bstaruk"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    variant="monster"
+                    className="flex px-2"
+                  >
+                    <FaGithub className="h-full w-auto" />
+                    <span className="sr-only">GitHub</span>
+                  </Link>
+                </li>
+
+                <li className="flex">
+                  <Link
+                    href="https://www.linkedin.com/in/brian-staruk/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    variant="monster"
+                    className="flex"
+                  >
+                    <FaLinkedin className="h-full w-auto" />
+                    <span className="sr-only">LinkedIn</span>
+                  </Link>
+                </li>
+              </ul>
             </div>
           </aside>
 
