@@ -92,9 +92,8 @@ function About() {
             >
               cssclamp.dev
             </Link>
-            . The idea here is to start building them here instead with a
-            unified UI to keep cost and effort to a minimum... with a totally
-            open source!
+            . The idea is to start building them here instead with a unified UI
+            to keep cost and effort to a minimum... with a totally open source!
           </p>
         </div>
       </section>
