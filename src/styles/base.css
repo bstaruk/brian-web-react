@@ -20,7 +20,7 @@
   }
 
   h2 {
-    @apply text-h2;
+    @apply text-h2 uppercase;
   }
 
   h3 {

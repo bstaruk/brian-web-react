@@ -1,17 +1,20 @@
 import { useEffect, useRef, useState } from 'react';
-import { Outlet, useRouterState } from '@tanstack/react-router';
+import { Outlet, useLocation } from '@tanstack/react-router';
 import { FaGithub, FaBars, FaX } from 'react-icons/fa6';
 import { AnimatePresence, motion } from 'framer-motion';
 import { RouterLink } from '../atoms/Link';
 
 const menuItems: { name: string; path: string }[] = [
   { name: 'Home', path: '/' },
-  { name: 'About', path: '/about' },
+  { name: 'Things', path: '/things' },
 ];
 
 export default function AppLayout() {
   const [menuOpen, setMenuOpen] = useState(false);
   const firstLinkRef = useRef<HTMLAnchorElement>(null);
+  const pathname = useLocation({
+    select: (location) => location.pathname,
+  });
 
   useEffect(() => {
     if (menuOpen) firstLinkRef.current?.focus();
@@ -27,12 +30,14 @@ export default function AppLayout() {
   return (
     <div className="h-screen flex flex-col gap-5">
       <div className="grow wrapper-page px-3 sm:px-5 md:px-8 flex flex-col gap-5">
-        <header className="w-full flex items-center justify-between gap-x-3 gap-y-2 pt-5">
-          <div className="sm:hidden size-11 rounded-full border-4 border-monster-300 flex items-center justify-center">
-            <div className="text-h1 font-bold">B</div>
+        <header className="w-full flex items-center justify-between sm:justify-start gap-x-3 gap-y-2 pt-5">
+          <div className="size-11 rounded-full border-4 border-monster-300 flex items-center justify-center shadow-xs">
+            <div className="text-h2 font-bold translate-x-0.25 shadow-xs">
+              B
+            </div>
           </div>
 
-          <div className="hidden sm:block text-title uppercase text-shadow-xs text-shadow-monster-700">
+          <div className="hidden sm:block grow text-title uppercase text-shadow-xs text-shadow-monster-700">
             brian<span className="text-monster-400">.</span>staruk
             <span className="text-monster-400">.net</span>
           </div>
@@ -66,8 +71,8 @@ export default function AppLayout() {
           {/* Mobile Sidebar (off-canvas) */}
           <aside
             id="mobile-sidebar"
-            className={`fixed inset-y-0 left-0 z-40 bg-monster-500 dark:bg-black min-w-[300px] max-w-[80vw] border-r border-monster-300 transform transition-transform duration-300 ease-in-out
-            ${menuOpen ? 'translate-x-0' : '-translate-x-full'} lg:hidden`}
+            className={`fixed inset-y-0 right-0 z-40 bg-monster-500 dark:bg-black min-w-[300px] max-w-[80vw] border-r border-monster-300 transform transition-transform duration-300 ease-in-out
+            ${menuOpen ? 'translate-x-0' : 'translate-x-full'} lg:hidden`}
             role="dialog"
             aria-modal="true"
           >
@@ -85,6 +90,10 @@ export default function AppLayout() {
                   key={item.name}
                   to={item.path}
                   onClick={() => setMenuOpen(false)}
+                  aria-current={pathname === item.path ? 'page' : undefined}
+                  variant={
+                    pathname === item.path ? 'marathon-light' : 'marathon'
+                  }
                 >
                   {item.name}
                 </RouterLink>
@@ -93,7 +102,7 @@ export default function AppLayout() {
           </aside>
 
           {/* Desktop Sidebar */}
-          <aside className="hidden lg:block w-50 shrink-0 p-6 bg-monster-400 rounded-xs">
+          <aside className="hidden lg:block w-50 shrink-0 p-6 bg-monster-400 rounded-xs shadow-xs">
             <div className="sticky top-2 flex flex-col gap-6 items-stretch">
               <nav className="flex flex-col items-start gap-2 uppercase text-h5">
                 {menuItems.map((item) => (
@@ -101,6 +110,10 @@ export default function AppLayout() {
                     key={item.name}
                     to={item.path}
                     onClick={() => setMenuOpen(false)}
+                    aria-current={pathname === item.path ? 'page' : undefined}
+                    variant={
+                      pathname === item.path ? 'marathon-light' : 'marathon'
+                    }
                   >
                     {item.name}
                   </RouterLink>
@@ -137,11 +150,13 @@ export default function AppLayout() {
 }
 
 function OutletWithTransition() {
-  const { location } = useRouterState();
+  const pathname = useLocation({
+    select: (location) => location.pathname,
+  });
 
   return (
     <motion.div
-      key={location.pathname}
+      key={pathname}
       initial={{ x: -10, opacity: 0 }}
       animate={{ x: 0, opacity: 1 }}
       exit={{ x: -10, opacity: 0 }}
