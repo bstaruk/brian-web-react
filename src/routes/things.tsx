@@ -1,4 +1,5 @@
 import { createFileRoute } from '@tanstack/react-router';
+import AuthBookmarkForm from '../components/organisms/AuthBookmarkForm';
 
 export const Route = createFileRoute('/things')({
   component: Things,
@@ -22,7 +23,7 @@ function Things() {
         <h1>Things</h1>
 
         <div className="flex flex-col gap-2">
-          <p>Coming soon!</p>
+          <AuthBookmarkForm />
         </div>
       </section>
     </div>
