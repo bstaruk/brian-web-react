@@ -3,6 +3,10 @@
     @apply font-sans text-base underline-offset-4;
   }
 
+  strong {
+    @apply font-medium;
+  }
+
   h1,
   h2,
   h3,
@@ -33,5 +37,9 @@
 
   h6 {
     @apply text-h6;
+  }
+
+  hr {
+    @apply border-0 h-0.5 bg-monster-400 shadow-xs;
   }
 }
