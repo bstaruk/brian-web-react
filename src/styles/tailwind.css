@@ -90,13 +90,13 @@
   --text-base: 1rem;
   --text-base--font-weight: 300;
   --text-base--line-height: 1.4;
-  --text-base--letter-spacing: 0.025em;
+  --text-base--letter-spacing: 0.0125em;
 
   /* Text Variant: sm */
   --text-sm: 0.875rem;
   --text-sm--font-weight: 300;
   --text-sm--line-height: 1.4;
-  --text-sm--letter-spacing: 0.025em;
+  --text-sm--letter-spacing: 0.0125em;
 
   /* Text Variant: mono */
   --text-mono: 1rem;
