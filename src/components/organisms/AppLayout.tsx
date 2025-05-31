@@ -1,9 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { Outlet } from '@tanstack/react-router';
 import { FaGithub, FaBars, FaX } from 'react-icons/fa6';
-import ScoreboardDot from '../atoms/ScoreboardDot';
-import ScoreboardNumber from '../atoms/ScoreboardNumber';
-import ScoreboardLink from '../molecules/ScoreboardLink';
+import { RouterLink } from '../atoms/Link';
 
 const menuItems: { name: string; path: string }[] = [
   { name: 'Home', path: '/' },
@@ -81,13 +79,13 @@ export default function AppLayout() {
             </button>
 
             {menuItems.map((item) => (
-              <ScoreboardLink
+              <RouterLink
                 key={item.name}
                 to={item.path}
                 onClick={() => setMenuOpen(false)}
               >
                 {item.name}
-              </ScoreboardLink>
+              </RouterLink>
             ))}
           </nav>
         </aside>
@@ -97,32 +95,15 @@ export default function AppLayout() {
           <div className="sticky top-2 flex flex-col gap-6 items-stretch">
             <nav className="flex flex-col items-start gap-2 uppercase">
               {menuItems.map((item) => (
-                <ScoreboardLink
+                <RouterLink
                   key={item.name}
                   to={item.path}
                   onClick={() => setMenuOpen(false)}
                 >
                   {item.name}
-                </ScoreboardLink>
+                </RouterLink>
               ))}
             </nav>
-
-            <div className="flex flex-col gap-3">
-              <div className="flex gap-2">
-                <ScoreboardDot size="lg" variant="green-on" />
-                <ScoreboardDot size="lg" variant="green-on" />
-                <ScoreboardDot size="lg" variant="green" />
-              </div>
-
-              <div className="flex gap-2">
-                <ScoreboardDot size="lg" variant="red-on" />
-                <ScoreboardDot size="lg" variant="red" />
-              </div>
-
-              <div>
-                <ScoreboardNumber value={25} />
-              </div>
-            </div>
           </div>
         </aside>
 

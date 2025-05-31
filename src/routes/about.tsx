@@ -18,22 +18,25 @@ export const Route = createFileRoute('/about')({
 
 function About() {
   return (
-    <div className="flex flex-col gap-5">
+    <div className="flex flex-col gap-4">
       <h1>About Page</h1>
-      <p>Welcome to (what will eventually be) my website!</p>
-      <p>
-        I recently moved my blog over to{' '}
-        <Link
-          href="https://leetbin.com/u/brian"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          leetbin.com
-        </Link>{' '}
-        and most of my attention is focused on that project, but I&apos;ll be
-        working on this domain when I feel like being more creative and as time
-        permits.
-      </p>
+
+      <div className="flex flex-col gap-2">
+        <p>Welcome to (what will eventually be) my website!</p>
+        <p>
+          I recently moved my blog over to{' '}
+          <Link
+            href="https://leetbin.com/u/brian"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            leetbin.com
+          </Link>{' '}
+          and most of my attention is focused on that project, but I&apos;ll be
+          working on this domain when I feel like being more creative and as
+          time permits.
+        </p>
+      </div>
     </div>
   );
 }

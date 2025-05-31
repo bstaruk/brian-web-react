@@ -87,13 +87,13 @@
   --text-h6--letter-spacing: 0.025em;
 
   /* Text Variant: base */
-  --text-base: clamp(1rem, 0.949rem + 0.196vw, 1.125rem);
+  --text-base: 1rem;
   --text-base--font-weight: 300;
   --text-base--line-height: 1.4;
   --text-base--letter-spacing: 0.025em;
 
   /* Text Variant: sm */
-  --text-sm: 1rem;
+  --text-sm: 0.875rem;
   --text-sm--font-weight: 300;
   --text-sm--line-height: 1.4;
   --text-sm--letter-spacing: 0.025em;
