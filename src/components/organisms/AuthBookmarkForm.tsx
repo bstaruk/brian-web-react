@@ -1,5 +1,6 @@
 import { z } from 'zod';
 import { useForm } from '@tanstack/react-form';
+import Button from '../atoms/Button';
 import TextField from '../molecules/form/TextField';
 
 const userSchema = z.object({
@@ -45,13 +46,9 @@ function AuthBookmarkForm() {
       <form.Subscribe
         selector={(state) => [state.canSubmit, state.isSubmitting]}
         children={([canSubmit, isSubmitting]) => (
-          <button
-            type="submit"
-            disabled={!canSubmit}
-            className="cursor-pointer text-monster-50 font-medium uppercase text-shadow-xs p-2 bg-monster-400 border border-monster-400 focus:border-monster-200 rounded-xs shadow-xs text-sm outline-0"
-          >
+          <Button type="submit" disabled={!canSubmit}>
             {isSubmitting ? '...' : 'Submit'}
-          </button>
+          </Button>
         )}
       />
     </form>
