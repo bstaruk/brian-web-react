@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { Outlet, useRouterState } from '@tanstack/react-router';
+import { Outlet, useLocation } from '@tanstack/react-router';
 import { FaGithub, FaBars, FaX } from 'react-icons/fa6';
 import { AnimatePresence, motion } from 'framer-motion';
 import { RouterLink } from '../atoms/Link';
@@ -12,6 +12,9 @@ const menuItems: { name: string; path: string }[] = [
 export default function AppLayout() {
   const [menuOpen, setMenuOpen] = useState(false);
   const firstLinkRef = useRef<HTMLAnchorElement>(null);
+  const pathname = useLocation({
+    select: (location) => location.pathname,
+  });
 
   useEffect(() => {
     if (menuOpen) firstLinkRef.current?.focus();
@@ -85,6 +88,10 @@ export default function AppLayout() {
                   key={item.name}
                   to={item.path}
                   onClick={() => setMenuOpen(false)}
+                  aria-current={pathname === item.path ? 'page' : undefined}
+                  variant={
+                    pathname === item.path ? 'marathon-light' : 'marathon'
+                  }
                 >
                   {item.name}
                 </RouterLink>
@@ -101,6 +108,10 @@ export default function AppLayout() {
                     key={item.name}
                     to={item.path}
                     onClick={() => setMenuOpen(false)}
+                    aria-current={pathname === item.path ? 'page' : undefined}
+                    variant={
+                      pathname === item.path ? 'marathon-light' : 'marathon'
+                    }
                   >
                     {item.name}
                   </RouterLink>
@@ -137,11 +148,13 @@ export default function AppLayout() {
 }
 
 function OutletWithTransition() {
-  const { location } = useRouterState();
+  const pathname = useLocation({
+    select: (location) => location.pathname,
+  });
 
   return (
     <motion.div
-      key={location.pathname}
+      key={pathname}
       initial={{ x: -10, opacity: 0 }}
       animate={{ x: 0, opacity: 1 }}
       exit={{ x: -10, opacity: 0 }}
