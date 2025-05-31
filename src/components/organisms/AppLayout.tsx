@@ -31,8 +31,10 @@ export default function AppLayout() {
     <div className="h-screen flex flex-col gap-5">
       <div className="grow wrapper-page px-3 sm:px-5 md:px-8 flex flex-col gap-5">
         <header className="w-full flex items-center justify-between sm:justify-start gap-x-3 gap-y-2 pt-5">
-          <div className="size-11 rounded-full border-4 border-monster-300 flex items-center justify-center">
-            <div className="text-h2 font-bold translate-x-0.25">B</div>
+          <div className="size-11 rounded-full border-4 border-monster-300 flex items-center justify-center shadow-xs">
+            <div className="text-h2 font-bold translate-x-0.25 shadow-xs">
+              B
+            </div>
           </div>
 
           <div className="hidden sm:block grow text-title uppercase text-shadow-xs text-shadow-monster-700">
@@ -100,7 +102,7 @@ export default function AppLayout() {
           </aside>
 
           {/* Desktop Sidebar */}
-          <aside className="hidden lg:block w-50 shrink-0 p-6 bg-monster-400 rounded-xs">
+          <aside className="hidden lg:block w-50 shrink-0 p-6 bg-monster-400 rounded-xs shadow-xs">
             <div className="sticky top-2 flex flex-col gap-6 items-stretch">
               <nav className="flex flex-col items-start gap-2 uppercase text-h5">
                 {menuItems.map((item) => (
