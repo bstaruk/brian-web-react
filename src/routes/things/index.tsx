@@ -1,5 +1,5 @@
 import { createFileRoute } from '@tanstack/react-router';
-import { RouterLink } from '../../components/atoms/Link';
+import { RouterLink } from 'atoms/Link';
 
 export const Route = createFileRoute('/things/')({
   component: Things,

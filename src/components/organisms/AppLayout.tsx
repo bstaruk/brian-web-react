@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { Outlet, useLocation } from '@tanstack/react-router';
 import { FaGithub, FaBars, FaX } from 'react-icons/fa6';
 import { AnimatePresence, motion } from 'framer-motion';
-import { RouterLink } from '../atoms/Link';
+import { RouterLink } from 'atoms/Link';
 
 const menuItems: { name: string; path: string }[] = [
   { name: 'Home', path: '/' },

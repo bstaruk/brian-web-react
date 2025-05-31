@@ -1,6 +1,6 @@
 import { createFileRoute } from '@tanstack/react-router';
-import AuthBookmarkForm from '../../components/organisms/AuthBookmarkForm';
-import Link from '../../components/atoms/Link';
+import AuthBookmarkForm from 'organisms/AuthBookmarkForm';
+import Link from 'atoms/Link';
 
 export const Route = createFileRoute('/things/auth-bookmark-maker')({
   component: RouteComponent,

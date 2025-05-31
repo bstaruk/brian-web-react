@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import { z } from 'zod';
 import { useForm } from '@tanstack/react-form';
-import Button from '../atoms/Button';
-import Link from '../atoms/Link';
-import TextField from '../molecules/form/TextField';
+import Button from 'atoms/Button';
+import Link from 'atoms/Link';
+import TextField from 'molecules/form/TextField';
 
 const createHtpasswdBookmarkUrl = (
   url: string,

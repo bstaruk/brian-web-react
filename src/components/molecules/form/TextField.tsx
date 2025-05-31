@@ -1,6 +1,6 @@
 import type { AnyFieldApi } from '@tanstack/react-form';
-import FieldMessage from '../../atoms/form/FieldMessage';
-import TextInput from '../../atoms/form/TextInput';
+import FieldMessage from 'atoms/form/FieldMessage';
+import TextInput from 'atoms/form/TextInput';
 
 interface TextFieldProps {
   field: AnyFieldApi;
