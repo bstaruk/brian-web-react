@@ -27,12 +27,12 @@ export default function AppLayout() {
   return (
     <div className="h-screen flex flex-col gap-5">
       <div className="grow wrapper-page px-3 sm:px-5 md:px-8 flex flex-col gap-5">
-        <header className="w-full flex items-center justify-between gap-x-3 gap-y-2 pt-5">
-          <div className="sm:hidden size-11 rounded-full border-4 border-monster-300 flex items-center justify-center">
-            <div className="text-h1 font-bold">B</div>
+        <header className="w-full flex items-center justify-between sm:justify-start gap-x-3 gap-y-2 pt-5">
+          <div className="size-11 rounded-full border-4 border-monster-300 flex items-center justify-center">
+            <div className="text-h2 font-bold translate-x-0.25">B</div>
           </div>
 
-          <div className="hidden sm:block text-title uppercase text-shadow-xs text-shadow-monster-700">
+          <div className="hidden sm:block grow text-title uppercase text-shadow-xs text-shadow-monster-700">
             brian<span className="text-monster-400">.</span>staruk
             <span className="text-monster-400">.net</span>
           </div>
@@ -66,8 +66,8 @@ export default function AppLayout() {
           {/* Mobile Sidebar (off-canvas) */}
           <aside
             id="mobile-sidebar"
-            className={`fixed inset-y-0 left-0 z-40 bg-monster-500 dark:bg-black min-w-[300px] max-w-[80vw] border-r border-monster-300 transform transition-transform duration-300 ease-in-out
-            ${menuOpen ? 'translate-x-0' : '-translate-x-full'} lg:hidden`}
+            className={`fixed inset-y-0 right-0 z-40 bg-monster-500 dark:bg-black min-w-[300px] max-w-[80vw] border-r border-monster-300 transform transition-transform duration-300 ease-in-out
+            ${menuOpen ? 'translate-x-0' : 'translate-x-full'} lg:hidden`}
             role="dialog"
             aria-modal="true"
           >
