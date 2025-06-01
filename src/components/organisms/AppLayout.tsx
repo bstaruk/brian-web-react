@@ -162,7 +162,7 @@ export default function AppLayout() {
             </div>
           </aside>
 
-          <section className="grow shrink py-2">
+          <section className="grow shrink py-2 max-w-full overflow-hidden">
             <AnimatePresence mode="wait">
               <OutletWithTransition />
             </AnimatePresence>

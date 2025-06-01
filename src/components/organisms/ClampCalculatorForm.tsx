@@ -198,9 +198,11 @@ function ClampCalculatorForm() {
       <div className="flex flex-col gap-3">
         <h5>Clamp Preview:</h5>
 
-        <p style={{ fontSize: clamp }}>
-          Simplicity is the ultimate sophistication.
-        </p>
+        <div className="overflow-auto">
+          <p style={{ fontSize: clamp }} className="whitespace-nowrap">
+            Simplicity is the ultimate sophistication.
+          </p>
+        </div>
       </div>
     </div>
   );
