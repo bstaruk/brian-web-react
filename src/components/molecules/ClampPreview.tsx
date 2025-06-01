@@ -22,12 +22,26 @@ const ClampPreview: React.FC<ClampPreviewProps> = ({
   const [activePreview, setActivePreview] = useState<PreviewType>('padding');
 
   const previewContent: Record<PreviewType, ReactNode> = {
-    padding: <p>Padding preview coming soon!</p>,
-    margin: <p>Margin preview coming soon!</p>,
+    padding: (
+      <div
+        style={{ padding: clampValue }}
+        className="bg-monster-600 rounded shadow-sm"
+      >
+        The padding preview shows how the clamp value affects the padding of
+        this box. Resize your browser window to see the effect in action.
+      </div>
+    ),
+    margin: (
+      <div className="overflow-auto border-2 border-monster-400 rounded shadow-sm p-4">
+        <p>Margin preview coming soon!</p>
+      </div>
+    ),
     text: (
-      <p style={{ fontSize: clampValue }} className="whitespace-nowrap">
-        Simplicity is the ultimate sophistication.
-      </p>
+      <div className="overflow-auto border-2 border-monster-400 rounded shadow-sm p-4">
+        <p style={{ fontSize: clampValue }} className="whitespace-nowrap">
+          Simplicity is the ultimate sophistication.
+        </p>
+      </div>
     ),
   };
 
@@ -57,9 +71,7 @@ const ClampPreview: React.FC<ClampPreviewProps> = ({
           </ol>
         </header>
 
-        <div className="overflow-auto border-2 border-monster-400 rounded p-4">
-          {previewContent[activePreview]}
-        </div>
+        {previewContent[activePreview]}
 
         <p className="text-sm">
           <strong>NOTE:</strong> For now, you'll need to resize your browser
