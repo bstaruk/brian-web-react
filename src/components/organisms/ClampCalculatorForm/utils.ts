@@ -1,5 +1,13 @@
 import { z } from 'zod';
 
+export const defaultValues = {
+  minClampSize: 1,
+  maxClampSize: 2,
+  minScreenSize: 420,
+  maxScreenSize: 1440,
+  remBase: 16,
+};
+
 type Unit = 'rem' | 'px';
 
 const toFixed = (value: number, decimals: number = 3): number =>
@@ -8,42 +16,27 @@ const toFixed = (value: number, decimals: number = 3): number =>
 const convertToRem = (size: number, unit: Unit, remBase: number): number =>
   unit === 'rem' ? size : size / remBase;
 
-export const createClamp = (
-  minFontSize: number,
-  maxFontSize: number,
-  fontSizeUnit: Unit,
-  fontSizeRemBase: number,
-  minScreenSize: number,
-  maxScreenSize: number,
-  screenSizeUnit: Unit,
-  screenSizeRemBase: number,
-): string => {
-  const minFontSizeRem = convertToRem(
-    minFontSize,
-    fontSizeUnit,
-    fontSizeRemBase,
-  );
-  const maxFontSizeRem = convertToRem(
-    maxFontSize,
-    fontSizeUnit,
-    fontSizeRemBase,
-  );
-  const minScreenSizeRem = convertToRem(
-    minScreenSize,
-    screenSizeUnit,
-    screenSizeRemBase,
-  );
-  const maxScreenSizeRem = convertToRem(
-    maxScreenSize,
-    screenSizeUnit,
-    screenSizeRemBase,
-  );
+export const createClamp = ({
+  minClampSize = defaultValues.minClampSize,
+  maxClampSize = defaultValues.maxClampSize,
+  minScreenSize = defaultValues.minScreenSize,
+  maxScreenSize = defaultValues.maxScreenSize,
+  remBase = defaultValues.remBase,
+}: {
+  minClampSize?: number;
+  maxClampSize?: number;
+  minScreenSize?: number;
+  maxScreenSize?: number;
+  remBase?: number;
+}): string => {
+  const minScreenSizeRem = convertToRem(minScreenSize, 'px', remBase);
+  const maxScreenSizeRem = convertToRem(maxScreenSize, 'px', remBase);
 
   const slope =
-    (maxFontSizeRem - minFontSizeRem) / (maxScreenSizeRem - minScreenSizeRem);
-  const intercept = minFontSizeRem - slope * minScreenSizeRem;
+    (maxClampSize - minClampSize) / (maxScreenSizeRem - minScreenSizeRem);
+  const intercept = minClampSize - slope * minScreenSizeRem;
 
-  return `clamp(${toFixed(minFontSizeRem)}rem, ${toFixed(intercept)}rem + ${toFixed(slope * 100)}vw, ${toFixed(maxFontSizeRem)}rem)`;
+  return `clamp(${toFixed(minClampSize)}rem, ${toFixed(intercept)}rem + ${toFixed(slope * 100)}vw, ${toFixed(maxClampSize)}rem)`;
 };
 
 const numberField = (fieldName: string) =>
@@ -56,21 +49,17 @@ const numberField = (fieldName: string) =>
     .max(9999, { message: `${fieldName} must be at most 9999` });
 
 export const formSchema = z.object({
-  clampMin: numberField('Clamp Min'),
-  clampMax: numberField('Clamp Max'),
-  viewportMin: numberField('Viewport Min'),
-  viewportMax: numberField('Viewport Max'),
+  minClampSize: numberField('Min Clamp Size (rem)'),
+  maxClampSize: numberField('Max Clamp Size (rem)'),
+  minScreenSize: numberField('Min Screen Size (px)'),
+  maxScreenSize: numberField('Max Screen Size (px)'),
+  remBase: numberField('REM Base (px)'),
 });
-
-export const defaultValues = {
-  clampMin: 1,
-  clampMax: 2,
-  viewportMin: 420,
-  viewportMax: 1440,
-};
 
 export const goofyLabels = [
   'Clamp It, Chewy!',
+  'Clamp It Up!',
+  "Clamp It Like It's Hot",
   'Clamplify me, Captain!',
   'Go Go Clamp-o!',
   'Fire Up the Clampulator',
@@ -78,7 +67,6 @@ export const goofyLabels = [
   'Clamp it Down',
   'Clamp the Math',
   'Activate Clamp Mode',
-  'Send It, Clamper!',
   'Clamp That Value',
   'Spin the Clamp-o-matic',
   'Clamp That Funk',

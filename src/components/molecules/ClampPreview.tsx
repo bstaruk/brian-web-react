@@ -3,7 +3,7 @@ import clsx from 'clsx';
 import Button from 'atoms/Button';
 
 interface ClampPreviewProps {
-  clamp: string;
+  clampValue: string;
   className?: string;
 }
 
@@ -15,14 +15,17 @@ const previewOptions: { type: PreviewType; label: string }[] = [
   { type: 'text', label: 'Text' },
 ];
 
-const ClampPreview: React.FC<ClampPreviewProps> = ({ clamp, className }) => {
+const ClampPreview: React.FC<ClampPreviewProps> = ({
+  clampValue,
+  className,
+}) => {
   const [activePreview, setActivePreview] = useState<PreviewType>('padding');
 
   const previewContent: Record<PreviewType, ReactNode> = {
     padding: <p>Padding preview coming soon!</p>,
     margin: <p>Margin preview coming soon!</p>,
     text: (
-      <p style={{ fontSize: clamp }} className="whitespace-nowrap">
+      <p style={{ fontSize: clampValue }} className="whitespace-nowrap">
         Simplicity is the ultimate sophistication.
       </p>
     ),
@@ -33,7 +36,7 @@ const ClampPreview: React.FC<ClampPreviewProps> = ({ clamp, className }) => {
       <section className="flex flex-col gap-2">
         <h5>Clamp Value:</h5>
         <p className="font-medium border-2 border-monster-400 rounded p-4">
-          {clamp}
+          {clampValue}
         </p>
       </section>
 
