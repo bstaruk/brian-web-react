@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useForm } from '@tanstack/react-form';
 import Button from 'atoms/Button';
+import ClampPreview from 'molecules/ClampPreview';
 import TextField from 'molecules/form/TextField';
 import { createClamp, defaultValues, formSchema } from './utils';
 
@@ -126,15 +127,9 @@ function ClampCalculatorForm() {
 
       <h6 className="font-medium bg-monster-600 shadow-xs p-4">{clamp}</h6>
 
-      <div className="flex flex-col gap-3">
-        <h5>Clamp Preview:</h5>
+      <hr />
 
-        <div className="overflow-auto">
-          <p style={{ fontSize: clamp }} className="whitespace-nowrap">
-            Simplicity is the ultimate sophistication.
-          </p>
-        </div>
-      </div>
+      <ClampPreview {...{ clamp }} />
     </div>
   );
 }
