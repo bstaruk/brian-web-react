@@ -174,7 +174,11 @@ export default function AppLayout() {
       </div>
 
       <footer className="bg-monster-600 py-4">
-        <div className="wrapper-page px-3 sm:px-5 md:px-8 flex items-center justify-end gap-4">
+        <div className="wrapper-page px-3 sm:px-5 md:px-8 flex flex-col sm:flex-row sm:items-center gap-4">
+          <p className="sm:grow text-sm text-monster-200">
+            Built in Boston. Let's go Red Sox!
+          </p>
+
           <p className="text-sm tracking-wider uppercase">
             <Link
               href="https://github.com/bstaruk/brian-web-react"
