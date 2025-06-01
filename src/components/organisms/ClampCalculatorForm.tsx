@@ -172,14 +172,16 @@ function ClampCalculatorForm() {
           </fieldset>
         </div>
 
-        <form.Subscribe
-          selector={(state) => [state.canSubmit, state.isSubmitting]}
-          children={([canSubmit, isSubmitting]) => (
-            <Button type="submit" disabled={!canSubmit} className="max-w-30">
-              {isSubmitting ? '...' : 'Submit'}
-            </Button>
-          )}
-        />
+        <div>
+          <form.Subscribe
+            selector={(state) => [state.canSubmit, state.isSubmitting]}
+            children={([canSubmit, isSubmitting]) => (
+              <Button type="submit" disabled={!canSubmit}>
+                {isSubmitting ? '...' : 'Submit'}
+              </Button>
+            )}
+          />
+        </div>
       </form>
 
       <h6 className="font-medium bg-monster-600 shadow-xs p-4">{clamp}</h6>
