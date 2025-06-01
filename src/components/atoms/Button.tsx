@@ -12,7 +12,7 @@ interface ButtonLinkProps
 }
 
 const baseButtonClasses =
-  'cursor-pointer font-medium uppercase py-2 px-3 bg-monster-600 hover:bg-monster-700 focus:bg-monster-700 text-monster-50 [svg&]fill-monster-50 hover:underline focus:underline rounded-xs font-sans text-base outline-0';
+  'cursor-pointer font-medium uppercase py-2 px-3 bg-monster-700 hover:bg-monster-800 focus:bg-monster-800 text-monster-50 [svg&]fill-monster-50 hover:underline focus:underline rounded-xs font-sans text-base outline-0';
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   ({ children, className, type = 'button', ...rest }, ref) => {
