@@ -41,6 +41,7 @@ function ClampCalculatorForm() {
           });
         }}
         className="flex flex-col gap-4"
+        noValidate
       >
         <div className="flex flex-col gap-4 sm:flex-row sm:gap-6">
           <fieldset className="grow flex flex-col gap-2">
@@ -53,7 +54,7 @@ function ClampCalculatorForm() {
                   {...{ field }}
                   label="Min"
                   type="number"
-                  step={0.001}
+                  step={0.25}
                   valueAsNumber
                 />
               )}
@@ -66,7 +67,7 @@ function ClampCalculatorForm() {
                   {...{ field }}
                   label="Max"
                   type="number"
-                  step={0.001}
+                  step={0.25}
                   valueAsNumber
                 />
               )}
@@ -96,7 +97,7 @@ function ClampCalculatorForm() {
                   {...{ field }}
                   label="Min"
                   type="number"
-                  step={0.001}
+                  step={64}
                   valueAsNumber
                 />
               )}
@@ -109,7 +110,7 @@ function ClampCalculatorForm() {
                   {...{ field }}
                   label="Max"
                   type="number"
-                  step={0.001}
+                  step={64}
                   valueAsNumber
                 />
               )}

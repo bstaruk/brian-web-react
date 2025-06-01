@@ -3,8 +3,8 @@ import { z } from 'zod';
 export const defaultValues = {
   minClampSize: 1,
   maxClampSize: 2,
-  minScreenSize: 420,
-  maxScreenSize: 1440,
+  minScreenSize: 384,
+  maxScreenSize: 1600,
   remBase: 16,
 };
 
