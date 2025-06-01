@@ -1,18 +1,23 @@
 import { FaGithub, FaLinkedin } from 'react-icons/fa6';
+import clsx from 'clsx';
 import Link from 'atoms/Link';
 
-const SocialLinks = () => (
-  <ul className="flex gap-1 px-2 mt-4">
+interface SocialLinksProps {
+  className?: string;
+}
+
+const SocialLinks: React.FC<SocialLinksProps> = ({ className }) => (
+  <ul className={clsx('flex gap-4', className)}>
     <li>
       <Link
         href="https://github.com/bstaruk"
         target="_blank"
         rel="noopener noreferrer"
         variant="monster"
-        className="flex px-2"
+        className="flex"
         title="My GitHub Profile"
       >
-        <FaGithub className="shrink-0 h-8 w-auto" />
+        <FaGithub className="shrink-0 h-9 w-auto" />
         <span className="sr-only">GitHub</span>
       </Link>
     </li>
@@ -23,10 +28,10 @@ const SocialLinks = () => (
         target="_blank"
         rel="noopener noreferrer"
         variant="monster"
-        className="flex px-2"
+        className="flex"
         title="My LinkedIn Profile"
       >
-        <FaLinkedin className="shrink-0 h-8 w-auto" />
+        <FaLinkedin className="shrink-0 h-9 w-auto" />
         <span className="sr-only">LinkedIn</span>
       </Link>
     </li>

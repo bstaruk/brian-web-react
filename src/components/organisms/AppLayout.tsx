@@ -75,7 +75,7 @@ export default function AppLayout() {
           <aside
             id="mobile-sidebar"
             className={clsx(
-              'fixed inset-y-0 right-0 z-40 bg-monster-500 dark:bg-black min-w-[280px] max-w-[90vw] border-r border-monster-300 transform transition-transform duration-300 ease-in-out lg:hidden',
+              'fixed inset-y-0 right-0 z-40 bg-monster-500 dark:bg-black min-w-[280px] max-w-[90vw] p-3 sm:p-5 md:p-8 border-r border-monster-300 transform transition-transform duration-300 ease-in-out lg:hidden',
               {
                 'translate-x-0 opacity-100': menuOpen,
                 'translate-x-2/3 opacity-0 pointer-events-none': !menuOpen,
@@ -84,7 +84,7 @@ export default function AppLayout() {
             role="dialog"
             aria-modal="true"
           >
-            <nav className="flex flex-col gap-1 p-3 sm:p-5 md:p-8 uppercase text-h3">
+            <nav className="flex flex-col gap-1 uppercase text-h3">
               <Button
                 onClick={() => setMenuOpen(false)}
                 className="self-end shrink-0 size-9 flex items-center justify-center"
@@ -109,7 +109,7 @@ export default function AppLayout() {
               ))}
             </nav>
 
-            <SocialLinks />
+            <SocialLinks className="mt-6" />
           </aside>
 
           {/* Desktop Sidebar */}
@@ -132,7 +132,7 @@ export default function AppLayout() {
                 ))}
               </nav>
 
-              <SocialLinks />
+              <SocialLinks className="px-4" />
             </div>
           </aside>
 
