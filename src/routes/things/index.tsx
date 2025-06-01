@@ -9,7 +9,8 @@ export const Route = createFileRoute('/things/')({
     meta: [
       {
         name: 'description',
-        content: 'Things made by Brian Staruk.',
+        content:
+          "Some digital gadgets and gizmos that wouldn't quite fit on my blog.",
       },
       {
         title: 'Things | brian.staruk.net',
@@ -67,7 +68,7 @@ function RouteComponent() {
         <div className="flex flex-col gap-3">
           <h1>Things</h1>
           <p>
-            These are some things I've built, which wouldn't quite fit on{' '}
+            Some digital gadgets and gizmos that wouldn't quite fit on{' '}
             <Link
               href="https://leetbin.com/u/brian"
               target="_blank"
@@ -78,6 +79,8 @@ function RouteComponent() {
             .
           </p>
         </div>
+
+        <hr />
 
         {things.map(({ to, title, description }) => (
           <motion.div
