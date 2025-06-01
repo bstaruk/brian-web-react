@@ -1,45 +1,16 @@
 import { useEffect, useRef, useState } from 'react';
 import { Outlet, useLocation } from '@tanstack/react-router';
-import { FaGithub, FaBars, FaX, FaLinkedin } from 'react-icons/fa6';
+import { FaGithub, FaBars, FaX } from 'react-icons/fa6';
 import clsx from 'clsx';
 import { AnimatePresence, motion } from 'framer-motion';
 import Link, { RouterLink } from 'atoms/Link';
 import Button from 'atoms/Button';
+import SocialLinks from 'atoms/SocialLinks';
 
 const menuItems: { name: string; path: string }[] = [
   { name: 'Home', path: '/' },
   { name: 'Things', path: '/things' },
 ];
-
-const SocialLinks = () => (
-  <ul className="flex gap-1 px-2 mt-4">
-    <li>
-      <Link
-        href="https://github.com/bstaruk"
-        target="_blank"
-        rel="noopener noreferrer"
-        variant="monster"
-        className="flex px-2"
-      >
-        <FaGithub className="shrink-0 h-8 w-auto" />
-        <span className="sr-only">GitHub</span>
-      </Link>
-    </li>
-
-    <li>
-      <Link
-        href="https://www.linkedin.com/in/brian-staruk/"
-        target="_blank"
-        rel="noopener noreferrer"
-        variant="monster"
-        className="flex px-2"
-      >
-        <FaLinkedin className="shrink-0 h-8 w-auto" />
-        <span className="sr-only">LinkedIn</span>
-      </Link>
-    </li>
-  </ul>
-);
 
 export default function AppLayout() {
   const [menuOpen, setMenuOpen] = useState(false);
