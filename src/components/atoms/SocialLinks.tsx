@@ -2,6 +2,7 @@ import type { IconType } from 'react-icons';
 import { FaGithub, FaLinkedin } from 'react-icons/fa6';
 import clsx from 'clsx';
 import Link from 'atoms/Link';
+import { motion } from 'framer-motion';
 
 interface SocialLinksProps {
   className?: string;
@@ -29,10 +30,34 @@ const socialLinks: SocialLink[] = [
   },
 ];
 
+const listVariants = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.12,
+    },
+  },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 5 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { type: 'spring', stiffness: 70, damping: 16 },
+  },
+};
+
 const SocialLinks: React.FC<SocialLinksProps> = ({ className }) => (
-  <ul className={clsx('flex gap-4', className)}>
+  <motion.ul
+    className={clsx('flex gap-4', className)}
+    initial="hidden"
+    whileInView="visible"
+    viewport={{ once: true, amount: 0.4 }}
+    variants={listVariants}
+  >
     {socialLinks.map(({ href, label, title, icon: Icon }) => (
-      <li key={label}>
+      <motion.li key={label} variants={itemVariants}>
         <Link
           href={href}
           target="_blank"
@@ -44,9 +69,9 @@ const SocialLinks: React.FC<SocialLinksProps> = ({ className }) => (
           <Icon className="shrink-0 h-9 w-auto" />
           <span className="sr-only">{label}</span>
         </Link>
-      </li>
+      </motion.li>
     ))}
-  </ul>
+  </motion.ul>
 );
 
 export default SocialLinks;
