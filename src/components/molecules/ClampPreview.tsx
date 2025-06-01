@@ -37,10 +37,10 @@ const ClampPreview: React.FC<ClampPreviewProps> = ({
         style={{ gap: clampValue }}
         className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4"
       >
-        {[...Array(10).keys()].map((i) => (
+        {[...Array(8).keys()].map((i) => (
           <div
             key={i}
-            className="bg-monster-600 text-monster-100 rounded shadow-sm h-10 flex items-center justify-center"
+            className="bg-monster-600 text-monster-100 text-h4 rounded shadow-sm aspect-square flex items-center justify-center"
           >
             {i + 1}
           </div>
