@@ -10,6 +10,36 @@ const menuItems: { name: string; path: string }[] = [
   { name: 'Things', path: '/things' },
 ];
 
+const SocialLinks = () => (
+  <ul className="flex gap-1 px-2 mt-4">
+    <li>
+      <Link
+        href="https://github.com/bstaruk"
+        target="_blank"
+        rel="noopener noreferrer"
+        variant="monster"
+        className="flex px-2"
+      >
+        <FaGithub className="shrink-0 h-8 w-auto" />
+        <span className="sr-only">GitHub</span>
+      </Link>
+    </li>
+
+    <li>
+      <Link
+        href="https://www.linkedin.com/in/brian-staruk/"
+        target="_blank"
+        rel="noopener noreferrer"
+        variant="monster"
+        className="flex px-2"
+      >
+        <FaLinkedin className="shrink-0 h-8 w-auto" />
+        <span className="sr-only">LinkedIn</span>
+      </Link>
+    </li>
+  </ul>
+);
+
 export default function AppLayout() {
   const [menuOpen, setMenuOpen] = useState(false);
   const firstLinkRef = useRef<HTMLAnchorElement>(null);
@@ -73,7 +103,7 @@ export default function AppLayout() {
           <aside
             id="mobile-sidebar"
             className={clsx(
-              'fixed inset-y-0 right-0 z-40 bg-monster-500 dark:bg-black min-w-[240px] max-w-[80vw] border-r border-monster-300 transform transition-transform duration-300 ease-in-out lg:hidden',
+              'fixed inset-y-0 right-0 z-40 bg-monster-500 dark:bg-black min-w-[280px] max-w-[90vw] border-r border-monster-300 transform transition-transform duration-300 ease-in-out lg:hidden',
               {
                 'translate-x-0 opacity-100': menuOpen,
                 'translate-x-2/3 opacity-0 pointer-events-none': !menuOpen,
@@ -107,33 +137,7 @@ export default function AppLayout() {
               ))}
             </nav>
 
-            <ul className="flex gap-2 px-2 h-8 mt-4">
-              <li className="flex">
-                <Link
-                  href="https://github.com/bstaruk"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  variant="monster"
-                  className="flex px-2"
-                >
-                  <FaGithub className="h-full w-auto" />
-                  <span className="sr-only">GitHub</span>
-                </Link>
-              </li>
-
-              <li className="flex">
-                <Link
-                  href="https://www.linkedin.com/in/brian-staruk/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  variant="monster"
-                  className="flex"
-                >
-                  <FaLinkedin className="h-full w-auto" />
-                  <span className="sr-only">LinkedIn</span>
-                </Link>
-              </li>
-            </ul>
+            <SocialLinks />
           </aside>
 
           {/* Desktop Sidebar */}
@@ -156,33 +160,7 @@ export default function AppLayout() {
                 ))}
               </nav>
 
-              <ul className="flex gap-2 px-2 h-8">
-                <li className="flex">
-                  <Link
-                    href="https://github.com/bstaruk"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    variant="monster"
-                    className="flex px-2"
-                  >
-                    <FaGithub className="h-full w-auto" />
-                    <span className="sr-only">GitHub</span>
-                  </Link>
-                </li>
-
-                <li className="flex">
-                  <Link
-                    href="https://www.linkedin.com/in/brian-staruk/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    variant="monster"
-                    className="flex"
-                  >
-                    <FaLinkedin className="h-full w-auto" />
-                    <span className="sr-only">LinkedIn</span>
-                  </Link>
-                </li>
-              </ul>
+              <SocialLinks />
             </div>
           </aside>
 
