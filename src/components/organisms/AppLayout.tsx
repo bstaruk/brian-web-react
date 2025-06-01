@@ -5,6 +5,7 @@ import clsx from 'clsx';
 import { AnimatePresence, motion } from 'framer-motion';
 import Link, { RouterLink } from 'atoms/Link';
 import Button from 'atoms/Button';
+import Logo from 'atoms/Logo';
 import SocialLinks from 'atoms/SocialLinks';
 
 const menuItems: { name: string; path: string }[] = [
@@ -34,11 +35,7 @@ export default function AppLayout() {
     <div className="h-screen flex flex-col gap-5">
       <div className="grow wrapper-page pt-3 sm:pt-5 md:pt-8 px-3 sm:px-5 md:px-8 flex flex-col gap-5">
         <header className="w-full flex items-center justify-between sm:justify-start gap-x-3 gap-y-2">
-          <div className="size-11 rounded-full border-4 border-monster-300 flex items-center justify-center shadow-xs">
-            <div className="text-h2 font-bold translate-x-0.25 shadow-xs">
-              B
-            </div>
-          </div>
+          <Logo />
 
           <div className="hidden sm:block grow text-title uppercase text-shadow-xs text-shadow-monster-700">
             brian<span className="text-monster-400">.</span>staruk
