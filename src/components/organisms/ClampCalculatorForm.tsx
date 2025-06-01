@@ -50,11 +50,20 @@ const createClamp = (
   return `clamp(${toFixed(minFontSizeRem)}rem, ${toFixed(intercept)}rem + ${toFixed(slope * 100)}vw, ${toFixed(maxFontSizeRem)}rem)`;
 };
 
+const numberField = (fieldName: string) =>
+  z
+    .number({
+      required_error: `${fieldName} is required`,
+      invalid_type_error: `${fieldName} must be a number`,
+    })
+    .min(0.0001, { message: `${fieldName} must be at least 0.0001` })
+    .max(9999, { message: `${fieldName} must be at most 9999` });
+
 const formSchema = z.object({
-  clampMin: z.number().min(0, 'Value must be a number'),
-  clampMax: z.number().min(0, 'Value must be a number'),
-  viewportMin: z.number().min(0, 'Value must be a number'),
-  viewportMax: z.number().min(0, 'Value must be a number'),
+  clampMin: numberField('Clamp Min'),
+  clampMax: numberField('Clamp Max'),
+  viewportMin: numberField('Viewport Min'),
+  viewportMax: numberField('Viewport Max'),
 });
 
 const defaultValues = {
