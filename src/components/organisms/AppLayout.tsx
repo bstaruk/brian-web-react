@@ -51,9 +51,9 @@ export default function AppLayout() {
             aria-controls="mobile-sidebar"
           >
             {menuOpen ? (
-              <FaX className="h-3.5 w-auto fill-monster-50" />
+              <FaX className="h-3.5 w-auto" />
             ) : (
-              <FaBars className="h-4 w-auto fill-monster-50" />
+              <FaBars className="h-4 w-auto" />
             )}
           </Button>
         </header>
