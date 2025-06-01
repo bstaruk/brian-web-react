@@ -142,12 +142,12 @@ export default function AppLayout() {
       </div>
 
       <footer className="bg-monster-600 py-4">
-        <div className="wrapper-page px-3 sm:px-5 md:px-8 flex flex-col xs:flex-row xs:items-center gap-x-4 gap-y-3">
-          <p className="xs:grow text-sm text-monster-200">
+        <div className="wrapper-page px-3 sm:px-5 md:px-8 flex flex-col xs:flex-row xs:items-center gap-x-4 gap-y-3 text-sm">
+          <p className="xs:grow text-monster-200">
             Built in Boston. Let's go Red Sox!
           </p>
 
-          <p className="text-sm tracking-wider uppercase">
+          <p>
             <Link
               href="https://github.com/bstaruk/brian-web-react"
               target="_blank"
@@ -155,8 +155,8 @@ export default function AppLayout() {
               variant="monster"
             >
               <span className="flex items-center gap-2">
-                <FaGithub className="h-5 w-auto shrink-0" />
                 <span>View Source</span>
+                <FaGithub className="h-5 w-auto shrink-0" />
               </span>
             </Link>
           </p>
