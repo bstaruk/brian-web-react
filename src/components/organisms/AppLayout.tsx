@@ -4,6 +4,7 @@ import { FaGithub, FaBars, FaX, FaLinkedin } from 'react-icons/fa6';
 import clsx from 'clsx';
 import { AnimatePresence, motion } from 'framer-motion';
 import Link, { RouterLink } from 'atoms/Link';
+import Button from 'atoms/Button';
 
 const menuItems: { name: string; path: string }[] = [
   { name: 'Home', path: '/' },
@@ -60,8 +61,8 @@ export default function AppLayout() {
 
   return (
     <div className="h-screen flex flex-col gap-5">
-      <div className="grow wrapper-page px-3 sm:px-5 md:px-8 flex flex-col gap-5">
-        <header className="w-full flex items-center justify-between sm:justify-start gap-x-3 gap-y-2 pt-5">
+      <div className="grow wrapper-page pt-3 sm:pt-5 md:pt-8 px-3 sm:px-5 md:px-8 flex flex-col gap-5">
+        <header className="w-full flex items-center justify-between sm:justify-start gap-x-3 gap-y-2">
           <div className="size-11 rounded-full border-4 border-monster-300 flex items-center justify-center shadow-xs">
             <div className="text-h2 font-bold translate-x-0.25 shadow-xs">
               B
@@ -74,19 +75,19 @@ export default function AppLayout() {
           </div>
 
           {/* Hamburger Button (mobile only) */}
-          <button
+          <Button
             onClick={() => setMenuOpen(true)}
-            className="lg:hidden bg-monster-700 rounded-sm shrink-0 size-8 flex items-center justify-center focus:outline-none focus-visible:ring cursor-pointer"
+            className="lg:hidden shrink-0 size-9 flex items-center justify-center"
             aria-label="Open menu"
             aria-expanded={menuOpen}
             aria-controls="mobile-sidebar"
           >
             {menuOpen ? (
-              <FaX className="h-3.5 w-auto" />
+              <FaX className="h-3.5 w-auto fill-monster-50" />
             ) : (
-              <FaBars className="h-4 w-auto" />
+              <FaBars className="h-4 w-auto fill-monster-50" />
             )}
-          </button>
+          </Button>
         </header>
 
         <main className="grow flex gap-8 relative">
@@ -112,14 +113,14 @@ export default function AppLayout() {
             role="dialog"
             aria-modal="true"
           >
-            <nav className="flex flex-col gap-1 p-4 uppercase text-h3">
-              <button
+            <nav className="flex flex-col gap-1 p-3 sm:p-5 md:p-8 uppercase text-h3">
+              <Button
                 onClick={() => setMenuOpen(false)}
-                aria-label="Close menu"
-                className="self-end mb-4 inline-flex items-center justify-center p-2 focus:outline-none focus-visible:ring cursor-pointer"
+                className="self-end shrink-0 size-9 flex items-center justify-center"
               >
-                <FaX className="h-4 w-auto" />
-              </button>
+                <FaX className="h-3.5 w-auto" />
+                <span className="sr-only">Close menu</span>
+              </Button>
 
               {menuItems.map((item) => (
                 <RouterLink
