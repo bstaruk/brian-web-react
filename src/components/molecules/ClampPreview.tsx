@@ -7,11 +7,11 @@ interface ClampPreviewProps {
   className?: string;
 }
 
-type PreviewType = 'text' | 'padding' | 'margin';
+type PreviewType = 'text' | 'padding' | 'gap';
 
 const previewOptions: { type: PreviewType; label: string }[] = [
   { type: 'padding', label: 'Padding' },
-  { type: 'margin', label: 'Margin' },
+  { type: 'gap', label: 'Gap' },
   { type: 'text', label: 'Text' },
 ];
 
@@ -27,20 +27,34 @@ const ClampPreview: React.FC<ClampPreviewProps> = ({
         style={{ padding: clampValue }}
         className="bg-monster-600 rounded shadow-sm"
       >
-        The padding preview shows how the clamp value affects the padding of
-        this box. Resize your browser window to see the effect in action.
+        The <strong>padding preview</strong> shows how the clamp value affects
+        the padding of this box. Resize your browser window to see the effect in
+        action.
       </div>
     ),
-    margin: (
-      <div className="overflow-auto border-2 border-monster-400 rounded shadow-sm p-4">
-        <p>Margin preview coming soon!</p>
+    gap: (
+      <div
+        style={{ gap: clampValue }}
+        className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4"
+      >
+        {[...Array(8).keys()].map((i) => (
+          <div
+            key={i}
+            className="bg-monster-600 text-monster-100 text-h4 rounded shadow-sm aspect-square flex items-center justify-center"
+          >
+            {i + 1}
+          </div>
+        ))}
       </div>
     ),
     text: (
-      <div className="overflow-auto border-2 border-monster-400 rounded shadow-sm p-4">
-        <p style={{ fontSize: clampValue }} className="whitespace-nowrap">
-          Simplicity is the ultimate sophistication.
-        </p>
+      <div
+        style={{ fontSize: clampValue }}
+        className="p-5 bg-monster-600 rounded shadow-sm"
+      >
+        The <strong>text preview</strong> shows how the clamp value affects the
+        text size of this text. Resize your browser window to see the effect in
+        action.
       </div>
     ),
   };
@@ -72,12 +86,6 @@ const ClampPreview: React.FC<ClampPreviewProps> = ({
         </header>
 
         {previewContent[activePreview]}
-
-        <p className="text-sm">
-          <strong>NOTE:</strong> For now, you'll need to resize your browser
-          window to see the clamp in effect. I hope to have a way of simulating
-          different browser sizes soon(ish?).
-        </p>
       </section>
     </div>
   );
