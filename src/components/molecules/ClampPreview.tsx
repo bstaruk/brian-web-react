@@ -29,33 +29,42 @@ const ClampPreview: React.FC<ClampPreviewProps> = ({ clamp, className }) => {
   };
 
   return (
-    <section className={clsx('flex flex-col gap-3', className)}>
-      <header className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4">
-        <h5>Clamp Preview:</h5>
-        <ol className="flex gap-2">
-          {previewOptions.map(({ type, label }) => (
-            <li key={type}>
-              <Button
-                onClick={() => setActivePreview(type)}
-                className={clsx({ underline: activePreview === type })}
-              >
-                {label}
-              </Button>
-            </li>
-          ))}
-        </ol>
-      </header>
+    <div className={clsx('flex flex-col gap-6', className)}>
+      <section className="flex flex-col gap-2">
+        <h5>Clamp Value:</h5>
+        <p className="font-medium border-2 border-monster-400 rounded p-4">
+          {clamp}
+        </p>
+      </section>
 
-      <div className="overflow-auto border border-monster-300 rounded-xs p-4">
-        {previewContent[activePreview]}
-      </div>
+      <section className="flex flex-col gap-3">
+        <header className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4">
+          <h5>Clamp Preview:</h5>
+          <ol className="flex gap-2">
+            {previewOptions.map(({ type, label }) => (
+              <li key={type}>
+                <Button
+                  onClick={() => setActivePreview(type)}
+                  className={clsx({ underline: activePreview === type })}
+                >
+                  {label}
+                </Button>
+              </li>
+            ))}
+          </ol>
+        </header>
 
-      <p className="text-sm">
-        <strong>NOTE:</strong> For now, you'll need to resize your browser
-        window to see the clamp in effect. I hope to have a way of simulating
-        different browser sizes soon(ish?).
-      </p>
-    </section>
+        <div className="overflow-auto border-2 border-monster-400 rounded p-4">
+          {previewContent[activePreview]}
+        </div>
+
+        <p className="text-sm">
+          <strong>NOTE:</strong> For now, you'll need to resize your browser
+          window to see the clamp in effect. I hope to have a way of simulating
+          different browser sizes soon(ish?).
+        </p>
+      </section>
+    </div>
   );
 };
 

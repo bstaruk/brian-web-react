@@ -68,3 +68,25 @@ export const defaultValues = {
   viewportMin: 420,
   viewportMax: 1440,
 };
+
+export const goofyLabels = [
+  'Clamp It, Chewy!',
+  'Clamplify me, Captain!',
+  'Go Go Clamp-o!',
+  'Fire Up the Clampulator',
+  'Go Full Clamptation',
+  'Clamp it Down',
+  'Clamp the Math',
+  'Activate Clamp Mode',
+  'Send It, Clamper!',
+  'Clamp That Value',
+  'Spin the Clamp-o-matic',
+  'Clamp That Funk',
+  'Clamp My Style',
+  'Please Clamp',
+  'Clamp This!',
+  'Clamp-a-doodle-doo',
+  'Holy Clamp!',
+  'Clampnation',
+  'Clamps Ahoy!',
+];
