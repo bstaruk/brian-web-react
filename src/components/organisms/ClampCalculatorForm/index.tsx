@@ -1,77 +1,8 @@
 import { useState } from 'react';
-import { z } from 'zod';
 import { useForm } from '@tanstack/react-form';
 import Button from 'atoms/Button';
 import TextField from 'molecules/form/TextField';
-
-type Unit = 'rem' | 'px';
-
-const toFixed = (value: number, decimals: number = 3): number =>
-  parseFloat(value.toFixed(decimals));
-
-const convertToRem = (size: number, unit: Unit, remBase: number): number =>
-  unit === 'rem' ? size : size / remBase;
-
-const createClamp = (
-  minFontSize: number,
-  maxFontSize: number,
-  fontSizeUnit: Unit,
-  fontSizeRemBase: number,
-  minScreenSize: number,
-  maxScreenSize: number,
-  screenSizeUnit: Unit,
-  screenSizeRemBase: number,
-): string => {
-  const minFontSizeRem = convertToRem(
-    minFontSize,
-    fontSizeUnit,
-    fontSizeRemBase,
-  );
-  const maxFontSizeRem = convertToRem(
-    maxFontSize,
-    fontSizeUnit,
-    fontSizeRemBase,
-  );
-  const minScreenSizeRem = convertToRem(
-    minScreenSize,
-    screenSizeUnit,
-    screenSizeRemBase,
-  );
-  const maxScreenSizeRem = convertToRem(
-    maxScreenSize,
-    screenSizeUnit,
-    screenSizeRemBase,
-  );
-
-  const slope =
-    (maxFontSizeRem - minFontSizeRem) / (maxScreenSizeRem - minScreenSizeRem);
-  const intercept = minFontSizeRem - slope * minScreenSizeRem;
-
-  return `clamp(${toFixed(minFontSizeRem)}rem, ${toFixed(intercept)}rem + ${toFixed(slope * 100)}vw, ${toFixed(maxFontSizeRem)}rem)`;
-};
-
-const numberField = (fieldName: string) =>
-  z
-    .number({
-      required_error: `${fieldName} is required`,
-      invalid_type_error: `${fieldName} must be a number`,
-    })
-    .min(0.0001, { message: `${fieldName} must be at least 0.0001` })
-    .max(9999, { message: `${fieldName} must be at most 9999` });
-
-const formSchema = z.object({
-  clampMin: numberField('Clamp Min'),
-  clampMax: numberField('Clamp Max'),
-  viewportMin: numberField('Viewport Min'),
-  viewportMax: numberField('Viewport Max'),
-});
-
-const defaultValues = {
-  clampMin: 1,
-  clampMax: 2,
-  viewportMin: 420,
-  viewportMax: 1440,
-};
+import { createClamp, defaultValues, formSchema } from './utils';
 
 function ClampCalculatorForm() {
   const [clamp, setClamp] = useState<string>(
