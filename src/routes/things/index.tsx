@@ -1,9 +1,10 @@
 import { createFileRoute } from '@tanstack/react-router';
+import { motion } from 'framer-motion';
 import Link from 'atoms/Link';
 import ThingCard from 'molecules/ThingCard';
 
 export const Route = createFileRoute('/things/')({
-  component: Things,
+  component: RouteComponent,
   head: () => ({
     meta: [
       {
@@ -17,10 +18,52 @@ export const Route = createFileRoute('/things/')({
   }),
 });
 
-function Things() {
+interface Thing {
+  to: string;
+  title: string;
+  description: React.ReactNode;
+}
+
+const things: Thing[] = [
+  {
+    to: '/things/css-clamp-calculator',
+    title: 'CSS Clamp Calculator',
+    description: (
+      <>
+        A tool for calculating values for use with the CSS <code>clamp()</code>{' '}
+        function.
+      </>
+    ),
+  },
+  {
+    to: '/things/auth-bookmark-maker',
+    title: 'Authenticated Bookmark Maker',
+    description: (
+      <>
+        A simple utility which generates a bookmarkable hyperlink to an
+        authenticated page, bypassing the need for manually entering the
+        username and password.
+      </>
+    ),
+  },
+];
+
+function RouteComponent() {
   return (
     <div className="flex flex-col gap-8">
-      <section className="flex flex-col gap-5">
+      <motion.section
+        className="flex flex-col gap-5"
+        variants={{
+          hidden: {},
+          visible: {
+            transition: {
+              staggerChildren: 0.1,
+            },
+          },
+        }}
+        initial="hidden"
+        animate="visible"
+      >
         <div className="flex flex-col gap-3">
           <h1>Things</h1>
           <p>
@@ -36,23 +79,29 @@ function Things() {
           </p>
         </div>
 
-        <ThingCard
-          to="/things/css-clamp-calculator"
-          title="CSS Clamp Calculator"
-        >
-          A tool for calculating values for use with the CSS{' '}
-          <code>clamp()</code> function.
-        </ThingCard>
-
-        <ThingCard
-          to="/things/auth-bookmark-maker"
-          title="Authenticated Bookmark Maker"
-        >
-          A simple utility which generates a bookmarkable hyperlink to an
-          authenticated page, bypassing the need for manually entering the
-          username and password.
-        </ThingCard>
-      </section>
+        {things.map(({ to, title, description }) => (
+          <motion.div
+            key={to}
+            variants={{
+              hidden: {
+                opacity: 0,
+                x: -20,
+              },
+              visible: {
+                opacity: 1,
+                x: 0,
+                transition: {
+                  type: 'spring',
+                  stiffness: 60,
+                  damping: 12,
+                },
+              },
+            }}
+          >
+            <ThingCard {...{ to, title }}>{description}</ThingCard>
+          </motion.div>
+        ))}
+      </motion.section>
     </div>
   );
 }
