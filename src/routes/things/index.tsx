@@ -3,7 +3,7 @@ import Link from 'atoms/Link';
 import ThingCard from 'molecules/ThingCard';
 
 export const Route = createFileRoute('/things/')({
-  component: Things,
+  component: RouteComponent,
   head: () => ({
     meta: [
       {
@@ -17,7 +17,37 @@ export const Route = createFileRoute('/things/')({
   }),
 });
 
-function Things() {
+interface Thing {
+  to: string;
+  title: string;
+  description: React.ReactNode;
+}
+
+const things: Thing[] = [
+  {
+    to: '/things/css-clamp-calculator',
+    title: 'CSS Clamp Calculator',
+    description: (
+      <>
+        A tool for calculating values for use with the CSS <code>clamp()</code>{' '}
+        function.
+      </>
+    ),
+  },
+  {
+    to: '/things/auth-bookmark-maker',
+    title: 'Authenticated Bookmark Maker',
+    description: (
+      <>
+        A simple utility which generates a bookmarkable hyperlink to an
+        authenticated page, bypassing the need for manually entering the
+        username and password.
+      </>
+    ),
+  },
+];
+
+function RouteComponent() {
   return (
     <div className="flex flex-col gap-8">
       <section className="flex flex-col gap-5">
@@ -36,22 +66,11 @@ function Things() {
           </p>
         </div>
 
-        <ThingCard
-          to="/things/css-clamp-calculator"
-          title="CSS Clamp Calculator"
-        >
-          A tool for calculating values for use with the CSS{' '}
-          <code>clamp()</code> function.
-        </ThingCard>
-
-        <ThingCard
-          to="/things/auth-bookmark-maker"
-          title="Authenticated Bookmark Maker"
-        >
-          A simple utility which generates a bookmarkable hyperlink to an
-          authenticated page, bypassing the need for manually entering the
-          username and password.
-        </ThingCard>
+        {things.map(({ to, title, description }) => (
+          <ThingCard key={to} {...{ to, title }}>
+            {description}
+          </ThingCard>
+        ))}
       </section>
     </div>
   );
