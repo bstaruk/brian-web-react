@@ -125,7 +125,7 @@ function ClampCalculatorForm() {
         </div>
       </form>
 
-      <h6 className="font-medium bg-monster-600 shadow-xs p-4">{clamp}</h6>
+      <h6 className="font-medium bg-monster-600 p-4">{clamp}</h6>
 
       <hr />
 

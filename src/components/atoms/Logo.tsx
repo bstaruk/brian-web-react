@@ -13,7 +13,7 @@ const Logo: React.FC<LogoProps> = ({ className }) => (
       className,
     )}
   >
-    <div className="text-h2 font-bold translate-x-0.25 shadow-xs">B</div>
+    <div className="text-h2 font-bold translate-x-0.25">B</div>
   </Link>
 );
 
