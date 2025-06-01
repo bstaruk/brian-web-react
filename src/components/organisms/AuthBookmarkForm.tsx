@@ -79,7 +79,7 @@ function AuthBookmarkForm() {
 
       <form.Field
         name="url"
-        children={(field) => <TextField field={field} label="URL" />}
+        children={(field) => <TextField field={field} label="URL" type="url" />}
       />
 
       <form.Field
