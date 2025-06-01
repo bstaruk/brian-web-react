@@ -1,19 +1,44 @@
 import { FaGithub } from 'react-icons/fa6';
 import clsx from 'clsx';
 import Link from 'atoms/Link';
+import { motion } from 'framer-motion';
 
 interface GlobalFooterProps {
   className?: string;
 }
 
+const containerVariants = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.12,
+    },
+  },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 5 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { type: 'spring', stiffness: 70, damping: 16 },
+  },
+};
+
 const GlobalFooter: React.FC<GlobalFooterProps> = ({ className }) => (
   <footer className={clsx('bg-monster-600 py-4', className)}>
-    <div className="wrapper-page px-3 sm:px-5 md:px-8 flex flex-col xs:flex-row xs:items-center gap-x-4 gap-y-3 text-sm">
-      <p className="xs:grow text-monster-200">
+    <motion.div
+      className="wrapper-page px-3 sm:px-5 md:px-8 flex flex-col xs:flex-row xs:items-center gap-x-4 gap-y-3 text-sm"
+      variants={containerVariants}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.3 }}
+    >
+      <motion.p className="xs:grow text-monster-200" variants={itemVariants}>
         Built in Boston. Let's go Red Sox!
-      </p>
+      </motion.p>
 
-      <p>
+      <motion.p variants={itemVariants}>
         <Link
           href="https://github.com/bstaruk/brian-web-react"
           target="_blank"
@@ -25,8 +50,8 @@ const GlobalFooter: React.FC<GlobalFooterProps> = ({ className }) => (
             <FaGithub className="h-5 w-auto shrink-0" />
           </span>
         </Link>
-      </p>
-    </div>
+      </motion.p>
+    </motion.div>
   </footer>
 );
 
