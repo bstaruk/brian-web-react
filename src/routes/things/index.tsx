@@ -1,4 +1,5 @@
 import { createFileRoute } from '@tanstack/react-router';
+import { motion } from 'framer-motion';
 import Link from 'atoms/Link';
 import ThingCard from 'molecules/ThingCard';
 
@@ -50,7 +51,19 @@ const things: Thing[] = [
 function RouteComponent() {
   return (
     <div className="flex flex-col gap-8">
-      <section className="flex flex-col gap-5">
+      <motion.section
+        className="flex flex-col gap-5"
+        variants={{
+          hidden: {},
+          visible: {
+            transition: {
+              staggerChildren: 0.15,
+            },
+          },
+        }}
+        initial="hidden"
+        animate="visible"
+      >
         <div className="flex flex-col gap-3">
           <h1>Things</h1>
           <p>
@@ -67,11 +80,28 @@ function RouteComponent() {
         </div>
 
         {things.map(({ to, title, description }) => (
-          <ThingCard key={to} {...{ to, title }}>
-            {description}
-          </ThingCard>
+          <motion.div
+            key={to}
+            variants={{
+              hidden: {
+                opacity: 0,
+                x: -20,
+              },
+              visible: {
+                opacity: 1,
+                x: 0,
+                transition: {
+                  type: 'spring',
+                  stiffness: 60,
+                  damping: 12,
+                },
+              },
+            }}
+          >
+            <ThingCard {...{ to, title }}>{description}</ThingCard>
+          </motion.div>
         ))}
-      </section>
+      </motion.section>
     </div>
   );
 }
