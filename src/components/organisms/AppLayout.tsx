@@ -38,10 +38,38 @@ export default function AppLayout() {
         <header className="w-full flex items-center justify-between sm:justify-start gap-x-3 gap-y-2">
           <Logo />
 
-          <div className="hidden sm:block grow text-title uppercase text-shadow-xs text-shadow-monster-700">
-            brian<span className="text-monster-400">.</span>staruk
-            <span className="text-monster-400">.net</span>
-          </div>
+          <motion.div
+            className="hidden sm:block grow text-title uppercase text-shadow-xs text-shadow-monster-700"
+            initial="hidden"
+            animate="visible"
+            variants={{
+              visible: {
+                transition: { staggerChildren: 0.2, delayChildren: 1 },
+              },
+              hidden: {},
+            }}
+          >
+            brian
+            <motion.span
+              className="text-monster-400 inline-block"
+              variants={{
+                hidden: { opacity: 0, y: 10 },
+                visible: { opacity: 1, y: 0, transition: { duration: 0.4 } },
+              }}
+            >
+              .
+            </motion.span>
+            staruk
+            <motion.span
+              className="text-monster-400 inline-block"
+              variants={{
+                hidden: { opacity: 0, y: 10 },
+                visible: { opacity: 1, y: 0, transition: { duration: 0.4 } },
+              }}
+            >
+              .net
+            </motion.span>
+          </motion.div>
 
           {/* Hamburger Button (mobile only) */}
           <Button
