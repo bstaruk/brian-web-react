@@ -65,7 +65,7 @@ function ClampCalculatorForm() {
                   {...{ field }}
                   label="Min"
                   type="number"
-                  step={0.25}
+                  step={0.125}
                   valueAsNumber
                 />
               )}
@@ -78,7 +78,7 @@ function ClampCalculatorForm() {
                   {...{ field }}
                   label="Max"
                   type="number"
-                  step={0.25}
+                  step={0.125}
                   valueAsNumber
                 />
               )}
