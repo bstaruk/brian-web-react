@@ -1,9 +1,9 @@
-import { useMemo, useState } from 'react';
+import { useState } from 'react';
 import { useForm } from '@tanstack/react-form';
 import Button from 'atoms/Button';
 import ClampPreview from 'molecules/ClampPreview';
 import TextField from 'molecules/form/TextField';
-import { createClamp, defaultValues, formSchema, goofyLabels } from './utils';
+import { createClamp, defaultValues, formSchema } from './utils';
 
 function ClampCalculatorForm() {
   const [clampValue, setClampValue] = useState<string>(createClamp({}));
@@ -35,11 +35,6 @@ function ClampCalculatorForm() {
       onChange: formSchema,
     },
   });
-
-  const submitLabel = useMemo(() => {
-    const index = Math.floor(Math.random() * goofyLabels.length);
-    return goofyLabels[index];
-  }, []);
 
   return (
     <div className="flex flex-col gap-6">
@@ -132,9 +127,9 @@ function ClampCalculatorForm() {
         <div className="sr-only">
           <form.Subscribe
             selector={(state) => [state.canSubmit, state.isSubmitting]}
-            children={([canSubmit, isSubmitting]) => (
+            children={([canSubmit]) => (
               <Button type="submit" disabled={!canSubmit}>
-                {isSubmitting ? '...' : submitLabel}
+                Submit
               </Button>
             )}
           />
