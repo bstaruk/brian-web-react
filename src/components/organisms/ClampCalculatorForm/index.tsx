@@ -20,6 +20,17 @@ function ClampCalculatorForm() {
         }),
       );
     },
+    listeners: {
+      // Automatically update clamp value on field change
+      onChange: ({ formApi }) => {
+        if (formApi.state.isValid) {
+          formApi.handleSubmit().catch((error) => {
+            console.error('Autosave error:', error);
+          });
+        }
+      },
+      onChangeDebounceMs: 250,
+    },
     validators: {
       onChange: formSchema,
     },
@@ -54,7 +65,7 @@ function ClampCalculatorForm() {
                   {...{ field }}
                   label="Min"
                   type="number"
-                  step={0.25}
+                  step={0.125}
                   valueAsNumber
                 />
               )}
@@ -67,7 +78,7 @@ function ClampCalculatorForm() {
                   {...{ field }}
                   label="Max"
                   type="number"
-                  step={0.25}
+                  step={0.125}
                   valueAsNumber
                 />
               )}
@@ -118,7 +129,7 @@ function ClampCalculatorForm() {
           </fieldset>
         </div>
 
-        <div>
+        <div className="sr-only">
           <form.Subscribe
             selector={(state) => [state.canSubmit, state.isSubmitting]}
             children={([canSubmit, isSubmitting]) => (
