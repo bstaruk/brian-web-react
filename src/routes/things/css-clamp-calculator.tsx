@@ -39,8 +39,6 @@ function RouteComponent() {
           </p>
         </div>
 
-        <hr />
-
         <ClampCalculatorForm />
       </section>
     </div>

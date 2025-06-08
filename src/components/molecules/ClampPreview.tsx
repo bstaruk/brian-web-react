@@ -61,13 +61,6 @@ const ClampPreview: React.FC<ClampPreviewProps> = ({
 
   return (
     <div className={clsx('flex flex-col gap-6', className)}>
-      <section className="flex flex-col gap-2">
-        <h5>Clamp Value:</h5>
-        <p className="font-medium border-2 border-monster-400 rounded p-4">
-          {clampValue}
-        </p>
-      </section>
-
       <section className="flex flex-col gap-3">
         <header className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4">
           <h5>Clamp Preview:</h5>

@@ -50,6 +50,13 @@ function ClampCalculatorForm() {
         className="flex flex-col gap-4"
         noValidate
       >
+        <section>
+          <h5 className="sr-only">Clamp Value:</h5>
+          <p className="font-medium border-3 p-3 border-monster-400 rounded">
+            {clampValue}
+          </p>
+        </section>
+
         <div className="flex flex-col gap-4 sm:flex-row sm:gap-6">
           <fieldset className="grow flex flex-col gap-2">
             <h4>Clamp Size (rem)</h4>
