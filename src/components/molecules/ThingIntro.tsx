@@ -1,5 +1,6 @@
 import { useState, type ReactNode } from 'react';
-import { FaQuestion, FaEllipsisH } from 'react-icons/fa';
+import { FaQuestion, FaEllipsisH, FaArrowLeft } from 'react-icons/fa';
+import { RouterLink } from 'atoms/Link';
 
 interface ThingIntroProps {
   title: string;
@@ -13,6 +14,15 @@ function ThingIntro({ title, content }: ThingIntroProps) {
 
   return (
     <header className="flex flex-col gap-4">
+      <RouterLink
+        to="/things"
+        className="text-sm flex items-center gap-1.5"
+        variant="monster"
+      >
+        <FaArrowLeft className="h-3 w-auto" />
+        Back to Things List
+      </RouterLink>
+
       <div className="flex flex-col-reverse sm:flex-row sm:items-center sm:justify-between gap-2">
         <h1>{title}</h1>
 
