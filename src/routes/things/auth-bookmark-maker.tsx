@@ -1,6 +1,7 @@
 import { createFileRoute } from '@tanstack/react-router';
 import AuthBookmarkForm from 'organisms/AuthBookmarkForm';
 import Link from 'atoms/Link';
+import ThingIntro from 'molecules/ThingIntro';
 
 export const Route = createFileRoute('/things/auth-bookmark-maker')({
   component: RouteComponent,
@@ -22,23 +23,25 @@ function RouteComponent() {
   return (
     <div className="flex flex-col gap-8">
       <section className="flex flex-col gap-4">
-        <h1>Authenticated Bookmark Maker</h1>
-
-        <div className="flex flex-col gap-3">
-          <p>
-            This is a tool that most web developers are probably already
-            familiar with: it generates a URL that pre-fills a predefined
-            username & password on pages with basic authentication.
-          </p>
-
-          <p>
-            It's useful for times when we need authentication to prevent
-            non-production environments from being indexed by Google, but the
-            username & password are openly shared among internal teams. Pin one
-            of these URLs to your Slack channel to avoid getting 10 messages a
-            day asking for the credentials.
-          </p>
-        </div>
+        <ThingIntro
+          title="Authenticated Bookmark Maker"
+          content={
+            <>
+              <p>
+                This is a tool that most web developers are probably already
+                familiar with: it generates a URL that pre-fills a predefined
+                username & password on pages with basic authentication.
+              </p>
+              <p>
+                It's useful for times when we need authentication to prevent
+                non-production environments from being indexed by Google, but
+                the username & password are openly shared among internal teams.
+                Pin one of these URLs to your Slack channel to avoid getting 10
+                messages a day asking for the credentials.
+              </p>
+            </>
+          }
+        />
 
         <hr />
 
