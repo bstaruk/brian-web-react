@@ -9,6 +9,7 @@ interface CopyLinkProps extends LinkButtonProps {
   content: string;
   hideIcon?: boolean;
   hideLabel?: boolean;
+  iconSize?: 3 | 4;
   label?: string;
   successLabel?: string;
 }
@@ -19,9 +20,10 @@ const CopyLink = forwardRef<HTMLButtonElement, CopyLinkProps>(
       className,
       hideIcon,
       hideLabel,
+      iconSize = 4,
       content,
-      label = 'Copy',
-      successLabel,
+      label = '(Copy)',
+      successLabel = '(Copied!)',
       ...props
     },
     ref,
@@ -64,7 +66,12 @@ const CopyLink = forwardRef<HTMLButtonElement, CopyLinkProps>(
               transition={{ duration: 0.1 }}
               className="flex items-center justify-center"
             >
-              <Icon className="h-4 w-auto shrink-0" />
+              <Icon
+                className={clsx('w-auto shrink-0', {
+                  'h-3': iconSize === 3,
+                  'h-4': iconSize === 4,
+                })}
+              />
             </motion.span>
           </AnimatePresence>
         )}
