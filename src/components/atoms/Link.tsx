@@ -6,9 +6,9 @@ interface BaseButtonProps {
   variant?: 'marathon' | 'marathon-light' | 'white' | 'monster';
 }
 
-type LinkProps = React.AnchorHTMLAttributes<HTMLAnchorElement> &
+export type LinkProps = React.AnchorHTMLAttributes<HTMLAnchorElement> &
   BaseButtonProps;
-type LinkButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> &
+export type LinkButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> &
   BaseButtonProps;
 
 const linkClassNames = (
@@ -53,11 +53,14 @@ export const RouterLink: LinkComponent<typeof Link> = (props) => {
 };
 
 export const LinkButton = React.forwardRef<HTMLButtonElement, LinkButtonProps>(
-  ({ children, className, variant = 'marathon', ...rest }, ref) => {
+  (
+    { children, className, type = 'button', variant = 'marathon', ...rest },
+    ref,
+  ) => {
     return (
       <button
         {...rest}
-        {...{ ref }}
+        {...{ ref, type }}
         className={linkClassNames(variant, className)}
       >
         {children}
