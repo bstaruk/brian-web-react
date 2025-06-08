@@ -1,7 +1,7 @@
-'use client';
 import { forwardRef, useState } from 'react';
 import clsx from 'clsx';
 import { FaCopy, FaCheck } from 'react-icons/fa';
+import { motion, AnimatePresence } from 'framer-motion';
 import { LinkButton, type LinkButtonProps } from 'atoms/Link';
 
 interface CopyLinkProps extends LinkButtonProps {
@@ -32,7 +32,7 @@ const CopyLink = forwardRef<HTMLButtonElement, CopyLinkProps>(
       try {
         await navigator.clipboard.writeText(content);
         setCopied(true);
-        setTimeout(() => setCopied(false), 3000); // Reset copied state after 2 seconds
+        setTimeout(() => setCopied(false), 3000);
       } catch (err) {
         console.error('Failed to copy:', err);
       }
@@ -54,7 +54,20 @@ const CopyLink = forwardRef<HTMLButtonElement, CopyLinkProps>(
         )}
         aria-label="Copy to clipboard"
       >
-        {!hideIcon && <Icon className="h-4 w-auto shrink-0" />}
+        {!hideIcon && (
+          <AnimatePresence mode="wait" initial={false}>
+            <motion.span
+              key={copied ? 'check' : 'copy'}
+              initial={{ opacity: 0, rotateY: -90 }}
+              animate={{ opacity: 1, rotateY: 0 }}
+              exit={{ opacity: 0, rotateY: 90 }}
+              transition={{ duration: 0.1 }}
+              className="flex items-center justify-center"
+            >
+              <Icon className="h-4 w-auto shrink-0" />
+            </motion.span>
+          </AnimatePresence>
+        )}
 
         <span className={clsx({ 'sr-only': hideLabel })}>
           {copied && !!successLabel ? successLabel : label}
