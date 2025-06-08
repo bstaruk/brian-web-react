@@ -3,7 +3,8 @@ import { useForm } from '@tanstack/react-form';
 import Button from 'atoms/Button';
 import ClampPreview from 'molecules/ClampPreview';
 import TextField from 'molecules/form/TextField';
-import { createClamp, defaultValues, formSchema } from './utils';
+import { formSchema } from './schema';
+import { createClamp, defaultValues } from './utils';
 
 function ClampCalculatorForm() {
   const [clampValue, setClampValue] = useState<string>(createClamp({}));
