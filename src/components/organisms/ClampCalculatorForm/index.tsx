@@ -1,9 +1,11 @@
 import { useState } from 'react';
 import { useForm } from '@tanstack/react-form';
 import Button from 'atoms/Button';
+import CopyLink from 'atoms/CopyLink';
 import ClampPreview from 'molecules/ClampPreview';
 import TextField from 'molecules/form/TextField';
-import { createClamp, defaultValues, formSchema } from './utils';
+import { formSchema } from './schema';
+import { createClamp, defaultValues } from './utils';
 
 function ClampCalculatorForm() {
   const [clampValue, setClampValue] = useState<string>(createClamp({}));
@@ -29,7 +31,7 @@ function ClampCalculatorForm() {
           });
         }
       },
-      onChangeDebounceMs: 250,
+      onChangeDebounceMs: 150,
     },
     validators: {
       onChange: formSchema,
@@ -49,6 +51,21 @@ function ClampCalculatorForm() {
         className="flex flex-col gap-4"
         noValidate
       >
+        <section>
+          <h5 className="sr-only">Clamp Value:</h5>
+          <div className="flex items-start border-3 p-3 border-monster-400 rounded">
+            <p className="font-medium grow">{clampValue}</p>
+            <CopyLink
+              content={clampValue}
+              className="mb-2"
+              label="Copy clamp value"
+              successLabel="Copied!"
+              hideLabel
+              variant="monster"
+            />
+          </div>
+        </section>
+
         <div className="flex flex-col gap-4 sm:flex-row sm:gap-6">
           <fieldset className="grow flex flex-col gap-2">
             <h4>Clamp Size (rem)</h4>

@@ -10,18 +10,30 @@ interface ClampPreviewProps {
 type PreviewType = 'text' | 'padding' | 'gap';
 
 const previewOptions: { type: PreviewType; label: string }[] = [
+  { type: 'text', label: 'Text' },
   { type: 'padding', label: 'Padding' },
   { type: 'gap', label: 'Gap' },
-  { type: 'text', label: 'Text' },
 ];
 
 const ClampPreview: React.FC<ClampPreviewProps> = ({
   clampValue,
   className,
 }) => {
-  const [activePreview, setActivePreview] = useState<PreviewType>('padding');
+  const [activePreview, setActivePreview] = useState<PreviewType>(
+    previewOptions[0].type,
+  );
 
   const previewContent: Record<PreviewType, ReactNode> = {
+    text: (
+      <div
+        style={{ fontSize: clampValue }}
+        className="p-5 bg-monster-600 rounded shadow-sm"
+      >
+        The <strong>text preview</strong> shows how the clamp value affects the
+        text size of this text. Resize your browser window to see the effect in
+        action.
+      </div>
+    ),
     padding: (
       <div
         style={{ padding: clampValue }}
@@ -47,27 +59,10 @@ const ClampPreview: React.FC<ClampPreviewProps> = ({
         ))}
       </div>
     ),
-    text: (
-      <div
-        style={{ fontSize: clampValue }}
-        className="p-5 bg-monster-600 rounded shadow-sm"
-      >
-        The <strong>text preview</strong> shows how the clamp value affects the
-        text size of this text. Resize your browser window to see the effect in
-        action.
-      </div>
-    ),
   };
 
   return (
     <div className={clsx('flex flex-col gap-6', className)}>
-      <section className="flex flex-col gap-2">
-        <h5>Clamp Value:</h5>
-        <p className="font-medium border-2 border-monster-400 rounded p-4">
-          {clampValue}
-        </p>
-      </section>
-
       <section className="flex flex-col gap-3">
         <header className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4">
           <h5>Clamp Preview:</h5>
