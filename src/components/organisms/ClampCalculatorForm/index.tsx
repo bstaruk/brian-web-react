@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useForm } from '@tanstack/react-form';
 import Button from 'atoms/Button';
+import CopyLink from 'atoms/CopyLink';
 import ClampPreview from 'molecules/ClampPreview';
 import TextField from 'molecules/form/TextField';
 import { formSchema } from './schema';
@@ -30,7 +31,7 @@ function ClampCalculatorForm() {
           });
         }
       },
-      onChangeDebounceMs: 250,
+      onChangeDebounceMs: 150,
     },
     validators: {
       onChange: formSchema,
@@ -52,9 +53,17 @@ function ClampCalculatorForm() {
       >
         <section>
           <h5 className="sr-only">Clamp Value:</h5>
-          <p className="font-medium border-3 p-3 border-monster-400 rounded">
-            {clampValue}
-          </p>
+          <div className="flex items-start border-3 p-3 border-monster-400 rounded">
+            <p className="font-medium grow">{clampValue}</p>
+            <CopyLink
+              content={clampValue}
+              className="mb-2"
+              label="Copy clamp value"
+              successLabel="Copied!"
+              hideLabel
+              variant="monster"
+            />
+          </div>
         </section>
 
         <div className="flex flex-col gap-4 sm:flex-row sm:gap-6">
