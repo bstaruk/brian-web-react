@@ -28,7 +28,7 @@ const formSchema = z.object({
 
 const defaultValues = {
   url: 'https://example.com',
-  username: 'admin',
+  username: 'brian',
   password: 'hunter22',
 };
 
@@ -61,10 +61,10 @@ function AuthBookmarkForm() {
           console.error('Form submission error:', error);
         });
       }}
-      className="flex flex-col items-start gap-4"
+      className="flex flex-col gap-4"
     >
-      <div className="flex flex-col gap-2">
-        <h5>Your bookmark is...</h5>
+      <section className="flex flex-col gap-1">
+        <h4 className="text-sm">Your bookmark:</h4>
         <p>
           <Link
             href={bookmark}
@@ -75,27 +75,31 @@ function AuthBookmarkForm() {
             {bookmark}
           </Link>
         </p>
-      </div>
+      </section>
 
-      <form.Field
-        name="url"
-        children={(field) => <TextField field={field} label="URL" type="url" />}
-      />
+      <fieldset className="grow flex flex-col gap-2 items-start">
+        <form.Field
+          name="url"
+          children={(field) => (
+            <TextField field={field} label="URL" type="url" />
+          )}
+        />
 
-      <form.Field
-        name="username"
-        children={(field) => <TextField field={field} label="Username" />}
-      />
+        <form.Field
+          name="username"
+          children={(field) => <TextField field={field} label="Username" />}
+        />
 
-      <form.Field
-        name="password"
-        children={(field) => <TextField field={field} label="Password" />}
-      />
+        <form.Field
+          name="password"
+          children={(field) => <TextField field={field} label="Password" />}
+        />
+      </fieldset>
 
       <form.Subscribe
         selector={(state) => [state.canSubmit, state.isSubmitting]}
         children={([canSubmit, isSubmitting]) => (
-          <Button type="submit" disabled={!canSubmit}>
+          <Button type="submit" disabled={!canSubmit} className="self-start">
             {isSubmitting ? '...' : 'Submit'}
           </Button>
         )}

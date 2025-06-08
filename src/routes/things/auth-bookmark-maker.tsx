@@ -43,8 +43,6 @@ function RouteComponent() {
           }
         />
 
-        <hr />
-
         <AuthBookmarkForm />
 
         <p className="text-sm">
