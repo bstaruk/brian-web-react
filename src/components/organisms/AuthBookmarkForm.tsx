@@ -48,6 +48,17 @@ function AuthBookmarkForm() {
         createHtpasswdBookmarkUrl(value.url, value.username, value.password),
       );
     },
+    listeners: {
+      // Automatically update bookmark on field change
+      onChange: ({ formApi }) => {
+        if (formApi.state.isValid) {
+          formApi.handleSubmit().catch((error) => {
+            console.error('Autosave error:', error);
+          });
+        }
+      },
+      onChangeDebounceMs: 150,
+    },
     validators: {
       onChange: formSchema,
     },
@@ -104,14 +115,16 @@ function AuthBookmarkForm() {
         />
       </fieldset>
 
-      <form.Subscribe
-        selector={(state) => [state.canSubmit, state.isSubmitting]}
-        children={([canSubmit, isSubmitting]) => (
-          <Button type="submit" disabled={!canSubmit} className="self-start">
-            {isSubmitting ? '...' : 'Submit'}
-          </Button>
-        )}
-      />
+      <div className="sr-only">
+        <form.Subscribe
+          selector={(state) => [state.canSubmit, state.isSubmitting]}
+          children={([canSubmit, isSubmitting]) => (
+            <Button type="submit" disabled={!canSubmit} className="self-start">
+              {isSubmitting ? '...' : 'Update Bookmark'}
+            </Button>
+          )}
+        />
+      </div>
     </form>
   );
 }
