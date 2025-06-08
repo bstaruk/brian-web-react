@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { z } from 'zod';
 import { useForm } from '@tanstack/react-form';
 import Button from 'atoms/Button';
+import CopyLink from 'atoms/CopyLink';
 import Link from 'atoms/Link';
 import TextField from 'molecules/form/TextField';
 
@@ -64,16 +65,23 @@ function AuthBookmarkForm() {
       className="flex flex-col gap-4"
     >
       <section className="flex flex-col gap-1">
-        <h4 className="text-sm">Your bookmark:</h4>
+        <h4 className="sr-only">Your bookmark:</h4>
+
         <p>
-          <Link
-            href={bookmark}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="font-bold"
-          >
+          <Link href={bookmark} target="_blank" rel="noopener noreferrer">
             {bookmark}
           </Link>
+        </p>
+
+        <p className="text-sm">
+          <CopyLink
+            content={bookmark}
+            variant="monster"
+            className="shrink-0"
+            label="Copy Bookmark"
+            successLabel="Bookmark Copied!"
+            iconSize={3}
+          />
         </p>
       </section>
 
