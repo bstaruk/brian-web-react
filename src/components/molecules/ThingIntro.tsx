@@ -1,6 +1,6 @@
 import { useState, type ReactNode } from 'react';
 import { FaQuestion, FaEllipsisH, FaArrowLeft } from 'react-icons/fa';
-import { RouterLink } from 'atoms/Link';
+import { RouterLink, LinkButton } from 'atoms/Link';
 
 interface ThingIntroProps {
   title: string;
@@ -26,7 +26,7 @@ function ThingIntro({ title, content }: ThingIntroProps) {
       <div className="flex flex-col-reverse sm:flex-row sm:items-center sm:justify-between gap-2">
         <h1>{title}</h1>
 
-        <button
+        <LinkButton
           type="button"
           onClick={() => setIsOpen(!isOpen)}
           aria-expanded={isOpen}
@@ -34,8 +34,8 @@ function ThingIntro({ title, content }: ThingIntroProps) {
           className="group shrink-0 size-8 flex items-center justify-center cursor-pointer -ml-1.5 sm:ml-0 sm:-mr-1.5 shadow-none"
         >
           <span className="sr-only">{isOpen ? 'Hide' : 'Show'} Intro</span>
-          <OpenIcon className="text-marathon-400 group-hover:text-marathon-200 transition-colors w-5 h-auto" />
-        </button>
+          <OpenIcon className="w-5 h-auto" />
+        </LinkButton>
       </div>
 
       {isOpen && (
