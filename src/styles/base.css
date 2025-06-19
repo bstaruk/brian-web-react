@@ -12,13 +12,7 @@
   h3,
   h4,
   h5 {
-    @apply text-shadow-xs text-shadow-monster-700;
-  }
-
-  h1,
-  h2,
-  h3 {
-    @apply uppercase;
+    @apply uppercase text-shadow-xs text-shadow-monster-700;
   }
 
   h1 {
