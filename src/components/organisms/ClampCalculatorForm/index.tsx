@@ -54,7 +54,7 @@ function ClampCalculatorForm() {
         <section>
           <h5 className="sr-only">Clamp Value:</h5>
           <div className="flex items-start border-3 p-3 border-monster-400 rounded">
-            <p className="font-medium grow">{clampValue}</p>
+            <code className="grow">{clampValue}</code>
             <CopyLink
               content={clampValue}
               className="mb-2"
