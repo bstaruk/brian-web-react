@@ -128,6 +128,7 @@ export default function AppLayout() {
                   variant={
                     pathname === item.path ? 'marathon-light' : 'marathon'
                   }
+                  weight="none"
                   className="py-2"
                 >
                   {item.name}
@@ -152,6 +153,7 @@ export default function AppLayout() {
                     variant={
                       pathname === item.path ? 'marathon-light' : 'marathon'
                     }
+                    weight="none"
                   >
                     {item.name}
                   </RouterLink>

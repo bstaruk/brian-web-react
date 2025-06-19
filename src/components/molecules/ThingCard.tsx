@@ -14,6 +14,7 @@ function ThingCard({ to, title, children }: ThingCardProps) {
         <RouterLink
           to={to}
           className="after:absolute after:inset-0 after:size-full"
+          weight="none"
         >
           {title}
         </RouterLink>
