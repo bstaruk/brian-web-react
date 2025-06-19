@@ -30,7 +30,7 @@ const ClampPreview: React.FC<ClampPreviewProps> = ({
         className="p-5 bg-monster-600 rounded shadow-sm"
       >
         The <strong>text preview</strong> shows how the clamp value affects the
-        text size of this text. Resize your browser window to see the effect in
+        size of this text. Resize your browser window to see the effect in
         action.
       </div>
     ),
