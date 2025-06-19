@@ -26,7 +26,7 @@ const itemVariants = {
 };
 
 const GlobalFooter: React.FC<GlobalFooterProps> = ({ className }) => (
-  <footer className={clsx('bg-monster-600 py-4', className)}>
+  <footer className={clsx('bg-monster-700/50 py-4', className)}>
     <motion.div
       className="wrapper-page px-3 sm:px-5 md:px-8 flex flex-col xs:flex-row xs:items-center gap-x-4 gap-y-3 text-sm"
       variants={containerVariants}

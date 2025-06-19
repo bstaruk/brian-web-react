@@ -1,5 +1,5 @@
 body {
-  @apply bg-monster-500 text-stone-100 selection:bg-monster-300 selection:text-stone-50;
+  @apply bg-[url(/img/bg.jpg)] bg-repeat bg-fixed text-stone-100 selection:bg-monster-300 selection:text-stone-50;
 }
 
 .text-sm {
