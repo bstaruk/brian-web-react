@@ -6,7 +6,7 @@
 @theme {
   /* Fonts */
   --font-sans: 'Poppins', sans-serif;
-  --font-mono: 'Courier New', monospace;
+  --font-mono: 'PT Mono', monospace;
 
   /* Text Globals */
   --text-*: initial;
