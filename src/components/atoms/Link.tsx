@@ -4,6 +4,7 @@ import clsx from 'clsx';
 
 interface BaseButtonProps {
   variant?: 'marathon' | 'marathon-light' | 'white' | 'monster';
+  weight?: 'none' | 'normal' | 'medium' | 'bold';
 }
 
 export type LinkProps = React.AnchorHTMLAttributes<HTMLAnchorElement> &
@@ -13,11 +14,19 @@ export type LinkButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> &
 
 const linkClassNames = (
   variant: BaseButtonProps['variant'],
+  weight: BaseButtonProps['weight'],
   className?: string,
 ) => {
   return clsx(
     className,
-    'font-medium hover:underline focus:underline outline-0',
+    'hover:underline focus:underline outline-0',
+    // weights
+    {
+      'font-normal': weight === 'normal',
+      'font-medium': weight === 'medium',
+      'font-bold': weight === 'bold',
+    },
+    // variants
     {
       'text-marathon-400 hover:text-marathon-100 focus:text-marathon-100 [svg&]fill-marathon-400 hover:[svg&]fill-marathon-100 focus:[svg&]fill-marathon-100':
         variant === 'marathon',
@@ -31,9 +40,16 @@ const linkClassNames = (
 };
 
 const Link = React.forwardRef<HTMLAnchorElement, LinkProps>(
-  ({ children, className, variant = 'marathon', ...rest }, ref) => {
+  (
+    { children, className, variant = 'marathon', weight = 'medium', ...rest },
+    ref,
+  ) => {
     return (
-      <a {...rest} {...{ ref }} className={linkClassNames(variant, className)}>
+      <a
+        {...rest}
+        {...{ ref }}
+        className={linkClassNames(variant, weight, className)}
+      >
         {children}
       </a>
     );
@@ -54,14 +70,21 @@ export const RouterLink: LinkComponent<typeof Link> = (props) => {
 
 export const LinkButton = React.forwardRef<HTMLButtonElement, LinkButtonProps>(
   (
-    { children, className, type = 'button', variant = 'marathon', ...rest },
+    {
+      children,
+      className,
+      type = 'button',
+      variant = 'marathon',
+      weight = 'medium',
+      ...rest
+    },
     ref,
   ) => {
     return (
       <button
         {...rest}
         {...{ ref, type }}
-        className={linkClassNames(variant, className)}
+        className={linkClassNames(variant, weight, className)}
       >
         {children}
       </button>
