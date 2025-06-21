@@ -1,4 +1,5 @@
 import type { AnyFieldApi } from '@tanstack/react-form';
+import clsx from 'clsx';
 import FieldMessage from 'atoms/form/FieldMessage';
 import TextInput from 'atoms/form/TextInput';
 
@@ -9,13 +10,14 @@ type TextFieldProps = React.InputHTMLAttributes<HTMLInputElement> & {
 };
 
 const TextField: React.FC<TextFieldProps> = ({
+  className,
   field,
   label,
   valueAsNumber,
   ...props
 }) => {
   return (
-    <div className="flex flex-col gap-0.5">
+    <div className={clsx('flex flex-col gap-0.5', className)}>
       <label className="text-sm font-medium" htmlFor={field.name}>
         {label}:
       </label>
