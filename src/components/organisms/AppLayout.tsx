@@ -140,7 +140,7 @@ export default function AppLayout() {
           </aside>
 
           {/* Desktop Sidebar */}
-          <aside className="hidden lg:block w-50 shrink-0 px-2 py-3 bg-monster-400 rounded-xs shadow-xs">
+          <aside className="hidden lg:block w-50 shrink-0 px-2 py-3 bg-monster-400/50 rounded-xs shadow-xs">
             <div className="sticky top-2 flex flex-col gap-6 items-stretch">
               <nav className="flex flex-col uppercase text-h4">
                 {menuItems.map((item) => (
