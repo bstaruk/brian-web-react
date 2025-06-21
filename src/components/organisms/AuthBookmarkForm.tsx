@@ -6,11 +6,15 @@ import CopyLink from 'atoms/CopyLink';
 import Link from 'atoms/Link';
 import TextField from 'molecules/form/TextField';
 
-const createHtpasswdBookmarkUrl = (
-  url: string,
-  user: string,
-  password: string,
-): string => {
+const createHtpasswdBookmarkUrl = ({
+  url,
+  user,
+  password,
+}: {
+  url: string;
+  user: string;
+  password: string;
+}): string => {
   try {
     const parsed = new URL(url);
     parsed.username = user;
@@ -23,30 +27,24 @@ const createHtpasswdBookmarkUrl = (
 
 const formSchema = z.object({
   url: z.string().url('Invalid URL'),
-  username: z.string().min(1, 'Username is required'),
+  user: z.string().min(1, 'User is required'),
   password: z.string().min(1, 'Password is required'),
 });
 
 const defaultValues = {
   url: 'https://example.com',
-  username: 'brian',
+  user: 'brian',
   password: 'hunter22',
 };
 
 function AuthBookmarkForm() {
   const [bookmark, setBookmark] = useState<string>(
-    createHtpasswdBookmarkUrl(
-      defaultValues.url,
-      defaultValues.username,
-      defaultValues.password,
-    ),
+    createHtpasswdBookmarkUrl(defaultValues),
   );
   const form = useForm({
     defaultValues,
     onSubmit: ({ value }) => {
-      setBookmark(
-        createHtpasswdBookmarkUrl(value.url, value.username, value.password),
-      );
+      setBookmark(createHtpasswdBookmarkUrl(value));
     },
     listeners: {
       // Automatically update bookmark on field change
@@ -105,8 +103,8 @@ function AuthBookmarkForm() {
         />
 
         <form.Field
-          name="username"
-          children={(field) => <TextField field={field} label="Username" />}
+          name="user"
+          children={(field) => <TextField field={field} label="User" />}
         />
 
         <form.Field
