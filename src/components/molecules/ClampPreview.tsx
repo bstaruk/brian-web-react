@@ -27,7 +27,7 @@ const ClampPreview: React.FC<ClampPreviewProps> = ({
     text: (
       <div
         style={{ fontSize: clampValue }}
-        className="p-5 bg-monster-600 rounded shadow-sm"
+        className="p-5 bg-monster-700/75 rounded shadow-sm"
       >
         The <strong>text preview</strong> shows how the clamp value affects the
         size of this text. Resize your browser window to see the effect in
@@ -37,7 +37,7 @@ const ClampPreview: React.FC<ClampPreviewProps> = ({
     padding: (
       <div
         style={{ padding: clampValue }}
-        className="bg-monster-600 rounded shadow-sm"
+        className="bg-monster-700/75 rounded shadow-sm"
       >
         The <strong>padding preview</strong> shows how the clamp value affects
         the padding of this box. Resize your browser window to see the effect in
@@ -52,7 +52,7 @@ const ClampPreview: React.FC<ClampPreviewProps> = ({
         {[...Array(8).keys()].map((i) => (
           <div
             key={i}
-            className="bg-monster-600 text-monster-100 text-h4 rounded shadow-sm aspect-square flex items-center justify-center"
+            className="bg-monster-700/75 text-monster-100 text-h4 rounded shadow-sm aspect-square flex items-center justify-center"
           >
             {i + 1}
           </div>
