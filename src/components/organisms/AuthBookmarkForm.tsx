@@ -94,7 +94,7 @@ function AuthBookmarkForm() {
         </p>
       </section>
 
-      <fieldset className="grow flex flex-col gap-2 items-start">
+      <fieldset className="w-full max-w-140 grow flex flex-col gap-3">
         <form.Field
           name="url"
           children={(field) => (
@@ -102,15 +102,21 @@ function AuthBookmarkForm() {
           )}
         />
 
-        <form.Field
-          name="user"
-          children={(field) => <TextField field={field} label="User" />}
-        />
+        <div className="flex flex-col sm:flex-row gap-3">
+          <form.Field
+            name="user"
+            children={(field) => (
+              <TextField field={field} label="User" className="grow" />
+            )}
+          />
 
-        <form.Field
-          name="password"
-          children={(field) => <TextField field={field} label="Password" />}
-        />
+          <form.Field
+            name="password"
+            children={(field) => (
+              <TextField field={field} label="Password" className="grow" />
+            )}
+          />
+        </div>
       </fieldset>
 
       <div className="sr-only">
