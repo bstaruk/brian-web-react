@@ -15,10 +15,7 @@ const previewOptions: { type: PreviewType; label: string }[] = [
   { type: 'gap', label: 'Gap' },
 ];
 
-const ClampPreview: React.FC<ClampPreviewProps> = ({
-  clampValue,
-  className,
-}) => {
+function ClampPreview({ clampValue, className }: ClampPreviewProps) {
   const [activePreview, setActivePreview] = useState<PreviewType>(
     previewOptions[0].type,
   );
@@ -84,6 +81,6 @@ const ClampPreview: React.FC<ClampPreviewProps> = ({
       </section>
     </div>
   );
-};
+}
 
 export default ClampPreview;
