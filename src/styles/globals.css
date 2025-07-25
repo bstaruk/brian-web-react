@@ -1,7 +1,0 @@
-body {
-  @apply bg-[url(/img/bg.jpg)] bg-repeat bg-fixed text-stone-100 selection:bg-monster-300 selection:text-stone-50;
-}
-
-.text-sm {
-  @apply underline-offset-3;
-}

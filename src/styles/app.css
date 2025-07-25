@@ -2,4 +2,3 @@
 @import './tailwind.css'; /* Tailwind package imports */
 @import './utilities.css'; /* Custom utility classes (wrapper, etc) */
 @import './base.css'; /* Base styles (h1-h6, etc) */
-@import './globals.css'; /* Global styles (html, body, etc) */
