@@ -25,16 +25,9 @@ const CheckboxField: React.FC<CheckboxFieldProps> = ({
           checked={!!field.state.value}
           onBlur={field.handleBlur}
           onChange={(e) => field.handleChange(e.target.checked)}
+          {...{ hideLabel, label }}
           {...props}
         />
-        <label
-          className={clsx('text-sm font-medium cursor-pointer', {
-            'sr-only': hideLabel,
-          })}
-          htmlFor={field.name}
-        >
-          {label}
-        </label>
       </div>
 
       <FieldMessage {...{ field }} />
