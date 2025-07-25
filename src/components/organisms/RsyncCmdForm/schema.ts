@@ -47,4 +47,5 @@ export const pathName = z
 export const formSchema = z.object({
   src: pathName,
   dest: pathName,
+  timestamponly: z.boolean().default(false),
 });

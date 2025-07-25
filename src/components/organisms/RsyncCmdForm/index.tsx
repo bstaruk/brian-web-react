@@ -1,8 +1,10 @@
 import { useState } from 'react';
 import { useForm } from '@tanstack/react-form';
+import { z } from 'zod';
 import Button from 'atoms/Button';
 import CodeBlock from 'molecules/CodeBlock';
 import TextField from 'molecules/form/TextField';
+import CheckboxField from 'molecules/form/CheckboxField';
 import { formSchema } from './schema';
 import { createCmd, defaultValues } from './utils';
 
@@ -15,6 +17,7 @@ function RsyncCmdForm() {
         createCmd({
           src: value.src,
           dest: value.dest,
+          timestamponly: value.timestamponly,
         }),
       );
     },
@@ -92,6 +95,20 @@ function RsyncCmdForm() {
           />
         </fieldset>
       </div>
+
+      <fieldset className="flex flex-col gap-2">
+        <h4>Options</h4>
+
+        <form.Field
+          name="timestamponly"
+          children={(field) => (
+            <CheckboxField
+              {...{ field }}
+              label="Preserve timestamps only (--times)"
+            />
+          )}
+        />
+      </fieldset>
 
       <div className="sr-only">
         <form.Subscribe

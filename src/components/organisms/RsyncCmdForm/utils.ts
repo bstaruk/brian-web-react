@@ -1,6 +1,7 @@
 export const defaultValues = {
   src: '/path/to/source',
   dest: '/path/to/destination',
+  timestamponly: false,
 };
 
 /**
@@ -9,9 +10,18 @@ export const defaultValues = {
 export const createCmd = ({
   src = defaultValues.src,
   dest = defaultValues.dest,
+  timestamponly = defaultValues.timestamponly,
 }: {
   src?: string;
   dest?: string;
+  timestamponly?: boolean;
 }): string => {
-  return `rsync ${src} ${dest}`;
+  const options = [];
+
+  if (timestamponly) {
+    options.push('--times');
+  }
+
+  const optionsStr = options.length > 0 ? ` ${options.join(' ')}` : '';
+  return `rsync${optionsStr} ${src} ${dest}`;
 };
