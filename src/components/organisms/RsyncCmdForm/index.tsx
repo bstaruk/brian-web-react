@@ -65,7 +65,9 @@ function RsyncCmdForm() {
 
           <form.Field
             name="src"
-            children={(field) => <TextField {...{ field }} label="Source" />}
+            children={(field) => (
+              <TextField {...{ field }} label="Source Path" hideLabel />
+            )}
           />
         </fieldset>
 
@@ -75,7 +77,7 @@ function RsyncCmdForm() {
           <form.Field
             name="dest"
             children={(field) => (
-              <TextField {...{ field }} label="Destination" />
+              <TextField {...{ field }} label="Destination Path" hideLabel />
             )}
           />
         </fieldset>

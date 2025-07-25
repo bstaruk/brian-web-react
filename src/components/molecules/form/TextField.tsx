@@ -5,6 +5,7 @@ import TextInput from 'atoms/form/TextInput';
 
 type TextFieldProps = React.InputHTMLAttributes<HTMLInputElement> & {
   field: AnyFieldApi;
+  hideLabel?: boolean;
   label: string;
   valueAsNumber?: boolean;
 };
@@ -12,13 +13,17 @@ type TextFieldProps = React.InputHTMLAttributes<HTMLInputElement> & {
 const TextField: React.FC<TextFieldProps> = ({
   className,
   field,
+  hideLabel,
   label,
   valueAsNumber,
   ...props
 }) => {
   return (
     <div className={clsx('flex flex-col gap-0.5', className)}>
-      <label className="text-sm font-medium" htmlFor={field.name}>
+      <label
+        className={clsx('text-sm font-medium', { 'sr-only': hideLabel })}
+        htmlFor={field.name}
+      >
         {label}:
       </label>
 
