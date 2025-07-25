@@ -30,7 +30,17 @@ function RsyncCmdForm() {
       onChangeDebounceMs: 150,
     },
     validators: {
-      onChange: formSchema,
+      onChange: ({ value }) => {
+        try {
+          formSchema.parse(value);
+          return undefined;
+        } catch (error) {
+          if (error instanceof z.ZodError) {
+            return error.format();
+          }
+          return { form: 'Validation error' };
+        }
+      },
     },
   });
 
