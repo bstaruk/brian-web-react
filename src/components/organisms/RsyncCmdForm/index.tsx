@@ -5,6 +5,7 @@ import Button from 'atoms/Button';
 import CodeBlock from 'molecules/CodeBlock';
 import TextField from 'molecules/form/TextField';
 import CheckboxField from 'molecules/form/CheckboxField';
+import SelectField from 'molecules/form/SelectField';
 import { formSchema } from './schema';
 import { createCmd, defaultValues } from './utils';
 
@@ -15,8 +16,16 @@ function RsyncCmdForm() {
     onSubmit: ({ value }) => {
       setClampValue(
         createCmd({
+          srcType: value.srcType,
           src: value.src,
+          srcPort: value.srcPort,
+          srcUsername: value.srcUsername,
+          srcHostname: value.srcHostname,
+          destType: value.destType,
           dest: value.dest,
+          destPort: value.destPort,
+          destUsername: value.destUsername,
+          destHostname: value.destHostname,
           timestampOnly: value.timestampOnly,
           sizeOnly: value.sizeOnly,
           archive: value.archive,
@@ -90,10 +99,88 @@ function RsyncCmdForm() {
           <h4>Source</h4>
 
           <form.Field
+            name="srcType"
+            children={(field) => (
+              <SelectField
+                {...{ field }}
+                label="Source Type"
+                hideLabel
+                options={[
+                  { value: 'local', label: 'Local' },
+                  { value: 'remote', label: 'Remote' },
+                ]}
+                placeholder="Select source type"
+              />
+            )}
+          />
+
+          {/* Mutual exclusivity: if source becomes remote, make dest local */}
+          <form.Subscribe
+            selector={(state) => state.values.srcType}
+            children={(srcType) => {
+              if ((srcType as string) === 'remote') {
+                const currentDestType = form.getFieldValue('destType');
+                if ((currentDestType as string) === 'remote') {
+                  setTimeout(() => form.setFieldValue('destType', 'local'), 0);
+                }
+              }
+              return null;
+            }}
+          />
+
+          <form.Field
             name="src"
             children={(field) => (
               <TextField {...{ field }} label="Source Path" hideLabel />
             )}
+          />
+
+          <form.Subscribe
+            selector={(state) => state.values.srcType}
+            children={(srcType) =>
+              (srcType as string) === 'remote' && (
+                <>
+                  <form.Field
+                    name="srcUsername"
+                    children={(field) => (
+                      <TextField
+                        {...{ field }}
+                        label="Source Username"
+                        hideLabel
+                        placeholder="Username"
+                      />
+                    )}
+                  />
+
+                  <form.Field
+                    name="srcHostname"
+                    children={(field) => (
+                      <TextField
+                        {...{ field }}
+                        label="Source Hostname"
+                        hideLabel
+                        placeholder="Hostname"
+                      />
+                    )}
+                  />
+
+                  <form.Field
+                    name="srcPort"
+                    children={(field) => (
+                      <TextField
+                        {...{ field }}
+                        label="Source Port"
+                        hideLabel
+                        placeholder="Port (optional)"
+                        type="number"
+                        min="1"
+                        max="65535"
+                      />
+                    )}
+                  />
+                </>
+              )
+            }
           />
         </fieldset>
 
@@ -101,10 +188,88 @@ function RsyncCmdForm() {
           <h4>Destination</h4>
 
           <form.Field
+            name="destType"
+            children={(field) => (
+              <SelectField
+                {...{ field }}
+                label="Destination Type"
+                hideLabel
+                options={[
+                  { value: 'local', label: 'Local' },
+                  { value: 'remote', label: 'Remote' },
+                ]}
+                placeholder="Select destination type"
+              />
+            )}
+          />
+
+          {/* Mutual exclusivity: if dest becomes remote, make source local */}
+          <form.Subscribe
+            selector={(state) => state.values.destType}
+            children={(destType) => {
+              if ((destType as string) === 'remote') {
+                const currentSrcType = form.getFieldValue('srcType');
+                if ((currentSrcType as string) === 'remote') {
+                  setTimeout(() => form.setFieldValue('srcType', 'local'), 0);
+                }
+              }
+              return null;
+            }}
+          />
+
+          <form.Field
             name="dest"
             children={(field) => (
               <TextField {...{ field }} label="Destination Path" hideLabel />
             )}
+          />
+
+          <form.Subscribe
+            selector={(state) => state.values.destType}
+            children={(destType) =>
+              (destType as string) === 'remote' && (
+                <>
+                  <form.Field
+                    name="destUsername"
+                    children={(field) => (
+                      <TextField
+                        {...{ field }}
+                        label="Destination Username"
+                        hideLabel
+                        placeholder="Username"
+                      />
+                    )}
+                  />
+
+                  <form.Field
+                    name="destHostname"
+                    children={(field) => (
+                      <TextField
+                        {...{ field }}
+                        label="Destination Hostname"
+                        hideLabel
+                        placeholder="Hostname"
+                      />
+                    )}
+                  />
+
+                  <form.Field
+                    name="destPort"
+                    children={(field) => (
+                      <TextField
+                        {...{ field }}
+                        label="Destination Port"
+                        hideLabel
+                        placeholder="Port (optional)"
+                        type="number"
+                        min="1"
+                        max="65535"
+                      />
+                    )}
+                  />
+                </>
+              )
+            }
           />
         </fieldset>
       </div>

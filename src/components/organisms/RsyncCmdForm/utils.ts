@@ -1,6 +1,14 @@
 export const defaultValues = {
+  srcType: 'local' as const,
   src: '/path/to/source',
+  srcPort: '',
+  srcUsername: '',
+  srcHostname: '',
+  destType: 'local' as const,
   dest: '/path/to/destination',
+  destPort: '',
+  destUsername: '',
+  destHostname: '',
   timestampOnly: true,
   sizeOnly: false,
   archive: false,
@@ -21,8 +29,16 @@ export const defaultValues = {
  * Creates an rsync command string.
  */
 export const createCmd = ({
+  srcType = defaultValues.srcType,
   src = defaultValues.src,
+  srcPort = defaultValues.srcPort,
+  srcUsername = defaultValues.srcUsername,
+  srcHostname = defaultValues.srcHostname,
+  destType = defaultValues.destType,
   dest = defaultValues.dest,
+  destPort = defaultValues.destPort,
+  destUsername = defaultValues.destUsername,
+  destHostname = defaultValues.destHostname,
   timestampOnly = defaultValues.timestampOnly,
   sizeOnly = defaultValues.sizeOnly,
   archive = defaultValues.archive,
@@ -38,8 +54,16 @@ export const createCmd = ({
   compress = defaultValues.compress,
   wholeFile = defaultValues.wholeFile,
 }: {
+  srcType?: 'local' | 'remote';
   src?: string;
+  srcPort?: string | number | undefined;
+  srcUsername?: string;
+  srcHostname?: string;
+  destType?: 'local' | 'remote';
   dest?: string;
+  destPort?: string | number | undefined;
+  destUsername?: string;
+  destHostname?: string;
   timestampOnly?: boolean;
   sizeOnly?: boolean;
   archive?: boolean;
@@ -118,6 +142,32 @@ export const createCmd = ({
   // Add long flags
   options.push(...longFlags);
 
+  // Handle SSH ports - rsync can only handle one SSH connection at a time
+  // So we need to determine which connection (source or dest) is remote and use that port
+  let sshPort: number | undefined;
+
+  if (srcType === 'remote' && srcPort) {
+    sshPort = typeof srcPort === 'string' ? parseInt(srcPort, 10) : srcPort;
+  } else if (destType === 'remote' && destPort) {
+    sshPort = typeof destPort === 'string' ? parseInt(destPort, 10) : destPort;
+  }
+
+  if (sshPort && !isNaN(sshPort)) {
+    options.push(`-e "ssh -p ${sshPort}"`);
+  }
+
+  // Construct source path
+  let sourcePath = src;
+  if (srcType === 'remote' && srcUsername && srcHostname) {
+    sourcePath = `${srcUsername}@${srcHostname}:${src}`;
+  }
+
+  // Construct destination path
+  let destinationPath = dest;
+  if (destType === 'remote' && destUsername && destHostname) {
+    destinationPath = `${destUsername}@${destHostname}:${dest}`;
+  }
+
   const optionsStr = options.length > 0 ? ` ${options.join(' ')}` : '';
-  return `rsync${optionsStr} ${src} ${dest}`;
+  return `rsync${optionsStr} ${sourcePath} ${destinationPath}`;
 };

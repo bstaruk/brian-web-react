@@ -44,9 +44,30 @@ export const pathName = z
     },
   );
 
+export const portNumber = z
+  .union([
+    z.number().int().min(1).max(65535),
+    z.string().transform((val) => {
+      if (val === '' || val === undefined) return undefined;
+      const parsed = parseInt(val, 10);
+      if (isNaN(parsed)) return undefined;
+      return parsed;
+    }),
+    z.undefined(),
+  ])
+  .optional();
+
 export const formSchema = z.object({
+  srcType: z.enum(['local', 'remote']).default('local'),
   src: pathName,
+  srcPort: portNumber,
+  srcUsername: z.string().optional(),
+  srcHostname: z.string().optional(),
+  destType: z.enum(['local', 'remote']).default('local'),
   dest: pathName,
+  destPort: portNumber,
+  destUsername: z.string().optional(),
+  destHostname: z.string().optional(),
   timestampOnly: z.boolean().default(true),
   sizeOnly: z.boolean().default(false),
   archive: z.boolean().default(false),
