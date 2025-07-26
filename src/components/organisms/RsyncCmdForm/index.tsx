@@ -105,6 +105,7 @@ function RsyncCmdForm() {
             <CheckboxField
               {...{ field }}
               label="Preserve timestamps only (--times)"
+              description="Only preserve timestamps, not file contents"
             />
           )}
         />

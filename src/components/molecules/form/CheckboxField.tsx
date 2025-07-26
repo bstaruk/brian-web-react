@@ -4,6 +4,7 @@ import FieldMessage from 'atoms/form/FieldMessage';
 import Checkbox from 'atoms/form/Checkbox';
 
 type CheckboxFieldProps = React.InputHTMLAttributes<HTMLInputElement> & {
+  description?: string;
   field: AnyFieldApi;
   hideLabel?: boolean;
   label: string;

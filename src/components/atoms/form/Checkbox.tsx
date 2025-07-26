@@ -4,6 +4,7 @@ import { FaCheck } from 'react-icons/fa';
 
 export interface CheckboxProps
   extends React.InputHTMLAttributes<HTMLInputElement> {
+  description?: string;
   hasError?: boolean;
   hideLabel?: boolean;
   label: string;
@@ -12,7 +13,15 @@ export interface CheckboxProps
 
 const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(
   (
-    { checkboxSize = 'md', className, hasError, hideLabel, label, ...props },
+    {
+      checkboxSize = 'md',
+      className,
+      description,
+      hasError,
+      hideLabel,
+      label,
+      ...props
+    },
     ref,
   ) => {
     const isDisabled = props.disabled || props.readOnly;
@@ -20,10 +29,12 @@ const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(
     return (
       <label
         className={clsx(
-          'flex items-center',
+          'flex',
           {
             'cursor-pointer': !isDisabled,
             'cursor-not-allowed': isDisabled,
+            'items-start': !!description,
+            'items-center': !description,
             'gap-2.5': checkboxSize === 'md',
             'gap-2': checkboxSize === 'sm',
           },
@@ -40,12 +51,12 @@ const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(
         <span
           aria-hidden="true"
           className={clsx(
-            'flex items-center justify-center border-2 rounded-xs transition-colors peer-focus:ring-0 [&_svg]:opacity-0 peer-checked:[&_svg]:opacity-100',
+            'mt-1 flex items-center justify-center border rounded-xs transition-colors peer-focus:ring-0 [&_svg]:opacity-0 peer-checked:[&_svg]:opacity-100',
             {
-              'size-6': checkboxSize === 'sm',
-              'size-7': checkboxSize === 'md',
+              'size-5': checkboxSize === 'sm',
+              'size-6': checkboxSize === 'md',
               'border-red-800': hasError,
-              'bg-monster-600 border-monster-300 peer-focus:border-monster-200 peer-active:border-monster-200':
+              'bg-monster-400/75 border-monster-400 peer-focus:border-monster-200 peer-active:border-monster-200':
                 !hasError && !isDisabled,
               'bg-stone-200 border-stone-400': !hasError && isDisabled,
             },
@@ -53,19 +64,24 @@ const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(
         >
           <FaCheck
             className={clsx('shrink-0 w-auto  fill-marathon-400', {
-              'h-3.5': checkboxSize === 'sm',
-              'h-4': checkboxSize === 'md',
+              'h-3.25': checkboxSize === 'sm',
+              'h-3.75': checkboxSize === 'md',
             })}
           />
         </span>
 
         <span
-          className={clsx('line-clamp-1', {
+          className={clsx({
+            'flex flex-col': !!description,
+            'line-clamp-1': !description,
             'text-sm': checkboxSize === 'sm',
             'sr-only': hideLabel,
           })}
         >
-          {label}
+          <span>{label}</span>
+          {description && (
+            <span className="text-monster-200">{description}</span>
+          )}
         </span>
       </label>
     );
