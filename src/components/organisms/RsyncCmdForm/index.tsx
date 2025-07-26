@@ -17,7 +17,20 @@ function RsyncCmdForm() {
         createCmd({
           src: value.src,
           dest: value.dest,
-          timestamponly: value.timestamponly,
+          timestampOnly: value.timestampOnly,
+          sizeOnly: value.sizeOnly,
+          archive: value.archive,
+          verbose: value.verbose,
+          humanReadable: value.humanReadable,
+          progress: value.progress,
+          dryRun: value.dryRun,
+          delete: value.delete,
+          recursive: value.recursive,
+          backup: value.backup,
+          update: value.update,
+          ignoreExisting: value.ignoreExisting,
+          compress: value.compress,
+          wholeFile: value.wholeFile,
         }),
       );
     },
@@ -97,15 +110,170 @@ function RsyncCmdForm() {
       </div>
 
       <fieldset className="flex flex-col gap-2">
-        <h4>Options</h4>
+        <h4>General Options</h4>
 
         <form.Field
-          name="timestamponly"
+          name="dryRun"
           children={(field) => (
             <CheckboxField
               {...{ field }}
-              label="Preserve timestamps only (--times)"
-              description="Only preserve timestamps, not file contents"
+              label="Dry run (-n)"
+              description="Preview what would be transferred without actually copying files. Essential for testing before running the real sync."
+            />
+          )}
+        />
+
+        <form.Field
+          name="archive"
+          children={(field) => (
+            <CheckboxField
+              {...{ field }}
+              label="Archive mode (-a)"
+              description="Preserve file permissions, timestamps, symbolic links, and ownership. This is the most common option for backing up files."
+            />
+          )}
+        />
+
+        <form.Field
+          name="recursive"
+          children={(field) => (
+            <CheckboxField
+              {...{ field }}
+              label="Recursive (-r)"
+              description="Copy directories and their contents recursively. Required when syncing folder structures."
+            />
+          )}
+        />
+
+        <form.Field
+          name="delete"
+          children={(field) => (
+            <CheckboxField
+              {...{ field }}
+              label="Delete extraneous files (--delete)"
+              description="Delete files from destination that don't exist in source. Use with caution as this permanently removes files."
+            />
+          )}
+        />
+
+        <form.Field
+          name="backup"
+          children={(field) => (
+            <CheckboxField
+              {...{ field }}
+              label="Make backups (-b)"
+              description="Create backup copies of files that would be overwritten. Backups are saved with a tilde (~) suffix by default."
+            />
+          )}
+        />
+      </fieldset>
+
+      <fieldset className="flex flex-col gap-2">
+        <h4>Display Options</h4>
+
+        <form.Field
+          name="verbose"
+          children={(field) => (
+            <CheckboxField
+              {...{ field }}
+              label="Verbose (-v)"
+              description="Show detailed information about each file being transferred. Useful for monitoring progress and debugging."
+            />
+          )}
+        />
+
+        <form.Field
+          name="humanReadable"
+          children={(field) => (
+            <CheckboxField
+              {...{ field }}
+              label="Human readable (-h)"
+              description="Output numbers in a human-readable format with units (K, M, G). Makes file sizes easier to read."
+            />
+          )}
+        />
+
+        <form.Field
+          name="progress"
+          children={(field) => (
+            <CheckboxField
+              {...{ field }}
+              label="Progress (-P)"
+              description="Show transfer progress and keep partial files on interruption. Combines --progress and --partial for resumable transfers."
+            />
+          )}
+        />
+      </fieldset>
+
+      <fieldset className="flex flex-col gap-2">
+        <h4>File Comparison</h4>
+
+        <form.Field
+          name="sizeOnly"
+          children={(field) => (
+            <CheckboxField
+              {...{ field }}
+              label="Size only (--size-only)"
+              description="Skip files that match in size, ignoring modification times. Faster but less reliable than timestamp comparison."
+            />
+          )}
+        />
+
+        <form.Field
+          name="timestampOnly"
+          children={(field) => (
+            <CheckboxField
+              {...{ field }}
+              label="Preserve timestamps only (-t)"
+              description="Only preserve file modification times without other metadata. Useful when you don't need full archive mode."
+            />
+          )}
+        />
+
+        <form.Field
+          name="update"
+          children={(field) => (
+            <CheckboxField
+              {...{ field }}
+              label="Update (-u)"
+              description="Skip files that are newer on the destination than the source. Prevents overwriting newer files."
+            />
+          )}
+        />
+
+        <form.Field
+          name="ignoreExisting"
+          children={(field) => (
+            <CheckboxField
+              {...{ field }}
+              label="Ignore existing (--ignore-existing)"
+              description="Skip all files that already exist on the destination. Only copies new files."
+            />
+          )}
+        />
+      </fieldset>
+
+      <fieldset className="flex flex-col gap-2">
+        <h4>Performance</h4>
+
+        <form.Field
+          name="compress"
+          children={(field) => (
+            <CheckboxField
+              {...{ field }}
+              label="Compress (-z)"
+              description="Compress file data during transfer to reduce bandwidth usage. Most beneficial for slow network connections."
+            />
+          )}
+        />
+
+        <form.Field
+          name="wholeFile"
+          children={(field) => (
+            <CheckboxField
+              {...{ field }}
+              label="Whole file (-W)"
+              description="Copy entire files instead of using delta-transfer algorithm. Faster for local transfers or when files are mostly different."
             />
           )}
         />
