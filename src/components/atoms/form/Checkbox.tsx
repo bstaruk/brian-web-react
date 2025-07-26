@@ -72,14 +72,15 @@ const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(
         </span>
 
         <span
-          className={clsx({
-            'flex flex-col': !!description,
+          className={clsx('flex flex-col', {
             'line-clamp-1': !description,
             'text-sm': checkboxSize === 'sm',
             'sr-only': hideLabel,
           })}
         >
-          <span className="uppercase font-medium">{label}</span>
+          <span className={clsx({ 'uppercase font-medium': !!description })}>
+            {label}
+          </span>
 
           {description && (
             <span className="text-monster-200">{description}</span>
