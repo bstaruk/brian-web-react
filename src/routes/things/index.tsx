@@ -27,6 +27,17 @@ interface Thing {
 
 const things: Thing[] = [
   {
+    to: '/things/rsync-cmd',
+    title: 'Rsync Command Generator',
+    description: (
+      <>
+        A tool for generating rsync commands with various options. Useful for
+        syncing files between drives or servers, and backing up media
+        collections.
+      </>
+    ),
+  },
+  {
     to: '/things/css-clamp-calculator',
     title: 'CSS Clamp Calculator',
     description: (

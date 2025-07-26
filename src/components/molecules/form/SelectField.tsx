@@ -1,21 +1,23 @@
 import type { AnyFieldApi } from '@tanstack/react-form';
 import clsx from 'clsx';
 import FieldMessage from 'atoms/form/FieldMessage';
-import TextInput from 'atoms/form/TextInput';
+import Select, { type SelectOption } from 'atoms/form/Select';
 
-type TextFieldProps = React.InputHTMLAttributes<HTMLInputElement> & {
+type SelectFieldProps = React.SelectHTMLAttributes<HTMLSelectElement> & {
   field: AnyFieldApi;
   hideLabel?: boolean;
   label: string;
-  valueAsNumber?: boolean;
+  options: SelectOption[];
+  placeholder?: string;
 };
 
-const TextField: React.FC<TextFieldProps> = ({
+const SelectField: React.FC<SelectFieldProps> = ({
   className,
   field,
   hideLabel,
   label,
-  valueAsNumber,
+  options,
+  placeholder,
   ...props
 }) => {
   return (
@@ -27,16 +29,13 @@ const TextField: React.FC<TextFieldProps> = ({
         {label}:
       </label>
 
-      <TextInput
+      <Select
         id={field.name}
         name={field.name}
-        value={`${field.state.value}`}
+        value={String(field.state.value || '')}
         onBlur={field.handleBlur}
-        onChange={(e) =>
-          field.handleChange(
-            valueAsNumber ? e.target.valueAsNumber : e.target.value,
-          )
-        }
+        onChange={(e) => field.handleChange(e.target.value)}
+        {...{ options, placeholder }}
         {...props}
       />
 
@@ -45,4 +44,4 @@ const TextField: React.FC<TextFieldProps> = ({
   );
 };
 
-export default TextField;
+export default SelectField;

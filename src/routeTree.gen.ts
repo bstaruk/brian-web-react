@@ -13,6 +13,7 @@
 import { Route as rootRoute } from './routes/__root'
 import { Route as IndexImport } from './routes/index'
 import { Route as ThingsIndexImport } from './routes/things/index'
+import { Route as ThingsRsyncCmdImport } from './routes/things/rsync-cmd'
 import { Route as ThingsCssClampCalculatorImport } from './routes/things/css-clamp-calculator'
 import { Route as ThingsAuthBookmarkMakerImport } from './routes/things/auth-bookmark-maker'
 
@@ -27,6 +28,12 @@ const IndexRoute = IndexImport.update({
 const ThingsIndexRoute = ThingsIndexImport.update({
   id: '/things/',
   path: '/things/',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const ThingsRsyncCmdRoute = ThingsRsyncCmdImport.update({
+  id: '/things/rsync-cmd',
+  path: '/things/rsync-cmd',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -67,6 +74,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ThingsCssClampCalculatorImport
       parentRoute: typeof rootRoute
     }
+    '/things/rsync-cmd': {
+      id: '/things/rsync-cmd'
+      path: '/things/rsync-cmd'
+      fullPath: '/things/rsync-cmd'
+      preLoaderRoute: typeof ThingsRsyncCmdImport
+      parentRoute: typeof rootRoute
+    }
     '/things/': {
       id: '/things/'
       path: '/things'
@@ -83,6 +97,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/things/auth-bookmark-maker': typeof ThingsAuthBookmarkMakerRoute
   '/things/css-clamp-calculator': typeof ThingsCssClampCalculatorRoute
+  '/things/rsync-cmd': typeof ThingsRsyncCmdRoute
   '/things': typeof ThingsIndexRoute
 }
 
@@ -90,6 +105,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/things/auth-bookmark-maker': typeof ThingsAuthBookmarkMakerRoute
   '/things/css-clamp-calculator': typeof ThingsCssClampCalculatorRoute
+  '/things/rsync-cmd': typeof ThingsRsyncCmdRoute
   '/things': typeof ThingsIndexRoute
 }
 
@@ -98,6 +114,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/things/auth-bookmark-maker': typeof ThingsAuthBookmarkMakerRoute
   '/things/css-clamp-calculator': typeof ThingsCssClampCalculatorRoute
+  '/things/rsync-cmd': typeof ThingsRsyncCmdRoute
   '/things/': typeof ThingsIndexRoute
 }
 
@@ -107,18 +124,21 @@ export interface FileRouteTypes {
     | '/'
     | '/things/auth-bookmark-maker'
     | '/things/css-clamp-calculator'
+    | '/things/rsync-cmd'
     | '/things'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/things/auth-bookmark-maker'
     | '/things/css-clamp-calculator'
+    | '/things/rsync-cmd'
     | '/things'
   id:
     | '__root__'
     | '/'
     | '/things/auth-bookmark-maker'
     | '/things/css-clamp-calculator'
+    | '/things/rsync-cmd'
     | '/things/'
   fileRoutesById: FileRoutesById
 }
@@ -127,6 +147,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   ThingsAuthBookmarkMakerRoute: typeof ThingsAuthBookmarkMakerRoute
   ThingsCssClampCalculatorRoute: typeof ThingsCssClampCalculatorRoute
+  ThingsRsyncCmdRoute: typeof ThingsRsyncCmdRoute
   ThingsIndexRoute: typeof ThingsIndexRoute
 }
 
@@ -134,6 +155,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   ThingsAuthBookmarkMakerRoute: ThingsAuthBookmarkMakerRoute,
   ThingsCssClampCalculatorRoute: ThingsCssClampCalculatorRoute,
+  ThingsRsyncCmdRoute: ThingsRsyncCmdRoute,
   ThingsIndexRoute: ThingsIndexRoute,
 }
 
@@ -150,6 +172,7 @@ export const routeTree = rootRoute
         "/",
         "/things/auth-bookmark-maker",
         "/things/css-clamp-calculator",
+        "/things/rsync-cmd",
         "/things/"
       ]
     },
@@ -161,6 +184,9 @@ export const routeTree = rootRoute
     },
     "/things/css-clamp-calculator": {
       "filePath": "things/css-clamp-calculator.tsx"
+    },
+    "/things/rsync-cmd": {
+      "filePath": "things/rsync-cmd.tsx"
     },
     "/things/": {
       "filePath": "things/index.tsx"
