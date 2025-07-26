@@ -1,4 +1,5 @@
 import CopyLink from 'atoms/CopyLink';
+import clsx from 'clsx';
 
 interface CodeBlockProps {
   children: React.ReactNode;
@@ -8,6 +9,7 @@ interface CodeBlockProps {
   copySuccessLabel?: string;
   hideLabel?: boolean;
   className?: string;
+  singleLine?: boolean;
 }
 
 function CodeBlock({
@@ -18,16 +20,27 @@ function CodeBlock({
   copySuccessLabel = 'Copied!',
   hideLabel,
   className = '',
+  singleLine = false,
 }: CodeBlockProps) {
   return (
     <div
-      className={`flex items-start border-3 p-3 border-monster-400 rounded ${className}`}
+      className={clsx(
+        'flex items-start gap-3 border-3 p-3 border-monster-400 rounded',
+        className,
+      )}
     >
-      <code className="grow">{children}</code>
+      <code
+        className={clsx('grow', {
+          'whitespace-nowrap overflow-x-auto': singleLine,
+        })}
+      >
+        {children}
+      </code>
+
       {showCopyLink && copyContent && (
         <CopyLink
           content={copyContent}
-          className="mb-2"
+          className="shrink-0"
           label={copyLabel}
           successLabel={copySuccessLabel}
           hideLabel={hideLabel}
