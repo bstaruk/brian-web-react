@@ -51,8 +51,9 @@ const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(
         <span
           aria-hidden="true"
           className={clsx(
-            'mt-1 flex items-center justify-center border rounded-xs transition-colors peer-focus:ring-0 [&_svg]:opacity-0 peer-checked:[&_svg]:opacity-100',
+            'flex items-center justify-center border rounded-xs transition-colors peer-focus:ring-0 [&_svg]:opacity-0 peer-checked:[&_svg]:opacity-100',
             {
+              'mt-0.5': !!description,
               'size-5': checkboxSize === 'sm',
               'size-6': checkboxSize === 'md',
               'border-red-800': hasError,
@@ -78,7 +79,8 @@ const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(
             'sr-only': hideLabel,
           })}
         >
-          <span>{label}</span>
+          <span className="uppercase font-medium">{label}</span>
+
           {description && (
             <span className="text-monster-200">{description}</span>
           )}
