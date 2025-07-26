@@ -51,7 +51,7 @@ const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(
         <span
           aria-hidden="true"
           className={clsx(
-            'flex items-center justify-center border rounded-xs transition-colors peer-focus:ring-0 [&_svg]:opacity-0 peer-checked:[&_svg]:opacity-100',
+            'shrink-0 flex items-center justify-center border rounded-xs transition-colors peer-focus:ring-0 [&_svg]:opacity-0 peer-checked:[&_svg]:opacity-100',
             {
               'mt-0.5': !!description,
               'size-5': checkboxSize === 'sm',
