@@ -98,7 +98,7 @@ export default function AppLayout() {
           )}
 
           {/* Mobile Sidebar (off-canvas) */}
-          <aside
+          <div
             id="mobile-sidebar"
             className={clsx(
               'fixed inset-y-0 right-0 z-40 bg-monster-500 dark:bg-black min-w-[280px] max-w-[90vw] p-3 sm:p-5 md:p-8 border-r border-monster-300 transform transition-transform duration-300 ease-in-out lg:hidden',
@@ -109,6 +109,7 @@ export default function AppLayout() {
             )}
             role="dialog"
             aria-modal="true"
+            aria-label="Navigation menu"
           >
             <nav className="flex flex-col gap-1 uppercase text-h3">
               <Button
@@ -137,7 +138,7 @@ export default function AppLayout() {
             </nav>
 
             <SocialLinks className="mt-6" />
-          </aside>
+          </div>
 
           {/* Desktop Sidebar */}
           <aside className="hidden lg:block w-50 shrink-0 px-2 py-3 bg-monster-400/50 rounded-xs shadow-xs">
