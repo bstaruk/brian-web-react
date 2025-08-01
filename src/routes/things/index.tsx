@@ -10,10 +10,10 @@ export const Route = createFileRoute('/things/')({
       {
         name: 'description',
         content:
-          "Some digital gadgets and gizmos that wouldn't quite fit on my blog.",
+          "A collection of useful web development tools and utilities by Brian Staruk. Digital gadgets and gizmos including CSS calculators, command generators, and productivity tools that wouldn't quite fit on my blog.",
       },
       {
-        title: 'Things | brian.staruk.net',
+        title: 'Web Development Tools & Utilities | Things by Brian Staruk',
       },
     ],
   }),
