@@ -9,7 +9,7 @@ export const Route = createFileRoute('/')({
       {
         name: 'description',
         content:
-          'Brian Staruk - Boston-based web developer specializing in React, TypeScript, and modern web technologies. Building elegant, accessible user experiences since 1999.',
+          'Web developer from Boston. Specializing in React (Next.js & Vite), TypeScript, Node and Fastify. Building elegant, accessible user experiences since 1999.',
       },
       {
         title: 'Brian Staruk - Web Developer from Boston',

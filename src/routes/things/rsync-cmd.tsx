@@ -10,10 +10,10 @@ export const Route = createFileRoute('/things/rsync-cmd')({
       {
         name: 'description',
         content:
-          'Free rsync command generator tool. Create rsync commands with various options for syncing files between drives, servers, and backing up media collections. Perfect for system administrators and developers.',
+          'rsync command generator tool. Create rsync commands with various options for syncing files between drives, servers, and backing up media collections.',
       },
       {
-        title: 'Rsync Command Generator - File Sync Tool | Brian Staruk',
+        title: 'Rsync Command Generator | A Tool by Brian Staruk',
       },
     ],
   }),
