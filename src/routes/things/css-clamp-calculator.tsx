@@ -13,7 +13,7 @@ export const Route = createFileRoute('/things/css-clamp-calculator')({
           'CSS clamp() calculator tool. Generate responsive CSS values that scale linearly between breakpoints. Perfect for fluid typography and responsive design.',
       },
       {
-        title: 'CSS Clamp Calculator - Responsive Design Tool | Brian Staruk',
+        title: 'CSS Clamp Calculator | A Thing by Brian Staruk',
       },
     ],
   }),

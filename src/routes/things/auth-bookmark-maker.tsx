@@ -10,10 +10,10 @@ export const Route = createFileRoute('/things/auth-bookmark-maker')({
       {
         name: 'description',
         content:
-          'Free authenticated bookmark generator tool. Create bookmarkable URLs with pre-filled credentials for basic authentication. Perfect for development teams accessing staging environments and internal tools.',
+          'Create bookmarkable URLs with pre-filled credentials for basic authentication. Perfect for sharing access to staging environments.',
       },
       {
-        title: 'Authenticated Bookmark Maker - Dev Tool | Brian Staruk',
+        title: 'Authenticated Bookmark Maker | A Thing by Brian Staruk',
       },
     ],
   }),
