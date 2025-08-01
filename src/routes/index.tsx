@@ -8,10 +8,11 @@ export const Route = createFileRoute('/')({
     meta: [
       {
         name: 'description',
-        content: 'Home page of brian.staruk.net.',
+        content:
+          'Brian Staruk - Boston-based web developer specializing in React, TypeScript, and modern web technologies. Building elegant, accessible user experiences since 1999.',
       },
       {
-        title: 'Home | brian.staruk.net',
+        title: 'Brian Staruk - Web Developer from Boston',
       },
     ],
   }),
