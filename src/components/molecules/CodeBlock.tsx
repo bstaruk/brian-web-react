@@ -1,4 +1,4 @@
-import CopyLink from 'atoms/CopyLink';
+import { CopyLink } from 'components';
 import clsx from 'clsx';
 
 interface CodeBlockProps {

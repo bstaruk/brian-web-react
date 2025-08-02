@@ -1,11 +1,13 @@
 import { useState } from 'react';
 import { useForm } from '@tanstack/react-form';
 import { z } from 'zod';
-import Button from 'atoms/Button';
-import CodeBlock from 'molecules/CodeBlock';
-import TextField from 'molecules/form/TextField';
-import CheckboxField from 'molecules/form/CheckboxField';
-import SelectField from 'molecules/form/SelectField';
+import {
+  Button,
+  CheckboxField,
+  CodeBlock,
+  SelectField,
+  TextField,
+} from 'components';
 import { formSchema } from './schema';
 import { createCmd, defaultValues } from './utils';
 
@@ -71,7 +73,7 @@ function RsyncCmdForm() {
 
   return (
     <form
-      onSubmit={(e) => {
+      onSubmit={(e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         e.stopPropagation();
         form.handleSubmit().catch((error) => {
