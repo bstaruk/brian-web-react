@@ -3,11 +3,13 @@ import { Outlet, useLocation } from '@tanstack/react-router';
 import { FaBars, FaX } from 'react-icons/fa6';
 import clsx from 'clsx';
 import { AnimatePresence, motion } from 'framer-motion';
-import { RouterLink } from 'atoms/Link';
-import Button from 'atoms/Button';
-import Logo from 'atoms/Logo';
-import SocialLinks from 'atoms/SocialLinks';
-import GlobalFooter from 'molecules/GlobalFooter';
+import {
+  Button,
+  GlobalFooter,
+  Logo,
+  RouterLink,
+  SocialLinks,
+} from 'components';
 
 const menuItems: { name: string; path: string }[] = [
   { name: 'Home', path: '/' },

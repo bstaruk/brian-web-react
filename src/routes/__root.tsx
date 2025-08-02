@@ -1,6 +1,6 @@
 import { createRootRoute, HeadContent } from '@tanstack/react-router';
 import { TanStackRouterDevtools } from '@tanstack/react-router-devtools';
-import AppLayout from 'organisms/AppLayout';
+import { AppLayout } from 'components';
 
 export const Route = createRootRoute({
   component: () => (

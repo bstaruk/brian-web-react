@@ -1,10 +1,10 @@
 import type { AnyFieldApi } from '@tanstack/react-form';
 
-interface FieldMessageProps {
+interface FormFieldMessageProps {
   field: AnyFieldApi;
 }
 
-const FieldMessage: React.FC<FieldMessageProps> = ({ field }) => {
+const FormFieldMessage: React.FC<FormFieldMessageProps> = ({ field }) => {
   if (!field.state.meta.isTouched || !!field.state.meta.isValid) return null;
 
   return (
@@ -16,4 +16,4 @@ const FieldMessage: React.FC<FieldMessageProps> = ({ field }) => {
   );
 };
 
-export default FieldMessage;
+export default FormFieldMessage;

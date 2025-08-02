@@ -1,4 +1,4 @@
-import { RouterLink } from 'atoms/Link';
+import { RouterLink } from 'components';
 import React from 'react';
 
 interface ThingCardProps {

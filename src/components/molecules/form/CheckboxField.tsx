@@ -1,7 +1,6 @@
 import type { AnyFieldApi } from '@tanstack/react-form';
 import clsx from 'clsx';
-import FieldMessage from 'atoms/form/FieldMessage';
-import Checkbox from 'atoms/form/Checkbox';
+import { Checkbox, FormFieldMessage } from 'components';
 
 type CheckboxFieldProps = React.InputHTMLAttributes<HTMLInputElement> & {
   description?: string;
@@ -25,13 +24,15 @@ const CheckboxField: React.FC<CheckboxFieldProps> = ({
           name={field.name}
           checked={!!field.state.value}
           onBlur={field.handleBlur}
-          onChange={(e) => field.handleChange(e.target.checked)}
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+            field.handleChange(e.target.checked)
+          }
           {...{ hideLabel, label }}
           {...props}
         />
       </div>
 
-      <FieldMessage {...{ field }} />
+      <FormFieldMessage {...{ field }} />
     </div>
   );
 };

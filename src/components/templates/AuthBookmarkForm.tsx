@@ -1,10 +1,7 @@
 import { useState } from 'react';
 import { z } from 'zod';
 import { useForm } from '@tanstack/react-form';
-import Button from 'atoms/Button';
-import CopyLink from 'atoms/CopyLink';
-import Link from 'atoms/Link';
-import TextField from 'molecules/form/TextField';
+import { Button, CopyLink, Link, TextField } from 'components';
 
 const createHtpasswdBookmarkUrl = ({
   url,
@@ -64,7 +61,7 @@ function AuthBookmarkForm() {
 
   return (
     <form
-      onSubmit={(e) => {
+      onSubmit={(e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         e.stopPropagation();
         form.handleSubmit().catch((error) => {

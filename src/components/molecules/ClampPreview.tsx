@@ -1,6 +1,6 @@
 import { useState, type ReactNode } from 'react';
 import clsx from 'clsx';
-import Button from 'atoms/Button';
+import { Button } from 'components';
 
 interface ClampPreviewProps {
   clampValue: string;

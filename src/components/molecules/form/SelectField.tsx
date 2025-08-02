@@ -1,7 +1,6 @@
 import type { AnyFieldApi } from '@tanstack/react-form';
 import clsx from 'clsx';
-import FieldMessage from 'atoms/form/FieldMessage';
-import Select, { type SelectOption } from 'atoms/form/Select';
+import { FormFieldMessage, Select, type SelectOption } from 'components';
 
 type SelectFieldProps = React.SelectHTMLAttributes<HTMLSelectElement> & {
   field: AnyFieldApi;
@@ -34,12 +33,14 @@ const SelectField: React.FC<SelectFieldProps> = ({
         name={field.name}
         value={String(field.state.value || '')}
         onBlur={field.handleBlur}
-        onChange={(e) => field.handleChange(e.target.value)}
+        onChange={(e: React.ChangeEvent<HTMLSelectElement>) =>
+          field.handleChange(e.target.value)
+        }
         {...{ options, placeholder }}
         {...props}
       />
 
-      <FieldMessage {...{ field }} />
+      <FormFieldMessage {...{ field }} />
     </div>
   );
 };
