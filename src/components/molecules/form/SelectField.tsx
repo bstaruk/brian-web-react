@@ -1,6 +1,6 @@
 import type { AnyFieldApi } from '@tanstack/react-form';
 import clsx from 'clsx';
-import FieldMessage from 'atoms/form/FieldMessage';
+import FormFieldMessage from 'atoms/form/FormFieldMessage';
 import Select, { type SelectOption } from 'atoms/form/Select';
 
 type SelectFieldProps = React.SelectHTMLAttributes<HTMLSelectElement> & {
@@ -39,7 +39,7 @@ const SelectField: React.FC<SelectFieldProps> = ({
         {...props}
       />
 
-      <FieldMessage {...{ field }} />
+      <FormFieldMessage {...{ field }} />
     </div>
   );
 };

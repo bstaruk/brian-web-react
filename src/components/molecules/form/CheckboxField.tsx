@@ -1,6 +1,6 @@
 import type { AnyFieldApi } from '@tanstack/react-form';
 import clsx from 'clsx';
-import FieldMessage from 'atoms/form/FieldMessage';
+import FormFieldMessage from 'atoms/form/FormFieldMessage';
 import Checkbox from 'atoms/form/Checkbox';
 
 type CheckboxFieldProps = React.InputHTMLAttributes<HTMLInputElement> & {
@@ -31,7 +31,7 @@ const CheckboxField: React.FC<CheckboxFieldProps> = ({
         />
       </div>
 
-      <FieldMessage {...{ field }} />
+      <FormFieldMessage {...{ field }} />
     </div>
   );
 };

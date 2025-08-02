@@ -1,6 +1,6 @@
 import type { AnyFieldApi } from '@tanstack/react-form';
 import clsx from 'clsx';
-import FieldMessage from 'atoms/form/FieldMessage';
+import FormFieldMessage from 'atoms/form/FormFieldMessage';
 import TextInput from 'atoms/form/TextInput';
 
 type TextFieldProps = React.InputHTMLAttributes<HTMLInputElement> & {
@@ -40,7 +40,7 @@ const TextField: React.FC<TextFieldProps> = ({
         {...props}
       />
 
-      <FieldMessage {...{ field }} />
+      <FormFieldMessage {...{ field }} />
     </div>
   );
 };

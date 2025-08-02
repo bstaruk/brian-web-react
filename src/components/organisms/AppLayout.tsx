@@ -6,8 +6,8 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { RouterLink } from 'atoms/Link';
 import Button from 'atoms/Button';
 import Logo from 'atoms/Logo';
-import SocialLinks from 'atoms/SocialLinks';
 import GlobalFooter from 'molecules/GlobalFooter';
+import SocialLinks from 'molecules/SocialLinks';
 
 const menuItems: { name: string; path: string }[] = [
   { name: 'Home', path: '/' },

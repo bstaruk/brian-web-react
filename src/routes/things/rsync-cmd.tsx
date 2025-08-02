@@ -1,7 +1,7 @@
 import { createFileRoute } from '@tanstack/react-router';
 import Link from 'atoms/Link';
 import ThingIntro from 'molecules/ThingIntro';
-import RsyncCmdForm from 'organisms/RsyncCmdForm';
+import RsyncCmdForm from 'templates/RsyncCmdForm';
 
 export const Route = createFileRoute('/things/rsync-cmd')({
   component: RouteComponent,

@@ -1,7 +1,7 @@
 import { createFileRoute } from '@tanstack/react-router';
 import Link from 'atoms/Link';
 import ThingIntro from 'molecules/ThingIntro';
-import ClampCalculatorForm from 'organisms/ClampCalculatorForm';
+import ClampCalculatorForm from 'templates/ClampCalculatorForm';
 
 export const Route = createFileRoute('/things/css-clamp-calculator')({
   component: RouteComponent,
