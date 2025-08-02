@@ -1,7 +1,6 @@
 import { createFileRoute } from '@tanstack/react-router';
 import { motion } from 'framer-motion';
-import Link from 'atoms/Link';
-import ThingCard from 'molecules/ThingCard';
+import { Link, ThingCard } from 'components';
 
 export const Route = createFileRoute('/things/')({
   component: RouteComponent,
