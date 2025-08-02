@@ -1,7 +1,7 @@
 import type { IconType } from 'react-icons';
 import { FaGithub, FaLinkedin } from 'react-icons/fa6';
 import clsx from 'clsx';
-import Link from 'atoms/Link';
+import { Link } from 'components';
 import { motion } from 'framer-motion';
 
 interface SocialLinksProps {

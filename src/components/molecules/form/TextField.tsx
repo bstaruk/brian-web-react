@@ -1,7 +1,6 @@
 import type { AnyFieldApi } from '@tanstack/react-form';
 import clsx from 'clsx';
-import FormFieldMessage from 'atoms/form/FormFieldMessage';
-import TextInput from 'atoms/form/TextInput';
+import { FormFieldMessage, TextInput } from 'components';
 
 type TextFieldProps = React.InputHTMLAttributes<HTMLInputElement> & {
   field: AnyFieldApi;
@@ -32,7 +31,7 @@ const TextField: React.FC<TextFieldProps> = ({
         name={field.name}
         value={`${field.state.value}`}
         onBlur={field.handleBlur}
-        onChange={(e) =>
+        onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
           field.handleChange(
             valueAsNumber ? e.target.valueAsNumber : e.target.value,
           )

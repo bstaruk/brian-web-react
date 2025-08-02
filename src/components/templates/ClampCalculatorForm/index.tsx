@@ -1,9 +1,6 @@
 import { useState } from 'react';
 import { useForm } from '@tanstack/react-form';
-import Button from 'atoms/Button';
-import CodeBlock from 'molecules/CodeBlock';
-import ClampPreview from 'molecules/ClampPreview';
-import TextField from 'molecules/form/TextField';
+import { Button, ClampPreview, CodeBlock, TextField } from 'components';
 import { formSchema } from './schema';
 import { createClamp, defaultValues } from './utils';
 
@@ -41,7 +38,7 @@ function ClampCalculatorForm() {
   return (
     <div className="flex flex-col gap-6">
       <form
-        onSubmit={(e) => {
+        onSubmit={(e: React.FormEvent<HTMLFormElement>) => {
           e.preventDefault();
           e.stopPropagation();
           form.handleSubmit().catch((error) => {

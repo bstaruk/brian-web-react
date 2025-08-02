@@ -1,6 +1,6 @@
 import { useState, type ReactNode } from 'react';
 import { FaQuestion, FaEllipsisH, FaArrowLeft } from 'react-icons/fa';
-import { RouterLink, LinkButton } from 'atoms/Link';
+import { LinkButton, RouterLink } from 'components';
 import { motion, AnimatePresence } from 'framer-motion';
 
 interface ThingIntroProps {

@@ -1,6 +1,5 @@
 import type { AnyFieldApi } from '@tanstack/react-form';
-import FormFieldMessage from 'atoms/form/FormFieldMessage';
-import TextArea from 'atoms/form/TextArea';
+import { FormFieldMessage, TextArea } from 'components';
 
 type TextAreaFieldProps = React.TextareaHTMLAttributes<HTMLTextAreaElement> & {
   field: AnyFieldApi;
