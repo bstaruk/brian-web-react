@@ -1,7 +1,7 @@
-import { FaGithub } from 'react-icons/fa6';
 import clsx from 'clsx';
-import { Link } from 'components';
 import { motion } from 'framer-motion';
+import { FaGithub } from 'react-icons/fa6';
+import { Link } from 'components';
 
 interface GlobalFooterProps {
   className?: string;

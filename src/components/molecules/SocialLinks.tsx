@@ -1,8 +1,8 @@
+import clsx from 'clsx';
+import { motion } from 'framer-motion';
 import type { IconType } from 'react-icons';
 import { FaGithub, FaLinkedin } from 'react-icons/fa6';
-import clsx from 'clsx';
 import { Link } from 'components';
-import { motion } from 'framer-motion';
 
 interface SocialLinksProps {
   className?: string;

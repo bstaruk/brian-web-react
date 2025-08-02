@@ -1,5 +1,5 @@
-import { CopyLink } from 'components';
 import clsx from 'clsx';
+import { CopyLink } from 'components';
 
 interface CodeBlockProps {
   children: React.ReactNode;

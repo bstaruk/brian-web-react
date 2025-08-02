@@ -1,8 +1,8 @@
 import { useState, type ReactNode } from 'react';
-import { FaQuestion, FaAngleDoubleUp, FaArrowLeft } from 'react-icons/fa';
 import clsx from 'clsx';
-import { LinkButton, RouterLink } from 'components';
 import { motion, AnimatePresence } from 'framer-motion';
+import { FaQuestion, FaAngleDoubleUp, FaArrowLeft } from 'react-icons/fa';
+import { LinkButton, RouterLink } from 'components';
 
 interface ThingIntroProps {
   title: string;

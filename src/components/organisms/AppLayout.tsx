@@ -1,8 +1,8 @@
 import { useEffect, useRef, useState } from 'react';
 import { Outlet, useLocation } from '@tanstack/react-router';
-import { FaBars, FaX } from 'react-icons/fa6';
 import clsx from 'clsx';
 import { AnimatePresence, motion } from 'framer-motion';
+import { FaBars, FaX } from 'react-icons/fa6';
 import {
   Button,
   GlobalFooter,

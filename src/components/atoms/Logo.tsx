@@ -1,5 +1,5 @@
-import clsx from 'clsx';
 import { Link } from '@tanstack/react-router';
+import clsx from 'clsx';
 
 interface LogoProps {
   className?: string;
