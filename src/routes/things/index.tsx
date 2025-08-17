@@ -26,6 +26,16 @@ interface Thing {
 
 const things: Thing[] = [
   {
+    to: '/things/tailwind-css-gradients',
+    title: 'Tailwind CSS Gradient Generator',
+    description: (
+      <>
+        A tool for generating beautiful, customizable gradients from a single
+        hex color using Tailwind CSS classes.
+      </>
+    ),
+  },
+  {
     to: '/things/rsync-cmd',
     title: 'Rsync Command Generator',
     description: (

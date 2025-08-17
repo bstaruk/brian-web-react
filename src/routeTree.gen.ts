@@ -13,6 +13,7 @@
 import { Route as rootRoute } from './routes/__root'
 import { Route as IndexImport } from './routes/index'
 import { Route as ThingsIndexImport } from './routes/things/index'
+import { Route as ThingsTailwindCssGradientsImport } from './routes/things/tailwind-css-gradients'
 import { Route as ThingsRsyncCmdImport } from './routes/things/rsync-cmd'
 import { Route as ThingsCssClampCalculatorImport } from './routes/things/css-clamp-calculator'
 import { Route as ThingsAuthBookmarkMakerImport } from './routes/things/auth-bookmark-maker'
@@ -30,6 +31,14 @@ const ThingsIndexRoute = ThingsIndexImport.update({
   path: '/things/',
   getParentRoute: () => rootRoute,
 } as any)
+
+const ThingsTailwindCssGradientsRoute = ThingsTailwindCssGradientsImport.update(
+  {
+    id: '/things/tailwind-css-gradients',
+    path: '/things/tailwind-css-gradients',
+    getParentRoute: () => rootRoute,
+  } as any,
+)
 
 const ThingsRsyncCmdRoute = ThingsRsyncCmdImport.update({
   id: '/things/rsync-cmd',
@@ -81,6 +90,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ThingsRsyncCmdImport
       parentRoute: typeof rootRoute
     }
+    '/things/tailwind-css-gradients': {
+      id: '/things/tailwind-css-gradients'
+      path: '/things/tailwind-css-gradients'
+      fullPath: '/things/tailwind-css-gradients'
+      preLoaderRoute: typeof ThingsTailwindCssGradientsImport
+      parentRoute: typeof rootRoute
+    }
     '/things/': {
       id: '/things/'
       path: '/things'
@@ -98,6 +114,7 @@ export interface FileRoutesByFullPath {
   '/things/auth-bookmark-maker': typeof ThingsAuthBookmarkMakerRoute
   '/things/css-clamp-calculator': typeof ThingsCssClampCalculatorRoute
   '/things/rsync-cmd': typeof ThingsRsyncCmdRoute
+  '/things/tailwind-css-gradients': typeof ThingsTailwindCssGradientsRoute
   '/things': typeof ThingsIndexRoute
 }
 
@@ -106,6 +123,7 @@ export interface FileRoutesByTo {
   '/things/auth-bookmark-maker': typeof ThingsAuthBookmarkMakerRoute
   '/things/css-clamp-calculator': typeof ThingsCssClampCalculatorRoute
   '/things/rsync-cmd': typeof ThingsRsyncCmdRoute
+  '/things/tailwind-css-gradients': typeof ThingsTailwindCssGradientsRoute
   '/things': typeof ThingsIndexRoute
 }
 
@@ -115,6 +133,7 @@ export interface FileRoutesById {
   '/things/auth-bookmark-maker': typeof ThingsAuthBookmarkMakerRoute
   '/things/css-clamp-calculator': typeof ThingsCssClampCalculatorRoute
   '/things/rsync-cmd': typeof ThingsRsyncCmdRoute
+  '/things/tailwind-css-gradients': typeof ThingsTailwindCssGradientsRoute
   '/things/': typeof ThingsIndexRoute
 }
 
@@ -125,6 +144,7 @@ export interface FileRouteTypes {
     | '/things/auth-bookmark-maker'
     | '/things/css-clamp-calculator'
     | '/things/rsync-cmd'
+    | '/things/tailwind-css-gradients'
     | '/things'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -132,6 +152,7 @@ export interface FileRouteTypes {
     | '/things/auth-bookmark-maker'
     | '/things/css-clamp-calculator'
     | '/things/rsync-cmd'
+    | '/things/tailwind-css-gradients'
     | '/things'
   id:
     | '__root__'
@@ -139,6 +160,7 @@ export interface FileRouteTypes {
     | '/things/auth-bookmark-maker'
     | '/things/css-clamp-calculator'
     | '/things/rsync-cmd'
+    | '/things/tailwind-css-gradients'
     | '/things/'
   fileRoutesById: FileRoutesById
 }
@@ -148,6 +170,7 @@ export interface RootRouteChildren {
   ThingsAuthBookmarkMakerRoute: typeof ThingsAuthBookmarkMakerRoute
   ThingsCssClampCalculatorRoute: typeof ThingsCssClampCalculatorRoute
   ThingsRsyncCmdRoute: typeof ThingsRsyncCmdRoute
+  ThingsTailwindCssGradientsRoute: typeof ThingsTailwindCssGradientsRoute
   ThingsIndexRoute: typeof ThingsIndexRoute
 }
 
@@ -156,6 +179,7 @@ const rootRouteChildren: RootRouteChildren = {
   ThingsAuthBookmarkMakerRoute: ThingsAuthBookmarkMakerRoute,
   ThingsCssClampCalculatorRoute: ThingsCssClampCalculatorRoute,
   ThingsRsyncCmdRoute: ThingsRsyncCmdRoute,
+  ThingsTailwindCssGradientsRoute: ThingsTailwindCssGradientsRoute,
   ThingsIndexRoute: ThingsIndexRoute,
 }
 
@@ -173,6 +197,7 @@ export const routeTree = rootRoute
         "/things/auth-bookmark-maker",
         "/things/css-clamp-calculator",
         "/things/rsync-cmd",
+        "/things/tailwind-css-gradients",
         "/things/"
       ]
     },
@@ -187,6 +212,9 @@ export const routeTree = rootRoute
     },
     "/things/rsync-cmd": {
       "filePath": "things/rsync-cmd.tsx"
+    },
+    "/things/tailwind-css-gradients": {
+      "filePath": "things/tailwind-css-gradients.tsx"
     },
     "/things/": {
       "filePath": "things/index.tsx"
