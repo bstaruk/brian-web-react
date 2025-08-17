@@ -73,9 +73,10 @@ function Home() {
           </motion.p>
 
           <motion.p variants={paragraphVariants}>
-            These days, I am building almost exclusively with React, TypeScript
-            and Tailwind on the front-end. I used to roll my own Webpack configs
-            (
+            These days, I am building almost exclusively with{' '}
+            <strong>React</strong>, <strong>TypeScript</strong> and{' '}
+            <strong>Tailwind CSS</strong> on the front-end. I used to roll my
+            own Webpack configs (
             <Link
               href="https://starbase.dev"
               target="_blank"
@@ -83,9 +84,12 @@ function Home() {
             >
               starbase.dev
             </Link>
-            ) for everything, but now I use Vite for SPAs (like this one) and
-            Next.js for everything else. On the back-end, I&apos;m mostly using
-            Node.js, TypeScript, Fastify or Express, and Postgres.
+            ) for every project, but now I use <strong>Vite</strong> for{' '}
+            <abbr title="Single Page Applications">SPAs</abbr> (like this one)
+            and <strong>Next.js</strong> for everything else. On the back-end,
+            I&apos;m mostly using <strong>Node.js</strong>,{' '}
+            <strong>TypeScript</strong>, <strong>Fastify</strong> or{' '}
+            <strong>Express</strong>, and <strong>Postgres</strong>.
           </motion.p>
 
           <motion.p variants={paragraphVariants}>
