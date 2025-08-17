@@ -1,6 +1,8 @@
 export { default as CheckboxField } from './form/CheckboxField';
 export { default as ClampPreview } from './ClampPreview';
 export { default as CodeBlock } from './CodeBlock';
+export { default as ColorField } from './form/ColorField';
+export { default as ColorScalePreview } from './ColorScalePreview';
 export { default as GlobalFooter } from './GlobalFooter';
 export { default as SelectField } from './form/SelectField';
 export { default as SocialLinks } from './SocialLinks';

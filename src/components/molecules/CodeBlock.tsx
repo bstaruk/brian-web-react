@@ -29,13 +29,13 @@ function CodeBlock({
         className,
       )}
     >
-      <code
-        className={clsx('grow', {
+      <pre
+        className={clsx('grow font-mono', {
           'whitespace-nowrap overflow-x-auto': singleLine,
         })}
       >
         {children}
-      </code>
+      </pre>
 
       {showCopyLink && copyContent && (
         <CopyLink
