@@ -26,11 +26,11 @@ interface Thing {
 
 const things: Thing[] = [
   {
-    to: '/things/tailwind-css-gradients',
-    title: 'Tailwind CSS Gradient Generator',
+    to: '/things/tailwind-color-scale-maker',
+    title: 'Tailwind CSS Color Scale Maker',
     description: (
       <>
-        A tool for generating beautiful, customizable gradients from a single
+        A tool for generating beautiful, customizable color scales from a single
         hex color using Tailwind CSS classes.
       </>
     ),
