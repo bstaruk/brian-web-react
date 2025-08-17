@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useForm } from '@tanstack/react-form';
-import { Button, CodeBlock, TextField } from 'components';
+import { Button, CodeBlock, TextField, ColorScalePreview } from 'components';
 import { formSchema } from './schema';
 import {
   createColorScale,
@@ -9,15 +9,17 @@ import {
 } from './utils';
 
 function ColorScaleForm() {
-  const [colorScale, setColorScale] = useState<string>(
-    formatColorScaleAsCss(
-      createColorScale({
-        hex: defaultValues.hex,
-        position: defaultValues.position,
-      }),
-      defaultValues.name,
-    ),
+  const [colorScaleData, setColorScaleData] = useState<Record<number, string>>(
+    createColorScale({
+      hex: defaultValues.hex,
+      position: defaultValues.position,
+    }),
   );
+  const [colorScale, setColorScale] = useState<string>(
+    formatColorScaleAsCss(colorScaleData, defaultValues.name),
+  );
+  const [colorName, setColorName] = useState<string>(defaultValues.name);
+
   const form = useForm({
     defaultValues,
     onSubmit: ({ value }) => {
@@ -25,7 +27,9 @@ function ColorScaleForm() {
         hex: value.hex,
         position: value.position,
       });
+      setColorScaleData(scaleData);
       setColorScale(formatColorScaleAsCss(scaleData, value.name));
+      setColorName(value.name);
     },
     listeners: {
       // Automatically update color scale on field change
@@ -56,23 +60,8 @@ function ColorScaleForm() {
         className="flex flex-col gap-4"
         noValidate
       >
-        <section>
-          <h5 className="sr-only">Tailwind CSS Color Scale:</h5>
-          <CodeBlock
-            showCopyLink
-            copyContent={colorScale}
-            copyLabel="Copy color scale"
-            copySuccessLabel="Copied!"
-            hideLabel
-          >
-            {colorScale}
-          </CodeBlock>
-        </section>
-
         <fieldset className="grid grid-cols-2 gap-4 lg:grid-cols-3">
-          <h4 className="col-span-2 lg:col-span-3">
-            Color Scale Configuration
-          </h4>
+          <h4 className="sr-only">Color Scale Configuration</h4>
 
           <form.Field
             name="hex"
@@ -115,6 +104,24 @@ function ColorScaleForm() {
           />
         </div>
       </form>
+
+      <section className="flex flex-col gap-3">
+        <h5 className="sr-only">Color Scale Preview:</h5>
+        <ColorScalePreview colorScale={colorScaleData} colorName={colorName} />
+      </section>
+
+      <section className="flex flex-col gap-3">
+        <h5 className="sr-only">Color Scale CSS:</h5>
+        <CodeBlock
+          showCopyLink
+          copyContent={colorScale}
+          copyLabel="Copy color scale"
+          copySuccessLabel="Copied!"
+          hideLabel
+        >
+          {colorScale}
+        </CodeBlock>
+      </section>
     </div>
   );
 }
