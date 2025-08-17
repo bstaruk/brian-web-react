@@ -1,5 +1,6 @@
 export { default as Button, RouterButtonLink } from './Button';
 export { default as Checkbox } from './form/Checkbox';
+export { default as ColorInput } from './form/ColorInput';
 export { default as CopyLink } from './CopyLink';
 export { default as FormFieldMessage } from './form/FormFieldMessage';
 export {

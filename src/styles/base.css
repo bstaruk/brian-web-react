@@ -1,6 +1,6 @@
 @layer base {
   body {
-    @apply font-sans text-base underline-offset-[.3em] bg-[url(/img/bg.jpg)] bg-repeat bg-fixed text-stone-100 selection:bg-monster-300 selection:text-stone-50;
+    @apply font-sans text-base underline-offset-[.3em] bg-monster-600 text-stone-100 selection:bg-monster-300 selection:text-stone-50;
   }
 
   strong {

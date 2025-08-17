@@ -26,6 +26,16 @@ interface Thing {
 
 const things: Thing[] = [
   {
+    to: '/things/tailwind-color-scale-maker',
+    title: 'Tailwind CSS Color Scale Maker',
+    description: (
+      <>
+        A tool for generating beautiful, customizable color scales from a single
+        hex color using Tailwind CSS classes.
+      </>
+    ),
+  },
+  {
     to: '/things/rsync-cmd',
     title: 'Rsync Command Generator',
     description: (

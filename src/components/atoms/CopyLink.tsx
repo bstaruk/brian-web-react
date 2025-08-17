@@ -1,7 +1,7 @@
 import { forwardRef, useState } from 'react';
 import clsx from 'clsx';
-import { FaCopy, FaCheck } from 'react-icons/fa';
 import { motion, AnimatePresence } from 'framer-motion';
+import { FaCopy, FaCheck } from 'react-icons/fa';
 import { LinkButton, type LinkButtonProps } from './Link';
 
 interface CopyLinkProps extends LinkButtonProps {

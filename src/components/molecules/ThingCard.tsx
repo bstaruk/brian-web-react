@@ -1,5 +1,5 @@
-import { RouterLink } from 'components';
 import React from 'react';
+import { RouterLink } from 'components';
 
 interface ThingCardProps {
   to: string;
