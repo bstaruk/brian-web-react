@@ -1,7 +1,7 @@
 import { z } from 'zod';
 
 export const formSchema = z.object({
-  colorName: z
+  name: z
     .string({
       required_error: 'Color name is required',
     })
