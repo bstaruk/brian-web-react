@@ -13,7 +13,7 @@ const Logo: React.FC<LogoProps> = ({ className }) => (
       className,
     )}
   >
-    <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-h1 font-bold">
+    <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-h1 font-black">
       B
     </span>
   </Link>
