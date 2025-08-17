@@ -76,9 +76,7 @@ function ColorScaleForm() {
 
           <form.Field
             name="hex"
-            children={(field) => (
-              <TextField {...{ field }} label="Hex" type="string" />
-            )}
+            children={(field) => <TextField {...{ field }} label="Hex" />}
           />
 
           <form.Field
@@ -100,7 +98,6 @@ function ColorScaleForm() {
               <TextField
                 {...{ field }}
                 label="Name"
-                type="string"
                 className="max-lg:col-span-2"
               />
             )}
