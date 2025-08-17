@@ -18,7 +18,6 @@ function ColorScaleForm() {
   const [colorScaleData, setColorScaleData] = useState<Record<number, string>>(
     createColorScale({
       hex: defaultValues.hex,
-      position: defaultValues.position,
     }),
   );
   const [colorScale, setColorScale] = useState<string>(
@@ -31,7 +30,6 @@ function ColorScaleForm() {
     onSubmit: ({ value }) => {
       const scaleData = createColorScale({
         hex: value.hex,
-        position: value.position,
       });
       setColorScaleData(scaleData);
       setColorScale(formatColorScaleAsCss(scaleData, value.name));
@@ -66,35 +64,20 @@ function ColorScaleForm() {
         className="flex flex-col gap-4"
         noValidate
       >
-        <fieldset className="grid grid-cols-2 gap-4 lg:grid-cols-3">
+        <fieldset className="flex flex-col xs:flex-row gap-4">
           <h4 className="sr-only">Color Scale Configuration</h4>
 
           <form.Field
             name="hex"
-            children={(field) => <ColorField {...{ field }} label="Hex" />}
-          />
-
-          <form.Field
-            name="position"
             children={(field) => (
-              <TextField
-                {...{ field }}
-                label="Position"
-                type="number"
-                step={50}
-                valueAsNumber
-              />
+              <ColorField {...{ field }} label="Hex" className="flex-1" />
             )}
           />
 
           <form.Field
             name="name"
             children={(field) => (
-              <TextField
-                {...{ field }}
-                label="Name"
-                className="max-lg:col-span-2"
-              />
+              <TextField {...{ field }} label="Name" className="flex-1" />
             )}
           />
         </fieldset>

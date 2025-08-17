@@ -1,45 +1,37 @@
 export const defaultValues = {
   name: 'monster',
   hex: '#53776b',
-  position: 500,
 };
 
 /**
- * Convert hex to HSL
+ * Converts hex color to HSL
  */
 const hexToHsl = (hex: string): [number, number, number] => {
-  // Remove # if present
-  const cleanHex = hex.replace('#', '');
-
-  // Parse RGB values
-  const r = parseInt(cleanHex.substr(0, 2), 16) / 255;
-  const g = parseInt(cleanHex.substr(2, 2), 16) / 255;
-  const b = parseInt(cleanHex.substr(4, 2), 16) / 255;
+  const r = parseInt(hex.slice(1, 3), 16) / 255;
+  const g = parseInt(hex.slice(3, 5), 16) / 255;
+  const b = parseInt(hex.slice(5, 7), 16) / 255;
 
   const max = Math.max(r, g, b);
   const min = Math.min(r, g, b);
-  let h: number, s: number;
+  const diff = max - min;
 
+  let h = 0;
+  let s = 0;
   const l = (max + min) / 2;
 
-  if (max === min) {
-    h = s = 0; // achromatic
-  } else {
-    const d = max - min;
-    s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+  if (diff !== 0) {
+    s = l > 0.5 ? diff / (2 - max - min) : diff / (max + min);
 
     switch (max) {
       case r:
-        h = (g - b) / d + (g < b ? 6 : 0);
+        h = (g - b) / diff + (g < b ? 6 : 0);
         break;
       case g:
-        h = (b - r) / d + 2;
+        h = (b - r) / diff + 2;
         break;
       case b:
-        h = (r - g) / d + 4;
+        h = (r - g) / diff + 4;
         break;
-      default:
-        h = 0;
     }
     h /= 6;
   }
@@ -48,7 +40,7 @@ const hexToHsl = (hex: string): [number, number, number] => {
 };
 
 /**
- * Convert HSL to hex
+ * Converts HSL to hex color
  */
 const hslToHex = (h: number, s: number, l: number): string => {
   h = h / 360;
@@ -89,125 +81,136 @@ const hslToHex = (h: number, s: number, l: number): string => {
  */
 export const createColorScale = ({
   hex = defaultValues.hex,
-  position = defaultValues.position,
 }: {
   hex: string;
-  position: number;
 }): Record<number, string> => {
+  const normalizedHex = hex.toLowerCase();
+  const [hue, saturation, lightness] = hexToHsl(normalizedHex);
+
+  // Tailwind scale positions
   const positions = [50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 950];
 
-  // Convert input hex to HSL
-  const [inputHue, inputSat, inputLightness] = hexToHsl(hex);
+  // Determine which position the input color should occupy based on its lightness
+  let targetPosition = 500; // default middle position
 
-  // Define lightness values for each position (similar to Tailwind's distribution)
+  if (lightness >= 85) targetPosition = 50;
+  else if (lightness >= 75) targetPosition = 100;
+  else if (lightness >= 65) targetPosition = 200;
+  else if (lightness >= 55) targetPosition = 300;
+  else if (lightness >= 45) targetPosition = 400;
+  else if (lightness >= 35) targetPosition = 500;
+  else if (lightness >= 25) targetPosition = 600;
+  else if (lightness >= 18) targetPosition = 700;
+  else if (lightness >= 12) targetPosition = 800;
+  else if (lightness >= 8) targetPosition = 900;
+  else targetPosition = 950;
+
+  const scale: Record<number, string> = {};
+
+  // Start by placing the exact input color at its target position
+  scale[targetPosition] = normalizedHex;
+
+  // Generate lightness values for each position
   const lightnessMap: Record<number, number> = {
-    50: 97,
-    100: 93,
-    200: 86,
-    300: 77,
-    400: 66,
-    500: 55,
-    600: 45,
-    700: 36,
-    800: 28,
-    900: 23,
-    950: 13,
+    50: Math.max(lightness + (95 - lightness) * 0.8, 88),
+    100: Math.max(lightness + (90 - lightness) * 0.7, 82),
+    200: Math.max(lightness + (80 - lightness) * 0.6, 70),
+    300: Math.max(lightness + (70 - lightness) * 0.5, 58),
+    400: Math.max(lightness + (60 - lightness) * 0.4, 46),
+    500: lightness,
+    600: Math.max(lightness - (lightness - 35) * 0.2, 32),
+    700: Math.max(lightness - (lightness - 25) * 0.4, 22),
+    800: Math.max(lightness - (lightness - 15) * 0.6, 13),
+    900: Math.max(lightness - (lightness - 8) * 0.8, 7),
+    950: Math.max(lightness - (lightness - 5) * 0.9, 4),
   };
 
-  // Calculate what the "base" color would be if it were at position 500
-  // This ensures consistency regardless of input position
-  const baseHue = inputHue;
-  let baseSat = inputSat;
-  let baseLightness: number;
+  // Set the exact lightness for the target position
+  lightnessMap[targetPosition] = lightness;
 
-  if (position === 500) {
-    // Input is already at the standard base position
-    baseLightness = inputLightness;
-  } else {
-    // Calculate what the lightness would be at position 500
-    const inputTargetLightness = lightnessMap[position];
-    const baseTargetLightness = lightnessMap[500];
-    const lightnessDiff = baseTargetLightness - inputTargetLightness;
+  // Adjust values above target position to be lighter with proper spacing
+  for (let i = positions.indexOf(targetPosition) - 1; i >= 0; i--) {
+    const pos = positions[i];
+    const nextPos = positions[i + 1];
+    const minLightness = lightnessMap[nextPos] + 4; // Ensure at least 4% difference
+    lightnessMap[pos] = Math.max(lightnessMap[pos], minLightness);
 
-    if (lightnessDiff > 0) {
-      // Base would be lighter than input - reverse the lighting interpolation
-      const adjustmentFactor = position <= 200 ? 1.1 : 0.9;
-      baseLightness = inputLightness + lightnessDiff / adjustmentFactor;
-    } else {
-      // Base would be darker than input - reverse the darkening interpolation
-      const adjustmentFactor = 0.85;
-      baseLightness = inputLightness + lightnessDiff / adjustmentFactor;
-    }
-
-    // Reverse any saturation adjustments that would have been applied to the input position
-    if (inputLightness > 90) {
-      const lightnessFactor = (98 - inputLightness) / 8;
-      const satMultiplier = 0.08 + lightnessFactor * 0.25;
-      baseSat = inputSat / satMultiplier;
-    } else if (inputLightness > 85) {
-      const lightnessFactor = (90 - inputLightness) / 5;
-      const satMultiplier = 0.25 + lightnessFactor * 0.35;
-      baseSat = inputSat / satMultiplier;
-    } else if (inputLightness < 20) {
-      const darknessFactor = inputLightness / 20;
-      const satMultiplier = 0.7 + darknessFactor * 0.3;
-      baseSat = inputSat / satMultiplier;
-    } else if (inputLightness > 70) {
-      const lightFactor = (85 - inputLightness) / 15;
-      const satMultiplier = 0.5 + lightFactor * 0.4;
-      baseSat = inputSat / satMultiplier;
-    }
+    // Cap at reasonable maximums to avoid pure white
+    if (pos === 50) lightnessMap[pos] = Math.min(lightnessMap[pos], 95);
+    else if (pos === 100) lightnessMap[pos] = Math.min(lightnessMap[pos], 90);
+    else if (pos === 200) lightnessMap[pos] = Math.min(lightnessMap[pos], 85);
   }
 
-  // Generate colors for all positions using the calculated base
-  const colorScale: Record<number, string> = {};
+  // Adjust values below target position to be darker with proper spacing
+  for (
+    let i = positions.indexOf(targetPosition) + 1;
+    i < positions.length;
+    i++
+  ) {
+    const pos = positions[i];
+    const prevPos = positions[i - 1];
+    const maxLightness = lightnessMap[prevPos] - 4; // Ensure at least 4% difference
+    lightnessMap[pos] = Math.min(lightnessMap[pos], maxLightness);
 
-  positions.forEach((pos) => {
-    if (pos === position) {
-      // Use exact input color for the specified position
-      colorScale[pos] = hex;
-    } else {
-      const baseTarget = lightnessMap[500];
-      const currentTarget = lightnessMap[pos];
-      const lightnessDiff = currentTarget - baseTarget;
+    // Cap at reasonable minimums to avoid pure black
+    if (pos === 950) lightnessMap[pos] = Math.max(lightnessMap[pos], 4);
+    else if (pos === 900) lightnessMap[pos] = Math.max(lightnessMap[pos], 7);
+    else if (pos === 800) lightnessMap[pos] = Math.max(lightnessMap[pos], 12);
+  }
 
-      let targetL: number;
-      if (lightnessDiff > 0) {
-        // Going lighter
-        const adjustmentFactor = pos <= 200 ? 1.1 : 0.9;
-        targetL = baseLightness + lightnessDiff * adjustmentFactor;
-      } else {
-        // Going darker
-        const adjustmentFactor = 0.85;
-        targetL = baseLightness + lightnessDiff * adjustmentFactor;
-      }
+  // Adjust saturation slightly for better visual progression
+  const baseSaturation = Math.max(saturation, 20); // Ensure minimum saturation for color richness
 
-      // Apply saturation adjustments
-      let adjustedSat = baseSat;
-      if (targetL > 90) {
-        const lightnessFactor = (98 - targetL) / 8;
-        adjustedSat = baseSat * (0.08 + lightnessFactor * 0.25);
-      } else if (targetL > 85) {
-        const lightnessFactor = (90 - targetL) / 5;
-        adjustedSat = baseSat * (0.25 + lightnessFactor * 0.35);
-      } else if (targetL < 20) {
-        const darknessFactor = targetL / 20;
-        adjustedSat = baseSat * (0.7 + darknessFactor * 0.3);
-      } else if (targetL > 70) {
-        const lightFactor = (85 - targetL) / 15;
-        adjustedSat = baseSat * (0.5 + lightFactor * 0.4);
-      }
-
-      // Ensure values stay within bounds
-      const clampedL = Math.max(8, Math.min(97, targetL));
-      const clampedS = Math.max(0, Math.min(100, adjustedSat));
-
-      const colorHex = hslToHex(baseHue, clampedS, clampedL);
-      colorScale[pos] = colorHex;
+  // Generate the scale for all positions except the target (which already has the exact input)
+  positions.forEach((position) => {
+    if (position === targetPosition) {
+      return; // Skip - already set to exact input color
     }
+
+    let adjustedSaturation = baseSaturation;
+
+    // Slightly reduce saturation for very light colors to avoid oversaturation
+    if (lightnessMap[position] > 80) {
+      adjustedSaturation = baseSaturation * 0.8;
+    } else if (lightnessMap[position] > 60) {
+      adjustedSaturation = baseSaturation * 0.9;
+    }
+
+    // Slightly increase saturation for darker colors to maintain color richness
+    if (lightnessMap[position] < 20) {
+      adjustedSaturation = Math.min(baseSaturation * 1.1, 100);
+    }
+
+    scale[position] = hslToHex(hue, adjustedSaturation, lightnessMap[position]);
   });
 
-  return colorScale;
+  // Final pass to ensure no duplicates by making small adjustments
+  const usedColors = new Set<string>();
+  const finalScale: Record<number, string> = {};
+
+  positions.forEach((position) => {
+    let color = scale[position];
+    let attempts = 0;
+
+    // If this is a duplicate and not the target position, make small adjustments
+    while (
+      usedColors.has(color) &&
+      position !== targetPosition &&
+      attempts < 10
+    ) {
+      const [h, s, l] = hexToHsl(color);
+      // Make a small adjustment to lightness
+      const adjustment = position < targetPosition ? 1 : -1;
+      const newL = Math.max(4, Math.min(95, l + adjustment));
+      color = hslToHex(h, s, newL);
+      attempts++;
+    }
+
+    finalScale[position] = color;
+    usedColors.add(color);
+  });
+
+  return finalScale;
 };
 
 /**
