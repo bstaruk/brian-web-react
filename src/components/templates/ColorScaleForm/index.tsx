@@ -96,7 +96,16 @@ function ColorScaleForm() {
 
       <section className="flex flex-col gap-3">
         <h5 className="sr-only">Color Scale Preview:</h5>
-        <ColorScalePreview colorScale={colorScaleData} colorName={colorName} />
+        <form.Subscribe
+          selector={(state) => state.values.hex}
+          children={(hexValue) => (
+            <ColorScalePreview
+              colorScale={colorScaleData}
+              colorName={colorName}
+              highlightHex={hexValue}
+            />
+          )}
+        />
       </section>
 
       <section className="flex flex-col gap-3">
