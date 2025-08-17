@@ -1,6 +1,12 @@
 import { useState } from 'react';
 import { useForm } from '@tanstack/react-form';
-import { Button, CodeBlock, TextField, ColorScalePreview } from 'components';
+import {
+  Button,
+  CodeBlock,
+  ColorField,
+  TextField,
+  ColorScalePreview,
+} from 'components';
 import { formSchema } from './schema';
 import {
   createColorScale,
@@ -65,7 +71,7 @@ function ColorScaleForm() {
 
           <form.Field
             name="hex"
-            children={(field) => <TextField {...{ field }} label="Hex" />}
+            children={(field) => <ColorField {...{ field }} label="Hex" />}
           />
 
           <form.Field
