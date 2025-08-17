@@ -97,7 +97,7 @@ export const createColorScale = ({
   const positions = [50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 950];
 
   // Convert input hex to HSL
-  const [baseHue, baseSat, baseLightness] = hexToHsl(hex);
+  const [inputHue, inputSat, inputLightness] = hexToHsl(hex);
 
   // Define lightness values for each position (similar to Tailwind's distribution)
   const lightnessMap: Record<number, number> = {
@@ -114,59 +114,97 @@ export const createColorScale = ({
     950: 13,
   };
 
-  // Generate colors for all positions
+  // Calculate what the "base" color would be if it were at position 500
+  // This ensures consistency regardless of input position
+  const baseHue = inputHue;
+  let baseSat = inputSat;
+  let baseLightness: number;
+
+  if (position === 500) {
+    // Input is already at the standard base position
+    baseLightness = inputLightness;
+  } else {
+    // Calculate what the lightness would be at position 500
+    const inputTargetLightness = lightnessMap[position];
+    const baseTargetLightness = lightnessMap[500];
+    const lightnessDiff = baseTargetLightness - inputTargetLightness;
+
+    if (lightnessDiff > 0) {
+      // Base would be lighter than input - reverse the lighting interpolation
+      const adjustmentFactor = position <= 200 ? 1.1 : 0.9;
+      baseLightness = inputLightness + lightnessDiff / adjustmentFactor;
+    } else {
+      // Base would be darker than input - reverse the darkening interpolation
+      const adjustmentFactor = 0.85;
+      baseLightness = inputLightness + lightnessDiff / adjustmentFactor;
+    }
+
+    // Reverse any saturation adjustments that would have been applied to the input position
+    if (inputLightness > 90) {
+      const lightnessFactor = (98 - inputLightness) / 8;
+      const satMultiplier = 0.08 + lightnessFactor * 0.25;
+      baseSat = inputSat / satMultiplier;
+    } else if (inputLightness > 85) {
+      const lightnessFactor = (90 - inputLightness) / 5;
+      const satMultiplier = 0.25 + lightnessFactor * 0.35;
+      baseSat = inputSat / satMultiplier;
+    } else if (inputLightness < 20) {
+      const darknessFactor = inputLightness / 20;
+      const satMultiplier = 0.7 + darknessFactor * 0.3;
+      baseSat = inputSat / satMultiplier;
+    } else if (inputLightness > 70) {
+      const lightFactor = (85 - inputLightness) / 15;
+      const satMultiplier = 0.5 + lightFactor * 0.4;
+      baseSat = inputSat / satMultiplier;
+    }
+  }
+
+  // Generate colors for all positions using the calculated base
   const colorScale: Record<number, string> = {};
 
   positions.forEach((pos) => {
-    const baseTarget = lightnessMap[position];
-    const currentTarget = lightnessMap[pos];
-
-    // Calculate lightness based on the position relationship
-    let targetL: number;
     if (pos === position) {
-      targetL = baseLightness;
+      // Use exact input color for the specified position
+      colorScale[pos] = hex;
     } else {
-      // Use different interpolation strategies based on whether we're going lighter or darker
+      const baseTarget = lightnessMap[500];
+      const currentTarget = lightnessMap[pos];
       const lightnessDiff = currentTarget - baseTarget;
 
+      let targetL: number;
       if (lightnessDiff > 0) {
-        // Going lighter - use more aggressive interpolation for light colors
-        const adjustmentFactor = pos <= 200 ? 1.1 : 0.9; // More aggressive for very light colors
+        // Going lighter
+        const adjustmentFactor = pos <= 200 ? 1.1 : 0.9;
         targetL = baseLightness + lightnessDiff * adjustmentFactor;
       } else {
-        // Going darker - use more conservative interpolation
+        // Going darker
         const adjustmentFactor = 0.85;
         targetL = baseLightness + lightnessDiff * adjustmentFactor;
       }
+
+      // Apply saturation adjustments
+      let adjustedSat = baseSat;
+      if (targetL > 90) {
+        const lightnessFactor = (98 - targetL) / 8;
+        adjustedSat = baseSat * (0.08 + lightnessFactor * 0.25);
+      } else if (targetL > 85) {
+        const lightnessFactor = (90 - targetL) / 5;
+        adjustedSat = baseSat * (0.25 + lightnessFactor * 0.35);
+      } else if (targetL < 20) {
+        const darknessFactor = targetL / 20;
+        adjustedSat = baseSat * (0.7 + darknessFactor * 0.3);
+      } else if (targetL > 70) {
+        const lightFactor = (85 - targetL) / 15;
+        adjustedSat = baseSat * (0.5 + lightFactor * 0.4);
+      }
+
+      // Ensure values stay within bounds
+      const clampedL = Math.max(8, Math.min(97, targetL));
+      const clampedS = Math.max(0, Math.min(100, adjustedSat));
+
+      const colorHex = hslToHex(baseHue, clampedS, clampedL);
+      colorScale[pos] = colorHex;
     }
-
-    // Adjust saturation based on lightness to create more natural color variations
-    let adjustedSat = baseSat;
-
-    if (targetL > 90) {
-      // For very light colors, reduce saturation dramatically
-      const lightnessFactor = (98 - targetL) / 8; // 0 to 1 scale
-      adjustedSat = baseSat * (0.08 + lightnessFactor * 0.25);
-    } else if (targetL > 85) {
-      // For light colors, reduce saturation significantly
-      const lightnessFactor = (90 - targetL) / 5; // 0 to 1 scale
-      adjustedSat = baseSat * (0.25 + lightnessFactor * 0.35);
-    } else if (targetL < 20) {
-      // For very dark colors, reduce saturation slightly
-      const darknessFactor = targetL / 20; // 0 to 1 scale
-      adjustedSat = baseSat * (0.7 + darknessFactor * 0.3);
-    } else if (targetL > 70) {
-      // For moderately light colors, reduce saturation moderately
-      const lightFactor = (85 - targetL) / 15; // 0 to 1 scale
-      adjustedSat = baseSat * (0.5 + lightFactor * 0.4);
-    }
-
-    // Ensure values stay within bounds
-    const clampedL = Math.max(8, Math.min(97, targetL));
-    const clampedS = Math.max(0, Math.min(100, adjustedSat));
-
-    const colorHex = hslToHex(baseHue, clampedS, clampedL);
-    colorScale[pos] = colorHex;
   });
 
   return colorScale;
