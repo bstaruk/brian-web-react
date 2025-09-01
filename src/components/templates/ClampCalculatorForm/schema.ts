@@ -11,17 +11,17 @@ const numberField = (fieldName: string) =>
 
 export const formSchema = z
   .object({
-    minClampSize: numberField('Min Clamp Size (rem)'),
-    maxClampSize: numberField('Max Clamp Size (rem)'),
-    minScreenSize: numberField('Min Screen Size (px)'),
-    maxScreenSize: numberField('Max Screen Size (px)'),
-    remBase: numberField('REM Base (px)'),
+    minClampSize: numberField('Min clamp size'),
+    maxClampSize: numberField('Max clamp size'),
+    minScreenSize: numberField('Min screen size'),
+    maxScreenSize: numberField('Max screen size'),
+    remBase: numberField('REM base'),
   })
   .refine((data) => data.maxClampSize > data.minClampSize, {
-    message: 'Max Clamp Size must be greater than Min Clamp Size',
+    message: 'Max clamp size must be greater than min clamp size',
     path: ['maxClampSize'],
   })
   .refine((data) => data.maxScreenSize > data.minScreenSize, {
-    message: 'Max Screen Size must be greater than Min Screen Size',
+    message: 'Max screen size must be greater than min screen size',
     path: ['maxScreenSize'],
   });
