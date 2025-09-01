@@ -159,7 +159,9 @@ export const createColorScale = ({
   }
 
   // Adjust saturation slightly for better visual progression
-  const baseSaturation = Math.max(saturation, 20); // Ensure minimum saturation for color richness
+  // For grayscale colors (very low saturation), preserve the grayscale nature
+  const isGrayscale = saturation < 5; // Consider colors with <5% saturation as grayscale
+  const baseSaturation = isGrayscale ? saturation : Math.max(saturation, 20); // Ensure minimum saturation for color richness only for non-grayscale colors
 
   // Generate the scale for all positions except the target (which already has the exact input)
   positions.forEach((position) => {
@@ -169,16 +171,21 @@ export const createColorScale = ({
 
     let adjustedSaturation = baseSaturation;
 
-    // Slightly reduce saturation for very light colors to avoid oversaturation
-    if (lightnessMap[position] > 80) {
-      adjustedSaturation = baseSaturation * 0.8;
-    } else if (lightnessMap[position] > 60) {
-      adjustedSaturation = baseSaturation * 0.9;
-    }
+    // For grayscale colors, maintain the low saturation throughout the scale
+    if (isGrayscale) {
+      adjustedSaturation = saturation; // Keep original low saturation
+    } else {
+      // Slightly reduce saturation for very light colors to avoid oversaturation
+      if (lightnessMap[position] > 80) {
+        adjustedSaturation = baseSaturation * 0.8;
+      } else if (lightnessMap[position] > 60) {
+        adjustedSaturation = baseSaturation * 0.9;
+      }
 
-    // Slightly increase saturation for darker colors to maintain color richness
-    if (lightnessMap[position] < 20) {
-      adjustedSaturation = Math.min(baseSaturation * 1.1, 100);
+      // Slightly increase saturation for darker colors to maintain color richness
+      if (lightnessMap[position] < 20) {
+        adjustedSaturation = Math.min(baseSaturation * 1.1, 100);
+      }
     }
 
     scale[position] = hslToHex(hue, adjustedSaturation, lightnessMap[position]);
