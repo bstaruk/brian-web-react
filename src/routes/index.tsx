@@ -1,16 +1,16 @@
 import { createFileRoute } from '@tanstack/react-router';
 import { motion, useReducedMotion } from 'motion/react';
-import { Code, StarbaseLogo } from 'atoms';
+import { SocialLinks } from 'molecules';
 
 export const Route = createFileRoute('/')({
   component: Index,
   head: () => ({
     meta: [
-      { title: 'Opinionated React Starter for Claude Code | starbase.dev' },
+      { title: 'Brian Staruk — Web Developer from Boston' },
       {
         name: 'description',
         content:
-          'A launchpad for modern React apps, optimized for Claude Code. Built on Vite, TypeScript, Tailwind CSS, TanStack, and atomic design.',
+          'Brian Staruk is a web developer from Boston, MA specializing in React, TypeScript, and modern frontend architecture.',
       },
     ],
   }),
@@ -20,37 +20,35 @@ function Index() {
   const prefersReducedMotion = useReducedMotion();
 
   return (
-    <div className="flex flex-1 flex-col items-center justify-center gap-10">
+    <motion.div
+      className="flex flex-col items-center gap-8 text-center"
+      initial={prefersReducedMotion ? false : { opacity: 0, y: 12 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={
+        prefersReducedMotion
+          ? { duration: 0 }
+          : { duration: 0.5, ease: 'easeOut' }
+      }
+    >
       <div className="flex flex-col items-center gap-3">
-        <div className="flex flex-col items-center gap-4">
-          <motion.div
-            initial={prefersReducedMotion ? false : { y: -20, rotate: 12 }}
-            animate={{ y: 0, rotate: [16, 8, 14, 10, 12] }}
-            transition={
-              prefersReducedMotion
-                ? { duration: 0 }
-                : { duration: 0.5, ease: 'easeOut' }
-            }
-            whileHover={
-              prefersReducedMotion
-                ? undefined
-                : { rotate: [12, 4, 20, 6, 18, 9, 15, 12] }
-            }
-          >
-            <StarbaseLogo className="size-12" />
-          </motion.div>
-          <h1 className="text-sb-fg-title">Starbase</h1>
-        </div>
-        <p className="text-sb-fg-subtle max-w-md text-center text-balance">
-          A launchpad for modern React apps, optimized for Claude Code. Built on
-          Vite, TypeScript, Tailwind CSS, and TanStack.
+        <h1 className="font-display text-sb-fg-title">Brian Staruk</h1>
+        <p className="text-h3 font-display text-sb-fg-subtle">
+          Web Developer from Boston
         </p>
       </div>
 
-      <div className="flex flex-col items-center gap-3">
-        <h2 className="text-sb-fg">Start your mission today:</h2>
-        <Code>npm create starbase@latest</Code>
+      <div className="flex max-w-md flex-col gap-4 text-base text-sb-fg">
+        <p>
+          Frontend engineer at MERGE with a focus on React, TypeScript, and
+          Tailwind CSS. Certified Sitecore Developer and Scrum Master.
+        </p>
+        <p>
+          Passionate about building fast, accessible, and well-crafted web
+          experiences.
+        </p>
       </div>
-    </div>
+
+      <SocialLinks />
+    </motion.div>
   );
 }

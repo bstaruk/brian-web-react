@@ -58,6 +58,22 @@
   --spacing-page: 64rem;
   --spacing-page-x: clamp(0.75rem, 0.25rem + 1.5vw, 1rem);
 
+  /* Custom Color Palettes */
+  --color-monster-50: #dce5e2;
+  --color-monster-100: #cad8d4;
+  --color-monster-200: #a5c0b7;
+  --color-monster-300: #7ea99b;
+  --color-monster-400: #619282;
+  --color-monster-500: #53776b;
+  --color-monster-600: #496d61;
+  --color-monster-700: #406156;
+  --color-monster-800: #334c44;
+  --color-monster-950: #111a17;
+
+  --color-marathon-100: #fffbc1;
+  --color-marathon-200: #fff587;
+  --color-marathon-400: #ffd60f;
+
   /* List Style Types */
   --list-style-type-circle: circle;
   --list-style-type-roman: lower-roman;
@@ -78,8 +94,8 @@
 
     /* Text */
     --sb-fg: var(--color-stone-700);
-    --sb-fg-subtle: var(--color-stone-600);
-    --sb-fg-title: var(--color-stone-800);
+    --sb-fg-subtle: var(--color-stone-500);
+    --sb-fg-title: var(--color-monster-800);
 
     /* Borders */
     --sb-divider: var(--color-stone-200);
@@ -90,34 +106,34 @@
       inset 0 1px 0 0 rgb(255 255 255 / 0.6);
 
     /* Action */
-    --sb-action: var(--color-red-700);
-    --sb-action-active: var(--color-red-800);
+    --sb-action: var(--color-monster-700);
+    --sb-action-active: var(--color-monster-800);
 
     /* Navigation */
-    --sb-anchor: var(--color-red-700);
-    --sb-anchor-active: var(--color-red-800);
+    --sb-anchor: var(--color-monster-700);
+    --sb-anchor-active: var(--color-monster-800);
   }
 
   ::selection {
-    background-color: var(--color-stone-300);
-    color: var(--color-stone-900);
+    background-color: var(--color-monster-200);
+    color: var(--color-monster-950);
   }
 
   .dark {
-    /* Dark Mode Mappings */
+    /* Dark Mode Mappings — Fenway Green Monster */
 
     /* Surfaces */
-    --sb-surface: var(--color-zinc-900);
-    --sb-surface-raised: var(--color-zinc-800);
-    --sb-canvas: var(--color-zinc-950);
+    --sb-surface: var(--color-monster-600);
+    --sb-surface-raised: var(--color-monster-500);
+    --sb-canvas: var(--color-monster-700);
 
     /* Text */
-    --sb-fg: var(--color-zinc-300);
-    --sb-fg-subtle: var(--color-zinc-400);
-    --sb-fg-title: var(--color-zinc-200);
+    --sb-fg: var(--color-stone-100);
+    --sb-fg-subtle: var(--color-monster-200);
+    --sb-fg-title: var(--color-stone-50);
 
     /* Borders */
-    --sb-divider: var(--color-zinc-800);
+    --sb-divider: var(--color-monster-300);
 
     /* Shadows */
     --sb-shadow-card:
@@ -125,17 +141,17 @@
       inset 0 1px 0 0 rgb(255 255 255 / 0.04);
 
     /* Action */
-    --sb-action: var(--color-red-500);
-    --sb-action-active: var(--color-red-400);
+    --sb-action: var(--color-marathon-400);
+    --sb-action-active: var(--color-marathon-100);
 
     /* Navigation */
-    --sb-anchor: var(--color-red-400);
-    --sb-anchor-active: var(--color-red-300);
+    --sb-anchor: var(--color-marathon-400);
+    --sb-anchor-active: var(--color-marathon-100);
   }
 
   .dark ::selection {
-    background-color: var(--color-zinc-700);
-    color: var(--color-zinc-100);
+    background-color: var(--color-monster-300);
+    color: var(--color-stone-50);
   }
 }
 

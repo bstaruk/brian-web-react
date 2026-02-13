@@ -17,10 +17,13 @@ export function SiteLayout({ children }: SiteLayoutProps) {
       <SiteHeader />
       <main
         id="main-content"
-        className="flex flex-1 flex-col items-center py-6 sm:py-10"
+        className="flex flex-1 flex-col items-center justify-center py-6 sm:py-10"
       >
         {children}
       </main>
+      <footer className="py-4 text-center text-sm text-sb-fg-subtle">
+        Built in Boston
+      </footer>
     </div>
   );
 }
