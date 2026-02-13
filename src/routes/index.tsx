@@ -1,5 +1,6 @@
 import { createFileRoute } from '@tanstack/react-router';
 import { motion, useReducedMotion } from 'motion/react';
+import { Link } from 'atoms';
 import { SocialLinks } from 'molecules';
 
 export const Route = createFileRoute('/')({
@@ -37,14 +38,30 @@ function Index() {
         </p>
       </div>
 
-      <div className="flex max-w-md flex-col gap-4 text-base text-sb-fg">
+      <div className="flex max-w-lg flex-col gap-4 text-base text-sb-fg">
         <p>
           Frontend engineer at MERGE with a focus on React, TypeScript, and
           Tailwind CSS. Certified Sitecore Developer and Scrum Master.
         </p>
         <p>
           Passionate about building fast, accessible, and well-crafted web
-          experiences.
+          experiences. Check out my personal blog at{' '}
+          <Link
+            href="https://nidobin.com/u/brian"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            nidobin.com
+          </Link>{' '}
+          and my web DX boilerplate at{' '}
+          <Link
+            href="https://starbase.dev"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            starbase.dev
+          </Link>
+          .
         </p>
       </div>
 

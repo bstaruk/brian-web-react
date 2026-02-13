@@ -1,5 +1,4 @@
 import type { ReactNode } from 'react';
-import { SiteHeader } from 'organisms';
 
 interface SiteLayoutProps {
   children: ReactNode;
@@ -14,7 +13,6 @@ export function SiteLayout({ children }: SiteLayoutProps) {
       >
         Skip to content
       </a>
-      <SiteHeader />
       <main
         id="main-content"
         className="flex flex-1 flex-col items-center justify-center py-6 sm:py-10"

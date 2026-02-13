@@ -5,7 +5,6 @@
 
 @import 'tailwindcss';
 
-@custom-variant dark (&:where(.dark, .dark *));
 @custom-variant is-active (&:not(:disabled):hover, &:not(:disabled):focus-visible);
 
 @theme {
@@ -85,42 +84,7 @@
 */
 @layer base {
   :root {
-    /* Light Mode Mappings */
-
-    /* Surfaces */
-    --sb-surface: var(--color-stone-100);
-    --sb-surface-raised: var(--color-stone-50);
-    --sb-canvas: var(--color-stone-200);
-
-    /* Text */
-    --sb-fg: var(--color-stone-700);
-    --sb-fg-subtle: var(--color-stone-500);
-    --sb-fg-title: var(--color-monster-800);
-
-    /* Borders */
-    --sb-divider: var(--color-stone-200);
-
-    /* Shadows */
-    --sb-shadow-card:
-      0 1px 3px 0 rgb(0 0 0 / 0.04), 0 4px 12px -2px rgb(0 0 0 / 0.06),
-      inset 0 1px 0 0 rgb(255 255 255 / 0.6);
-
-    /* Action */
-    --sb-action: var(--color-monster-700);
-    --sb-action-active: var(--color-monster-800);
-
-    /* Navigation */
-    --sb-anchor: var(--color-monster-700);
-    --sb-anchor-active: var(--color-monster-800);
-  }
-
-  ::selection {
-    background-color: var(--color-monster-200);
-    color: var(--color-monster-950);
-  }
-
-  .dark {
-    /* Dark Mode Mappings — Fenway Green Monster */
+    /* Fenway Green Monster */
 
     /* Surfaces */
     --sb-surface: var(--color-monster-600);
@@ -149,7 +113,7 @@
     --sb-anchor-active: var(--color-marathon-100);
   }
 
-  .dark ::selection {
+  ::selection {
     background-color: var(--color-monster-300);
     color: var(--color-stone-50);
   }
