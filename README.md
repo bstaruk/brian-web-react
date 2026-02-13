@@ -1,125 +1,55 @@
-# brian-web-react
+# Starbase
 
-A modern React application built with Vite, TypeScript, and TanStack Router. This project serves as a personal website with interactive tools and utilities.
+**A Claude-first front-end launchpad.**
 
-## Tech Stack
+Welcome aboard. Here's everything you need to fly.
 
-- **Framework**: React
-- **Build Tool**: Vite
-- **Language**: TypeScript
-- **Routing**: TanStack Router
-- **Styling**: Tailwind CSS
-- **Animations**: Framer Motion
-- **Forms**: TanStack React Form + Zod validation
-- **Icons**: React Icons
-- **Linting**: ESLint
-- **Formatting**: Prettier
+## Liftoff
 
-## Project Structure
+| Command           | Description                          |
+| ----------------- | ------------------------------------ |
+| `npm run dev`     | Start the Vite dev server            |
+| `npm run build`   | Type-check and build for production  |
+| `npm run preview` | Preview the production build locally |
+| `npm run lint`    | Run ESLint                           |
+| `npm run format`  | Run Prettier                         |
+
+Open [http://localhost:3000](http://localhost:3000) and start building.
+
+## Star Chart
 
 ```
 src/
-├── components/
-│   ├── atoms/          # Basic UI components
-│   ├── molecules/      # Composite components
-│   ├── organisms/      # Complex components
-│   └── templates/      # Page-level compositions
-├── routes/             # File-based routing
-│   ├── __root.tsx      # Root layout
-│   ├── index.tsx       # Home page
-│   └── things/         # Tool pages
-├── styles/             # CSS files
-└── main.tsx           # App entry point
+  lib/
+    queries/    # React Query options, organized by API domain
+    theme/      # Tailwind CSS and theme config
+    utils/      # Utility functions (cn, darkMode, etc.)
+  ui/
+    atoms/      # Smallest building blocks (Button, Link, Code)
+    molecules/  # Functional groups of atoms (DarkModeToggle, PageHeader)
+    organisms/  # Larger composed sections
+    templates/  # Page-level layout structures
+  routes/       # TanStack Router file-based routes
 ```
 
-The project follows [Atomic Design principles](https://atomicdesign.bradfrost.com/) with components organized into atoms, molecules, organisms and templates.
+Components follow [Atomic Design](https://atomicdesign.bradfrost.com/chapter-2/). Imports use path aliases and barrel files (`from 'atoms'`, not relative paths). See `CLAUDE.md` for the full convention guide.
 
-## Development
+## Mission Control
 
-### Prerequisites
+`CLAUDE.md` is the source of truth for all conventions, patterns, and architectural decisions. It's also what makes this a Claude-first project: [Claude Code](https://docs.anthropic.com/en/docs/claude-code) reads it, learns your preferences, and generates code that matches your style.
 
-- Node.js (latest LTS recommended -- `nvm use` is supported)
+Start here. Read it. Build on it. Evolve it.
 
-### Setup
+## Comms
 
-```bash
-# Install dependencies
-npm install
+Starbase ships with custom [Claude Code skills](https://docs.anthropic.com/en/docs/claude-code/tutorials#create-custom-slash-commands):
 
-# Start development server
-npm run dev
-```
+- **`/audit`**: Scan the codebase for drift against CLAUDE.md conventions
+- **`/review`**: Review current branch changes against CLAUDE.md
+- **`/update-deps`**: Update dependencies safely with Vite-alignment awareness
 
-The dev server runs on `http://localhost:3000`.
+## Learn More
 
-### Available Scripts
-
-- `npm run dev` - Start development server
-- `npm run build` - Build for production
-- `npm run preview` - Preview production build
-- `npm run lint` - Run ESLint
-- `npm run format` - Format code with Prettier
-
-### TypeScript Configuration
-
-The project uses a composite TypeScript setup:
-
-- `tsconfig.json` - References configuration
-- `tsconfig.app.json` - App-specific config with path aliases
-- `tsconfig.node.json` - Node/Vite tooling config
-
-Path aliases are configured for component imports:
-
-```typescript
-// Instead of relative imports
-import Button from '../../../components/atoms/Button';
-
-// Use atomic design aliases
-import Button from 'atoms/Button';
-```
-
-### Routing
-
-TanStack Router provides file-based routing with:
-
-- Automatic route generation
-- Type-safe navigation
-- Code splitting
-- Route-level meta tags and SEO
-
-Routes are defined in `src/routes/` with automatic route tree generation.
-
-### Styling
-
-Tailwind CSS v4 is configured with:
-
-- Vite plugin integration
-- Custom utilities in `src/styles/utilities.css`
-- Base styles in `src/styles/base.css`
-
-### Form Handling
-
-Forms use TanStack React Form with Zod schemas for validation:
-
-- Type-safe form state management
-- Schema-based validation
-- Reusable form components
-
-## Build & Deployment
-
-```bash
-# Build for production
-npm run build
-
-# Files output to dist/
-```
-
-The project includes a `_redirects` file for SPA routing on Netlify/similar platforms.
-
-## Development Notes
-
-- **Router devtools** are included in development builds
-- **ESLint** is configured with React-specific rules
-- **Prettier** handles code formatting
-- **Strict TypeScript** configuration with comprehensive linting rules
-- **Component architecture** follows atomic design for maintainability
+- [Starbase on GitHub](https://github.com/bstaruk/starbase): full docs, architecture, and mission briefing
+- [Atomic Design](https://atomicdesign.bradfrost.com/chapter-2/): the component methodology
+- [Claude Code](https://docs.anthropic.com/en/docs/claude-code): your AI co-pilot

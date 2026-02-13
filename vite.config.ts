@@ -1,25 +1,27 @@
-import { defineConfig } from 'vite';
-import react from '@vitejs/plugin-react';
+import path from 'path';
 import tailwindcss from '@tailwindcss/vite';
-import { TanStackRouterVite } from '@tanstack/router-plugin/vite';
-import tsconfigPaths from 'vite-tsconfig-paths';
+import { tanstackRouter } from '@tanstack/router-plugin/vite';
+import react from '@vitejs/plugin-react';
+import { defineConfig } from 'vite';
 
 // https://vite.dev/config/
 export default defineConfig({
+  plugins: [
+    tanstackRouter({ target: 'react', autoCodeSplitting: true }),
+    react(),
+    tailwindcss(),
+  ],
+  resolve: {
+    alias: {
+      queries: path.resolve(__dirname, 'src/lib/queries'),
+      utils: path.resolve(__dirname, 'src/lib/utils'),
+      atoms: path.resolve(__dirname, 'src/ui/atoms'),
+      molecules: path.resolve(__dirname, 'src/ui/molecules'),
+      organisms: path.resolve(__dirname, 'src/ui/organisms'),
+      templates: path.resolve(__dirname, 'src/ui/templates'),
+    },
+  },
   server: {
     port: 3000,
   },
-  plugins: [
-    TanStackRouterVite({
-      target: 'react',
-      autoCodeSplitting: true,
-      routesDirectory: './src/routes',
-      generatedRouteTree: './src/routeTree.gen.ts',
-      routeFileIgnorePrefix: '-',
-      quoteStyle: 'single',
-    }),
-    react(),
-    tsconfigPaths(),
-    tailwindcss(),
-  ],
 });

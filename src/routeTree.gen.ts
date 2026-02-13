@@ -8,216 +8,70 @@
 // You should NOT make any changes in this file as it will be overwritten.
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
-// Import Routes
+import { Route as rootRouteImport } from './routes/__root'
+import { Route as LiftoffRouteImport } from './routes/liftoff'
+import { Route as IndexRouteImport } from './routes/index'
 
-import { Route as rootRoute } from './routes/__root'
-import { Route as IndexImport } from './routes/index'
-import { Route as ThingsIndexImport } from './routes/things/index'
-import { Route as ThingsTailwindColorScaleMakerImport } from './routes/things/tailwind-color-scale-maker'
-import { Route as ThingsRsyncCmdImport } from './routes/things/rsync-cmd'
-import { Route as ThingsCssClampCalculatorImport } from './routes/things/css-clamp-calculator'
-import { Route as ThingsAuthBookmarkMakerImport } from './routes/things/auth-bookmark-maker'
-
-// Create/Update Routes
-
-const IndexRoute = IndexImport.update({
+const LiftoffRoute = LiftoffRouteImport.update({
+  id: '/liftoff',
+  path: '/liftoff',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
-  getParentRoute: () => rootRoute,
+  getParentRoute: () => rootRouteImport,
 } as any)
 
-const ThingsIndexRoute = ThingsIndexImport.update({
-  id: '/things/',
-  path: '/things/',
-  getParentRoute: () => rootRoute,
-} as any)
-
-const ThingsTailwindColorScaleMakerRoute =
-  ThingsTailwindColorScaleMakerImport.update({
-    id: '/things/tailwind-color-scale-maker',
-    path: '/things/tailwind-color-scale-maker',
-    getParentRoute: () => rootRoute,
-  } as any)
-
-const ThingsRsyncCmdRoute = ThingsRsyncCmdImport.update({
-  id: '/things/rsync-cmd',
-  path: '/things/rsync-cmd',
-  getParentRoute: () => rootRoute,
-} as any)
-
-const ThingsCssClampCalculatorRoute = ThingsCssClampCalculatorImport.update({
-  id: '/things/css-clamp-calculator',
-  path: '/things/css-clamp-calculator',
-  getParentRoute: () => rootRoute,
-} as any)
-
-const ThingsAuthBookmarkMakerRoute = ThingsAuthBookmarkMakerImport.update({
-  id: '/things/auth-bookmark-maker',
-  path: '/things/auth-bookmark-maker',
-  getParentRoute: () => rootRoute,
-} as any)
-
-// Populate the FileRoutesByPath interface
+export interface FileRoutesByFullPath {
+  '/': typeof IndexRoute
+  '/liftoff': typeof LiftoffRoute
+}
+export interface FileRoutesByTo {
+  '/': typeof IndexRoute
+  '/liftoff': typeof LiftoffRoute
+}
+export interface FileRoutesById {
+  __root__: typeof rootRouteImport
+  '/': typeof IndexRoute
+  '/liftoff': typeof LiftoffRoute
+}
+export interface FileRouteTypes {
+  fileRoutesByFullPath: FileRoutesByFullPath
+  fullPaths: '/' | '/liftoff'
+  fileRoutesByTo: FileRoutesByTo
+  to: '/' | '/liftoff'
+  id: '__root__' | '/' | '/liftoff'
+  fileRoutesById: FileRoutesById
+}
+export interface RootRouteChildren {
+  IndexRoute: typeof IndexRoute
+  LiftoffRoute: typeof LiftoffRoute
+}
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/liftoff': {
+      id: '/liftoff'
+      path: '/liftoff'
+      fullPath: '/liftoff'
+      preLoaderRoute: typeof LiftoffRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
       fullPath: '/'
-      preLoaderRoute: typeof IndexImport
-      parentRoute: typeof rootRoute
-    }
-    '/things/auth-bookmark-maker': {
-      id: '/things/auth-bookmark-maker'
-      path: '/things/auth-bookmark-maker'
-      fullPath: '/things/auth-bookmark-maker'
-      preLoaderRoute: typeof ThingsAuthBookmarkMakerImport
-      parentRoute: typeof rootRoute
-    }
-    '/things/css-clamp-calculator': {
-      id: '/things/css-clamp-calculator'
-      path: '/things/css-clamp-calculator'
-      fullPath: '/things/css-clamp-calculator'
-      preLoaderRoute: typeof ThingsCssClampCalculatorImport
-      parentRoute: typeof rootRoute
-    }
-    '/things/rsync-cmd': {
-      id: '/things/rsync-cmd'
-      path: '/things/rsync-cmd'
-      fullPath: '/things/rsync-cmd'
-      preLoaderRoute: typeof ThingsRsyncCmdImport
-      parentRoute: typeof rootRoute
-    }
-    '/things/tailwind-color-scale-maker': {
-      id: '/things/tailwind-color-scale-maker'
-      path: '/things/tailwind-color-scale-maker'
-      fullPath: '/things/tailwind-color-scale-maker'
-      preLoaderRoute: typeof ThingsTailwindColorScaleMakerImport
-      parentRoute: typeof rootRoute
-    }
-    '/things/': {
-      id: '/things/'
-      path: '/things'
-      fullPath: '/things'
-      preLoaderRoute: typeof ThingsIndexImport
-      parentRoute: typeof rootRoute
+      preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
     }
   }
-}
-
-// Create and export the route tree
-
-export interface FileRoutesByFullPath {
-  '/': typeof IndexRoute
-  '/things/auth-bookmark-maker': typeof ThingsAuthBookmarkMakerRoute
-  '/things/css-clamp-calculator': typeof ThingsCssClampCalculatorRoute
-  '/things/rsync-cmd': typeof ThingsRsyncCmdRoute
-  '/things/tailwind-color-scale-maker': typeof ThingsTailwindColorScaleMakerRoute
-  '/things': typeof ThingsIndexRoute
-}
-
-export interface FileRoutesByTo {
-  '/': typeof IndexRoute
-  '/things/auth-bookmark-maker': typeof ThingsAuthBookmarkMakerRoute
-  '/things/css-clamp-calculator': typeof ThingsCssClampCalculatorRoute
-  '/things/rsync-cmd': typeof ThingsRsyncCmdRoute
-  '/things/tailwind-color-scale-maker': typeof ThingsTailwindColorScaleMakerRoute
-  '/things': typeof ThingsIndexRoute
-}
-
-export interface FileRoutesById {
-  __root__: typeof rootRoute
-  '/': typeof IndexRoute
-  '/things/auth-bookmark-maker': typeof ThingsAuthBookmarkMakerRoute
-  '/things/css-clamp-calculator': typeof ThingsCssClampCalculatorRoute
-  '/things/rsync-cmd': typeof ThingsRsyncCmdRoute
-  '/things/tailwind-color-scale-maker': typeof ThingsTailwindColorScaleMakerRoute
-  '/things/': typeof ThingsIndexRoute
-}
-
-export interface FileRouteTypes {
-  fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths:
-    | '/'
-    | '/things/auth-bookmark-maker'
-    | '/things/css-clamp-calculator'
-    | '/things/rsync-cmd'
-    | '/things/tailwind-color-scale-maker'
-    | '/things'
-  fileRoutesByTo: FileRoutesByTo
-  to:
-    | '/'
-    | '/things/auth-bookmark-maker'
-    | '/things/css-clamp-calculator'
-    | '/things/rsync-cmd'
-    | '/things/tailwind-color-scale-maker'
-    | '/things'
-  id:
-    | '__root__'
-    | '/'
-    | '/things/auth-bookmark-maker'
-    | '/things/css-clamp-calculator'
-    | '/things/rsync-cmd'
-    | '/things/tailwind-color-scale-maker'
-    | '/things/'
-  fileRoutesById: FileRoutesById
-}
-
-export interface RootRouteChildren {
-  IndexRoute: typeof IndexRoute
-  ThingsAuthBookmarkMakerRoute: typeof ThingsAuthBookmarkMakerRoute
-  ThingsCssClampCalculatorRoute: typeof ThingsCssClampCalculatorRoute
-  ThingsRsyncCmdRoute: typeof ThingsRsyncCmdRoute
-  ThingsTailwindColorScaleMakerRoute: typeof ThingsTailwindColorScaleMakerRoute
-  ThingsIndexRoute: typeof ThingsIndexRoute
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  ThingsAuthBookmarkMakerRoute: ThingsAuthBookmarkMakerRoute,
-  ThingsCssClampCalculatorRoute: ThingsCssClampCalculatorRoute,
-  ThingsRsyncCmdRoute: ThingsRsyncCmdRoute,
-  ThingsTailwindColorScaleMakerRoute: ThingsTailwindColorScaleMakerRoute,
-  ThingsIndexRoute: ThingsIndexRoute,
+  LiftoffRoute: LiftoffRoute,
 }
-
-export const routeTree = rootRoute
+export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-/* ROUTE_MANIFEST_START
-{
-  "routes": {
-    "__root__": {
-      "filePath": "__root.tsx",
-      "children": [
-        "/",
-        "/things/auth-bookmark-maker",
-        "/things/css-clamp-calculator",
-        "/things/rsync-cmd",
-        "/things/tailwind-color-scale-maker",
-        "/things/"
-      ]
-    },
-    "/": {
-      "filePath": "index.tsx"
-    },
-    "/things/auth-bookmark-maker": {
-      "filePath": "things/auth-bookmark-maker.tsx"
-    },
-    "/things/css-clamp-calculator": {
-      "filePath": "things/css-clamp-calculator.tsx"
-    },
-    "/things/rsync-cmd": {
-      "filePath": "things/rsync-cmd.tsx"
-    },
-    "/things/tailwind-color-scale-maker": {
-      "filePath": "things/tailwind-color-scale-maker.tsx"
-    },
-    "/things/": {
-      "filePath": "things/index.tsx"
-    }
-  }
-}
-ROUTE_MANIFEST_END */

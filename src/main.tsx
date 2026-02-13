@@ -1,25 +1,35 @@
-import ReactDOM from 'react-dom/client';
+import { StrictMode } from 'react';
+import '@fontsource/bricolage-grotesque/400.css';
+import '@fontsource/bricolage-grotesque/500.css';
+import '@fontsource/bricolage-grotesque/600.css';
+import '@fontsource/nunito/400.css';
+import '@fontsource/nunito/500.css';
+import '@fontsource/nunito/600.css';
+import '@fontsource/roboto-mono/400.css';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { RouterProvider, createRouter } from '@tanstack/react-router';
+import { createRoot } from 'react-dom/client';
+import './lib/theme/app.css';
 import { routeTree } from './routeTree.gen';
-import './styles/app.css';
 
-// Set up a Router instance
+const queryClient = new QueryClient();
+
 const router = createRouter({
   routeTree,
   defaultPreload: 'intent',
-  scrollRestoration: true,
+  context: { queryClient },
 });
 
-// Register things for typesafety
 declare module '@tanstack/react-router' {
   interface Register {
     router: typeof router;
   }
 }
 
-const rootElement = document.getElementById('root')!;
-
-if (!rootElement.innerHTML) {
-  const root = ReactDOM.createRoot(rootElement);
-  root.render(<RouterProvider router={router} />);
-}
+createRoot(document.getElementById('root')!).render(
+  <StrictMode>
+    <QueryClientProvider client={queryClient}>
+      <RouterProvider router={router} />
+    </QueryClientProvider>
+  </StrictMode>,
+);
