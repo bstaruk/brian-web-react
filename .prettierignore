@@ -10,3 +10,6 @@ package-lock.json
 
 # Generated
 src/routeTree.gen.ts
+
+# Binary/unparseable assets
+*.svg
