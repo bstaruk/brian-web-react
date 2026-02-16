@@ -8,7 +8,7 @@ import {
   SiTerraform,
   SiTypescript,
 } from 'react-icons/si';
-import { NidoBinIcon, StarbaseIcon } from 'atoms';
+import { NidoBinIcon, SiteLogo, StarbaseIcon } from 'atoms';
 import { LinkCard, SkillCard } from 'molecules';
 import { Tabs } from 'organisms';
 
@@ -163,7 +163,10 @@ export function HomePage() {
       }
     >
       <div className="flex flex-col items-center gap-3">
-        <h1 className="font-display text-sb-fg-title">Brian Staruk</h1>
+        <div className="flex items-center gap-4 text-sb-fg-title">
+          <SiteLogo size={44} />
+          <h1 className="font-display">Brian Staruk</h1>
+        </div>
         <p className="text-h3 font-display text-sb-fg-subtle">
           Full-Stack Web Developer from Boston
         </p>
