@@ -62,7 +62,11 @@ export function ToggleButtons({
     <div
       role="tablist"
       aria-label={ariaLabel}
-      className={cn('inline-flex rounded-lg bg-sb-canvas p-1', className)}
+      className={cn(
+        'inline-flex rounded-lg border border-transparent bg-sb-canvas p-1',
+        'has-[:focus-visible]:border-sb-focus-ring',
+        className,
+      )}
     >
       {options.map((option, index) => {
         const isActive = option.id === activeId;
@@ -76,20 +80,21 @@ export function ToggleButtons({
             role="tab"
             id={`${id}-tab-${option.id}`}
             aria-selected={isActive}
-            aria-controls={`${id}-panel-${option.id}`}
+            aria-controls={isActive ? `${id}-panel-${option.id}` : undefined}
             tabIndex={isActive ? 0 : -1}
             onKeyDown={handleKeyDown}
             onClick={() => onToggle(option.id)}
             className={cn(
               'relative cursor-pointer rounded-md px-4 py-1.5 text-sm font-medium',
-              'outline-none focus-visible:ring-2 focus-visible:ring-sb-action',
+              'outline-none',
               isActive
                 ? 'text-sb-canvas'
-                : 'text-sb-fg-subtle hover:text-sb-fg',
+                : 'text-sb-fg-subtle hover:text-sb-fg focus-visible:text-sb-fg',
             )}
           >
             {isActive && (
               <motion.span
+                aria-hidden="true"
                 layoutId={`${id}-indicator`}
                 className="absolute inset-0 rounded-md bg-sb-fg-title"
                 transition={

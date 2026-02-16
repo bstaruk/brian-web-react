@@ -1,6 +1,5 @@
 import { motion, useReducedMotion } from 'motion/react';
 import { FaGithubAlt, FaLinkedinIn } from 'react-icons/fa6';
-import { LuNotebookPen, LuRocket } from 'react-icons/lu';
 import {
   SiLighthouse,
   SiNodedotjs,
@@ -9,6 +8,7 @@ import {
   SiTerraform,
   SiTypescript,
 } from 'react-icons/si';
+import { NidoBinIcon, StarbaseIcon } from 'atoms';
 import { LinkCard, SkillCard } from 'molecules';
 import { Tabs } from 'organisms';
 
@@ -16,52 +16,68 @@ function ProjectsAndSocialsPanel() {
   return (
     <div className="flex flex-col gap-6">
       <section aria-labelledby="projects-heading">
-        <h2
-          id="projects-heading"
-          className="mb-3 text-h4 font-display text-sb-fg-title"
-        >
-          Projects
-        </h2>
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-          <LinkCard
-            href="https://starbase.dev"
-            icon={LuRocket}
-            heading="Starbase"
-            description="Web DX boilerplate for React"
-            linkText="starbase.dev"
-          />
-          <LinkCard
-            href="https://nidobin.com/u/brian"
-            icon={LuNotebookPen}
-            heading="Blog"
-            description="Writing about web development"
-            linkText="nidobin.com"
-          />
+        <div className="mb-3">
+          <h2
+            id="projects-heading"
+            className="mb-1 text-h4 font-display text-sb-fg-title"
+          >
+            Projects
+          </h2>
+          <p className="text-sm text-sb-fg-subtle">
+            Things I'm building and writing about.
+          </p>
         </div>
+        <ul className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+          <li>
+            <LinkCard
+              href="https://starbase.dev"
+              icon={StarbaseIcon}
+              heading="Starbase.dev"
+              description="Web DX boilerplate for React"
+              linkText="starbase.dev"
+            />
+          </li>
+          <li>
+            <LinkCard
+              href="https://nidobin.com/u/brian"
+              icon={NidoBinIcon}
+              heading="NidoBin.com"
+              description="Writing about web development"
+              linkText="nidobin.com"
+            />
+          </li>
+        </ul>
       </section>
       <section aria-labelledby="socials-heading">
-        <h2
-          id="socials-heading"
-          className="mb-3 text-h4 font-display text-sb-fg-title"
-        >
-          Socials
-        </h2>
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-          <LinkCard
-            href="https://github.com/bstaruk"
-            icon={FaGithubAlt}
-            heading="GitHub"
-            description="Open source projects and contributions"
-            linkText="github.com/bstaruk"
-          />
-          <LinkCard
-            href="https://www.linkedin.com/in/brian-staruk/"
-            icon={FaLinkedinIn}
-            heading="LinkedIn"
-            description="Professional profile and network"
-            linkText="linkedin.com/in/brian-staruk"
-          />
+        <div className="mb-3">
+          <h2
+            id="socials-heading"
+            className="mb-1 text-h4 font-display text-sb-fg-title"
+          >
+            Socials
+          </h2>
+          <p className="text-sm text-sb-fg-subtle">Where to find me online.</p>
         </div>
+        <ul className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+          <li>
+            <LinkCard
+              href="https://github.com/bstaruk"
+              icon={FaGithubAlt}
+              heading="GitHub"
+              description="Open source projects and contributions"
+              linkText="github.com/bstaruk"
+            />
+          </li>
+          <li>
+            <LinkCard
+              href="https://www.linkedin.com/in/brian-staruk/"
+              icon={FaLinkedinIn}
+              heading="LinkedIn"
+              description="Professional profile and network"
+              linkText="linkedin.com/in/brian-staruk"
+            />
+          </li>
+        </ul>
       </section>
     </div>
   );
@@ -69,44 +85,64 @@ function ProjectsAndSocialsPanel() {
 
 function MyStackPanel() {
   return (
-    <div className="flex flex-col gap-4">
-      <p className="text-sm text-sb-fg-subtle">
-        Not just competencies — these are the technologies I reach for by
-        choice, backed by years of hands-on depth.
-      </p>
-      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-        <SkillCard
-          icon={SiTypescript}
-          heading="TypeScript"
-          description="Primary language for frontend and backend"
-        />
-        <SkillCard
-          icon={SiReact}
-          heading="React"
-          description="Component-driven UI development"
-        />
-        <SkillCard
-          icon={SiNodedotjs}
-          heading="Node.js"
-          description="Server-side runtime and tooling"
-        />
-        <SkillCard
-          icon={SiTailwindcss}
-          heading="CSS / Tailwind"
-          description="Responsive, utility-first styling"
-        />
-        <SkillCard
-          icon={SiTerraform}
-          heading="Cloud & DevOps"
-          description="AWS, CI/CD, and infrastructure"
-        />
-        <SkillCard
-          icon={SiLighthouse}
-          heading="Web Performance"
-          description="Core Web Vitals and optimization"
-        />
+    <section aria-labelledby="stack-heading" className="flex flex-col gap-4">
+      <div>
+        <h2
+          id="stack-heading"
+          className="mb-1 text-h4 font-display text-sb-fg-title"
+        >
+          My Stack
+        </h2>
+        <p className="text-sm text-sb-fg-subtle">
+          Not just competencies — these are the technologies I reach for by
+          choice, backed by years of hands-on depth.
+        </p>
       </div>
-    </div>
+      <ul className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+        <li>
+          <SkillCard
+            icon={SiTypescript}
+            heading="TypeScript"
+            description="Primary language for frontend and backend"
+          />
+        </li>
+        <li>
+          <SkillCard
+            icon={SiReact}
+            heading="React"
+            description="Component-driven UI development"
+          />
+        </li>
+        <li>
+          <SkillCard
+            icon={SiNodedotjs}
+            heading="Node.js"
+            description="Server-side runtime and tooling"
+          />
+        </li>
+        <li>
+          <SkillCard
+            icon={SiTailwindcss}
+            heading="CSS / Tailwind"
+            description="Responsive, utility-first styling"
+          />
+        </li>
+        <li>
+          <SkillCard
+            icon={SiTerraform}
+            heading="Cloud & DevOps"
+            description="AWS, CI/CD, and infrastructure"
+          />
+        </li>
+        <li>
+          <SkillCard
+            icon={SiLighthouse}
+            heading="Web Performance"
+            description="Core Web Vitals and optimization"
+          />
+        </li>
+      </ul>
+    </section>
   );
 }
 

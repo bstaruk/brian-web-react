@@ -1,7 +1,7 @@
 import { type HTMLAttributes, type ReactNode } from 'react';
 import { cn } from 'utils';
 
-interface CardProps extends HTMLAttributes<HTMLElement> {
+interface CardProps extends HTMLAttributes<HTMLDivElement> {
   children: ReactNode;
 }
 
@@ -11,9 +11,9 @@ interface CardFooterProps extends HTMLAttributes<HTMLDivElement> {
 
 export function Card({ children, className, ...rest }: CardProps) {
   return (
-    <article
+    <div
       className={cn(
-        'relative flex flex-col rounded-lg border border-sb-divider/30',
+        'relative flex h-full flex-col rounded-lg border border-sb-divider/30',
         'text-left text-sb-fg',
         'motion-safe:transition-colors motion-safe:duration-150',
         className,
@@ -21,7 +21,7 @@ export function Card({ children, className, ...rest }: CardProps) {
       {...rest}
     >
       {children}
-    </article>
+    </div>
   );
 }
 

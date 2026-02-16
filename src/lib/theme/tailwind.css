@@ -104,6 +104,9 @@
       0 1px 3px 0 rgb(0 0 0 / 0.2), 0 4px 12px -2px rgb(0 0 0 / 0.3),
       inset 0 1px 0 0 rgb(255 255 255 / 0.04);
 
+    /* Focus */
+    --sb-focus-ring: var(--color-monster-200);
+
     /* Action */
     --sb-action: var(--color-marathon-400);
     --sb-action-active: var(--color-marathon-100);
@@ -136,6 +139,9 @@
 
   /* Borders */
   --color-sb-divider: var(--sb-divider);
+
+  /* Focus */
+  --color-sb-focus-ring: var(--sb-focus-ring);
 
   /* UI Elements */
   --color-sb-action: var(--sb-action);

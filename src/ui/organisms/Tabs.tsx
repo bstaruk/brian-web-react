@@ -56,7 +56,6 @@ export function Tabs({ tabs, ariaLabel, className }: TabsProps) {
             role="tabpanel"
             id={`${instanceId}-panel-${activeId}`}
             aria-labelledby={`${instanceId}-tab-${activeId}`}
-            tabIndex={0}
             className="outline-none"
             initial={
               prefersReducedMotion

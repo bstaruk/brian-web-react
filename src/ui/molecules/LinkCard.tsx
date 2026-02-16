@@ -23,17 +23,17 @@ export function LinkCard({
   return (
     <Card
       className={cn(
-        'has-[:focus-visible]:outline has-[:focus-visible]:outline-sb-action',
-        'hover:bg-sb-fg/5',
+        'hover:bg-sb-fg/5 hover:border-sb-focus-ring',
+        'has-[:focus-visible]:bg-sb-fg/5 has-[:focus-visible]:border-sb-focus-ring',
         className,
       )}
     >
-      <div className="flex flex-col gap-2 p-4">
+      <div className="flex flex-1 flex-col gap-2 p-4">
         <div className="flex items-center gap-2">
           <Icon size={24} aria-hidden="true" />
-          <h2 className="line-clamp-1 text-h4 font-display text-sb-fg-title">
+          <h3 className="line-clamp-1 text-h4 font-display text-sb-fg-title">
             {heading}
-          </h2>
+          </h3>
         </div>
         <p className="text-sm text-sb-fg-subtle">{description}</p>
       </div>
