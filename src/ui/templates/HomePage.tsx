@@ -157,7 +157,7 @@ export function HomePage() {
           : { duration: 0.5, ease: 'easeOut' }
       }
     >
-      <div className="flex flex-col items-center gap-3">
+      <header className="flex flex-col items-center gap-3">
         <div className="flex items-center gap-4 text-sb-fg-title">
           <SiteLogo size={44} />
           <h1 className="font-display">Brian Staruk</h1>
@@ -181,7 +181,7 @@ export function HomePage() {
           </Link>{' '}
           with over 20 years of professional experience building for the web.
         </p>
-      </div>
+      </header>
 
       <Tabs
         ariaLabel="Content sections"

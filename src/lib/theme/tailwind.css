@@ -7,11 +7,39 @@
 
 @custom-variant is-active (&:not(:disabled):hover, &:not(:disabled):focus-visible);
 
+/* Font fallbacks — metric-matched system fonts to minimize CLS during swap */
+@font-face {
+  font-family: 'Nunito Fallback';
+  src: local('Arial');
+  size-adjust: 100.3%;
+  ascent-override: 101%;
+  descent-override: 35.3%;
+  line-gap-override: 0%;
+}
+
+@font-face {
+  font-family: 'Bricolage Fallback';
+  src: local('Georgia');
+  size-adjust: 105%;
+  ascent-override: 95%;
+  descent-override: 25%;
+  line-gap-override: 0%;
+}
+
+@font-face {
+  font-family: 'Roboto Mono Fallback';
+  src: local('Courier New');
+  size-adjust: 81%;
+  ascent-override: 104.8%;
+  descent-override: 27.1%;
+  line-gap-override: 0%;
+}
+
 @theme {
   /* Fonts */
-  --font-sans: 'Nunito', sans-serif;
-  --font-display: 'Bricolage Grotesque', serif;
-  --font-mono: 'Roboto Mono', monospace;
+  --font-sans: 'Nunito', 'Nunito Fallback', sans-serif;
+  --font-display: 'Bricolage Grotesque', 'Bricolage Fallback', serif;
+  --font-mono: 'Roboto Mono', 'Roboto Mono Fallback', monospace;
 
   /* Text Variant: h1 - Bold display headings */
   /* 22px → 30px */
@@ -58,6 +86,7 @@
   --spacing-page-x: clamp(0.75rem, 0.25rem + 1.5vw, 1rem);
 
   /* Custom Color Palettes */
+  --color-monster-25: #dee7e4;
   --color-monster-50: #dce5e2;
   --color-monster-100: #cad8d4;
   --color-monster-200: #a5c0b7;
@@ -71,6 +100,7 @@
 
   --color-marathon-100: #fffbc1;
   --color-marathon-200: #fff587;
+  --color-marathon-300: #ffe94b;
   --color-marathon-400: #ffd60f;
 
   /* List Style Types */
@@ -95,7 +125,7 @@
 
     /* Text */
     --sb-fg: var(--color-stone-100);
-    --sb-fg-subtle: var(--color-monster-200);
+    --sb-fg-subtle: var(--color-monster-25);
     --sb-fg-title: var(--color-stone-50);
 
     /* Borders */
@@ -112,11 +142,11 @@
     --sb-focus-ring: var(--color-monster-200);
 
     /* Action */
-    --sb-action: var(--color-marathon-400);
+    --sb-action: var(--color-marathon-300);
     --sb-action-active: var(--color-marathon-100);
 
     /* Navigation */
-    --sb-anchor: var(--color-marathon-400);
+    --sb-anchor: var(--color-marathon-300);
     --sb-anchor-active: var(--color-marathon-100);
   }
 

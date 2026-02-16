@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import type { QueryClient } from '@tanstack/react-query';
 import {
   HeadContent,
@@ -37,8 +37,10 @@ export const Route = createRootRouteWithContext<RouterContext>()({
       <SiteLayout>
         <Outlet />
       </SiteLayout>
-      <TanStackRouterDevtools />
-      <ReactQueryDevtools />
+      <Suspense fallback={null}>
+        <TanStackRouterDevtools />
+        <ReactQueryDevtools />
+      </Suspense>
     </>
   ),
 });
