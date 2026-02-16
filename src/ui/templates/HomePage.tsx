@@ -27,7 +27,7 @@ function ProjectsAndSocialsPanel() {
               href="https://starbase.dev"
               icon={StarbaseIcon}
               heading="Starbase.dev"
-              description="Web DX boilerplate for React"
+              description="A front-end boilerplate evolving since 2018 alongside the web itself. Currently a Claude-first stack built on Vite, TanStack Router/Query/Form, and Tailwind CSS -- with accessibility, atomic design, and developer experience at its core."
               linkText="starbase.dev"
             />
           </li>
@@ -36,7 +36,7 @@ function ProjectsAndSocialsPanel() {
               href="https://nidobin.com/u/brian"
               icon={NidoBinIcon}
               heading="NidoBin.com"
-              description="Writing about web development"
+              description="Carb-centric recipes, tech notes, and the occasional life update. Born as a late-2024 passion project to explore full-stack TypeScript monorepo architecture -- and an excuse to build my own indie web blog."
               linkText="nidobin.com"
             />
           </li>
@@ -100,7 +100,7 @@ function MyStackPanel() {
           <SkillCard
             icon={LuAccessibility}
             heading="Accessibility"
-            description="WCAG 2.2 AA, semantic HTML, and inclusive design at the core of every decision"
+            description="WCAG 2.2 AA, semantic HTML, and inclusive design at the heart of every decision"
           />
         </li>
         <li>
