@@ -2,7 +2,7 @@ import { motion, useReducedMotion } from 'motion/react';
 import { FaGithubAlt, FaLinkedinIn } from 'react-icons/fa6';
 import { LuAccessibility, LuLayers, LuTerminal } from 'react-icons/lu';
 import { SiNodedotjs, SiReact, SiTypescript } from 'react-icons/si';
-import { NidoBinIcon, SiteLogo, StarbaseIcon } from 'atoms';
+import { Link, NidoBinIcon, SiteLogo, StarbaseIcon } from 'atoms';
 import { LinkCard, SkillCard } from 'molecules';
 import { Tabs } from 'organisms';
 
@@ -169,8 +169,17 @@ export function HomePage() {
           </abbr>
         </p>
         <p className="max-w-[52ch] text-base text-sb-fg">
-          Software engineer and development team lead at MERGE with over 20
-          years of professional experience building for the web.
+          Software engineer and development team lead at{' '}
+          <Link
+            href="https://www.mergeworld.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="MERGE (opens in new tab)"
+            variant="fg"
+          >
+            MERGE
+          </Link>{' '}
+          with over 20 years of professional experience building for the web.
         </p>
       </div>
 
