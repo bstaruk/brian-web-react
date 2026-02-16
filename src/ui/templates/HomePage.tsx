@@ -163,7 +163,10 @@ export function HomePage() {
           <h1 className="font-display">Brian Staruk</h1>
         </div>
         <p className="text-h3 font-display text-sb-fg-subtle">
-          Full-Stack Web Developer from Boston
+          Full-Stack Web Developer from{' '}
+          <abbr title="Let's go Red Sox!" className="no-underline">
+            Boston
+          </abbr>
         </p>
         <p className="max-w-[52ch] text-base text-sb-fg">
           Software engineer and development team lead at MERGE with over 20

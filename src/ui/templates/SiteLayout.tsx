@@ -19,9 +19,6 @@ export function SiteLayout({ children }: SiteLayoutProps) {
       >
         {children}
       </main>
-      <footer className="py-4 text-center text-sm text-sb-fg-subtle">
-        Built in Boston
-      </footer>
     </div>
   );
 }
