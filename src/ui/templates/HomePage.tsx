@@ -1,13 +1,7 @@
 import { motion, useReducedMotion } from 'motion/react';
 import { FaGithubAlt, FaLinkedinIn } from 'react-icons/fa6';
-import {
-  SiLighthouse,
-  SiNodedotjs,
-  SiReact,
-  SiTailwindcss,
-  SiTerraform,
-  SiTypescript,
-} from 'react-icons/si';
+import { LuAccessibility, LuLayers, LuTerminal } from 'react-icons/lu';
+import { SiNodedotjs, SiReact, SiTypescript } from 'react-icons/si';
 import { NidoBinIcon, SiteLogo, StarbaseIcon } from 'atoms';
 import { LinkCard, SkillCard } from 'molecules';
 import { Tabs } from 'organisms';
@@ -96,51 +90,52 @@ function MyStackPanel() {
           My Stack
         </h2>
         <p className="mx-auto max-w-[50ch] text-sm text-sb-fg-subtle">
-          Not just competencies — these are the technologies I reach for by
-          choice, backed by years of hands-on depth.
+          Not just competencies -- these are the technologies I&apos;ve grown my
+          passion and career around. Certainly not an exhaustive list!
         </p>
       </div>
+
       <ul className="grid grid-cols-1 gap-4 sm:grid-cols-2">
         <li>
           <SkillCard
+            icon={LuAccessibility}
+            heading="Accessibility"
+            description="WCAG 2.2 AA, semantic HTML, and inclusive design at the core of every decision"
+          />
+        </li>
+        <li>
+          <SkillCard
             icon={SiTypescript}
-            heading="TypeScript"
-            description="Primary language for frontend and backend"
+            heading="Full-Stack TypeScript"
+            description="Monorepos with end-to-end typesafety from database to UI"
           />
         </li>
         <li>
           <SkillCard
             icon={SiReact}
-            heading="React"
-            description="Component-driven UI development"
+            heading="React Ecosystem"
+            description="Vite, TanStack Router/Query/Form, and Tailwind CSS"
           />
         </li>
         <li>
           <SkillCard
             icon={SiNodedotjs}
-            heading="Node.js"
-            description="Server-side runtime and tooling"
+            heading="Node.js Backend"
+            description="Fastify, BullMQ, Redis, and PostgreSQL with Docker orchestration"
           />
         </li>
         <li>
           <SkillCard
-            icon={SiTailwindcss}
-            heading="CSS / Tailwind"
-            description="Responsive, utility-first styling"
+            icon={LuLayers}
+            heading="Design Systems"
+            description="Atomic Design methodology harmonizing Figma, Storybook, and code"
           />
         </li>
         <li>
           <SkillCard
-            icon={SiTerraform}
-            heading="Cloud & DevOps"
-            description="AWS, CI/CD, and infrastructure"
-          />
-        </li>
-        <li>
-          <SkillCard
-            icon={SiLighthouse}
-            heading="Web Performance"
-            description="Core Web Vitals and optimization"
+            icon={LuTerminal}
+            heading="Developer Experience"
+            description="Decade-long webpack veteran, now developing Claude-first with custom skills"
           />
         </li>
       </ul>
