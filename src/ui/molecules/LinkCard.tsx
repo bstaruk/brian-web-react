@@ -1,7 +1,7 @@
 import { type ComponentType } from 'react';
 import { LuArrowUpRight } from 'react-icons/lu';
 import { cn } from 'utils';
-import { Card, CardFooter } from 'atoms';
+import { Card, CardFooter, Link } from 'atoms';
 
 interface LinkCardProps {
   href: string;
@@ -38,16 +38,16 @@ export function LinkCard({
         <p className="text-sm text-sb-fg-subtle">{description}</p>
       </div>
       <CardFooter>
-        <a
+        <Link
           href={href}
           target="_blank"
           rel="noopener noreferrer"
           aria-label={`${heading} — ${linkText} (opens in new tab)`}
-          className="inline-flex items-center gap-1 text-sm text-sb-anchor outline-none after:absolute after:inset-0"
+          className="inline-flex items-center gap-1 text-sm after:absolute after:inset-0"
         >
           {linkText}
           <LuArrowUpRight size={14} aria-hidden="true" />
-        </a>
+        </Link>
       </CardFooter>
     </Card>
   );
