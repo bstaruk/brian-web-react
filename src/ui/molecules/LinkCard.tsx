@@ -24,7 +24,7 @@ export function LinkCard({
     <Card
       className={cn(
         'hover:bg-sb-surface-hover hover:border-sb-focus-ring',
-        'has-[:focus-visible]:bg-sb-surface-hover has-[:focus-visible]:border-sb-focus-ring',
+        'has-focus-visible:bg-sb-surface-hover has-focus-visible:border-sb-focus-ring',
         className,
       )}
     >
