@@ -1,7 +1,8 @@
 import { createFileRoute } from '@tanstack/react-router';
 import { motion, useReducedMotion } from 'motion/react';
-import { Link } from 'atoms';
-import { SocialLinks } from 'molecules';
+import { FaGithubAlt, FaLinkedinIn } from 'react-icons/fa6';
+import { LuNotebookPen, LuRocket } from 'react-icons/lu';
+import { LinkCard } from 'molecules';
 
 export const Route = createFileRoute('/')({
   component: Index,
@@ -11,7 +12,7 @@ export const Route = createFileRoute('/')({
       {
         name: 'description',
         content:
-          'Brian Staruk is a web developer from Boston, MA specializing in React, TypeScript, and modern frontend architecture.',
+          'Brian Staruk is a full-stack web developer from Boston with 20 years of experience building fast, accessible web experiences.',
       },
     ],
   }),
@@ -34,38 +35,48 @@ function Index() {
       <div className="flex flex-col items-center gap-3">
         <h1 className="font-display text-sb-fg-title">Brian Staruk</h1>
         <p className="text-h3 font-display text-sb-fg-subtle">
-          Web Developer from Boston
+          Full-Stack Web Developer from Boston
         </p>
       </div>
 
-      <div className="flex max-w-lg flex-col gap-4 text-base text-sb-fg">
-        <p>
-          Frontend engineer at MERGE with a focus on React, TypeScript, and
-          Tailwind CSS. Certified Sitecore Developer and Scrum Master.
-        </p>
-        <p>
-          Passionate about building fast, accessible, and well-crafted web
-          experiences. Check out my personal blog at{' '}
-          <Link
-            href="https://nidobin.com/u/brian"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            nidobin.com
-          </Link>{' '}
-          and my web DX boilerplate at{' '}
-          <Link
-            href="https://starbase.dev"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            starbase.dev
-          </Link>
-          .
-        </p>
-      </div>
+      <p className="max-w-[52ch] text-base text-sb-fg">
+        Software engineer and development team lead at MERGE with over 20 years
+        of professional experience building for the web.
+      </p>
 
-      <SocialLinks />
+      <nav
+        aria-label="Links"
+        className="grid w-full max-w-2xl grid-cols-2 gap-4"
+      >
+        <LinkCard
+          href="https://github.com/bstaruk"
+          icon={FaGithubAlt}
+          heading="GitHub"
+          description="Open source projects and contributions"
+          linkText="github.com/bstaruk"
+        />
+        <LinkCard
+          href="https://www.linkedin.com/in/brian-staruk/"
+          icon={FaLinkedinIn}
+          heading="LinkedIn"
+          description="Professional profile and network"
+          linkText="linkedin.com/in/brian-staruk"
+        />
+        <LinkCard
+          href="https://nidobin.com/u/brian"
+          icon={LuNotebookPen}
+          heading="Blog"
+          description="Writing about web development"
+          linkText="nidobin.com"
+        />
+        <LinkCard
+          href="https://starbase.dev"
+          icon={LuRocket}
+          heading="Starbase"
+          description="Web DX boilerplate for React"
+          linkText="starbase.dev"
+        />
+      </nav>
     </motion.div>
   );
 }
