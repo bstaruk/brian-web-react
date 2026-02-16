@@ -16,14 +16,14 @@ function ProjectsAndSocialsPanel() {
   return (
     <div className="flex flex-col gap-6">
       <section aria-labelledby="projects-heading">
-        <div className="mb-3">
+        <div className="mb-3 text-center">
           <h2
             id="projects-heading"
             className="mb-1 text-h4 font-display text-sb-fg-title"
           >
             Projects
           </h2>
-          <p className="text-sm text-sb-fg-subtle">
+          <p className="mx-auto max-w-[50ch] text-sm text-sb-fg-subtle">
             Things I'm building and writing about.
           </p>
         </div>
@@ -49,14 +49,16 @@ function ProjectsAndSocialsPanel() {
         </ul>
       </section>
       <section aria-labelledby="socials-heading">
-        <div className="mb-3">
+        <div className="mb-3 text-center">
           <h2
             id="socials-heading"
             className="mb-1 text-h4 font-display text-sb-fg-title"
           >
             Socials
           </h2>
-          <p className="text-sm text-sb-fg-subtle">Where to find me online.</p>
+          <p className="mx-auto max-w-[50ch] text-sm text-sb-fg-subtle">
+            Where to find me online.
+          </p>
         </div>
         <ul className="grid grid-cols-1 gap-4 sm:grid-cols-2">
           <li>
@@ -86,14 +88,14 @@ function ProjectsAndSocialsPanel() {
 function MyStackPanel() {
   return (
     <section aria-labelledby="stack-heading" className="flex flex-col gap-4">
-      <div>
+      <div className="text-center">
         <h2
           id="stack-heading"
           className="mb-1 text-h4 font-display text-sb-fg-title"
         >
           My Stack
         </h2>
-        <p className="text-sm text-sb-fg-subtle">
+        <p className="mx-auto max-w-[50ch] text-sm text-sb-fg-subtle">
           Not just competencies — these are the technologies I reach for by
           choice, backed by years of hands-on depth.
         </p>
@@ -165,12 +167,11 @@ export function HomePage() {
         <p className="text-h3 font-display text-sb-fg-subtle">
           Full-Stack Web Developer from Boston
         </p>
+        <p className="max-w-[52ch] text-base text-sb-fg">
+          Software engineer and development team lead at MERGE with over 20
+          years of professional experience building for the web.
+        </p>
       </div>
-
-      <p className="max-w-[52ch] text-base text-sb-fg">
-        Software engineer and development team lead at MERGE with over 20 years
-        of professional experience building for the web.
-      </p>
 
       <Tabs
         ariaLabel="Content sections"

@@ -13,7 +13,7 @@ export function Card({ children, className, ...rest }: CardProps) {
   return (
     <div
       className={cn(
-        'relative flex h-full flex-col rounded-lg border border-sb-divider/30',
+        'relative flex h-full flex-col rounded-lg border border-sb-divider-subtle',
         'text-left text-sb-fg',
         'motion-safe:transition-colors motion-safe:duration-150',
         className,
@@ -29,7 +29,7 @@ export function CardFooter({ children, className, ...rest }: CardFooterProps) {
   return (
     <div
       className={cn(
-        'border-t border-sb-divider/20 bg-sb-fg/[0.03] px-4 py-2.5',
+        'border-t border-sb-divider-faint bg-sb-surface-tint px-4 py-2.5',
         'rounded-b-lg',
         className,
       )}

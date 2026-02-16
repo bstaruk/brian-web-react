@@ -44,7 +44,8 @@ const makeButtonClasses = (
         variant === 'outline',
 
       /* Variant: ghost */
-      'bg-transparent text-sb-fg is-active:bg-sb-fg/5': variant === 'ghost',
+      'bg-transparent text-sb-fg is-active:bg-sb-surface-hover':
+        variant === 'ghost',
     },
     className,
   );

@@ -89,6 +89,8 @@
     /* Surfaces */
     --sb-surface: var(--color-monster-600);
     --sb-surface-raised: var(--color-monster-500);
+    --sb-surface-tint: #4e7165;
+    --sb-surface-hover: #527468;
     --sb-canvas: var(--color-monster-700);
 
     /* Text */
@@ -98,6 +100,8 @@
 
     /* Borders */
     --sb-divider: var(--color-monster-300);
+    --sb-divider-subtle: #597f72;
+    --sb-divider-faint: #537669;
 
     /* Shadows */
     --sb-shadow-card:
@@ -130,6 +134,8 @@
   /* Backgrounds */
   --color-sb-surface: var(--sb-surface);
   --color-sb-surface-raised: var(--sb-surface-raised);
+  --color-sb-surface-tint: var(--sb-surface-tint);
+  --color-sb-surface-hover: var(--sb-surface-hover);
   --color-sb-canvas: var(--sb-canvas);
 
   /* Text / Foreground */
@@ -139,6 +145,8 @@
 
   /* Borders */
   --color-sb-divider: var(--sb-divider);
+  --color-sb-divider-subtle: var(--sb-divider-subtle);
+  --color-sb-divider-faint: var(--sb-divider-faint);
 
   /* Focus */
   --color-sb-focus-ring: var(--sb-focus-ring);

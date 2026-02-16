@@ -16,7 +16,7 @@ export function SkillCard({
   className,
 }: SkillCardProps) {
   return (
-    <Card className={cn('bg-sb-fg/[0.03]', className)}>
+    <Card className={cn('bg-sb-surface-tint', className)}>
       <div className="flex flex-col gap-1 px-3 py-2.5">
         <div className="flex items-center gap-2">
           <Icon size={20} aria-hidden="true" />
